@@ -30,7 +30,10 @@ void nextPermutation(char* str){
     char* rt = 0;
     char* p = str;
     
-    // step 1
+    /*
+    1. Find the largest index 'lt' such that
+    str[lt+1] > str[lt]
+    */
     p++;
     while(*p != '\0'){
         if(*(p-1)<*p) lt = p;
@@ -42,14 +45,19 @@ void nextPermutation(char* str){
     }
 	lt--;
     
-    // step 2
+    /*
+    2. Find the largest index 'rt' such that
+    str[rt] > str[lt]
+    */
     p = lt+1;
     while(*p != '\0'){
         if(*p >= *lt) rt = p;
         p++;
     }
     
-    // step 3,4
+    /*
+    3. Swap, reverse
+    */
     swapChars(lt,rt);
     reverse(lt+1);
 }
