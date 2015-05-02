@@ -6,12 +6,14 @@ https://oj.leetcode.com/problems/string-to-integer-atoi/
 int _atoi(char* p)
 {
     int s = *p == '-' ? -1:1;
-	int r = 0;
+    int r = 0;
     
-    if (s==-1) p++;
-	while(*p != '\0')
-		r = r*10 + *p++ - '0';
-	return r*s;
+    if(s == -1) p++;
+    
+    while(*p != '\0')
+        r = r*10 + *p++ - '0';
+		
+    return r*s;
 }
 
 int main()
