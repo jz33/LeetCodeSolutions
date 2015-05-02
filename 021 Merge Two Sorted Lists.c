@@ -18,7 +18,17 @@ void printList(node* p){
     printf("\n");
 }
 
-node* mergeTwoSorted(node* la, node* lb){
+void freeList(node* h){
+    node* p = h;
+    while(p != 0){
+        p = h->next;
+        free(h);
+        h = p;
+    }
+}
+
+node* mergeTwoSorted(node* la, node* lb)
+{
     node *ret, *p;
     if(la == 0) return lb;
     if(lb == 0) return la;
@@ -49,7 +59,8 @@ node* mergeTwoSorted(node* la, node* lb){
     return ret;
 }
 
-int main(){
+int main()
+{
     int repeat = 7; // will create repeat + 1 nodes
     int K;
     int i;
@@ -84,11 +95,6 @@ int main(){
     printList(p);
 
     //free
-    head = p;
-    while(head != 0){
-        p = head->next;
-        free(head);
-        head = p;
-    }
+    freeList(p);
     return 0; 
 }
