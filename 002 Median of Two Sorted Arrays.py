@@ -73,6 +73,7 @@ def medianSortedPlus1(A,s,l,one):
             else : return mm+one >> 1
     
 # median of a sorted int list plus 2 extra elements
+# can be done without merge
 def medianSortedPlus2(A,sa,la,B,sb):
     A = A[sa:sa+la]
     B = B[sb:sb+2]
@@ -92,7 +93,7 @@ def medianTwoSortedRec(A, sa, la, B, sb, lb):
     
     # compute possible cut range length
     ca = (la>>1)-1 if isEven(la) else la>>1
-    cb = (lb>>1)-1 if isEven(la) else lb>>1
+    cb = (lb>>1)-1 if isEven(lb) else lb>>1
     c = min(ca,cb)
     ma = medianSorted(A,sa,la)
     mb = medianSorted(B,sb,lb)
@@ -112,8 +113,8 @@ def main():
         n = i+5
         A = createRandList(n,i*2,(i+n)*2)
         B = createRandList(n+1,i*2,(i+n)*2)
-        A = sorted(A)
-        B = sorted(B)
+        A.sort()
+        B.sort()
         print A
         print B
         print medianTwoSorted(A,B)
