@@ -2,96 +2,86 @@
 #include <vector>
 #include <algorithm>
 /*
-39 Combination Sum
-https://oj.leetcode.com/problems/combination-sum/
-40 Combination Sum II
-https://oj.leetcode.com/problems/combination-sum-ii/
+Combination Sum I
+https://leetcode.com/problems/combination-sum/
+Combination Sum II
+https://leetcode.com/problems/combination-sum-ii/
 
-39 is inspired from C++ version of "combinations",
-40 is from "combinations without duplicates"
+http://bangbingsyb.blogspot.com/2014/11/leetcode-combination-sum-i-ii.html
 */
-int getSum(std::vector<int>& in){
-    int res = 0;
-    for(std::vector<int>::iterator i = in.begin();i!=in.end();i++)
-        res += *i;
-    return res;
-}
 void dumpVec(std::vector<int>& in){
     for(std::vector<int>::iterator i = in.begin();i!=in.end();i++)
         std::cout<<*i<<" ";
     printf("\n");
 }
-bool compareInt(int i, int j){
-  return (i==j);
-}
-void combinationSumRec(std::vector<int>& in, std::vector<int>& pattern, const int tag)
+/*
+Has duplicates
+*/
+void findCombSum(std::vector<int>& input, std::vector<int>& sofar, int start, int tag)
 {
-    int sum = getSum(pattern);
-    if(sum==tag){
-		dumpVec(pattern);
-	} else if (sum < tag){
-		for(std::size_t i = 0;i < in.size();i++)
-		{
-			std::vector<int> newPattern(pattern);
-			newPattern.push_back(in[i]);
-        
-			std::vector<int> newInput(in.size()-i);
-			std::copy(in.begin()+i,in.end(),newInput.begin());
-        
-			combinationSumRec(newInput, newPattern, tag);
-		}
-	}
-}
-void combinationSum(std::vector<int> in, const int tag)
-{
-    std::stable_sort(in.begin(),in.end());
-	std::vector<int> pattern;
-    combinationSumRec(in, pattern, tag);
-}
-void combinationSum2Rec(const int tag,std::vector<int>& src,std::vector<int>& cur)
-{
-    int sum = getSum(cur);
-    if(sum == tag){
-		dumpVec(cur);
-	} else if (sum < tag){
-    
-        // "prev" is used to eliminate duplicates
-        std::vector<int> prev;  
-		for(std::size_t i = 0;i < src.size()-1;i++)
-		{
-			std::vector<int> newCur(cur);
-			newCur.push_back(src[i]);
-            if(	prev.size() == 0 ||
-				!std::equal(newCur.begin(),newCur.end(),prev.begin(),compareInt)){
-                prev = newCur;
-                std::vector<int> newSrc(src.size()-i-1);
-                std::copy(src.begin()+i+1,src.end(),newSrc.begin());
-                combinationSum2Rec(tag, newSrc, newCur);
+    if(tag == 0)
+        dumpVec(sofar);
+    else if(tag > 0)
+    {
+        for(int i = start;i<input.size();i++)
+        {
+            if(i>start && input[i] == input[i-1]) 
+                continue;
+            if(input[i] <= tag)
+            {
+                sofar.push_back(input[i]);
+                findCombSum(input, sofar, i,tag - input[i]);
+                sofar.pop_back();
             }
-		}
-	}
+        }
+    }
 }
-void combinationSum2(std::vector<int> src, const int tag)
+void combinationSum(std::vector<int>& input, const int tag)
 {
-    std::stable_sort(src.begin(),src.end());
-	std::vector<int> cur;
-    combinationSum2Rec(tag,src,cur);
+    std::stable_sort(input.begin(),input.end());
+	std::vector<int> sofar;
+    findCombSum(input,sofar,0,tag);
+}
+/*
+Without duplicates
+*/
+void findCombSum2(std::vector<int>& input, std::vector<int>& sofar, int start, int tag)
+{
+    if(tag == 0)
+        dumpVec(sofar);
+    else if(tag > 0)
+    {
+        for(int i = start;i<input.size();i++)
+        {
+            if(i>start && input[i] == input[i-1]) 
+                continue;
+            if(input[i] <= tag)
+            {
+                sofar.push_back(input[i]);
+                findCombSum2(input, sofar, i+1,tag - input[i]);
+                sofar.pop_back();
+            }
+        }
+    }
+}
+void combinationSum2(std::vector<int>& input, const int tag)
+{
+    std::stable_sort(input.begin(),input.end());
+	std::vector<int> sofar;
+    findCombSum2(input,sofar,0,tag);
 }
 // test Combination Sum
 void test1(){
-    int arr[4];
-    arr[0] = 2;arr[1] = 3;arr[2] = 6;arr[3] = 7;
-    std::vector<int> in(arr,arr+sizeof(arr)/sizeof(int));
-    combinationSum(in,7);
+    int arr[] = {2,3,6,7};
+    std::vector<int> input(arr,arr+sizeof(arr)/sizeof(int));
+    combinationSum(input,7);
 	printf("\n");
 }
 // test Combination Sum II
 void test2(){
-    int arr[7];
-    arr[0] =10;arr[1] = 1;arr[2] = 2;arr[3] = 7;
-    arr[4] = 6;arr[5] = 1;arr[6] = 5;
-    std::vector<int> in(arr,arr+sizeof(arr)/sizeof(int));
-    combinationSum2(in,8);
+    int arr[] = {10,1,2,2,4,7,6,1,5};
+    std::vector<int> input(arr,arr+sizeof(arr)/sizeof(int));
+    combinationSum2(input,8);
 	printf("\n");
 }
 int main(int argc, char** argv){   
