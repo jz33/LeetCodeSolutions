@@ -2,7 +2,7 @@ package main
 /*
 74 Search a 2D Matrix
 https://oj.leetcode.com/problems/search-a-2d-matrix/
-http://yucoding.blogspot.com/2013/04/leetcode-question-92-search-2d-matrix.html
+http://articles.leetcode.com/2010/10/searching-2d-sorted-matrix-part-ii.html
 
 Each row is sorted left to right;
 Each col is sorted up to down;
@@ -16,6 +16,8 @@ Test:
 -2 0 5 7 15
 -1 10 11 16 20
 0 23 30 34 50
+
+O(3 ^ (lg n ))
 */
 import (
 	"fmt"
