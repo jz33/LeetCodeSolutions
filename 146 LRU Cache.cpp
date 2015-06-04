@@ -14,9 +14,9 @@ public:
     Node* from;
     Node* next;
 
-	void operator=(std::string val){
-		this->val = val;
-	}
+    void operator=(std::string val){
+        this->val = val;
+    }
 };
 
 class LRUCache
@@ -30,19 +30,19 @@ private:
  
 public:
     LRUCache(size_t capacity)
-	{
-		if(capacity == 0)
-		{
-			printf("LRU Cache's capacity cannot be 0, reset to 1\n");
-			capacity = 1;
-		}
-		else this->capacity = capacity;
+    {
+        if(capacity == 0)
+        {
+            printf("LRU Cache's capacity cannot be 0, reset to 1\n");
+            capacity = 1;
+        }
+        else this->capacity = capacity;
 
         head = new Node();
         tail = head;
     }
     
-	virtual ~LRUCache(){
+    virtual ~LRUCache(){
         Node* p = 0;
         while(head != tail){
             p = head;
@@ -55,13 +55,13 @@ public:
         p = 0;
     }
 
-	inline size_t getCapacity(void){return this->capacity;}
-	
+    inline size_t getCapacity(void){return this->capacity;}
+
     // print all
-	void print(void)
-	{
-		printf("LRU current object address: %p\n",this);
-		Node* p = head->next;
+    void print(void)
+    {
+        printf("LRU current object address: %p\n",this);
+        Node* p = head->next;
         size_t i =0;
         while(p){
             printf("%u : (%d %s)\n",i++,p->key, p->val.c_str());
@@ -69,8 +69,8 @@ public:
         }
         printf("\n");
         p = 0;
-	}
-    
+    }
+
     // move current node in list to list end
     void move2End(Node* &pos){
         if(pos != tail){
@@ -79,7 +79,7 @@ public:
             pushBack(pos);
         }
     }
-    
+
     // push a node to back
     void pushBack(Node* &in){
         in->from = tail;
@@ -87,16 +87,16 @@ public:
         tail->next = in;
         tail = in;
     }
-    
+
     // getter
     std::string get(int key)
-	{
+    {
         Node* pos = 0;
         std::string val;
-		auto it = m_map.find(key);
-        
+        auto it = m_map.find(key);
+
         if(it == m_map.end()) return "";
-        
+
         pos = it->second;
         val = pos->val;
         move2End(pos);
@@ -105,17 +105,17 @@ public:
 
     // operator, get ref
     Node*& operator[](const int& key)
-	{
+    {
         Node* pos = 0;
-		auto it = m_map.find(key);
-        
+        auto it = m_map.find(key);
+    
         if(it == m_map.end())
-		{
+        {
             // replace lru node
             if(m_map.size() == this->capacity)
-			{
-				pos = head->next;
-				m_map.erase(pos->key);
+            {
+                pos = head->next;
+                m_map.erase(pos->key);
                 move2End(pos);
             }
             // push_back
@@ -127,28 +127,28 @@ public:
             pos->key = key;         
         }
         // set
-		else
-		{
-			pos = it->second;
+        else
+        {
+            pos = it->second;
             move2End(pos);
-		}
+        }
         m_map[key] = pos;
-		return tail;
+        return tail;
     }
 
-	// setter
+    // setter
     void set(int key, const std::string val)
-	{
+    {
         Node* pos = 0;
-		auto it = m_map.find(key);
-        
-		if(it == m_map.end())
-		{
+        auto it = m_map.find(key);
+    
+        if(it == m_map.end())
+        {
             // replace lru node
             if(m_map.size() == this->capacity)
-			{
-				pos = head->next;
-				m_map.erase(pos->key);
+            {
+                pos = head->next;
+                m_map.erase(pos->key);
                 move2End(pos);
             }
             // push_back
@@ -161,32 +161,32 @@ public:
             pos->val = val;            
         }
         // set
-		else
-		{
-			pos = it->second;
+        else
+        {
+            pos = it->second;
             pos->val = val;
             move2End(pos);
-		}
+        }
         m_map[key] = pos;
     }
 };
-
-void someops(LRUCache& p){
-	p.set(5,"A");
+void someops(LRUCache& p)
+{
+    p.set(5,"A");
     p.set(10,"B"); p.print();
     p.set(15,"C"); p.print();
     p.set(5,"M");  p.print();
     p.set(20,"X"); p.print();
 
-	p.set(5,"A");std::cout<<p[5]->val<<"\n";
+    p.set(5,"A");std::cout<<p[5]->val<<"\n";
 
-	p[20]->val = "NEW";p.print();
-	*p[20] = "def";p.print();
+    p[20]->val = "NEW";p.print();
+    *p[20] = "def";p.print();
 }
-
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[])
+{
     LRUCache* p = new LRUCache(3);
-	printf("capacity: %u\n",p->getCapacity());
+    printf("capacity: %u\n",p->getCapacity());
     p->set(5,"A");
     p->set(10,"B"); p->print();
     p->set(15,"C"); p->print();
@@ -194,8 +194,8 @@ int main(int argc, char* argv[]){
     p->set(20,"X"); p->print();
     delete p;
 
-	LRUCache x(3);
-	someops(x);
+    LRUCache x(3);
+    someops(x);
 
     return 0;
 }
