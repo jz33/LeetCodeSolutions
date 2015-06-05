@@ -1,15 +1,12 @@
 '''
 126 Word Ladder
 127 Word Ladder II
-
 Double-sided BFS
 Try to find the shorted solutions
-
 Input sample:
 hit
 cog
 hot dot dog lot log
-
    hit => start
     |
    hot => entries   \
@@ -91,14 +88,14 @@ def iterate(remains,upper,lower):
                     newUpper.append(n)
                     linked = True
                     break
-            if linked == True: continue
-            for l in lower:
-                if isLinked(r,l.name):
-                    n = node(r)
-                    n.dady = l
-                    newLower.append(n)
-                    linked = True
-                    break    
+            if linked == False:
+                for l in lower:
+                    if isLinked(r,l.name):
+                        n = node(r)
+                        n.dady = l
+                        newLower.append(n)
+                        linked = True
+                        break    
         if linked: remains[i] = EMPTY
         
     if len(newUpper) == 0 and len(newLower) == 0:
