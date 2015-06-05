@@ -1,11 +1,10 @@
 #include <stdio.h>
+#include <string.h>
 /*
 10 Regular Expression Matching
 https://oj.leetcode.com/problems/regular-expression-matching/
-
 '.' matches any single char
 '*' matches 0 or more previous char
-
 O(2^N!), N is '*' numbers
 */
 int isMatch(char* tag,char* pat)
@@ -13,9 +12,11 @@ int isMatch(char* tag,char* pat)
     int res = 0;
 
     // base case
-    if(*pat == '\0' ) return *tag == '\0';
-    if(*tag == '\0' ) return *(pat+1) == '*';
-
+    if(*pat == '\0' ) 
+        return *tag == '\0';
+    if(*tag == '\0' )
+        return strlen(pat) == 2 && *(pat+1) == '*';
+            
     if(*(pat+1) != '*')
     {
         if(*pat == '.' || *pat == *tag) 
