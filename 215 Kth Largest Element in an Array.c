@@ -58,6 +58,9 @@ int partition(int* a, int lt, int rt)
     swap(a + rt, a + new_pivot);
     return new_pivot;
 }
+/*
+Useless
+*/
 void quicksort(int* a, int lt, int rt)
 {
     int pivot = -1;
@@ -72,12 +75,18 @@ avg O(n), worst O(n^2)
 */
 int quickselect(int* a, int lt, int rt, int tag)
 {
-    int pivot = -1;
+    int pivot;
     if(lt>=rt) return a[lt]; 
     pivot = partition(a, lt, rt);
     if(pivot == tag) return a[tag];
     else if(pivot > tag) return quickselect(a, lt, pivot-1, tag);
     else return quickselect(a, pivot+1, rt, tag);
+}
+/*
+How to use
+*/
+int findKthLargest(int* nums, int numsSize, int k) {
+    return quickselect(nums,0,numsSize-1,k-1);
 }
 /*
 Given [3,2,1,5,6,4] and k = 2, return 5.
