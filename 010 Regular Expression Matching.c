@@ -19,7 +19,7 @@ bool isMatch(char* s, char* p)
     if(*s == '\0')
         return p[1] == '*' && isMatch(s,p+2);
     
-	if(p[1] == '\0' || p[1] != '*')
+    if(p[1] != '*')
         return (*p == '.' || *p == *s) && isMatch(s+1,p+1);
     
     // p[1] == '*'
