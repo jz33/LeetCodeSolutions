@@ -1,44 +1,61 @@
 #include <stdio.h>
+#include <string.h>
 /*
 44 Wildcard Matching
 https://oj.leetcode.com/problems/wildcard-matching/
-
 '?' matches any single char
 '*' matches 0 or more any chars
-*/
-int isMatch(char* tag, char* pat)
-{
-    int res = 0; 
-    
-    // bottom case
-    if(*pat == '\0' ) return *tag == '\0';
-    if(*tag == '\0' ) return *pat == '*';
-    
-    if(*pat == '?' || *pat == *tag)
-        return isMatch(tag+1, pat+1);
-        
-    else if (*pat == '*')
-    {
-        // 0. skip '*'
-        res = isMatch(tag,pat+1); 
-        
-        // 1. '*' matches only 1 char 
-        if(res == 0)
-            res = isMatch(tag+1,pat+1);
-            
-        // 2. '*' matches more than 1 chars
-        if(res == 0)
-            if(*(tag+1) == *tag) 
-                res = isMatch(tag+1,pat);
-    }
-    return res;
-}
 
+https://leetcode.com/discuss/38645/128ms-o-1-space-python-solution
+
+Accepted
+*/
+bool isMatch(char* src, char* pat)
+{   
+    int s,p,ls,lp,prev_s,prev_p;
+    if(*pat == '\0' ) return *src == '\0';
+
+    ls = (int)strlen(src);
+    lp = (int)strlen(pat);
+    s = 0;
+    p = 0;
+    prev_s = 0;
+    prev_p = -1;
+    
+    while(s < ls)
+    {
+        if(p < lp && (pat[p] == '?' || pat[p] == src[s]))
+        {
+            s++;
+            p++;
+        }
+        else if(p < lp && pat[p] == '*')
+        {
+            prev_s = s;
+            prev_p = p++;
+        }
+        else if(prev_p > -1)
+        {
+            s = prev_s++ + 1;
+            p = prev_p;
+        }
+        else 
+            return 0;
+    }
+    
+    if(s != ls)
+        return 0;
+    
+    while(p < lp && pat[p] == '*')
+        p++;
+    
+    return p == lp;
+}
 int main()
 {
-    char* tag = "aab";
+    char* src = "aab";
     char* pat = "a*a*b";   
      
-    printf("%d\n",isMatch(tag,pat));
+    printf("%d\n",isMatch(src,pat));
     return 0;
 }
