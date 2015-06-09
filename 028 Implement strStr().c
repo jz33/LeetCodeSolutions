@@ -28,9 +28,10 @@ int _kmp(char* hay, char* ndl)
     
     size_t h_len = strlen(hay);
     size_t n_len = strlen(ndl);
-    if(h_len == 0 || n_len == 0) return -1;
-    if(n_len == 1)
-        return hay[0] == ndl[0] ? 0:-1;
+    if(h_len == 0 && n_len == 0) return 0;
+    if(h_len == 1 && n_len == 0) return 0;
+    if(h_len == 0 && n_len == 1) return -1;
+    if(h_len == 1 && n_len == 1) return hay[0] == ndl[0] ? 0:-1;
     
     // 1. Build Table
     T = (int*)malloc(sizeof(int)*n_len);
