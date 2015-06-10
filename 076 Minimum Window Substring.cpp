@@ -15,7 +15,7 @@ STR minWin(STR src, STR tag){
     INT minLen = INT_MAX;
     INT winlen = 0;
     INT count = 0;
-    STR win = "-1";
+    STR win = "";
     
     for(i =0;i<tag.size();i++) mask[tag[i]]++;
     i = 0;
