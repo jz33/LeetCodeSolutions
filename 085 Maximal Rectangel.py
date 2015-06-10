@@ -1,7 +1,6 @@
 '''
 85 Maximal Rectangle
 https://oj.leetcode.com/problems/maximal-rectangle/
-
 Inspired by "Largest Rectangle in Histogram"
 '''
 # O(n), use a stack
@@ -21,20 +20,30 @@ def largestRectangleInMatrix(mat,rowSize, colSize):
     maxArea = 0
     for i in range(0,rowSize):
         for j in range(0,colSize):
-            ls[j] = 0 if mat[i][j] == 0 else ls[j] + 1
+            ls[j] = 0 if mat[i][j] == '0' else ls[j] + 1
         maxArea = max(maxArea, largestRectangleInHistogram(ls))
     return maxArea
 
+#API
+def maximalRectangle(mat):
+    rowSize = len(mat)
+    if rowSize == 0: return 0
+    colSize = len(mat[0])
+    if colSize == 0: return 0
+    return largestRectangleInMatrix(mat,rowSize,colSize)
+        
 def main():
-    mat = [
-          [0,0,0,1,0,0],
-          [0,1,1,0,1,1],
-          [0,1,1,1,1,1],
-          [1,1,1,0,1,1],
-          [1,1,0,1,1,1],
+    
+    mat = [\
+          '000100',\
+          '011011',\
+          '011111',\
+          '111011',\
+          '110111',\
           ]
-
-    print largestRectangleInMatrix(mat,5,6)
+    
+    #mat = ['0']
+    print maximalRectangle(mat)
     
 if __name__ == "__main__":
     main()
