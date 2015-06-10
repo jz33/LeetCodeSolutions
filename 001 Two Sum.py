@@ -9,27 +9,10 @@ def createRandList(n,a,b):
         A.append(random.randint(a,b))
     return A
 '''
-Particularly for this question, assume:
-0. array is sorted
-1. no duplicates
-2. only 1 pair of answer
-'''
-def twoSum(numbers,target):
-    res = [-1,-1]
-    for i in xrange(0,len(numbers)):
-        r = target - numbers[i]
-        if r > 0:
-            for j in xrange(i+1,len(numbers)):
-                if numbers[j] == r:
-                    res[0] = i+1
-                    res[1] = j+1
-                    return res
-    return res
-'''
 Normal 2 sum problem
 '''
 def twoSumNormal(numbers,target):
-    numbers = sorted(numbers)
+    numbers.sort()
     i = 0
     j = len(numbers) - 1
     while i < j:
@@ -48,6 +31,31 @@ def twoSumNormal(numbers,target):
             j -= 1
             while i < j and numbers[j] == rt: j -= 1
      
+'''
+Particularly for this question, assume:
+0. array is sorted
+1. no duplicates
+2. only 1 pair of answer
+'''
+def twoSum(nums, target):
+    pairs = [(i,nums[i]) for i in xrange(0,len(nums))]
+    pairs = sorted(pairs, key = lambda x : x[1])
+    
+    i = 0
+    j = len(pairs) - 1
+    while i < j :
+        s = pairs[i][1] + pairs[j][1]
+        if s == target:
+            x = pairs[i][0]+1
+            y = pairs[j][0]+1
+            return [x,y] if x < y else [y,x]
+        elif s < target:
+            i += 1
+        else: 
+            j -= 1
+  
+    return [-1,-1]
+    
 def main():
     numbers = createRandList(16,0,8)
     twoSumNormal(numbers,10)
