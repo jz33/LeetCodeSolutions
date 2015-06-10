@@ -9,83 +9,101 @@ struct LinkedListNode
     int rank;
     struct LinkedListNode* next;
 };
-typedef struct LinkedListNode node;
+typedef struct LinkedListNode lnode;
 
-void printList(node* p){
+lnode* initList(int* arr, int size)
+{
+    int i;
+    lnode *head,*p;
+    if(size < 1) return 0;
+    
+    head = (lnode*)malloc(sizeof(lnode));
+    head->rank = arr[0];
+    head->next = 0;
+    p = head;
+    for(i=1;i<size;i++)
+    {
+       p->next = (lnode*)malloc(sizeof(lnode));
+       p = p->next;
+       p->rank = arr[i];
+    }
+    p->next = 0;
+    return head;
+}
+void printList(lnode* p)
+{
     while(p != 0){
         printf("%d ",p->rank);
         p = p->next;
     }
     printf("\n");
 }
-/*
-Remove Nth node from end of a single linked list
-http://yucoding.blogspot.ca/2013/04/leetcode-question-82-remove-nth-node.html
- 0->1->2->3->4, 2  => 0->1->3->4
-*/
-void removeFromBackRec(node* head, int* counter, const int tag)
+void freeList(lnode* head)
 {
-    node* t;
-    if(head->next != 0) 
-        removeFromBackRec(head->next,counter,tag);
-
-    // notice the current node is 1 before to-be-deleted node
-    if(*counter == tag)
-    {
-        t = head->next;
-        head->next = t->next;
-        t->next = 0;
-        free(t);
+    lnode* p = head;
+    while(p != 0){
+        head = p->next;
+        free(p);
+        p = head;
     }
-    *counter = *counter+1;
 }
 /*
-tag = [1,2,3...]
+Assume n is NOT necessarily valid
 */
-node* removeFromBack(node* head, const int tag)
+lnode* removeNthFromEnd(lnode* head, int n)
 {
-    int counter = 0;
-    node* t;
-    if (head==0) 
-        return 0;
-    removeFromBackRec(head,&counter,tag);
+    lnode *p,*r;
+    int count;
+    if(head == 0 || n < 1) return head;
     
-    // if the head node is to be deleted
-    if(counter == tag)
-    {
-        t = head->next;
-        free(head);
-        return t;
-    }
-    else return head;
-}
-
-int main(){
-    int repeat = 6;
-    int i,tag;
-    node* head = (node*)malloc(sizeof(node));
-    node* p = head;
-    
-    // init
-    head->rank = 0;
-    for(i=0;i<repeat;i++){
-        p->next = (node*)malloc(sizeof(node));
+    p = head;
+    count = 0;
+    while(p != 0 && count != n){
         p = p->next;
-        p->rank = i+1;
-        p->next = 0;
+        count++;
     }
+    
+    // out of bound
+    if(count < n) return head;
+    
+    r = head;
+    
+    // remove head
+    if(p == 0)
+    {
+        head = head->next;
+        free(r);
+        return head;
+    }
+    
+    while(p->next != 0)
+    {
+        p = p->next;
+        r = r->next;
+    }
+    
+    // remove
+    p = r->next;
+    r->next = p->next;
+    free(p);
+    
+    return head;
+}
+
+void test(void)
+{
+    int arr[] = {0,1,2,3,4,5};
+	int i;
+    lnode* head = initList(arr,sizeof(arr)/sizeof(int));
     printList(head);
     
-    tag = 7;
-    head = removeFromBack(head,tag);
+	head = removeNthFromEnd(head,6);
     
     printList(head);
-    
-    //free
-    while(head != 0){
-        p = head->next;
-        free(head);
-        head = p;
-    }
-    return 0; 
+    freeList(head);
+}
+int main()
+{
+    test();
+    return 0;
 }
