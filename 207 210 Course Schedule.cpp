@@ -2,18 +2,18 @@
 #include <sstream>
 #include <vector>
 #include <deque>
+#include <set>
 #include <unordered_set>
 #include <unordered_map>
+#include <algorithm>
 /*
 207 Course Schedule
 210 Course Schedule II
 https://leetcode.com/problems/course-schedule/
 https://leetcode.com/problems/course-schedule-ii/
-
 This is assumed that "1 node is reachable only if
 ALL parent nodes are reached", then a standard
 breath-first traversal is used to detect cycle.
-
 If condition is "1 node is reachable if
 1 of its parent nodes is reached", detecting cycle
 is unnecessary
@@ -83,30 +83,40 @@ bool compute(int numCourses, std::vector<Pair>& in)
     }
     return reached == numCourses;
 }
+void removeDuplicates(std::vector<Pair>& in)
+{
+    if(in.size() < 2) return;
+
+    std::set<Pair> filter;
+    for (auto i = in.begin(); i != in.end(); i++)
+        filter.insert(*i);
+
+    size_t j = 0;
+    for (auto i = filter.begin(); i != filter.end(); i++)
+        in[j++] = *i;
+
+    in.resize(j);
+    in.shrink_to_fit();
+}
 void test(void)
 {
-    int numCourses = 4;
+    int numCourses = 10;
+    std::string raw = "[[5,8],[3,5],[1,9],[4,5],[0,2],[1,9],[7,8],[4,9]]";
+    
+    std::replace(raw.begin(),raw.end(),',',' ');
+    std::replace(raw.begin(),raw.end(),'[',' ');
+    std::replace(raw.begin(),raw.end(),']',' ');
+    
     std::vector<Pair> in;
-    in.push_back(MAKE(1, 0));
-    in.push_back(MAKE(2, 0));
-    in.push_back(MAKE(3, 1));
-    in.push_back(MAKE(3, 2));
+    std::istringstream iss(raw);
+    int togo, from;
+    
+    while(iss>>togo){
+        iss>>from;
+        in.push_back(MAKE(togo, from));
+    }
 
-    std::cout << compute(numCourses, in) << "\n";
-
-    in.clear();
-    in.push_back(MAKE(1, 0));
-    in.push_back(MAKE(2, 1));
-    in.push_back(MAKE(3, 2));
-    in.push_back(MAKE(1, 3));
-
-    std::cout << compute(numCourses, in) << "\n";
-
-    in.clear();
-    in.push_back(MAKE(2, 1));
-    in.push_back(MAKE(3, 2));
-    in.push_back(MAKE(1, 3));
-
+    removeDuplicates(in);
     std::cout << compute(numCourses, in) << "\n";
 }
 int main()
