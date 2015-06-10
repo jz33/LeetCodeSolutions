@@ -27,7 +27,21 @@ def fibonacci(n):
             cache[x] = b
         curr = n
         return cache[n]
-
+'''
+A cache-free solution:
+'''
+def climbStairs(self, n):
+    if n == 1:
+        return 1
+    a = 1
+    b = 2
+    c = 3
+    for i in xrange(2,n):
+        c = a + b
+        a = b
+        b = c
+    return b
+    
 def main():
     global curr
     cache[1] = 1
