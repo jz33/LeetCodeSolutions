@@ -2,48 +2,32 @@
 152 Maximum Product Subarray
 https://oj.leetcode.com/problems/maximum-product-subarray/
 ''' 
-# just print
-def maxProduct(ls):
-    ls.append(0)
-
-    ret_end = 0
-    ret_max = ls[0]
-    pos = 1
-    neg = 1
+def func3(f,a,b,c):
+    return f(a,f(b,c))
     
-    for i,v in enumerate(ls):
-        if v > 0:
-            pos *= v
-            neg *= v
-        elif v == 0:
-            if pos > ret_max:    
-                ret_end = i
-                ret_max = pos
-            pos = 1
-            neg = 1
-        else:
-            neg *= v
-            if neg < 0:
-                if pos > ret_max:    
-                    ret_end = i
-                    ret_max = pos
-                pos = 1
-            else:
-                pos = neg
+def maxProduct(ls):
+    if len(ls) == 0: return 0
+
+    ret = ls[0]
+    maxVal = ls[0]
+    minVal = ls[0]
+    
+    for i in xrange(1,len(ls)):
+        v = ls[i]
+        prev_maxVal = maxVal
         
-    print "max product: ", ret_max
-    print "ended at index: ", ret_end
+        maxVal = func3(max, v, v * maxVal, v * minVal)
+        minVal = func3(min, v, v * prev_maxVal, v * minVal)
+        
+        ret = max(ret,maxVal);
+    return ret
 
 def simple_test(func):
-    ls = [0,1,0,1,0,1]
-    func(ls)
-    ls = [2,3,4,-4,2,3]
-    func(ls)
+    ls = [-2,0,-1]
+    print func(ls)
+    ls = [2,3,-2,4]
+    print func(ls)
     ls = [2,3,0,-4,2,-2]
-    func(ls)
+    print func(ls)
     
-def main():
-    simple_test(maxProduct)
-    
-if __name__ == "__main__":
-    main()
+simple_test(maxProduct)
