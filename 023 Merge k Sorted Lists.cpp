@@ -83,31 +83,30 @@ node* mergeKLists(vector<node*>& input)
 { 
     // size of $buf is no more than input.size()
     CustomMap buf;
-	node* res = newNode();
+    node* res = newNode();
     node* p = res;
     node* v;
-    
-	// insert each head node
+
+    // insert each head node
     for(size_t i = 0;i < input.size();i++)
     {
-		v = input[i];
-		if(v != 0) buf.insert(v);
-	}
+        v = input[i];
+        if(v != 0) buf.insert(v);
+    }
+
+    // extract first element from buf, push back to res,
+    // then find next element in corresponding list
+    while(!buf.empty())
+    {
+        CustomMap::iterator it = buf.begin();
+        v = *it;
     
-	// extract first element from buf, push back to res,
-	// then find next element in corresponding list
-	while(!buf.empty())
-	{
-		CustomMap::iterator it = buf.begin();
-		v = *it;
-		
-		p->next = v;
+        p->next = v;
         p = p->next;
-        
-		if(v->next != 0) 
-            buf.insert(v->next);
-		buf.erase(it);
-	}
+    
+        if(v->next != 0) buf.insert(v->next);
+        buf.erase(it);
+    }
     return res->next;
 }
 
@@ -115,23 +114,18 @@ int main()
 { 
     int size = 3,i;
 
-	vector<node*> input;
-	node* ls;
-	
-	for(i = 0;i<size;i++)
-	{
-	    ls = randSortedList((i+1)*size);
-	    dumpList(ls);
-	    input.push_back(ls);    
-	}
-	
-	ls = mergeKLists(input);
-	dumpList(ls);
-	
-	deleteList(ls); // memory leak :(
-/*
+    vector<node*> input;
+    node* ls;
+
     for(i = 0;i<size;i++)
-    cout<<randLimit(0,size*size)<<"\n";
-    */
+    {
+        ls = randSortedList((i+1)*size);
+        dumpList(ls);
+        input.push_back(ls);    
+    }
+
+    ls = mergeKLists(input);
+    dumpList(ls);
+    deleteList(ls); 
     return 0;
 }
