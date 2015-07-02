@@ -34,7 +34,9 @@ int compInt(const void * a, const void * b)
 {
   return ( *(int*)a - *(int*)b );
 }
-
+/*
+Old recursive approach
+*/
 void searchRec(int* arr, int L, int R, const int N, const int tag, int* lt, int* rt)
 {
     int mid = (L+R) >> 1;
@@ -57,7 +59,39 @@ void search(int* arr, const int N, const int tag, int* lt, int* rt)
     *rt = N-1;
     searchRec(arr,0,N-1,N,tag,lt,rt);
 }
-
+/*
+Iterative approach
+*/
+int* searchRange(int* arr, int size, int tag, int* returnSize)
+{
+    int* range;
+    int mid, lt, rt;
+    
+    *returnSize = 2;
+    range = (int*)malloc(sizeof(int)*(*returnSize));
+    range[0] = -1; range[1] = -1;
+    if(size < 1) return range;
+    
+    lt = 0;
+    rt = size - 1;
+    while(lt <= rt)
+    {
+        mid = (lt+rt) >> 1;
+        if(arr[mid] == tag)
+        {
+            range[0] = mid;
+            while(range[0] - 1 > -1 && arr[range[0] - 1] == tag) range[0] -= 1;
+            range[1] = mid;
+            while(range[1] + 1 < size && arr[range[1] + 1] == tag) range[1] += 1;
+            return range;
+        }
+        else if(arr[mid] < tag)
+            lt = mid + 1;
+        else
+            rt = mid - 1;
+    }
+    return range;
+}
 // Tester  
 int main(int argc, char* argv[])
 {
@@ -68,6 +102,9 @@ int main(int argc, char* argv[])
     int t0[N];
     int i,lt,rt;
     int tag = 0;
+    
+    int returnSize = 2;
+    int* iter;
     
     creat(ori,N,limit);
     dump(ori,N);
@@ -80,5 +117,9 @@ int main(int argc, char* argv[])
     search(t0,N,tag,&lt,&rt);
     printf("Search for tag: %d, in range: [%d,%d]\n",tag,lt,rt);
     
+    iter = searchRange(t0, N, tag, &returnSize);
+    printf("Iterative: [%d,%d]\n",iter[0],iter[1]);
+    
+    free(iter);
     return 0;
 }
