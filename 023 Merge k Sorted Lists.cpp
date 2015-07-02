@@ -1,83 +1,137 @@
 #include<iostream>
 #include<vector>
-#include<map>
-#include<algorithm>
+#include<set>
+using namespace std;
 /*
 23 Merge k Sorted Lists
 https://oj.leetcode.com/problems/merge-k-sorted-lists/
 */
-typedef std::vector<int> VEC;
-typedef std::vector<VEC> MAT;
-
-int randLimit(const int limit){
-    int div = RAND_MAX/(limit+1);
-    int res = -1;
-    do{ 
-        res = rand() / div;
-    }while (res > limit);
-    return res;
-}
-template<typename T>
-void dump(T& a)
+/*
+Generate a integer in [mini,maxi] inclusively
+*/
+int randLimit(int mini, int maxi)
 {
-    for(auto i = a.begin();i!=a.end();i++) printf("%d ",*i);
+    int limit = maxi - mini + 1;
+    int div = RAND_MAX / limit;
+    int res = -1;
+    do
+    { 
+        res = rand() / div;
+    } while (res > limit);
+    return res + mini;
+}
+struct ListNode {
+    int val;
+    struct ListNode *next;
+};
+typedef struct ListNode node;
+
+node* newNode()
+{
+    node* head = (node*)malloc(sizeof(node));
+    head->val = -1;
+    head->next = 0;
+    return head;
+}
+node* randSortedList(int size)
+{
+    int i;
+    node* head = newNode();
+    node* p = head;
+    int mini = 0;
+    for(i=0;i < size - 1;i++)
+    {
+        p->val = randLimit(mini,mini+size);
+        mini = p->val;
+        p->next = newNode();
+        p = p->next;
+    }
+    p->val = randLimit(mini,mini+size);
+    return head;
+}
+void dumpList(node* h)
+{
+    while(h != 0)
+    {
+        printf("%d ",h->val);
+        h = h->next;
+    }
     printf("\n");
 }
-/*
-Custom less
-*/
+void deleteList(node* h)
+{
+    node* p;
+    while(h != 0)
+    {
+        p = h->next;
+        free(h);
+        h = p;
+    }
+}
 struct CustomLess 
 {
-  bool operator()(const VEC::iterator& x, const VEC::iterator&  y) const
-  {
-    return *x < *y;
-  }
+    bool operator()(const node* x, const node* y) const
+    {
+        return x->val < y->val;
+    }
 };
-/*
-std::multimap<vector::iterator, vector::end()>
-*/
-typedef std::multimap<VEC::iterator, VEC::iterator, CustomLess> CustomMap;
+typedef std::multiset<node*, CustomLess> CustomMap;
 /*
 Merge first N elements from sorted arrays
 */
-VEC mergeSorted(MAT& input)
+node* mergeKLists(vector<node*>& input)
 { 
-    // size of buf is no more than input.size()
+    // size of $buf is no more than input.size()
     CustomMap buf;
-	VEC res;
+	node* res = newNode();
+    node* p = res;
+    node* v;
     
-	// insert each array's begin() iterator to buf
-    for(size_t i = 0;i<input.size();i++){
-		VEC& v = input[i];
-		if(v.size()>0) buf.insert(std::make_pair(v.begin(),v.end()));
+	// insert each head node
+    for(size_t i = 0;i < input.size();i++)
+    {
+		v = input[i];
+		if(v != 0) buf.insert(v);
 	}
     
 	// extract first element from buf, push back to res,
-	// then find next element in corresponding array
-	while(!buf.empty()){
+	// then find next element in corresponding list
+	while(!buf.empty())
+	{
 		CustomMap::iterator it = buf.begin();
-		res.push_back(*(it->first));//dump<VEC>(res);
+		v = *it;
+		
+		p->next = v;
+        p = p->next;
         
-		if(it->first+1 != it->second) 
-            buf.insert(std::make_pair(it->first+1, it->second));
+		if(v->next != 0) 
+            buf.insert(v->next);
 		buf.erase(it);
 	}
-    return res;
+    return res->next;
 }
 
-#define NUM 3
-int main(int argc, char* argv[]){ 
-	MAT mat;
-	for(int i=0;i<NUM;i++)
+int main()
+{ 
+    int size = 3,i;
+
+	vector<node*> input;
+	node* ls;
+	
+	for(i = 0;i<size;i++)
 	{
-		VEC v;
-		int size = randLimit(NUM)+1;
-		for(int j =0;j<size;j++) v.push_back(randLimit(NUM));
-		std::stable_sort(v.begin(),v.end());
-		mat.push_back(v);
+	    ls = randSortedList((i+1)*size);
+	    dumpList(ls);
+	    input.push_back(ls);    
 	}
-    
-    VEC r1 = mergeSorted(mat);
-	dump<VEC>(r1);
+	
+	ls = mergeKLists(input);
+	dumpList(ls);
+	
+	deleteList(ls); // memory leak :(
+/*
+    for(i = 0;i<size;i++)
+    cout<<randLimit(0,size*size)<<"\n";
+    */
     return 0;
 }
