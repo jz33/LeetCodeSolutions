@@ -4,8 +4,8 @@
 Rotate Image
 https://oj.leetcode.com/problems/rotate-image/
 */
-int** createSpiral(int** mat, const int COL, const int ROW){
-	int MAX = COL*ROW;
+void createSpiral(int** mat, const int COL, const int ROW){
+    int MAX = COL*ROW;
     /*
     "dir":
     0: upper
@@ -13,10 +13,10 @@ int** createSpiral(int** mat, const int COL, const int ROW){
     2: down
     3: left
     */
-	int dir=0,x=0,y=0,ctr=1,level=0;
-	
-	while(ctr <= MAX){
-		mat[x][y] = ctr;
+    int dir=0,x=0,y=0,ctr=1,level=0;
+
+    while(ctr <= MAX){
+        mat[x][y] = ctr;
         switch(dir){
         case 0:
             if(y==COL-level-1){
@@ -56,10 +56,10 @@ int** createSpiral(int** mat, const int COL, const int ROW){
     }
 }
 void rot90Clockwise(int** mat, const int N){
-	int i,j,t;
+    int i,j,t;
     int lv = N>>1;
-	
-	for(i=0;i<lv;i++){
+
+    for(i=0;i<lv;i++){
         for(j=i;j<N-i-1;j++){
             t = mat[i][j];
             mat[i][j] = mat[N-1-j][i];
@@ -69,6 +69,15 @@ void rot90Clockwise(int** mat, const int N){
         }
     }
 }
+void dump(int** mat, int N)
+{
+    int i,j;
+    for(i=0;i<N;i++){
+        for(j=0;j<N;j++) printf("%2d ",mat[i][j]);
+        printf("\n");
+    }
+    printf("\n");
+}
 int main()
 {
     const int N = 6;
@@ -77,19 +86,13 @@ int main()
     for(i=0;i<N;i++) mat[i] = (int*)malloc(sizeof(int)*N);
     
     createSpiral(mat,N,N);
+    dump(mat,N);
     
-    for(i=0;i<N;i++){
-        for(j=0;j<N;j++) printf("%2d ",mat[i][j]);
-        printf("\n");
+    for(j = 0;j<4;j++)
+    {
+        rot90Clockwise(mat,N);
+        dump(mat,N);
     }
-    printf("\n");
-    
-    rot90Clockwise(mat,N,N);
-    for(i=0;i<N;i++){
-        for(j=0;j<N;j++) printf("%2d ",mat[i][j]);
-        printf("\n");
-    }
-    printf("\n");
     
     for(i=0;i<N;i++) free(mat[i]);
     free(mat);
