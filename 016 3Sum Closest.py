@@ -23,12 +23,12 @@ def threeSumClosest(nums, target):
             
             if diff > 0:      
                 j += 1
-                while j + 1 < k and nums[j] == nums[j+1]: j += 1
+                while j < k and nums[j] == nums[j-1]: j += 1
             else:
                 k -= 1
-                while k - 1 > j and nums[k] == nums[k-1]: k -= 1
+                while j < k and nums[k] == nums[k+1]: k -= 1
         i += 1         
-        while i + 1 < len(nums) - 2 and nums[i+1] == nums[i] : i += 1
+        while i < len(nums) - 2 and nums[i] == nums[i-1] : i += 1
     
     return target - minDiff;
 
