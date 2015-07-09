@@ -55,8 +55,7 @@ def majorityElement(ls):
         print major,counter
     
     ret = []
-    for i in xrange(0,len(major)):
-        m = major[i]
+    for m in major:
         ctr = 0
         for e in ls:
             if e == m:
