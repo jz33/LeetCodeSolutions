@@ -4,8 +4,6 @@ import random
 https://oj.leetcode.com/problems/majority-element/
 http://www.cs.utexas.edu/~moore/best-ideas/mjrty/example.html#step13
 '''
-INVALID = -1
-
 def creatRandomList(size):
     ls = []
     for i in range(0,size):
@@ -13,28 +11,22 @@ def creatRandomList(size):
     return ls
 
 def majorityElement(ls):
-    global INVALID
-    if len(ls) < 2: return ls[0]
+    if len(ls) == 1: return ls[0]
 
-    # assign 'major' an invalid value
-    major = INVALID
-    counter = 0
-    for e in ls:
-        if major == INVALID:
-            major = e
-            counter = 1
-        elif major == e:
+    major = ls[0]
+    counter = 1
+    for i in xrange(1,len(ls)):
+        e = ls[i]
+        if major == e:
             counter += 1
         else:
             counter -= 1
         if counter == 0:
-            major = INVALID
+            major = e
+            counter = 1
     return major        
-        
-def main():
-    ls = creatRandomList(15)
-    print ls
-    print majorityElement(ls)
 
-if __name__ == "__main__":
-    main()
+    
+ls = [3,2,3]
+print ls
+print majorityElement(ls)
