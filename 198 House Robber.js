@@ -14,7 +14,7 @@ var rob = function(nums) {
     if(arrayLength === 2) return Math.max(nums[0],nums[1]);
     
     var three_steps = nums[0]; // max at i - 3
-    var two_steps = nums[1]; // max at i - 2
+    var two_steps = Math.max(nums[0],nums[1]); // max at i - 2
     var one_step = Math.max(nums[0]+nums[2],nums[1]); // max at i - 1
     
     // max at i = 2
