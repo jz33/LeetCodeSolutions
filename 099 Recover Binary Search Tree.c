@@ -4,80 +4,99 @@
 /*
 99 Recover Binary Search Tree
 https://oj.leetcode.com/problems/recover-binary-search-tree/
-
 Inspired by "Validate Binary Search Tree"
 */
 struct Binary_Search_Tree_Node{
-    int rank;
-    struct Binary_Search_Tree_Node *pl;
-    struct Binary_Search_Tree_Node *pr;
+    int val;
+    struct Binary_Search_Tree_Node *left;
+    struct Binary_Search_Tree_Node *right;
 };
 typedef struct Binary_Search_Tree_Node node;
 
 node* emptyNode(){
     node* n = (node*)malloc(sizeof(node));
-    n->rank = -1;
-    n->pl = 0;
-    n->pr = 0;
+    n->val = -1;
+    n->left = 0;
+    n->right = 0;
     return n;
 }
 void initInOrder(node* n, int* arr, int start, int end){
 	int mid = (start+end)>>1;
-	n->rank = arr[mid];
+	n->val = arr[mid];
 	
 	if(start <= mid-1) {
-		n->pl = emptyNode();
-		initInOrder(n->pl, arr, start, mid-1);
+		n->left = emptyNode();
+		initInOrder(n->left, arr, start, mid-1);
 	}
 	if(mid+1 <= end) {
-		n->pr = emptyNode();
-		initInOrder(n->pr, arr, mid+1, end);
+		n->right = emptyNode();
+		initInOrder(n->right, arr, mid+1, end);
 	}
 }
 void destroyInOrder(node* n) {
 	if(n != 0){
-		destroyInOrder(n->pl);
-		destroyInOrder(n->pr);
+		destroyInOrder(n->left);
+		destroyInOrder(n->right);
         free(n);
 	}
 }
 // standard inorder traversal, recursively
 void inorder(node* n) {
 	if(n != 0) {
-		inorder(n->pl);
-		printf("%d ", n->rank);
-		inorder(n->pr);
+		inorder(n->left);
+		printf("%d ", n->val);
+		inorder(n->right);
 	}
 }
-void minMax(node* head, int minRank, int maxRank, node** lt, node** rt){
-    if(head != 0 && (*lt == 0 || *rt == 0)){
-        if(head->rank < minRank){
-            *rt = head;
+/*
+1 2 3 4 5 6 7
+1 5 3 4 2 6 7 => 5 3 4 2 => 5 2
+1 4 3 2 5 6 7 => 4 3 3 2 => 4 2
+1 2 3 4 5 7 6 => 7 6 => 7 6
+*/
+void find(node* n, int* prev_val, node** prev, node** lt, node** rt)
+{
+    if(n != 0)
+    {
+        find(n->left,prev_val,prev,lt,rt);
+        if(n->val < *prev_val)
+        {
+            if(*lt == 0)
+            {
+                *lt = *prev;
+                *rt = n;
+            }
+            else
+            {
+                *rt = n;
+                return;
+            }
         }
-        if(head->rank > maxRank){
-            *lt = head;
-        } 
-        if(*lt == 0 || *rt == 0){
-            minMax(head->pl, minRank, head->rank, lt,rt);
-            minMax(head->pr, head->rank, maxRank, lt,rt);
-        }
+        *prev = n;
+        *prev_val = n->val;
+
+        find(n->right,prev_val,prev,lt,rt);
     }
 }
-void recover(node* head){
-    node *lt,*rt;
-    int minRank,maxRank,t;
+void recover(node* head)
+{
+    node *prev,*lt,*rt;
+    int t,prev_val;
     if(head == 0) return;
     
     lt = 0;
     rt = 0;
-    minRank = INT_MIN;
-    maxRank = INT_MAX;
-    minMax(head,minRank,maxRank,&lt,&rt);
+    prev = 0;
+
+    prev_val = INT_MIN;
+
+    find(head,&prev_val,&prev,&lt,&rt);
     
-    if(lt != 0 && rt != 0){
-        t = lt->rank;
-        lt->rank = rt->rank;
-        rt->rank = t;
+    if(lt != 0)
+    {
+        t = lt->val;
+        lt->val = rt->val;
+        rt->val = t;
     }
 }
 
@@ -91,8 +110,13 @@ int main(int argc, char** argv){
     for(i=0;i<NUM;i++){
         arr[i] = i;
     }
-    arr[2] = 5;
-    arr[5] = 2;
+
+    // twists
+    arr[6] = 5;arr[5] = 6;
+    //arr[0] = 6;arr[6] = 0;
+    //arr[5] = 3;arr[3] = 5;
+    //arr[5] = 1;arr[1] = 5;
+
     initInOrder(n,arr,0,NUM-1);
     inorder(n);putchar('\n');
     
