@@ -2,43 +2,40 @@
 209 Minimum Size Subarray Sum
 https://leetcode.com/problems/minimum-size-subarray-sum/
 '''
-def minSubarraySum(arr,tag):
-    # find first sum
-    s = 0
-    i = 0
-    while i< len(arr):
-        s += arr[i]
-        if s >= tag: break
-        i += 1
+def minSubarraySum(arr,bar):
+    rt = 0
+    sum = 0
     
-    # not found    
-    if i == len(arr): return
-
-    j = 0 # left
-    minLen = i + 1
+    # first sum
+    while rt < len(arr):
+        sum += arr[rt]
+        rt += 1
+        if sum >= bar: break
     
-    while i< len(arr):
-        # try shrink
-        while s >= tag:
-            s -= arr[j]
-            j += 1
-            
-        # update
-        minLen = min(minLen,i - j + 2)
-        
-        # extand
-        i += 1
-        while i < len(arr):
-            s += arr[i]
-            if s >= tag: break
-            i += 1
-        
-    print "left index : {}, right index : {}, minLen: {}".format(j-1,i-1,minLen)
-        
-def main():
-    arr = [2,3,1,2,4,3]
-    tag = 7
-    minSubarraySum(arr,7)
+    if sum < bar: return 0
+    
+    lt = 0
+    minRange = rt
+    
+    while rt < len(arr):
+        # add one
+        if sum < bar:
+            sum += arr[rt]
+            rt += 1
+        # shrink one
+        else:
+            minRange = min(minRange,rt-lt)
+            sum -= arr[lt]
+            lt += 1
+    
+    # shrink to end
+    while lt < len(arr) and sum >= bar:
+        minRange = min(minRange,rt - lt)
+        sum -= arr[lt]
+        lt += 1
 
-if __name__ == '__main__':
-    main()  
+    return minRange        
+
+arr = [2,3,1,2,4,3]
+bar = 7
+print minSubarraySum(arr,bar)
