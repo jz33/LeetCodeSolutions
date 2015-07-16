@@ -20,11 +20,10 @@ int distinctSequences(char* a, char* b)
     for(i=0;i<la;i++)
     {
         upperLeft = 1;
-		for(j=0;j<lb;j++)
+        for(j=0;j<lb;j++)
         {
             upper = row[j+1];
-            if(a[i] == b[j]) row[j+1] = upper + upperLeft;
-            else row[j+1] = upper;
+            if(a[i] == b[j]) row[j+1] += upperLeft;
             upperLeft = upper;
         }
     }
