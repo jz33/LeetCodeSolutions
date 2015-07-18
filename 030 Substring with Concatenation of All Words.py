@@ -44,8 +44,6 @@ def find(S, L):
      
     return res
     
-
-    
 def main():
     S = r'barfoothefoobarman'
     L = ['foo', 'bar']
