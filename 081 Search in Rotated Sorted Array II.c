@@ -4,59 +4,46 @@
 Search in Rotated Sorted Array II
 https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 */
-void dump(int* a, int N)
-{
-    int i = 0;
-    for(;i<N;i++) printf("%d ",a[i]);
-    printf("\n");
-}
 bool search(int* arr, int size, int tag)
 {
-    int lt,rt,mid;
+    int lt,rt,mid,rightmost;
+
     lt = 0;
     rt = size - 1;
+    rightmost = arr[rt];
+    if(rightmost == tag) return true;
     
-    while(lt <= rt)
+    // Make sure left most != right most
+    while(rt > lt && arr[rt] == arr[lt])
     {
-        mid = (lt + rt) >> 1;
-        if(arr[mid] == tag) return true;
+        rt--;
+    }
+    rightmost = arr[rt];
 
-        while(arr[lt] == arr[mid] && arr[rt] == arr[mid])
+    while(lt <= rt)
+    {  
+        mid = (lt + rt) >> 1;
+        if(tag == arr[mid])
+            return true;
+       
+        /*
+        Notice the reason to use right most rather than
+        left most. The array can have no turn.
+        */
+        if(tag > rightmost)
         {
-            lt++; 
-            rt--;
-        }
-        
-        if(arr[lt] <= arr[mid])
-        {
-            if(tag >= arr[lt] && tag < arr[mid]) 
-                rt = mid - 1;
-            else 
-                lt = mid + 1; 
-        }
-        else
-        {  
-            if(tag > arr[mid] && tag <= arr[rt]) 
+            if(tag > arr[mid] && arr[mid] > rightmost)
                 lt = mid + 1;
             else 
                 rt = mid - 1;
         }
+        else
+        {   
+            if(tag < arr[mid] && arr[mid] <= rightmost )
+                rt = mid - 1;
+            else 
+                lt = mid + 1;
+        }
     }
     return false;
-}
-/*
-Tester
-*/
-void test_iterative(void)
-{
-    int arr[] = {1,3,5};
-    int size = sizeof(arr)/sizeof(int);
-    int tag = 1;
-    
-    printf("%u\n",search(arr,size,tag));
-}
-int main(int argc, char* argv[])
-{
-    test_iterative();
-    return 0;
 }
