@@ -2,7 +2,7 @@
  * Find Peak Element
  * https://leetcode.com/problems/find-peak-element/
  * This approach assumes peak exists
- * /
+ */
 public int findPeakElement(int[] nums)
 {
     int lt = 0;
