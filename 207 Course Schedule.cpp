@@ -8,15 +8,7 @@
 #include <algorithm>
 /*
 207 Course Schedule
-210 Course Schedule II
 https://leetcode.com/problems/course-schedule/
-https://leetcode.com/problems/course-schedule-ii/
-This is assumed that "1 node is reachable only if
-ALL parent nodes are reached", then a standard
-breath-first traversal is used to detect cycle.
-If condition is "1 node is reachable if
-1 of its parent nodes is reached", detecting cycle
-is unnecessary
 */
 #define MAKE(a,b) std::make_pair(a,b)
 #define DEBUG 1
