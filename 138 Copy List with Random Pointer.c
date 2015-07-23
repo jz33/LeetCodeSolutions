@@ -4,29 +4,60 @@
 138 Copy List with Random Pointer
 https://oj.leetcode.com/problems/copy-list-with-random-pointer/
 */
-struct LinkedListNodeWithRandomPointer{
-    int rank;
-    struct LinkedListNodeWithRandomPointer* next;
-    struct LinkedListNodeWithRandomPointer* jump;
-};
-typedef struct LinkedListNodeWithRandomPointer node;
-
-#define NEWNODE (node*)malloc(sizeof(node))
-
-/*
-Copy a linked list with next and arbitrary pointer
-http://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/
-Method 2, a little modified
-O(n) time, O(1) space
-A similar method can be applied on binary tree copy
-*/
-/*
-A specific copy method for "copyRandom"
-Append "tag" node behind "src" node
-*/
-node* copyRandom(node* old)
+struct RandomListNode
 {
-    node *res, *pold, *pnew;
+    int rank;
+    struct RandomListNode* next;
+    struct RandomListNode* jump;
+};
+typedef struct RandomListNode lnode;
+
+#define NEWNODE (lnode*)malloc(sizeof(lnode))
+
+lnode* initList(int* arr, int size)
+{
+    int i;
+    lnode *head,*p;
+    if(size < 1) return 0;
+    
+    head = NEWNODE;
+    head->rank = arr[0];
+    head->next = 0;
+    p = head;
+    for(i=1;i<size;i++)
+    {
+       p->next = NEWNODE;
+       p->jump = p->next;
+       p = p->next;
+       p->rank = arr[i];
+    }
+    p->next = 0;
+    p->jump = head;
+    return head;
+}
+void printList(lnode* p)
+{
+    while(p != 0)
+    {
+        printf("%d ",p->rank);
+        if(p->jump != 0) printf("%d ",p->jump->rank);
+        printf("\n");
+        p = p->next;
+    }
+    printf("\n");
+}
+void freeList(lnode* head)
+{
+    lnode* p = head;
+    while(p != 0){
+        head = p->next;
+        free(p);
+        p = head;
+    }
+}
+lnode* copyRandom(lnode* old)
+{
+    lnode *res, *pold, *pnew;
     if(old == 0) return 0;
     
     res = NEWNODE;
@@ -46,7 +77,10 @@ node* copyRandom(node* old)
         // insert & move
         pold->next = pnew;  
         pold = pnew->next;
+        pnew = 0;
     }
+    
+    //printList(res);
     
     // 1. modify jump nodes
     pnew = old;
@@ -72,7 +106,21 @@ node* copyRandom(node* old)
     return res;
 }
 
-int main(){
-    // TODO: test
-    return 0; 
+void test(void)
+{
+    int arr[] = {1,2,3};
+    int i;
+    lnode* head = initList(arr,sizeof(arr)/sizeof(int));
+    lnode* pnew;
+    printList(head);
+
+    pnew = copyRandom(head);
+
+    printList(pnew);
+    freeList(head);
+}
+int main()
+{
+    test();
+    return 0;
 }
