@@ -8,7 +8,7 @@ Struct TreeNode
     TreeNode *right;
 };
 
-vector<int> preorderTraversal(TreeNode* root)
+std::vector<int> preorderTraversal(TreeNode* root)
 {
     std::vector<int> ret;
     if(root == 0) return ret;
@@ -31,4 +31,10 @@ vector<int> preorderTraversal(TreeNode* root)
         }
     }
     return ret;
+}
+
+int main()
+{
+    return 0;
+}
 }
