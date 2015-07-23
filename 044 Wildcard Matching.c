@@ -36,19 +36,15 @@ bool isMatch(char* src, char* pat)
         }
         else if(prev_p > -1)
         {
-            s = prev_s++ + 1;
+            s = ++prev_s;
             p = prev_p;
         }
         else 
             return 0;
     }
+    if(s != ls) return 0;
     
-    if(s != ls)
-        return 0;
-    
-    while(p < lp && pat[p] == '*')
-        p++;
-    
+    while(p < lp && pat[p] == '*') p++;
     return p == lp;
 }
 int main()
