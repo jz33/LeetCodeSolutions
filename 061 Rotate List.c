@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
 /*
-61 Rotate List
+Rotate List
 https://oj.leetcode.com/problems/rotate-list/
 */
 struct LinkedListNode{
@@ -10,88 +8,56 @@ struct LinkedListNode{
 };
 typedef struct LinkedListNode node;
 
-/*
-Find "newEnd" node from end by K steps
-"ctr" is init as 0
-*/
-void findNewEnd(node* st, const int K, int* ctr, node** newEnd){
-    node* t;
-	if(st->next != 0) findNewEnd(st->next,K,ctr,newEnd);
+int getSize(node* head)
+{
+    int i = 0;
+    while(head != 0)
+    {
+        head = head->next;
+        i++;
+    }
+    return i;
+}
 
-	if(*ctr == K){
-	    *newEnd = st;
-		*ctr += 1;
-	} else if (*ctr < K) {
-		*ctr = *ctr+1;
-	} 
+node* getNewEnd(node* head, int size, int k)
+{
+    int i = 1;
+    int ctr = size - k; // 0 < ctr < size
+    while(i < ctr)
+    {
+        head = head->next;
+        i++;
+    }
+    return head;
 }
 /*
+ 0->1->2->3->4->5, 1 => 5->0->1->2->3->4
  0->1->2->3->4->5, 2 => 4->5->0->1->2->3
  0->1->2->3->4->5, 3 => 3->4->5->0->1->2
  0->1->2->3->4->5, 4 => 2->3->4->5->0->1
+ 0->1->2->3->4->5, 5 => 1->2->3->4->5->0
+ 0->1->2->3->4->5, 6 => 0->1->2->3->4->5
 */
-node* rotateK(node* st, const int K){
-    node *newEnd, *newHead, *p;
-    int ctr;
-	
-	if(K<1) return st;
+node* rotateRight(node* head, int k)
+{
+    node *newEnd, *newHead;
+    int size;
+    if(k < 1 || head == 0) return head;
     
-    newEnd = 0;
-    ctr = 0;
-    findNewEnd(st,K,&ctr,&newEnd);
-    if(newEnd==0) return st;
+    size = getSize(head);
+    k = k % size;
+    if(k == 0) return head;
     
+    newEnd = getNewEnd(head,size,k);
     newHead = newEnd->next;
     newEnd->next = 0;
     
-    p = newHead;
-    while(p->next != 0) p = p->next;
-    p->next = st;
-    
+    // reuse $newEnd
+    newEnd = newHead;
+    while(newEnd->next != 0)
+    {
+        newEnd = newEnd->next;
+    }
+    newEnd->next = head;
     return newHead;
-}
-
-int main(){
-	int repeat = 7; // will create repeat + 1 nodes
-    int K;
-    int i;
-    node* head = (node*)malloc(sizeof(node));
-    node* p = head;
-    
-    // init
-    head->rank = 0;
-    for(i=0;i<repeat;i++){
-        p->next = (node*)malloc(sizeof(node));
-        p = p->next;
-        p->rank = i+1;
-        p->next = 0;
-    }
-    
-    // print
-    p = head;
-    while(p != 0){
-        printf("%d ",p->rank);
-        p = p->next;
-    }
-    printf("\n");
-    
-	// test K = [1,repeat]
-	for(K=1;K<=repeat+1;K++){
-		head = rotateK(head,K);
-		// print
-		p = head;
-		while(p != 0){
-			printf("%d ",p->rank);
-			p = p->next;
-		}
-		printf("\n");
-	}
-    
-    //free
-    while(head != 0){
-        p = head->next;
-        free(head);
-        head = p;
-    }
-    return 0; 
 }
