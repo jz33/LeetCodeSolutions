@@ -1,57 +1,44 @@
-#include <stdio.h>
-#include <stdlib.h>
 /*
-108 Convert Sorted Array to Binary Search Tree
-https://oj.leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+Convert Sorted Array to Binary Search Tree 
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
 */
-#define MAX(a,b) (a)>(b)?(a):(b)
-
-struct Binary_Search_Tree_Node
+struct TreeNode
 {
-    int rank;
-    struct Binary_Search_Tree_Node *pl;
-    struct Binary_Search_Tree_Node *pr;
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
 };
-typedef struct Binary_Search_Tree_Node node;
+typedef struct TreeNode node;
 
-void inorder(node* n)
+void getBST(node* n, int* arr, int lt, int rt)
 {
-    if(n != 0){
-        inorder(n->pl);
-        printf("%d ", n->rank);
-        inorder(n->pr);
-    }
-}
-
-void initInOrder(node* n, int* arr, int start, int end){
-    int mid = (start+end)>>1;
-    n->rank = arr[mid];
+    int m = ((lt + rt) >> 1);
+    n->val = arr[m];
     
-    if(start <= mid-1 || mid+1 <= end){
-        if(start <= mid-1){
-            n->pl = (node*)malloc(sizeof(node*));
-            initInOrder(n->pl, arr, start, mid-1);
-        }
-        if(mid+1 <= end){
-            n->pr = (node*)malloc(sizeof(node*));
-            initInOrder(n->pr, arr, mid+1, end);
-		}
-    } else {
-        n->pl = 0;
-        n->pr = 0;
+    if(lt <= m-1)
+    {
+        n->left  = (node*)malloc(sizeof(node));
+        getBST(n->left, arr,lt,m-1);
     }
+    else 
+        n->left = 0;
+    
+    if(m+1 <= rt)
+    {
+        n->right = (node*)malloc(sizeof(node));
+        getBST(n->right,arr,m+1,rt);
+    }
+    else
+        n->right = 0;
 }
 
-#define NUM 7
-
-int main(int argc, char** argv){
-    int arr[NUM];
-    int i;
-    node* n = (node*)malloc(sizeof(node*));
-    for(i=0;i<NUM;i++){
-        arr[i] = i;
-    }
-    initInOrder(n,arr,0,NUM-1);
-    inorder(n);
-    return 0;
+node* sortedArrayToBST(int* arr, int size)
+{
+    node* n = 0;
+    if(size < 1) return n;
+    
+    n = (node*)malloc(sizeof(node));
+    getBST(n,arr,0,size-1);
+    
+    return n;
 }
