@@ -1,55 +1,63 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <algorithm>
-/*
-179 Largest Number
-https://oj.leetcode.com/problems/largest-number/
-*/
-std::string largestNumber(std::vector<int> &num) {
-    std::stable_sort(num.begin(),num.end(),[](const int& oa, const int& ob) -> bool{
-		int a = oa, b = ob;
-        int da = 10,db = 10;
-        while(da<a) da *= 10;
-        while(db<b) db *= 10;
-        da /= 10;
-        db /= 10;
-        while(da > 0 && db > 0){
-            int ra = a / da;
-            int rb = b / db;
-            if(ra<rb){
-                return true;
-            } else if (ra>rb){
-                return false;
-            }
-            a = a % da;
-            b = b % db;
-            da /= 10;
-            db /= 10;
-        }
-        if(da > 0 || db > 0){
-            int ra = oa % 10;
-            int rb = ob % 10;
-            return ra < rb;
-        }
-        return false;
-    });
-	std::string ret;
-	char buffer [32];
-	for(auto i = num.rbegin();i!=num.rend();i++){
-		sprintf(buffer, "%d", *i);
-		ret += std::string(buffer);
-	}
-	return ret;
+#include <vector>
+#include <stdint.h>
+using namespace std;
+
+void dump(vector<int>& num)
+{
+    for(auto i = num.begin();i!=num.end();i++)
+    {
+        cout<<*i<<" ";
+    }
+    cout<<"\n";
 }
 
-// tester
-int main(int argc, char** argv){
-    int arr[] = {3, 30, 34, 992, 99, 2223, 222};
-    int len = sizeof(arr)/sizeof(int);
-	std::vector<int> num(len);
+string largestNumber(vector<int>& num)
+{
+    bool allZero = true;
+    for(auto i = num.begin();i!=num.end();i++)
+    {
+        if(*i != 0)
+        {
+            allZero = false;
+            break;
+        }
+    }
+    if(allZero == true) return "0";
+    
+    std::stable_sort(num.begin(),num.end(),[](const int& a, const int& b) -> bool
+    {
+        int da = 10,db = 10;
+        while(da <= a) da *= 10;
+        while(db <= b) db *= 10;
+ 
+        int64_t x = (int64_t)a * (int64_t)db + (int64_t)b;
+        int64_t y = (int64_t)a + (int64_t)da * (int64_t)b;
+        
+        return x < y;
+    });
+    
+    dump(num);
+    
+    std::string ret;
+    char buffer[32] = {0};
+    for(auto i = num.rbegin();i!=num.rend();i++)
+    {
+        sprintf(buffer, "%d", *i);
+        ret += std::string(buffer);
+    }
+    return ret;
+}
 
-	std::copy(arr,arr+len,num.begin());
-    std::cout<<largestNumber(num)<<"\n";
+int main()
+{
+    //int arr[] = {2,10};
+    //int arr[] = {3,30,34,5,9};
+    int arr[] = {999999998,999999997,999999999};
+    //int arr[] = {0,0,0};
+    vector<int> vec(arr,arr+sizeof(arr)/sizeof(int));
+    cout<<largestNumber(vec)<<"\n";
     return 0;
 }
