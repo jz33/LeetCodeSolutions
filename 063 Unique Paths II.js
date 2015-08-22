@@ -7,8 +7,7 @@ https://leetcode.com/problems/unique-paths-ii/
  * @return {number}
  */
 var uniquePathsWithObstacles = function(mat) {
-    var i = 0;
-    var j = 0;
+    var i = 0, j = 0;
     
     var n = mat.length;
     if(n === 0) return 0;
@@ -32,15 +31,17 @@ var uniquePathsWithObstacles = function(mat) {
     for(;j<m;j++)
         buf[j-1] = 0;
     
-    var lefts = Array.apply(null, Array(n - 1)).map(Number.prototype.valueOf,1);
-    for(i = 0;i<n;i++)
+    var blocked_from = n;
+    for(i = 0;i<n;i++){
         if(mat[i][0] === 1)
+        {
+            blocked_from = i;
             break;
-    for(;i<n;i++)
-        lefts[i-1] = 0;
+        }
+    }
         
     for(i = 1;i<n;i++){
-        var left = lefts[i-1];
+        var left = i < blocked_from ? 1 : 0;
         for(j = 0;j<m-1;j++){
             if(mat[i][j+1] !== 1)
                 buf[j] = left + buf[j];
