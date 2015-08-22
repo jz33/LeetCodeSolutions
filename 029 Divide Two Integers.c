@@ -1,11 +1,13 @@
 #include <stdio.h>
+#include <limits.h>
 /*
-29 Divide Two Integers
-https://oj.leetcode.com/problems/divide-two-integers/
-http://www.pixelstech.net/article/1344149505-Implementation-of-%2B---*-with-bitwise-operator
+Divide Two Integers
+https://leetcode.com/problems/divide-two-integers/
+https://leetcode.com/discuss/11358/simple-o-log-n-2-c-solution
+O(log(upper) ^ 2)
 */
-// print a decimal int as a 32-bit binary string
-void printBinary(int x){
+void printBinary(int x)
+{
     char bin[32];
     int i;
     char *p = bin,*st = bin;
@@ -13,6 +15,11 @@ void printBinary(int x){
     for(i = 2147483648; i > 0; i >>= 1) *p++ = (x & i) ? '1': '0';
     while(st != p) printf("%c",*st++);
     printf("\n");
+}
+
+long long labs(int x)
+{
+    return x >= 0 ? x : -x;
 }
 
 int add(int x,int y){
@@ -48,32 +55,37 @@ int mul(int x, int y){
     return z;
 }
 
-int div(int x,int y){
-    int c=0,sign=0;
- 
-    if(x<0){
-        x=negate(x);
-        sign^=1;
-    }
-    if(y<0){
-        y=negate(y);
-        sign^=1;
-    }
-    if(y!=0){
-        while(x>=y){
-            x=sub(x,y);
-            ++c;
+int div(int upper, int lower)
+{
+    int sign,re;
+    long long up,lo,t,m;
+    if (lower == 0 || (upper == INT_MIN && lower == -1))
+        return INT_MAX;
+        
+    sign = (upper < 0) ^ (lower < 0) ? -1 : 1;
+    up = labs(upper);
+    lo = labs(lower);
+    re = 0;
+    
+    // move bits of upper, so log(upper) loops
+    while (up >= lo)
+    { 
+        t = lo;
+        m = 1;
+        while ((t << 1) < up)
+        {
+            t <<= 1;
+            m <<= 1;
         }
+        up -= t;
+        re += m;
     }
-    if(sign){
-        c=negate(c);
-    }
-    return c;
+    return sign == 1 ? re : -re; 
 }
 
 int main(){
     int x = -24;
-    int y = 12;
+    int y = 10;
     printf("add: %d\n",add(x,y));
     printf("sub: %d\n",sub(x,y));
     printf("mul: %d\n",mul(x,y));
