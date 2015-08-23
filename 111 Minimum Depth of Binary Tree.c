@@ -11,8 +11,8 @@ int minDepthWrong(node* n)
     }
     else
     {
-        lt = minDepth(n->left);
-        rt = minDepth(n->right);
+        lt = minDepthWrong(n->left);
+        rt = minDepthWrong(n->right);
         return  (lt < rt ? lt : rt) + 1;
     }
 }
