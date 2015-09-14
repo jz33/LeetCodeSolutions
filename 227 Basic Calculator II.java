@@ -1,6 +1,6 @@
 /*
-Basic Calculator
-https://leetcode.com/problems/basic-calculator/
+Basic Calculator II
+https://leetcode.com/problems/basic-calculator-ii/
 
 This solution works both on Basic Calculator and Basic Calculator II
 */
