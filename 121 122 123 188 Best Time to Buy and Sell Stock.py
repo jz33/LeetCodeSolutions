@@ -58,55 +58,16 @@ def multiTrades(prices):
 
 # 123
 def towTrades(prices):
-    if len(prices) < 2: 
-        print "len(prices) < 2"
-        return
-
-    profit = 0 ; leftEnd = 0; # result vars
-    hi =0; lo = 0; # tracing var
-    
-    #print "prices: {}\n".format(prices)
-    
-    # compute max profit of single trade from 0 to each index,
-    # as if that index is the last day
-    # similar as "singleTrade"
-    mp = [0]
-    prices.append(-1)
-    lo = 0
-    for i in range(1,len(prices)):
-        if prices[i] < prices[lo]: 
-            lo = i
-            mp.append(mp[i-1])
-        else:
-            mp.append(max(mp[i-1],prices[i] - prices[lo]))
-
-    # compute 2nd trade from prices[-3] to front
-    prices.pop()
-    profit = mp[-1]
-    leftEnd = len(prices) - 1
-    hi = lo = -2
-    
-    if prices[-1] > prices[-2]:
-        hi = -1
-        p = mp[-3] + prices[hi] - prices[lo]
-        if p > mp[-1]:
-            profit = p
-            leftEnd = len(prices) - 3
-    
-    prices = [-1] + prices
-    for i in range(-3,-len(prices),-1):
-        if prices[i] > prices[hi]:
-            hi = lo = i
-        elif prices[i] < prices[lo]:
-            lo = i
-            p = mp[i-1] + prices[hi] - prices[lo]
-            if p > profit:
-                profit = p
-                leftEnd = i - 1
-    
-    print "mp: {}".format(mp)
-    print "profit: {}, leftEnd: {}\n\n".format(profit, leftEnd)
-        
+    sold2 = 0
+    bought2 = -sys.maxint-1
+    sold1 = 0
+    bought1 = -sys.maxint-1
+    for p in prices:
+        sold2 = max(sold2, bought2 + p)
+        bought2 = max(bought2, sold1 - p)
+        sold1 = max(sold1, bought1 + p)
+        bought1 = max(bought1, -p)
+    return sold2
 
 #188
 # http://www.programcreek.com/2014/03/leetcode-best-time-to-buy-and-sell-stock-iv-java/
