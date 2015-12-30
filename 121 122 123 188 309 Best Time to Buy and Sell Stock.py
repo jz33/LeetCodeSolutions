@@ -4,12 +4,13 @@ import random,sys
 122 Best Time to Buy and Sell Stock II
 123 Best Time to Buy and Sell Stock III
 188 Best Time to Buy and Sell Stock IV
+309 Best Time to Buy and Sell Stock with Cooldown
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 '''
-# 121
 def singleTrade(prices):
     if len(prices) < 2: 
         print "len(prices) < 2"
@@ -37,7 +38,6 @@ def singleTrade(prices):
 
     print "start: {}, ended: {}, profit: {}\n\n".format(start,ended,profit)
 
-# 122
 def multiTrades(prices):
     if len(prices) < 2: 
         print "len(prices) < 2"
@@ -56,8 +56,8 @@ def multiTrades(prices):
 
     print "profit: {}\n\n".format(profit)
 
-# 123
 def towTrades(prices):
+    print "prices: {}".format(prices)
     sold2 = 0
     bought2 = -sys.maxint-1
     sold1 = 0
@@ -67,9 +67,9 @@ def towTrades(prices):
         bought2 = max(bought2, sold1 - p)
         sold1 = max(sold1, bought1 + p)
         bought1 = max(bought1, -p)
+    print sold2
     return sold2
 
-#188
 # http://www.programcreek.com/2014/03/leetcode-best-time-to-buy-and-sell-stock-iv-java/
 def kTrades(prices,k):
     if len(prices) < 2: 
@@ -87,6 +87,18 @@ def kTrades(prices,k):
             
     print "inner: {}".format(inner)
     print "outer: {}".format(outer)
+
+def withCooldown(prices):
+    if len(prices) < 2: return 0
+    bought = [-sys.maxint-1]*2
+    sold = [0]*3
+    for i,p in enumerate(prices):
+        b = i % 2
+        s = i % 3
+        bought[b] = max(bought[b-1],sold[s-2]-p)  
+        sold[s] = max(sold[s-1],bought[b-1]+p)
+        print bought[b], sold[s]
+    return sold[(len(prices)-1) % 3]
     
 def simpleTest(func):
     print func.__name__
@@ -125,11 +137,10 @@ def kTradesTest():
     kTrades(prices,len(prices))
     
 def main():
-    #simpleTest(singleTrade)
-    #simpleTest(multiTrades)
-    #simpleTest(towTrades)
-    
-    kTradesTest()
+    # simpleTest(singleTrade)
+    # simpleTest(multiTrades)
+    simpleTest(towTrades)
+    #kTradesTest()
     
 if __name__ == "__main__":
     main()
