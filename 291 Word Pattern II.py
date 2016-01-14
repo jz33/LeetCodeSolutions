@@ -1,29 +1,39 @@
-map = {}
-
-def rec(pat, str):
-    lp = len(pat)
-    ls = len(str)
-    if lp == 0: return ls == 0
-    if lp > ls: return False
+'''
+291 Word Pattern II
+https://leetcode.com/problems/word-pattern-ii/
+'''
+maxDepth = -1
+def rec(pattern, pi, word, wi, ref, rev, depth = 0):
+    global maxDepth
+    maxDepth = max(depth,maxDepth)
+    depth += 1
+    if pi == len(pattern): return wi == len(word)
+    if wi == len(word): return False
     
-    first = pat[0]
-    if first in map:
-        val = map[first]
-        lv = len(val)
-        if lv > ls or str[:lv] != val: return False
-        return rec(pat[1:], str[lv:])
-    else:
-        if lp == 1:
-            return True if ls > 0 and str not in map.values() else False
-        for i in xrange(1,ls + 1):
-            val = str[:i]
-            if val in map.values(): continue
-            map[first] = val
-            if rec(pat[1:], str[i:]): return True
-            del map[first]
+    pc = pattern[pi]
+    val = ref.get(pc,'')
+    if val == '':
+        for i in xrange(wi+1,len(word)+1):
+            rv = word[wi:i]
+            if rv not in rev:
+                ref[pc] = rv
+                rev[rv] = True
+                if rec(pattern,pi+1,word,i,ref,rev,depth+1) is True:
+                    return True
+                else:
+                    del ref[pc]
+                    del rev[rv]
         return False
-        
-class Solution(object):
-    def wordPatternMatch(self, pat, str):
-        map.clear()
-        return rec(pat,str)
+    else:
+        lv = len(val)
+        if wi+lv > len(word) or word[wi:wi+lv] != val:
+            return False
+        else:
+            return rec(pattern,pi+1,word,wi+lv,ref,rev,depth+1)
+
+pattern = 'aaaa'
+word = 'asdasdasdasd'
+ref = {}
+rev = {}
+print rec(pattern,0,word,0,ref,rev)
+print maxDepth            
