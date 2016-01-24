@@ -12,38 +12,15 @@ class Solution(object):
         for ch in s:
             counter[ord(ch) - A] += 1
         
-        # Position of smallest char
-        psc = 0 
-        res = []
-        i = 0
-        while i < size:
-            pc = ord(s[i]) - A
-            
-            # Current char is previously added
-            if counter[pc] < 0:
-                i += 1
-                continue
-            
-            # If found a smaller char
-            if pc < ord(s[psc]) - A:
-                psc = i
-            
-            # Update counter as i move forward    
-            counter[pc] -= 1
-            
-            if counter[pc] == 0:
-                # Add to result and set invalid
-                chosen = s[psc]
-                counter[ord(chosen) - A] = - size
-                res.append(chosen)
-                
-                # Move psc to valid position
-                while psc < size and counter[ord(s[psc])-A] < 0:
-                    psc += 1
-                
-                # Move i back so that psc == i
-                while i >= psc:
-                    counter[ord(s[i])-A] += 1
-                    i -= 1
-            i += 1
-        return ''.join(res)
+        stack = []
+        added = set()
+        for i,c in enumerate(s):
+            if c not in added:
+                # If current char is smaller than top char and top char is not the last one
+                while len(stack) > 0 and stack[-1] > c and counter[ord(stack[-1])-A] > 0:
+                    added.remove(stack[-1])
+                    stack.pop()
+                stack.append(c)
+                added.add(c)
+            counter[ord(c) - A] -= 1
+        return ''.join(stack)
