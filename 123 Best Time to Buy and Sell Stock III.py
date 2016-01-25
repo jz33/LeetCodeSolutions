@@ -2,12 +2,9 @@ from sys import maxint
 '''
 Best Time to Buy and Sell Stock III
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+Can complete at most 2 transactions
 '''
 def maxProfit(prices):
-    """
-    :type prices: List[int]
-    :rtype: int
-    """
     sold = [0]*2
     bought = [-maxint-1]*2
     for p in prices:
