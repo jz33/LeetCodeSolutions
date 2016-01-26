@@ -37,17 +37,18 @@ def isWordBreak(tag,book):
     if tag in book: return True # optional
     
     # 'buf[i]' indicates whether tag[0:i] is work break
-    buf = [False for i in xrange(0,size+1)]
-    buf[0] = True
+    buf = [False]*(size+1)
     for i in xrange(1,size):
-        if buf[i] == False and tag[0:i] in book:
+        if buf[i] == False and tag[:i] in book:
             buf[i] = True
         if buf[i] == True:
              for j in xrange(i+1,size+1):
                 if buf[j] == False and tag[i:j] in book:
                     buf[j] = True
-
-    return buf[len(tag)] == True
+        if buf[size] is True:
+            return True
+    else:
+        return False
 
 def test(tag,book):
     print isWordBreakRec(tag,book), ' ', isWordBreak(tag,book)
