@@ -4,63 +4,56 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 
 Serialize and Deserialize tree by level order traversal
 '''
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-    def __str__(self):
-        return str(self.val)
-
 class Codec:
     def serialize(self, root):
         """Encodes a tree to a single string.  
         :type root: TreeNode
-        :rtype: str
+        :rtype: list[object]
         """
+        if root is None: return []
+        
         queue = [root]
-        # Cannot use i in xrange(len(queue))
-        i = 0
+        i = 0 # next node position in queue
         while i < len(queue):
             n = queue[i]
-            if n is not None:   
+            if n is not None:
                 queue.append(n.left)
                 queue.append(n.right)
             i += 1
-
-        i = len(queue) - 1
-        while i > -1:
-            if queue[i] != None: break
-            i -= 1
-        queue = queue[:i+1]
- 
-        for i,v in enumerate(queue):
-            if v is not None:
-                queue[i] = str(v.val)
-        return queue
+        
+        # Remove trailing Nones
+        for i in xrange(len(queue)-1,-1,-1):
+            if queue[i] != None: 
+                break
+        
+        # Convert object to value
+        for i in xrange(len(queue)):
+            queue[i] = queue[i].val if queue[i] is not None else None
+            
+        return queue[:i+1]
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
-        
-        :type data: str
+        :type data: list[object]
         :rtype: TreeNode
         """
         if len(data) == 0: return None
+        
         root = TreeNode(data[0])
         queue = [root]
-        i = 1
-        j = 0
-        while i < len(data):
-            n = queue[j]
-            j += 1
-            v = data[i]
+        i = 0 # next node position in queue
+        j = 1 # next object position in data
+        while j < len(data):
+            n = queue[i]
             i += 1
+            v = data[j]
+            j += 1
             if v is not None:
                 n.left = TreeNode(v)
                 queue.append(n.left)
-            if i == len(data): break
-            v = data[i]
-            i += 1
+            if j == len(data): break
+            v = data[j]
+            j += 1
             if v is not None:
                 n.right = TreeNode(v)
                 queue.append(n.right)
