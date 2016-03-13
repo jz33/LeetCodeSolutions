@@ -2,14 +2,7 @@ from json import dumps
 '''
 336 Palindrome Pairs
 https://leetcode.com/problems/palindrome-pairs/
-'''
-'''
-lls =>
-needed: +#sll, sl+, s+, +ll, sll#+
-can be: +#lls +#ls, +#s, ll#+, lls#+ 
-s =>
-needed: +#s, s#+
-can be: +#s, s#+
+O(N*K*K)
 '''
 debug = False
 def isPalindromic(s):
