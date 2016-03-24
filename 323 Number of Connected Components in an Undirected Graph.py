@@ -3,15 +3,9 @@ Number of Connected Components in an Undirected Graph
 https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 '''
 def getParent(tree,i):
-    '''
-    @tree: List[int]
-    @i: int
-    @return: (int,int)
-    '''
-    d = 0 # depth
-    while tree[i] != -1:
+    for d in xrange(len(tree)):
+        if tree[i] == -1: break;
         i = tree[i]
-        d += 1
     return i,d
     
 def countComponents(n, edges):
