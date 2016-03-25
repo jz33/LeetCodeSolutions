@@ -18,14 +18,10 @@ def maxProduct(words):
     map = {}
     for w in words:
         h = hash(w)
-        l = len(w)
-        map[h] = max(map.get(h,0),l)
+        map[h] = max(map.get(h,0),len(w))
     
     # Sort. May not be necessary
-    ls = []
-    for k,v in map.iteritems():
-        ls.append((k,v))
-    ls.sort(key = lambda x : x[1], reverse = True)
+    ls = sorted(list(map.iteritems()), key = lambda x : x[1], reverse = True)
     
     maxVal = 0
     '''
