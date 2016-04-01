@@ -37,11 +37,10 @@ def countRangeSum(nums, lower, upper):
     for i,e in enumerate(nums):
         ac += e
         arr.append((ac,i))
-    arr.sort(key = lambda x : x[0])
+    arr.sort()
 
     ctr = 0
     for ac,i in arr:
-        pp = (ac+lower,0)
         lt = lower_bound(arr,ac+lower)
         rt = upper_bound(arr,ac+upper)
         for j in xrange(lt,rt):
