@@ -1,6 +1,7 @@
 
 '''
 300 Longest Increasing Subsequence
+https://leetcode.com/problems/longest-increasing-subsequence/
 '''
 def longestIncreasingSubsequenceSize(arr):
     '''
@@ -67,10 +68,11 @@ def longestIncreasingSubsequence(arr):
             seq.append(i)
         else:
             j = ceiling(e)
-            if j == 0:
-                par[i] = -1
-            elif j > -1: 
-                par[i] = seq[j-1]
+            '''
+            j == 0 do not need to update parent pointer
+            '''
+            if j > -1:
+                if j > 0: par[i] = seq[j-1]
                 seq[j] = i
 
     res = [None] * len(seq)
