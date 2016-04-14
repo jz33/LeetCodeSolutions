@@ -45,9 +45,7 @@ class PeekingIterator(object):
         """
         if len(self.buffer) == 0:
             self.buffer.append(self.iterator.next())
-        r = self.buffer[0]
-        self.buffer.pop(0)
-        return r
+        return self.buffer.pop(0)
         
 
     def hasNext(self):
