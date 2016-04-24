@@ -17,19 +17,20 @@ class MedianFinder:
         :type num: int
         :rtype: void
         """
-        heappush(self.small, -heappushpop(self.large,num))
-        if len(self.large) < len(self.small) :
-        	heappush(self.large, -heappop(self.small))
-        
+        if len(self.small) == len(self.large):
+            heappush(self.large, -heappushpop(self.small,-num))
+        else: # len(self.small) + 1 == len(self.large):
+            heappush(self.small, -heappushpop(self.large, num))
 
     def findMedian(self):
         """
         Returns the median of current data stream
         :rtype: float
         """
-        return self.large[0] \
-        if len(self.large) > len(self.small) \
-        else (float(self.large[0]) - float(self.small[0])) / 2.0
+        if len(self.small) == len(self.large):
+            return (float(self.large[0]) - float(self.small[0])) / 2.0
+        else: # len(self.small) + 1 == len(self.large):
+            return self.large[0]
 
 
 obj = MedianFinder()
