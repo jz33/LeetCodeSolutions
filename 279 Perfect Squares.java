@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * Perfect Squares
  * https://leetcode.com/problems/perfect-squares/
