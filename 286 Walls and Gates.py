@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 '''
 Walls and Gates
 https://leetcode.com/problems/walls-and-gates/
@@ -10,9 +11,10 @@ R = 0
 C = 0
 
 def mark(mat,x,y):
-    dq = [(x,y,0)]
+    dq = deque()
+    dq.append((x,y,0))
     while len(dq) > 0:
-        (x,y,d) = dq.pop()
+        x,y,d = dq.popleft()
         mat[x][y] = d
         if x + 1 <  R and mat[x+1][y] != WALL and mat[x+1][y] > d+1:
             dq.append((x+1,y,d+1))
