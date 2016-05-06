@@ -2,8 +2,6 @@ import random
 '''
 45 Jump Game II
 https://oj.leetcode.com/problems/jump-game-ii/
-55 Jump Game
-https://oj.leetcode.com/problems/jump-game/
 '''
 def jumpGame2(ls):
     lt = 0
