@@ -1,3 +1,4 @@
+import java.util.*;
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -7,24 +8,19 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
-    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
-        if(root == null) return res;
-        
-        java.util.LinkedList<TreeNode> stack = new java.util.LinkedList<TreeNode>();
-        TreeNode p = root;
-        
-        while(p != null || stack.size() > 0){
-            if(p != null){
-                stack.offerLast(p);
-                p = p.left;
-            } else {
-                p = stack.pollLast();
-                res.add(p.val);
-                p = p.right;
-            }
+public List<Integer> inorderTraversal(TreeNode root) {
+    List<Integer> res = new ArrayList<Integer>();
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+    TreeNode p = root;
+    while(p != null || !stack.empty()){
+        if(p != null){
+            stack.push(p);
+            p = p.left;
+        } else {
+            p = stack.pop();
+            res.add(p.val);
+            p = p.right;
         }
-        return res;
     }
+    return res;
 }
