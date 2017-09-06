@@ -32,33 +32,24 @@ def twoSumNormal(numbers,target):
             while i < j and numbers[j] == rt: j -= 1
      
 '''
-Particularly for this question, assume:
-0. array is sorted
-1. no duplicates
-2. only 1 pair of answer
+LeetCode Accepted
 '''
 def twoSum(nums, target):
-    pairs = [(i,nums[i]) for i in xrange(0,len(nums))]
-    pairs = sorted(pairs, key = lambda x : x[1])
-    
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+    arr = [(i,nums[i]) for i in range(len(nums))]
+    arr.sort(key = lambda x:x[1])
     i = 0
-    j = len(pairs) - 1
-    while i < j :
-        s = pairs[i][1] + pairs[j][1]
+    j = len(arr) - 1
+    while i < j:
+        s = arr[i][1] + arr[j][1] 
         if s == target:
-            x = pairs[i][0]+1
-            y = pairs[j][0]+1
-            return [x,y] if x < y else [y,x]
+            return (arr[i][0],arr[j][0])
         elif s < target:
             i += 1
-        else: 
+        else:
             j -= 1
-  
-    return [-1,-1]
-    
-def main():
-    numbers = createRandList(16,0,8)
-    twoSumNormal(numbers,10)
-     
-if __name__ == '__main__':
-    main()
+    return None
