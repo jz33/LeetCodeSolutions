@@ -41,9 +41,7 @@ bool isMatch(char* src, char* pat)
         }
         else 
             return 0;
-    }
-    if(s != ls) return 0;
-    
+    }    
     while(p < lp && pat[p] == '*') p++;
     return p == lp;
 }
