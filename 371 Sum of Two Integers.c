@@ -11,3 +11,14 @@ int getSum(int x, int y) {
     } while(a);
     return b;
 }
+
+// use only 1 var
+int getSum(int a, int b) {
+    int x;
+    do {
+        x = a & b;
+        b = a ^ b;
+        a = x << 1;
+    } while (x);
+    return b;
+}
