@@ -2,37 +2,46 @@
 Lowest Common Ancestor of a Binary Tree 
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 */
-struct TreeNode 
-{
+
+struct TreeNode {
     int val;
     struct TreeNode *left;
     struct TreeNode *right;
 };
-typedef struct TreeNode node;
 
-/*
-Natively, assume $p, $q are in tree
-*/
-node* lowestCommonAncestor(node* root, node* p, node* q)
+ /*
+ Assume $p, $q are in tree
+ */
+typedef struct TreeNode node;
+node* rec(node* r, node* p, node* q, int* sofar)
 {
     node *lt, *rt;
-    if(root == 0) return 0;
+    if (r == 0) return 0;
+    if (*sofar == 2) return 0; // found in other branch
     
-    lt = lowestCommonAncestor(root->left,p,q);
-    rt = lowestCommonAncestor(root->right,p,q);
+    lt = rec(r->left, p,q,sofar);
+    rt = rec(r->right,p,q,sofar);
     
-    if(root == p || root == q)
+    if (r == p || r == q)
     {
-        return root;
+        *sofar = *sofar + 1;
+        return r;
     }
     
-    if(lt != 0 && rt != 0) return root;
-    else if(lt != 0 && rt == 0) return lt;
-    else if(lt == 0 && rt != 0) return rt;
-    else return 0;
+    if(lt != 0)
+    {
+        if(rt != 0) return r;
+        else return lt;
+    }
+    else
+    {
+        if(rt != 0) return rt;
+        else return 0;
+    }
 }
 
-int main()
+node* lowestCommonAncestor(node* root, node* p, node* q)
 {
-    return 0;
+    int sofar = 0;
+    return rec(root,p,q,&sofar);
 }
