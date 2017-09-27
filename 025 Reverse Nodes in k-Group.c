@@ -10,62 +10,64 @@ struct LinkedListNode{
 };
 typedef struct LinkedListNode node;
 
-/*
-Reverse list from st by K steps
-Notice it is guarenteed p != 0
-*/
-node* reverse(node* st, const int K){
-    node *p, *nt;
-    int i;
-    if(st == 0) return st;
-    
-    p = st->next;
-    st->next = 0;
-	for(i=1;i<K;i++){
-        nt = p->next;
-        p->next = st;
-        st = p;
-        p = nt;
+node* reverse(node* head, node* tail) // tail exclusive
+{
+    node *p0, *p1;
+    if (head == tail || head->next == tail) return head;
+    p0 = head->next;
+    head->next = 0;
+    while(p0->next != tail)
+    {
+        p1 = p0->next;
+        p0->next = head;
+        head = p0;
+        p0 = p1;
     }
-    return st;
+    p0->next = head;
+    return p0;
 }
 /*
  0->1->2->3->4->5, 2 => 1->0->3->2->5->4
  0->1->2->3->4->5, 3 => 2->1->0->5->4->3
  0->1->2->3->4->5, 4 => 3->2->1->0->4->5
 */
-node* reverseK(node* st, const int K){
-    node *pv = 0, *p, *ret;
-    int i;
-	
-	if(K<1) return st;
-    p = st;
-	for(i=0;i<K;i++){
-        if(p == 0) return st;
-        p = p->next;
-    }
-    ret = reverse(st,K);
-    pv = st;
-    st = p;
-
-    while(st != 0){
-        p = st;
-        for(i=0;i<K;i++){
-            if(p == 0){
-				pv->next = st;
-				return ret;
-			}
-            p = p->next;
+node* reverseKGroup(node* head, int k) {
+    node *prev, *tail, *t;
+    int i, firstTime;
+    
+    prev = head;
+    tail = prev;  
+    firstTime = 1;
+    while (tail != 0)
+    {
+        for(i=0;tail != 0 && i < k;i++)
+        {
+            tail = tail->next;
         }
-        pv->next = reverse(st,K);
-        pv = st;
-		st = p;
+        if (i == k)
+        {                      
+           if (firstTime != 0) 
+           {
+               firstTime = 0;       
+               head = reverse(prev,tail);
+               prev->next = tail;
+           }
+           else
+           {
+                t = prev->next;
+                prev->next = reverse(t,tail);
+                t->next = tail;
+                prev = t;
+           }
+           //printf("%d,%d,%d\n",prev->val,tail == 0? -1 : tail->val, head->val);
+        } 
     }
-    return ret;
+    return head;
 }
 
+
 int main(){
-	int repeat = 7; // will create repeat + 1 nodes
+    int repeat = 7; // will create repeat + 1 nodes
     int K;
     int i;
     node* head = (node*)malloc(sizeof(node));
