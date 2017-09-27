@@ -14,23 +14,18 @@ class Stack(object):
         self.data.append(x)
 
     def pop(self):
-        while len(self.data) != 0:
+        while len(self.data) > 1:
             self.help.append(self.data.pop(0))
-            
-        while len(self.help) != 1:
-            self.data.append(self.help.pop(0))
-        
-        self.help.pop(0)
+        r = self.data.pop(0)
+        self.data,self.help = self.help,self.data
+        return r
 
     def top(self):
-        while len(self.data) != 0:
+        while len(self.data) > 1:
             self.help.append(self.data.pop(0))
-            
-        while len(self.help) != 1:
-            self.data.append(self.help.pop(0))
-            
-        r = self.help.pop(0)
-        self.data.append(r)
+        r = self.data.pop(0)
+        self.help.append(r)
+        self.data,self.help = self.help,self.data
         return r
 
     def empty(self):
