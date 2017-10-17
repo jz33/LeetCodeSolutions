@@ -38,6 +38,7 @@ def isWordBreak(tag,book):
     
     # 'buf[i]' indicates whether tag[0:i] is work break
     buf = [False]*(size+1)
+    buf[0] = True
     for i in xrange(1,size):
         if buf[i] == False and tag[:i] in book:
             buf[i] = True
