@@ -1,42 +1,58 @@
 '''
 Implement Queue using Stacks
 https://leetcode.com/problems/implement-queue-using-stacks/
-
 No error or exception checking
 '''
-class Queue:
-    # initialize your data structure here.
+class MyQueue(object):
+
     def __init__(self):
-        self.data = []
-        self.help = []
-
-    # @param x, an integer
-    # @return nothing
+        """
+        Initialize your data structure here.
+        """
+        self.stk = [] # stack
+        self.rev = [] # reversed stack
+        
     def push(self, x):
-        self.data.append(x)
+        """
+        Push element x to the back of queue.
+        :type x: int
+        :rtype: void
+        """
+        self.stk.append(x)
 
-    # @return nothing
     def pop(self):
-        while len(self.data) != 0:
-            self.help.append(self.data.pop())
-            
-        self.help.pop()
-        
-        while len(self.help) != 0:
-            self.data.append(self.help.pop())
+        """
+        Removes the element from in front of queue and returns that element.
+        :rtype: int
+        """
+        # pop everything to rev
+        if len(self.rev) == 0:
+            while len(self.stk) != 0:
+                self.rev.append(self.stk.pop())
+        # always look from rev
+        return self.rev.pop()
 
-    # @return an integer
     def peek(self):
-        while len(self.data) != 1:
-            self.help.append(self.data.pop())
-            
-        d = self.data.pop()
-        self.data.append(d)
-        
-        while len(self.help) != 0:
-            self.data.append(self.help.pop())
-        return d
-        
-    # @return an boolean
+        """
+        Get the front element.
+        :rtype: int
+        """
+        if len(self.rev) == 0:
+            while len(self.stk) != 0:
+                self.rev.append(self.stk.pop()) 
+        return self.rev[-1]
+
     def empty(self):
-        return len(self.data) == 0
+        """
+        Returns whether the queue is empty.
+        :rtype: bool
+        """
+        return len(self.stk) == 0 and len(self.rev) == 0
+
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()
