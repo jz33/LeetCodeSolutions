@@ -1,8 +1,13 @@
 '''
 Number of Connected Components in an Undirected Graph
 https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+
+Union-Find
 '''
 def getParent(tree,i):
+    '''
+    Return parent,depth
+    '''
     for d in xrange(len(tree)):
         if tree[i] == -1: break;
         i = tree[i]
@@ -19,6 +24,8 @@ def countComponents(n, edges):
         n0, n1 = ed[0],ed[1]
         (p0,d0) = getParent(tree,n0)
         (p1,d1) = getParent(tree,n1)
+        
+        # link shallow tree's root to deep tree's root
         if p0 != p1:
             if d0 < d1:
                 tree[p0] = p1
