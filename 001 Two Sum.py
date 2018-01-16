@@ -31,11 +31,9 @@ def twoSumNormal(numbers,target):
             j -= 1
             while i < j and numbers[j] == rt: j -= 1
      
-'''
-LeetCode Accepted
-'''
 def twoSum(nums, target):
     """
+    Sorting way
     :type nums: List[int]
     :type target: int
     :rtype: List[int]
@@ -53,3 +51,17 @@ def twoSum(nums, target):
         else:
             j -= 1
     return None
+
+def twoSum(self, nums, target):
+    """
+    Hashtable way
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+    hashtable = {}
+    for ind,val in enumerate(nums):
+        x = target-val
+        if x in hashtable:
+            return [hashtable[x],ind]
+        hashtable[val] = ind
