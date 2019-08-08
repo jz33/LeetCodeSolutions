@@ -1,2 +1,2 @@
 # LeetCodeSolutions
-My solution for Leetcode questions written in C, C++, Java, Python, Javascript
+Solution for Leetcode questions written in C, C++, Python, Java, Javascript, Golang, C#
