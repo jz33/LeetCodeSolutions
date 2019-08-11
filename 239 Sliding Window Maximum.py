@@ -1,32 +1,26 @@
 from collections import deque
-'''
-Sliding Window Maximum
-https://leetcode.com/problems/sliding-window-maximum/
-'''
-def maxSlidingWindow(arr, width):
-    if len(arr) == 0: return []
-    ret = [0] * (len(arr) - width + 1)
-    
-    dq = deque()
-    for i in xrange(0,width):
-        while len(dq) > 0 and arr[i] > arr[dq[-1]]:
-            dq.pop()
-        dq.append(i)
-            
-    for i in xrange(width,len(arr)):
-        ret[i-width] = arr[dq[0]]
-        while len(dq) > 0 and arr[i] > arr[dq[-1]]:
-            dq.pop()
-        while len(dq) > 0 and dq[0] <= i - width:
-            dq.popleft()
-        dq.append(i)
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        if len(nums) == 0: return []
+        res = [None] * (len(nums) - k + 1)
         
-    ret[-1] = arr[dq[0]]
-    return ret
-    
+        # dq is descending, means dq[0] is the max
+        dq = deque()
+        for i,e in enumerate(nums):
+            # Build the desceding deque
+            while len(dq) > 0 and nums[i] > nums[dq[-1]]:
+                dq.pop()
 
-arr = [1,3,-1,-3,5,3,6,7]
-width = 3
+            # Pop left the out of bound indexes
+            while len(dq) > 0 and dq[0] <= i - k:
+                dq.popleft()
 
-print maxSlidingWindow(arr,width)
+            dq.append(i)
+            
+            if i >= k - 1:
+                res[i - k + 1] = dq[0]
+                
     
+        res[-1] = dq[0]
+        return [nums[i] for i in res]
