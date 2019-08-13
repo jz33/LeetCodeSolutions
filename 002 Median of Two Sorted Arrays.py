@@ -1,42 +1,43 @@
 import random
 '''
 New iterative method based on "merging 2 sorted arrays"
+Python3
 '''
 def findMedianSortedArrays(nums1: List[int], nums2: List[int]) -> float:
-        N1 = len(nums1)
-        N2 = len(nums2)
-        mergedArrayLength = (N1 + N2) // 2 + 1
-    
-        i = 0 # index for nums1
-        j = 0 # index for nums2
-        
-        container = [None, None]
-        k = 0 # index for container
-        
-        def flip(i: int) -> int:           
-            return (i ^ 1);       
-        
-        while i + j < mergedArrayLength:
-            if i < N1 and j < N2:
-                if nums1[i] <= nums2[j]:
-                    container[k] = nums1[i]
-                    i += 1
-                else:
-                    container[k] = nums2[j]
-                    j += 1
-            elif i < N1:
+    N1 = len(nums1)
+    N2 = len(nums2)
+    mergedArrayLength = (N1 + N2) // 2 + 1
+
+    i = 0 # index for nums1
+    j = 0 # index for nums2
+
+    container = [None, None]
+    k = 0 # index for container
+
+    def flip(i: int) -> int:           
+        return (i ^ 1);       
+
+    while i + j < mergedArrayLength:
+        if i < N1 and j < N2:
+            if nums1[i] <= nums2[j]:
                 container[k] = nums1[i]
                 i += 1
-            elif j < N2:
+            else:
                 container[k] = nums2[j]
                 j += 1
+        elif i < N1:
+            container[k] = nums1[i]
+            i += 1
+        elif j < N2:
+            container[k] = nums2[j]
+            j += 1
 
-            k = flip(k)
-            
-        if (N1 + N2) % 2 == 0:
-            return (container[k] + container[flip(k)]) /2 
-        else:
-            return float(container[flip(k)])
+        k = flip(k)
+
+    if (N1 + N2) % 2 == 0:
+        return (container[k] + container[flip(k)]) /2 
+    else:
+        return float(container[flip(k)])
 
 '''
 Old divied-conquer method
