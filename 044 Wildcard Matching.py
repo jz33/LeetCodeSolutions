@@ -14,7 +14,7 @@ def isMatch(s, p):
     if not p: return not s
     si = 0
     pi = 0
-    prev_s = 0
+    prev_s = 0 # previous pairs, representing the position where a '*' is met
     prev_p = -1
     while si < len(s):
         if pi < len(p) and (p[pi] == '?' or p[pi] == s[si]):
@@ -27,13 +27,14 @@ def isMatch(s, p):
             prev_p = pi
             pi += 1
         elif prev_p > -1:
-            # '*' match more than 1 char
+            # Moves back to previous '*', assume it match more than 1 char
             si = prev_s + 1
             pi = prev_p
             prev_s = si
         else:
             return False
 
+    # pat should either be exhausted now or remainings are all '*'
     for i in xrange(pi,len(p)):
         if p[i] != '*':
             return False
