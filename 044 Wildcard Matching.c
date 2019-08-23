@@ -8,7 +8,7 @@ https://oj.leetcode.com/problems/wildcard-matching/
 
 https://leetcode.com/discuss/38645/128ms-o-1-space-python-solution
 
-Accepted
+An simpler solution, but not good time complexity
 */
 bool isMatch(char* src, char* pat)
 {   
@@ -19,8 +19,8 @@ bool isMatch(char* src, char* pat)
     lp = (int)strlen(pat);
     s = 0;
     p = 0;
-    prev_s = 0;
-    prev_p = -1;
+    prev_s = 0; # previous pairs, representing the position where pat[p] is '*'
+    prev_p = -1; 
     
     while(s < ls)
     {
@@ -31,17 +31,21 @@ bool isMatch(char* src, char* pat)
         }
         else if(p < lp && pat[p] == '*')
         {
+            # Got new '*', record it, and let it match 0 txt
             prev_s = s;
             prev_p = p++;
         }
         else if(prev_p > -1)
         {
+            # Moves back to previous '*', assume it match more than 1 txt
             s = ++prev_s;
             p = prev_p;
         }
         else 
             return 0;
-    }    
+    }
+    
+    # pat should either be exhausted now or remainings are all '*'
     while(p < lp && pat[p] == '*') p++;
     return p == lp;
 }
