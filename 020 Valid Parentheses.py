@@ -2,34 +2,25 @@
 20 Valid Parentheses
 https://oj.leetcode.com/problems/valid-parentheses/
 '''
-def isValid(s):
-    """
-    :type s: str
-    :rtype: bool
-    """
-    buf = [-1]
-    for c in s:
-        if c == '(': 
-            buf.append(0)
-        elif c == '{':
-            buf.append(1)
-        elif c == '[':
-            buf.append(2)
-        elif c == ')':
-            if buf[-1] != 0: 
-                return False
+class Solution:
+    def isValid(self, s: str) -> bool:
+        lefts = ['(', '[', '{'] # left parts of parentheses
+        
+        def rightToLeft(s: str) -> str:
+            if s == ')':
+                return '('
+            elif s == ']':
+                return '['
+            elif s == '}':
+                return '{'
+        
+        buf = []
+        for c in s:
+            if c in lefts:
+                buf.append(c)
             else:
+                if len(buf) == 0 or buf[-1] != rightToLeft(c):
+                    return False
                 buf.pop()
-        elif c == '}':
-            if buf[-1] != 1:
-                return False
-            else:
-                buf.pop()
-        elif c == ']':
-            if buf[-1] != 2:
-                return False
-            else:
-                buf.pop()
-        else:
-            return False
-    return len(buf) == 1
+                
+        return len(buf) == 0
