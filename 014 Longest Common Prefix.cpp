@@ -1,29 +1,32 @@
-#include <iostream>
-#include <string>
-#include <vector>
 /*
 Longest Common Prefix
 https://leetcode.com/problems/longest-common-prefix
+Worst time complexity: O(n), n is sum of all string length
+Memory Usage: 8.6 MB, less than 100.00% of C++ online submissions
 */
-std::string longestCommonPrefix(std::vector<std::string> &strs){
-    if(strs.size()<1) return "";
-    if(strs.size()<2) return strs[0];
-    auto p = strs[0]; // result prefix
-    for(auto i = strs.begin()+1;i!=strs.end();i++){
-        auto &t = *i;
-        std::size_t j = 0;
-        for(;j<p.size() && j<t.size();j++)
-            if(p[j] != t[j]) break;
-        p = p.substr(0,j); // j <= p.size()
-    }
-    return p;
-}
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs)
+    {
+        if (strs.size() < 1) return "";
+        if (strs.size() < 2) return strs[0];
+        
+        const auto p = strs[0]; // result prefix
+        size_t l = p.size(); // result prefix length
 
-int main(){
-    std::vector<std::string> strs;
-    strs.push_back("ABCD");
-    strs.push_back("ABC");
-    strs.push_back("AB");
-    std::cout<<longestCommonPrefix(strs)<<"\n";
-    return 0;  
-}
+        for (const auto& s : strs)
+        {
+            l = std::min(l, s.size());
+            
+            for (size_t j = 0; j < l; ++j)
+            {
+                if (p[j] != s[j])
+                {
+                    l = j;
+                    break;
+                }
+            }
+        }
+        return p.substr(0, l);
+    }
+};
