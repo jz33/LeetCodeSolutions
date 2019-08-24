@@ -1,27 +1,25 @@
 '''
 22 Generate Parentheses
 https://oj.leetcode.com/problems/generate-parentheses/
-Just print
 '''
-ctr = 0 #count each output
-def generateParenthesesRec(buf,lt,rt):
-    global ctr
-    if lt == 0 and rt == 0 :
-        print buf
-        ctr += 1
-    elif lt == rt:
-        generateParenthesesRec(buf + '(',lt-1,rt)
-    elif lt < rt:
-        if lt > 0:
-            generateParenthesesRec(buf + '(',lt-1,rt)
-        generateParenthesesRec(buf + ')',lt,rt-1)
-            
-def generateParentheses(n):
-    generateParenthesesRec('',n,n)
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        pool = []
+        
+        def backtrack(ss: List[str], left:int, right:int):
+            if len(ss) == 2 * n:
+                pool.append(''.join(ss))
+                return;
 
-repeat = 6
-for i in range(1,repeat):
-    ctr = 0
-    print("repeat: {0}".format(i))
-    generateParentheses(i)
-    print("count: {0}\n".format(ctr))
+            if left < n:
+                ss.append('(')
+                backtrack(ss, left + 1, right)
+                ss.pop() # this is why this is called "backtrack"
+
+            if right < left:
+                ss.append(')')
+                backtrack(ss, left, right + 1)
+                ss.pop()
+                
+        backtrack([], 0, 0)
+        return pool
