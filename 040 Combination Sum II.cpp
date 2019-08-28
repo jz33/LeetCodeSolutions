@@ -24,7 +24,7 @@ void recursive(std::vector<int>& input, std::vector<int>& sofar, int start, int 
             if(input[i] <= tag)
             {
                 sofar.push_back(input[i]);
-                recursive(input,sofar,i+1,tag - input[i]);
+                recursive(input,sofar,i+1,tag - input[i]); // here uses i+1, while Question 39 uses i
                 sofar.pop_back();
             }
         }
