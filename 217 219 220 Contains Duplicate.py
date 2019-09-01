@@ -31,18 +31,23 @@ t: distance of nums[i],nums[j]
 def containsDuplicate3(nums,k,t):
     if k < 1 or t < 0: return False
     
-    buckets = {} # bucket : value
+    # bucket (integer): value(integer)
+    # bucket = v / (t+1)
+    buckets = {}
     for i,v in enumerate(nums):
         if i > k:
-            b = nums[i-k-1] / (t+1);
+            b = nums[i-k-1] // (t+1);
             del buckets[b]
-            
-        b = v / (t+1);
+
+        b = v // (t+1);
+
+        # When convert value to bucket, only current, -1, +1 need to look
+        # Otherwise we need to look next k values
         if b in buckets or \
             b-1 in buckets and v - buckets[b-1] <= t or \
             b+1 in buckets and buckets[b+1] - v <= t:
             return True
-            
+
         buckets[b] = v  
     return False
     
