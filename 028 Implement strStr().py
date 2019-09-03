@@ -1,45 +1,60 @@
-'''
-Standard KMP for strstr
-'''
-def strstr(hay, ndl):
-    h_len = len(hay);
-    n_len = len(ndl);
-    if n_len == 0: return 0;
-    if n_len == 1: return 0 if h_len > 0 and hay[0] == ndl[0] else -1;
-    
-    T = [None] * n_len
-    T[0] = -1;
-    T[1] = 0;
-    
-    i = 0; # iterate ndl
-    j = 2; # iterate table
-    while j < n_len:
-        if ndl[j - 1] == ndl[i]:
-            # T[j++] = ++i;
-            i += 1
-            T[j] = i;
-            j += 1
-        elif i > 0:
-            i = T[i];
-        else:
-            T[j] = 0;
-            j += 1
+def kmpTable(needle: str) -> List[str]:
 
-    i = 0; # iterate ndl
-    j = 0; # iterate hay
-    while i + j < h_len:
-        if hay[i + j] == ndl[i]:
+    # T[i] is the length of the longest proper prefix of ndl[:i+1]
+    # which is also the suffix of ndl[:i+1]
+    # T[0] is always 0
+    n_len = len(needle)
+    T = [0] * n_len
+    
+    ll = 0; # The length of the previous longest prefix suffix
+    i = 1; # Iterator of T
+    while i < n_len:
+        if needle[i] == needle[ll]:
+            # If current char matches ll-th char from beginning of needle,
+            # and because needle[:ll] == needle[i-ll:i],
+            # therefore needle[:ll+1] == needle[i-ll:i+1]
+            ll += 1
+            T[i] = ll;
             i += 1
-            if i == n_len:
-                return j
-        elif i > 0:
-            j = j + i - T[i]
-            i = T[i]
+        elif ll > 0:
+            # No match, try to reduce ll to see if matching
+            ll = T[ll-1];
         else:
-            i = 0;
-            j += 1;
+            # No match no matter what, move on
+            # T[i] = 0, by default
+            i += 1
+
+    return T
+
+def kmpSearch(haystack: str, needle: str) -> int:
+    h_len = len(haystack);
+    n_len = len(needle);
+    if n_len == 0:
+        return 0;
+    if n_len == 1:
+        return 0 if h_len > 0 and haystack[0] == needle[0] else -1
+
+    T = kmpTable(needle)
+
+    ni = 0; # Iterator of needle
+    hi = 0; # Iterator of haystack 
+    while ni + hi < h_len:
+        if haystack[ni + hi] == needle[ni]:
+            # Keep matching
+            ni += 1
+            if ni == n_len:
+                return hi
+        elif ni > 0:
+            # Mismatch, move both hi and ni
+            hi += ni - T[ni-1] 
+            ni = T[ni-1]
+        else:
+            # No match no matter what, reset
+            hi += 1;
+
     return -1
 
-hay = "aaa"
-ndl = "a"
-print strstr(hay,ndl)
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        return kmpSearch(haystack, needle)
+        
