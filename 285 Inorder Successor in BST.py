@@ -14,21 +14,19 @@ The successor of a node p is the node with the smallest key greater than p.val.
 
 class Solution:
     def inorderSuccessor(self, root: 'TreeNode', p: 'TreeNode') -> 'TreeNode':
-        # The successor of p is either its right node's leftmost node
+        # The successor of p is its right node's leftmost node
         if p.right:
-            t = p.right
-            while t.left:
-                t = t.left
-            return t
-        # Or its parent or grand-parent
-        else:
-            # Find p from root
-            t = root
+            p = p.right
+            while p.left:
+                p = p.left
+            return p
+        # Or its parent or ancestor
+        else:         
             successor = None
-            while t.val != p.val:
-                if t.val > p.val:
-                    successor = t
-                    t = t.left
+            while root.val != p.val:
+                if root.val > p.val:
+                    successor = root
+                    root = root.left
                 else:
-                    t = t.right      
+                    root = root.right      
             return successor
