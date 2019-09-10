@@ -1,11 +1,13 @@
-/*
+'''
 Number of Islands
 https://leetcode.com/problems/number-of-islands/
 
 Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
 An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.
 You may assume all four edges of the grid are all surrounded by water.
-*/
+
+DFS, same method to 130 Surrounded Regions 
+'''
 from typing import Tuple
 
 WATER = '0'
@@ -14,9 +16,6 @@ VISITED = '2'
 
 class Solution:
     def numIslands(self, board: List[List[str]]) -> int:
-        '''
-        Same DFS method as 130 Surrounded Regions
-        '''
         rowCount = len(board)
         if rowCount == 0:
             return 0
@@ -36,7 +35,7 @@ class Solution:
                     stack.append((x,y+1))
                 if y - 1 > -1 and board[x][y-1] == LAND:
                     stack.append((x,y-1))
-                    
+                  
         # Iterate though all lands
         islandsCount = 0
         for i in range(rowCount):
