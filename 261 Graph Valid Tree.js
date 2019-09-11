@@ -3,7 +3,7 @@
 Graph Valid Tree
 https://leetcode.com/problems/graph-valid-tree/
 
-Union-Find
+Union Find
 https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
 O(N + MlogN), M : edges
 */
