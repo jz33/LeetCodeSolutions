@@ -32,19 +32,14 @@ A solution set is:
 ]
 
 """
-def combinationSum(candidates, target):
-    """
-    :type candidates: List[int]
-    :type target: int
-    :rtype: List[List[int]]
-    """
-    # buf is a 3-D matrix. buf[i] contains all the combination sums to i
-    buf = [[] for _ in xrange(target+1)]
-    buf[0].append([])
-    
-    for c in candidates:
-        for i in xrange(c,target+1):
-            for ls in buf[i-c]:
-                buf[i].append(ls + [c])
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        buf = [[] for _ in range(target+1)]
+        buf[0].append([])
 
-    return buf[target]
+        for c in candidates:
+            for i in range(c,target+1):
+                for ls in buf[i-c]:
+                    buf[i].append(ls + [c])
+
+        return buf[target]
