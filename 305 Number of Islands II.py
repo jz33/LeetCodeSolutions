@@ -1,9 +1,7 @@
 '''
 Number of Islands II
 https://leetcode.com/problems/number-of-islands-ii/
-
-Union-Find
-https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
+Union Find, Matrix
 '''
 def getParent(tree,pt):
     '''
