@@ -67,6 +67,9 @@ class UnionFind:
                 
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        '''
+        Union Find
+        '''
         redundant = None
         graph = UnionFind(len(edges))
         for edge in edges:
