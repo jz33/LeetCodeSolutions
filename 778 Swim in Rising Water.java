@@ -52,6 +52,7 @@ class ElevationPoint implements Comparable<ElevationPoint> {
 class Solution {
 
     // A classic 2-D matrix traversal problem using priority queue
+    // BFS, Matrix, Priority Queue
     public int swimInWater(int[][] grid) {
         int rowCount = grid.length;
         if (rowCount == 0) {
