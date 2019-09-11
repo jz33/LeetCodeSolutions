@@ -30,7 +30,7 @@ from typing import Tuple
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         '''
-        Union-Find
+        Union Find
         Think email address as graph node, then parsing each account is to
         add nodes to graph.
         '''
@@ -80,10 +80,6 @@ class Solution:
             for root in roots:
                 graph[root] = maxDepthRoot
                      
-        # print(emailToIndex)
-        # print(indexToNameEmail)
-        # print(graph)
-
         rootTochilden = {} # root index : children node indexes
         for index, root in graph.items():
             maxRoot, _ = getRoot(root)
@@ -91,9 +87,7 @@ class Solution:
                 rootTochilden[maxRoot].append(index)
             else:
                 rootTochilden[maxRoot] = [index]
-                
-        # print(rootTochilden)
-        
+                        
         res = []
         for root, children in rootTochilden.items():
             name = indexToNameEmail[root][0]
