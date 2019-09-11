@@ -28,7 +28,8 @@ so the 0th and 2nd students are indirect friends. All of them are in the same fr
 class Solution:
     def findCircleNum(self, M: List[List[int]]) -> int:
         '''
-        A classic Union-Find implementation
+        A classic Union Find implementation
+        Simply count root or connected graph
         '''
         count = len(M)
         if count == 0:
