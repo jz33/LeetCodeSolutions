@@ -1,8 +1,6 @@
 '''
 Number of Connected Components in an Undirected Graph
 https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
-
-Union-Find
 '''
 def getParent(tree,i):
     '''
@@ -15,6 +13,7 @@ def getParent(tree,i):
     
 def countComponents(n, edges):
     """
+    A classic Union Find implementation
     :type n: int
     :type edges: List[List[int]]
     :rtype: int
