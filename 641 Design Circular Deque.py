@@ -15,7 +15,6 @@ getRear(): Gets the last item from Deque. If the deque is empty, return -1.
 isEmpty(): Checks whether Deque is empty or not. 
 isFull(): Checks whether Deque is full or not.
  
-
 Example:
 
 MyCircularDeque circularDeque = new MycircularDeque(3); // set the size to be 3
@@ -44,7 +43,6 @@ class MyCircularDeque:
         # tail index, when not full, should point to next available slot
         self.tail = 0;
 
-
     def insertFront(self, value: int) -> bool:
         """
         Adds an item at the front of Deque. Return true if the operation is successful.
@@ -57,7 +55,6 @@ class MyCircularDeque:
         self.head = head
         return True
 
-
     def insertLast(self, value: int) -> bool:
         """
         Adds an item at the rear of Deque. Return true if the operation is successful.
@@ -68,8 +65,7 @@ class MyCircularDeque:
         tail = self.tail
         self.arr[tail] = value
         self.tail = self.increase(tail)
-        return True
-        
+        return True        
 
     def deleteFront(self) -> bool:
         """
@@ -83,7 +79,6 @@ class MyCircularDeque:
         self.head = self.increase(head)
         return True 
         
-
     def deleteLast(self) -> bool:
         """
         Deletes an item from the rear of Deque. Return true if the operation is successful.
@@ -96,13 +91,11 @@ class MyCircularDeque:
         self.tail = tail
         return True
 
-
     def getFront(self) -> int:
         """
         Get the front item from the deque.
         """
         return self.arr[self.head] if not self.isEmpty() else -1
-
 
     def getRear(self) -> int:
         """
@@ -110,20 +103,17 @@ class MyCircularDeque:
         """
         return self.arr[self.decrease(self.tail)] if not self.isEmpty() else -1
 
-
     def isEmpty(self) -> bool:
         """
         Checks whether the circular deque is empty or not.
         """
         return self.size() == 0
 
-
     def isFull(self) -> bool:
         """
         Checks whether the circular deque is full or not.
         """
         return self.size() == self.capacity
-
 
     def size(self) -> int:
         head = self.head
@@ -141,7 +131,6 @@ class MyCircularDeque:
     def decrease(self, pointer: int) -> int:
         return (pointer - 1) % self.capacity
         
-
 
 # Your MyCircularDeque object will be instantiated and called as such:
 # obj = MyCircularDeque(k)
