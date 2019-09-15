@@ -20,7 +20,7 @@ from heapq import heappush, heappop
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         '''
-        Essentially, this is to ask the most overlapped interval count
+        Essentially, this is to ask the most overlapped interval count in any given time
         '''
         # Sort meetings from start time
         intervals.sort(key = lambda x : x[0])
