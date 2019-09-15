@@ -1,3 +1,7 @@
+/*
+173. Binary Search Tree Iterator
+https://leetcode.com/problems/binary-search-tree-iterator/
+*/
 /**
  * Definition for binary tree
  * public class TreeNode {
@@ -7,12 +11,11 @@
  *     TreeNode(int x) { val = x; }
  * }
  *
- * Solution is based on binary tree iterative in-order traverse
  */
 public class BSTIterator
 {
-    // The head node for in-order traverse, i.e.,
-    // the root of a new subtree
+    // Solution is based on binary tree iterative in-order traverse
+    // The head node for in-order traverse, i.e., the root of a new subtree (on the right)
     public TreeNode head;
     public java.util.Stack<TreeNode> visited;
     
