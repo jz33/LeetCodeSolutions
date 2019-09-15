@@ -59,7 +59,7 @@ int partition(int* a, int lt, int rt)
     return new_pivot;
 }
 /*
-Useless
+Not used here
 */
 void quicksort(int* a, int lt, int rt)
 {
