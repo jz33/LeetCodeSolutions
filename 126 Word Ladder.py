@@ -2,6 +2,44 @@
 126 Word Ladder
 https://leetcode.com/problems/word-ladder/
 
+Given two words (beginWord and endWord), and a dictionary's word list,
+find the length of shortest transformation sequence from beginWord to endWord, such that:
+
+Only one letter can be changed at a time.
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+
+Note:
+
+Return 0 if there is no such transformation sequence.
+All words have the same length.
+All words contain only lowercase alphabetic characters.
+You may assume no duplicates in the word list.
+You may assume beginWord and endWord are non-empty and are not the same.
+
+Example 1:
+
+Input:
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output: 5
+
+Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+return its length 5.
+
+Example 2:
+
+Input:
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log"]
+
+Output: 0
+
+Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.  
+'''
+'''
 Double-sided BFS
 Try to find the shorted solutions
 Input sample:
@@ -17,98 +55,58 @@ dot    lot           tree
 dog    log => exits /
   \   /
    cog => ended
-   
-This implementation exceeds time limit,
-but is right
 '''
-level = 2
-book = set()
-width = 0
+from collections import defaultdict
+from collections import deque
 
-def isLinked(src, tag):
-    global width
-    diff = 0
-    i = 0 
-    j = 0
-    while i < width and j < width and diff < 2:
-        if tag[i] != src[j]: diff += 1
-        i += 1
-        j += 1
-    return diff == 1
-    
-def iterate(upper,lower):
-    '''
-    @upper: set[node]
-    @lower: set[node]
-    '''
-    global level,book
-    
-    if len(upper & lower) > 0:
-        level -= 1 # connected !
-        return
+class Solution:
+    def bfs(self, book, dq, visited, visited_otherside):
+        word, level = dq.popleft()
         
-    if len(book) == 0: 
-        level = 0 #unconnected
-        return
-    
-    # iterate upper
-    newUpper = set()
-    for e in upper:
-        for b in book:
-            if isLinked(e,b):
-                newUpper.add(b)
+        for i in range(self.size):
+            genericWord = word[:i] + '*' + word[i+1:]
+            realWords = book.get(genericWord, [])
+            
+            for realWord in realWords:             
+                if realWord in visited_otherside:
+                    return level + visited_otherside[realWord]
                 
-    if len(newUpper) == 0:
-        level = 0 # unconnected
-        return
+                if realWord not in visited:
+                    dq.append((realWord, level+1))
+                    visited[realWord] = level+1
+                    
+        return None
     
-    print "newUpper: ", newUpper
-    
-    # iterate lower
-    newLower = set()
-    for e in lower:
-        for b in book:
-            if isLinked(e,b):
-                newLower.add(b)
-    
-    if len(newLower) == 0:
-        level = 0 # unconnected
-        return
-      
-    print "newLower: ", newLower
-                 
-    # clean $book
-    for e in newUpper:
-        book.discard(e)
-    for e in newLower:
-        book.discard(e)
-     
-    # clean current levels
-    upper.clear()
-    lower.clear()
-    
-    # next iteration
-    level += 2
-    iterate(newUpper,newLower)
-    
-def ladderLength(start, ended, wordDict):
-    global level,book,width
-    if len(wordDict) == 0: return 0
-    
-    for w in wordDict:
-        width = len(w)
-        break
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        if not beginWord or not endWord or not wordList or endWord not in wordList:
+            return 0
         
-    book = wordDict
-    
-    newUpper = set([start])
-    newLower = set([ended])
-    iterate(newUpper,newLower)
-    
-    return level
-    
-# test
-wordDict = set(["a","b","c"])
-start = "a"
-ended = "c"
-print ladderLength(start, ended, wordDict)
+        self.size = len(beginWord)
+           
+        # Pre-process wordList to book {generic word : [real word]}
+        # A read word is like "world", then a generic word can be "wo*ld"
+        book = defaultdict(list)
+        for word in wordList:
+            for i in range(self.size):
+                genericWord = word[:i] + '*' + word[i+1:]
+                book[genericWord].append(word)
+                     
+        # Double sides BFS
+        # Notice the visited words are the words that currently in queue,
+        # not the words ready to pop 
+        visited_top = {beginWord : 1} # word : level
+        # Need queue not stack to do Breadth-First search
+        dq_top = deque([(beginWord, 1)])
+        visited_bottom = {endWord : 1}
+        dq_bottom = deque([(endWord, 1)])
+ 
+        while len(dq_top) > 0 and len(dq_bottom) > 0:            
+            level = self.bfs(book, dq_top, visited_top, visited_bottom)
+            if level:
+                return level
+            
+            level = self.bfs(book, dq_bottom, visited_bottom, visited_top)
+            if level:
+                return level
+            
+        return 0
