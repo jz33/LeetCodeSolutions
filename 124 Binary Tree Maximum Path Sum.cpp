@@ -74,9 +74,9 @@ public:
             return 0;
         }
         
-        int totalSum = root->val;
-        
-        getBranchSumRecursively(root, &totalSum);     
+        int totalSum = root->val;   
+        getBranchSumRecursively(root, &totalSum);    
+           
         return totalSum;
     }
 };
