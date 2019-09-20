@@ -1,6 +1,9 @@
 /*
 173. Binary Search Tree Iterator
 https://leetcode.com/problems/binary-search-tree-iterator/
+
+Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+Calling next() will return the next smallest number in the BST.
 */
 /**
  * Definition for binary tree
@@ -14,7 +17,7 @@ https://leetcode.com/problems/binary-search-tree-iterator/
  */
 public class BSTIterator
 {
-    // Solution is based on binary tree iterative in-order traverse
+    // Solution is based on binary tree iterative in-order traversal
     // The head node for in-order traverse, i.e., the root of a new subtree (on the right)
     public TreeNode head;
     public java.util.Stack<TreeNode> visited;
@@ -51,9 +54,3 @@ public class BSTIterator
         return lastVisited.val;
     }
 }
-
-/**
- * Your BSTIterator will be called like this:
- * BSTIterator i = new BSTIterator(root);
- * while (i.hasNext()) v[f()] = i.next();
- */
