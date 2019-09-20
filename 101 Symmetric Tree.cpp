@@ -34,9 +34,7 @@ But the following [1,2,2,null,3,null,3] is not:
 #include <utility>
 
 class Solution {
-public:
-    
-    // An iterative method
+public:   
     bool isSymmetric(TreeNode* root)
     {
         if (!root)
