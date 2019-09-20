@@ -3,7 +3,6 @@
 https://leetcode.com/problems/recover-binary-search-tree/
 
 Two elements of a binary search tree (BST) are swapped by mistake.
-
 Recover the tree without changing its structure.
 
 Example 1:
@@ -41,6 +40,7 @@ Output: [2,1,4,null,null,3]
 1   4
    /
   3
+
 Follow up:
 
 A solution using O(n) space is pretty straight forward.
@@ -68,7 +68,7 @@ public:
         // therefore left > left + 1, right < right - 1
         TreeNode* left = nullptr;
         TreeNode* right = nullptr;
-        int howManyAbnormalNodesFound = 0;
+        int howManyAbnormalNodesFound = 0; // Should found 2
         
         std::stack<TreeNode*> stack;
         TreeNode* curr = root; // current node
