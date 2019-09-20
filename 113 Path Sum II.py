@@ -24,6 +24,7 @@ Return:
    [5,8,4,5]
 ]
 '''
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -38,10 +39,11 @@ class Solution:
     def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
         if not root:
             return []
-        
-        # Solution based on post-order traversal
+      
         pool = []
-        stack = [[[root], root.val]] # [(path from root, sum]
+            
+        # Cache node path from root and their sum
+        stack = [[[root], root.val]] 
         while stack:
             path, s = stack.pop()
             n = path[-1] # last node
