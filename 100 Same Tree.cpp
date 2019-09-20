@@ -3,7 +3,6 @@
 https://leetcode.com/problems/same-tree/
 
 Given two binary trees, write a function to check if they are the same or not.
-
 Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
 
 Example 1:
@@ -50,7 +49,6 @@ Output: false
 
 class Solution {
 public:   
-    // An iterative method
     bool isSameTree(TreeNode* p, TreeNode* q)
     {
         std::queue<std::pair<TreeNode*, TreeNode*>> queue;
@@ -83,7 +81,7 @@ public:
     }
 };
 
-// Recursive (C code)
+// Old recursive method (C code)
 bool isSameTree(struc TreeNode* p, struc TreeNode* q) {
     if(p == 0 && q == 0) return 1;
     if(p == 0 || q == 0) return 0;
