@@ -1,42 +1,50 @@
-import random,sys
 '''
 155 Min Stack
-https://oj.leetcode.com/problems/min-stack/
+https://leetcode.com/problems/min-stack/
 
-Use 2 stacks
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+getMin() -- Retrieve the minimum element in the stack.
+ 
+Example:
+
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> Returns -3.
+minStack.pop();
+minStack.top();      --> Returns 0.
+minStack.getMin();   --> Returns -2.
 '''
 class MinStack:
-    # initialize your data structure here.
+
     def __init__(self):
-        self.contents = []
-        self.minimums = []
-
-    # @param x, an integer
-    # @return an integer
-    def push(self, e):
-        self.contents.append(e)
-        if len(self.minimums) == 0 or e <= self.minimums[-1]:
-            self.minimums.append(e)
-
-    # @return nothing
-    def pop(self):
-        if len(self.contents) == 0:
-            raise Exception("len(self.contents) == 0")
+        """
+        initialize your data structure here.
+        """
+        self.data = []
+        self.mins = [] # mins is descending array
         
-        e = self.contents.pop()
-        if e == self.minimums[-1]:
-            self.minimums.pop()
-        return e
-    
-    # @return an integer
-    def top(self):
-        if len(self.contents) == 0:
-            raise Exception("len(self.contents) == 0")      
-        return self.contents[-1]
-
-    # @return an integer
-    def getMin(self):
-        if len(self.minimums) == 0:
-            raise Exception("len(self.minimums) == 0")   
-        return self.minimums[-1]
+    def push(self, x: int) -> None:
+        self.data.append(x)
         
+        # Build mins as desceding array.
+        # Notice the equal case
+        if not self.mins or x <= self.mins[-1]:
+            self.mins.append(x)
+
+    def pop(self) -> None:
+        r = self.data.pop();
+        if self.mins and r == self.mins[-1]:
+            self.mins.pop()
+        return r
+
+    def top(self) -> int:
+        return self.data[-1]
+
+    def getMin(self) -> int:
+        return self.mins[-1]
