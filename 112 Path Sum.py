@@ -36,8 +36,8 @@ class Solution:
         if not root:
             return False
         
-        # Solution based on post-order traversal
-        stack = [(root, root.val)] # [(node, sum from root)]
+        # [(node, sum from root)]
+        stack = [(root, root.val)] 
         while stack:
             n, s = stack.pop()
             if self.isLeaf(n):
