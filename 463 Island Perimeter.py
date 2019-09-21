@@ -27,6 +27,7 @@ Output: 10
 '''
 from collections import deque
 
+# Method 1, BFS
 class Solution:
     def islandPerimeter(self, grid: List[List[int]]) -> int:
         rowCount = len(grid)
@@ -73,3 +74,29 @@ class Solution:
   
                         perimeter += added                            
         return perimeter
+   
+   
+ # Method 2, mathematical
+class Solution:
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        rowCount = len(grid)
+        if not rowCount:
+            return 0
+        colCount = len(grid[0])
+        if not colCount:
+            return 0
+     
+        perimeter = 0
+        for i in range(rowCount):
+            for j in range(colCount):
+                if grid[i][j] == 1:
+                    if i == 0 or grid[i-1][j] != 1:
+                        perimeter += 1 # upper
+                    if i == rowCount - 1 or grid[i+1][j] != 1:
+                        perimeter += 1 # lower  
+                    if j == 0 or grid[i][j-1] != 1:
+                        perimeter += 1 # left
+                    if j == colCount - 1 or grid[i][j+1] != 1:
+                        perimeter += 1 # right
+        
+        return perimeter    
