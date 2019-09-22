@@ -1,21 +1,35 @@
-def intersect(nums1, nums2):
-    """
-    :type nums1: List[int]
-    :type nums2: List[int]
-    :rtype: List[int]
-    """
-    if len(nums1) > len(nums2):
-        nums1,nums2 = nums2,nums1
-    ref = {}
-    for e in nums1:
-        ref[e] = ref.get(e,0)+1
-    res = []
-    for e in nums2:
-        if e in ref:
-            c = ref[e]
-            if c == 1:
-                del ref[e]
-            else:
-                ref[e] = c - 1
-            res.append(e)
-    return res
+'''
+350. Intersection of Two Arrays II
+
+Given two arrays, write a function to compute their intersection.
+
+Example 1:
+
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2,2]
+
+Example 2:
+
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [4,9]
+
+Note:
+
+Each element in the result should appear as many times as it shows in both arrays.
+The result can be in any order.
+'''
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        book1 = {}
+        for e in nums1:
+            book1[e] = book1.get(e,0) + 1
+    
+        intersection = []
+        for e in nums2:
+            # Avoid deletion from book1
+            count = book1.get(e, 0)
+            if count > 0:
+                intersection.append(e)
+                book1[e] -= 1
+                
+        return intersection
