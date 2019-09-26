@@ -21,14 +21,15 @@ Output: [[1,2,null,4],[6],[7]]
 #         self.right = None
 
 class Solution:
-    def delNodes(self, root: TreeNode, to_delete: List[int]) -> List[TreeNode]:
-        # Level order travsersal
+    def delNodes(self, root: TreeNode, to_delete: List[int]) -> List[TreeNode]:       
         if not root:
             return []
         
         to_delete_set = set(to_delete)
-        stack = [(root, None)] # [(Node, parent node)], if parent is none, it is deleted
+        stack = [(root, None)] # [(Node, parent node)], if parent node is none, it is deleted
         newRoots = []
+        
+        # Level order travsersal
         while stack:
             node, parent = stack.pop()
             
