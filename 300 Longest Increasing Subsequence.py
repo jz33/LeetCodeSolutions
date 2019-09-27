@@ -1,90 +1,59 @@
-
 '''
-300 Longest Increasing Subsequence
+300. Longest Increasing Subsequence
 https://leetcode.com/problems/longest-increasing-subsequence/
+
+Given an unsorted array of integers, find the length of longest increasing subsequence.
+
+Example:
+
+Input: [10,9,2,5,3,7,101,18]
+Output: 4 
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+
+Note:
+
+There may be more than one LIS combination, it is only necessary for you to return the length.
+Your algorithm should run in O(n2) complexity.
+Follow up: Could you improve it to O(n log n) time complexity?
 '''
-def longestIncreasingSubsequenceSize(arr):
-    '''
-    @return: max length
-    '''
-    length = len(arr)
-    seq = []
-
-    def ceiling(tag):
-        '''
-        Find the leftmost element in sorted array
-        that is larger or equal to tag
-        @return : size of longsest
-        '''
-        lt = 0
-        rt = len(seq) - 1
-        while lt <= rt:
-            mid = (lt + rt >> 1);
-            v = seq[mid];
-            if v == tag: return -1;
-            elif v < tag: lt = mid + 1;
-            else: rt = mid - 1;
-        return lt;
-
-    for e in arr:
-        if len(seq) == 0 or seq[-1] < e:              
-            seq.append(e)
-        else:
-            j = ceiling(e);
-            if j > -1: seq[j] = e
-    return len(seq)
-
-def longestIncreasingSubsequence(arr):
-    '''
-    https://en.wikipedia.org/wiki/Longest_increasing_subsequence
-    @return: actual subarray
-    '''
-    length = len(arr)
-    seq = [] # index buffer
-    par = [None] * length # parent indexes
-
-    def ceiling(tag):
-        '''
-        Find the leftmost element in sorted array
-        that is larger or equal to tag
-        @return : size of longsest
-        '''
-        lt = 0
-        rt = len(seq) - 1
-        while lt <= rt:
-            mid = (lt + rt >> 1);
-            v = arr[seq[mid]];
-            if v == tag: return -1;
-            elif v < tag: lt = mid + 1;
-            else: rt = mid - 1;
-        return lt;
-
-    for i,e in enumerate(arr):
-        if len(seq) == 0:
-            par[i] = -1           
-            seq.append(i)
-        elif arr[seq[-1]] < e:
-            par[i] = seq[-1]
-            seq.append(i)
-        else:
-            j = ceiling(e)
-            '''
-            j == 0 do not need to update parent pointer
-            '''
-            if j > -1:
-                if j > 0: par[i] = seq[j-1]
-                seq[j] = i
-
-    res = [None] * len(seq)
-    j = seq[-1]
-    for i in xrange(len(seq)-1,-1,-1):
-        res[i] = arr[j]
-        j = par[j]
-    return res
-
-# arr = [2,6,3,4,1,2,9,5,8]
-arr = [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
-size = longestIncreasingSubsequenceSize(arr)
-print size
-res = longestIncreasingSubsequence(arr)
-print res
+class Solution:
+    def getInsertionPoint(self, arr: List[int], tag: int) -> int:
+        # Get insertion point of tag in arr who is ascendingly sorted       
+        left = 0
+        right = len(arr) - 1       
+        while left <= right:
+            mid = left + ((right - left) >> 1)
+            if arr[mid] == tag:
+                return mid
+            
+            if mid == left:
+                # Bottom case, left == right or left + 1 == right
+                if tag < arr[left]:
+                    return left
+                elif tag > arr[left] and tag <= arr[right]:
+                    return right
+                else: # tag > arr[right]
+                    return right + 1
+            
+            if arr[mid] < tag:
+                left = mid + 1
+            else:
+                right = mid - 1
+        
+        # Reachable when array is empty
+        return 0
+    
+    
+    def lengthOfLIS(self, nums: List[int]) -> int:        
+        # arr is ascending
+        arr = []
+        for n in nums:
+            ip = self.getInsertionPoint(arr, n)
+            if ip > len(arr) - 1:
+                # If n is bigger than everyone in arr, append it
+                arr.append(n)
+            else:
+                # Else, replace arr[ip] with n, because n <= arr[ip]
+                # And we want to be greedy the let arr[i] smaller
+                arr[ip] = n
+        return len(arr)
