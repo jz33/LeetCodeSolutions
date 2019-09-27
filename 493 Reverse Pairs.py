@@ -15,162 +15,81 @@ Example2:
 Input: [2,4,3,5,1]
 Output: 3
 '''
-class SegmentTree:
-    def __init__(self, nums: List[int]):
-        self.length = len(nums)
-        self.tree = []
-        if self.length:
-            self.buildTree(nums)
+from copy import deepcopy
 
-    def buildTree(self, nums: List[int]):
-        # The sizeo of segment tree is double length - 1
-        # For example, array [8,9,2,4,5,7]
-        # Tree is:
-        # [35,18,17,6,12,8,9,2,4,5,7]
-        #          35
-        #       /      \
-        #      18      17
-        #    /    \    / \
-        #   6     12  8   9
-        #  / \    / \
-        # 2   4  5   7
-        tree = [None] * (self.length * 2 - 1);
-        
-        # Build leaves
-        for i, e in enumerate(nums):
-            tree[self.getLeaf(i)] = e
-        
-        # Build inners
-        for i in range(self.length - 2, -1, -1):
-            tree[i] = tree[self.getLeft(i)] + tree[self.getRight(i)]
-
-        self.tree = tree
-
-    def increase(self, i: int, val: int):
-        leafIndex = self.getLeaf(i)
-        leafValue = self.tree[leafIndex] 
-        self.update(i, leafValue + val)
-        
-    def update(self, i: int, val: int):
-        tree = self.tree
-
-        # Update leaf
-        leafIndex = self.getLeaf(i)
-        if tree[leafIndex] == val:
-            return
-
-        tree[leafIndex] = val
-
-        # Update parents
-        i = leafIndex
-        while i != 0:
-            p = self.getParent(i)
-            tree[p] = tree[self.getLeft(p)] + tree[self.getRight(p)]
-            i = p
-        
-    def sumRange(self, left: int, right: int) -> int:
-        if left > right:
-            return 0
-        
-        tree = self.tree
-
-        left = self.getLeaf(left)
-        right = self.getLeaf(right)
-        leavesSum = 0
-
-        # From the 2 leaves, go up
-        while left <= right:
-            if left == right:
-                leavesSum += tree[left]
-                break
-
-            # Add to sum if left is on right of its parent
-            # Or right is on left of its parent
-            if self.isRightChild(left):
-                leavesSum += tree[left]
-                left += 1
-    
-            if self.isLeftChild(right):
-                leavesSum += tree[right]
-                right -= 1
-
-            left = self.getParent(left)
-            right = self.getParent(right)
-
-        return leavesSum
-
-    # Index helpers
-    def getLeft(self, i):
-        '''
-        Get left child index of i
-        '''
-        return (i << 1) + 1
-
-    def getRight(self, i):
-        '''
-        Get right child index of i
-        '''
-        return (i + 1) << 1
-
-    def getParent(self, i):
-        '''
-        Get parent index of i
-        If i is root or less then 0, return i
-        '''
-        return ((i - 1) >> 1) if i > 0 else i
-
-    def isLeftChild(self, i):
-        '''
-        Whether i is left child of its parent node
-        '''
-        return (i & 1) == 1
-
-    def isRightChild(self, i):
-        '''
-        Whether i is right child of its parent node
-        '''
-        return (i & 1) == 0
-
-    def getLeaf(self, i):
-        '''
-        The i is original array index, get its leaf node index
-        '''
-        return self.length - 1 + i
-    
 class Solution:
-    def reversePairs(self, nums: List[int]) -> int:        
-        # Distinct nums
-        distincts = list(sorted(set(nums)))
+    def upperBound(self, arr, tag, left, right)->int:
+        '''
+        Find the largest index i of arr where arr[i] * 2 < tag
+        '''
+        bound = None
+        while left <= right:
+            mid = left + ((right - left) >> 1)
+            val = arr[mid]
+
+            if val * 2 < tag:
+                bound = mid
+                left = mid + 1
+            else:
+                right = mid - 1
+        return bound
+
+    def merge(self, arr, buf, lt, mid, rt) -> int:
+        '''
+        Classic merge method for mergesort
         
-        def getRightBound(e : int) -> int:
-            '''
-            Get the largest index from distincts which
-            meet this questions requirement
-            Using binary search
-            '''
-            left = 0
-            right = len(distincts) - 1
+        Merge from back (larger)
+        lt     mid      rt
+        0 1 2 3 4 5 6 7
+        lt     mid    rt
+        0 1 2 3 4 5 6
+        
+        left branch is arr[lt:mid]
+        right branch is arr[mid:rt]
+        '''
+
+        # Compute inversion first
+        inv = 0
+        bound = rt - 1
+        for i in range(mid-1, lt-1, -1): # iterate left branch
+            bound = self.upperBound(arr, arr[i], mid, bound) # find bound in right branch
+            if bound is None:
+                break
+            inv += bound - mid + 1
+        
+        # Do regular merge
+        i = mid - 1
+        j = rt - 1
+        k = rt - 1
+        while i >= lt and j >= mid:
+            if arr[i] <= arr[j]:
+                buf[k] = arr[j]
+                k -= 1
+                j -= 1
+            else:
+                buf[k] = arr[i]
+                k -= 1
+                i -= 1
+                
+        while j >= mid:
+            buf[k] = arr[j]
+            k -= 1
+            j -= 1
             
-            while left <= right:
-                mid = left + ((right - left) >> 1)
-                if distincts[mid] * 2 < e:
-                    left = mid + 1
-                else:
-                    right = mid - 1
-            
-            # right can be -1
-            # Since left > right now, left must be invalid
-            return right 
-        
-        valueToIndex = {v : i for i, v in enumerate(distincts)}
-        
-        # Segment tree is used for count only
-        tree = SegmentTree([0] * len(distincts))        
-        res = 0
-        for i in range(len(nums)-1, -1, -1):
-            e = nums[i]
-            j = getRightBound(e) 
-            if j >= 0:
-                res += tree.sumRange(0, j)
-            tree.increase(valueToIndex[e], 1)
-        return res
+        arr[max(lt, i):rt] = buf[max(lt, i):rt]
+        return inv
+ 
+    def reversePairs(self, arr: List[int]) -> int:
+        # Use mergesort
+        size = len(arr)
+        buf = deepcopy(arr)
+        inv = 0
+        bound = (size << 1)
+        stride = 2 # stride is half the size of array when calling merge    
+        while stride < bound:
+            for left in range(0, size, stride):
+                mid = min(left + (stride >> 1), size);
+                right = min(left + stride, size);
+                inv += self.merge(arr,buf,left,mid,right);
+            stride <<= 1
+        return inv
