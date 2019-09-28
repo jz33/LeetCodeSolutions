@@ -14,12 +14,13 @@ Explanation:
 The repeated subarray with maximum length is [3, 2, 1]
 '''
 class Solution:
+    # Aka, longest common substring
+    # Try compare to longest common subsequence problem
     def findLength(self, A: List[int], B: List[int]) -> int:
         len_A = len(A)
         len_B = len(B)
         
-        # buf[i][j] means the longest commong subarray which ends on 
-        # A[i] and B[j]
+        # buf[i][j] means the longest commong subarray of A[:i] and B[:i]
         buf = [[0] * (len_B+1) for _ in range(len_A+1)]
         
         maxLength = 0
