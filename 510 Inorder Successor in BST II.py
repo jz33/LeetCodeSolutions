@@ -17,7 +17,7 @@ class Node:
 """
 class Solution:
     def inorderSuccessor(self, p: 'Node') -> 'Node':
-        # The successor of p is either its right node's leftmost node
+        # The next node of p is either its right node's leftmost node
         if p.right:
             p = p.right
             while p.left:
