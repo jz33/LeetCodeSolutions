@@ -54,10 +54,9 @@ def isMatch(txt: str, pat: str) -> bool:
     New DP iterative method
     '''
     # dp[i][j] means whether pat[i:] matches txt[j:]
-    # Notice i and j can be length of the string, which
-    # represents the empty txt or pat       
     dp = [[False] * (len(txt) + 1) for _ in range(len(pat) + 1)]
 
+    # Iterate from back, very special...
     for i in range(len(pat), -1, -1):
         for j in range(len(txt), -1, -1):
             matchCurrrent = i < len(pat) and j < len(txt) and (pat[i] == txt[j] or pat[i] == '.')
@@ -66,8 +65,13 @@ def isMatch(txt: str, pat: str) -> bool:
                 # Of course, empty txt matches empty pat
                 dp[i][j] = True
 
-            elif i + 1 < len(pat) and pat[i+1] == '*':
-                # If next pat is '*', skip it or assume it matches more than 1 txt char
+            elif i+1 < len(pat) and pat[i+1] == '*':
+                # If next pat is '*', 2 cases when dp[i][j] can be true:
+                # 1. Skip it, which means * at pat[i+1] nulldify pat[i], and so pat[i+2:] should match txt[j:]
+                # 2. If pat[i:] matches txt[j+1:], which means char pat[i] matches char txt[j+1],
+                # then if pat[i] matches txt[j], we have pat[i] == txt[j] == txt[j+1], and * at pat[i+1] can copy
+                # this char (pat[i+1] can be replaces by that char), and so pat[i:] and txt[i:] can match.
+                # Notice dp[i][j] cannot be inferredd based on dp[i+1][j+1] because '*' in front is meaningless
                 dp[i][j] = dp[i+2][j] or matchCurrrent and dp[i][j+1]
 
             else:
