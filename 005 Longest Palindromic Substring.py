@@ -1,3 +1,19 @@
+'''
+5. Longest Palindromic Substring
+https://leetcode.com/problems/longest-palindromic-substring/
+
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+Example 2:
+
+Input: "cbbd"
+Output: "bb"
+'''
 def longestPalindrome(s: str) -> str:
     '''
     A simple DP approach
@@ -40,3 +56,31 @@ def longestPalindrome(s: str) -> str:
                 foundInThisSize = True
 
     return s[resLeft : resRight+1]
+
+
+class Solution:
+    '''
+    Regular O(n^2) way
+    '''
+    def extend(self, s: List[str], i:int, j: int):
+        '''
+        Get left and right index (exclusive) expaned from i, j
+        '''
+        while i > -1 and j < len(s) and s[i] == s[j]:
+            i -= 1
+            j += 1
+        return s[i+1:j]    
+    
+    def longestPalindrome(self, s: str) -> str:
+        # Simple O(N^2) solution
+        # Result, use list first
+        res = []
+        ls = list(s)
+        for i in range(len(ls)):
+            r0 = self.extend(ls,i,i)
+            if len(r0) > len(res):
+                res = r0
+            r1 = self.extend(ls,i,i+1)
+            if len(r1) > len(res):
+                res = r1
+        return ''.join(res)
