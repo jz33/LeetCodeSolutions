@@ -30,10 +30,10 @@ A solution set is:
   [2,3,3],
   [3,5]
 ]
-
 """
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        # buf[i] contains all the combinations whore are all sum to i
         buf = [[] for _ in range(target+1)]
         buf[0].append([])
 
