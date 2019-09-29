@@ -69,13 +69,15 @@ Output: false
                     dp[i][j] = True
 
                 elif i < len(pat) and pat[i] == '*':
-                    # If current pat is '*', either is matches 0 character,
-                    # Or let it matches current txt. Notice dp[i][j+2] is True,
-                    # dp[i][j] is also True, but it is covered by dp[i][j+1]
+                    # If current pat is '*', 2 cases when dp[i][j] can be true:
+                    # 1. Skip it, which means * matches nothing, and so pat[i+1:] must match txt[i:]
+                    # 2. If pat[i:] matches txt[j+1:], since * matches anything, and it can be extended
+                    # to the char on txt[j], and therefore pat[i:] can match txt[j:]
+                    # This is the diffrent part to Regular Expression Matching
                     dp[i][j] = dp[i+1][j] or (j < len(txt) and dp[i][j+1])
 
                 else:
-                    # If next pat is not '*' or pat is empty, matches current and move both 1 step
+                    # If current pat is not '*' or pat is empty, matches current and move both 1 step
                     dp[i][j] = matchCurrrent and dp[i+1][j+1]
 
         return dp[0][0]
