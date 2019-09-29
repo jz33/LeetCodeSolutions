@@ -15,6 +15,7 @@ Input:
 00000
 
 Output: 1
+
 Example 2:
 
 Input:
@@ -25,40 +26,43 @@ Input:
 
 Output: 3
 '''
-from typing import Tuple
-
-WATER = '0'
-LAND = '1'
-VISITED = '2'
-
 class Solution:
-    def numIslands(self, board: List[List[str]]) -> int:
-        rowCount = len(board)
+    def numIslands(self, grid: List[List[str]]) -> int:
+        rowCount = len(grid)
         if rowCount == 0:
             return 0
         
-        colCount = len(board[0])
+        colCount = len(grid[0])
+        if colCount == 0:
+            return 0
         
-        def mark(cell: Tuple[int, int]):
-            stack = [cell]
-            while stack:
+        LAND = '1'
+        INQUEUE = '2'
+        POPED = '3'
+        
+        def mark(i: int, j: int):
+            stack = [(i,j)]
+            while len(stack) > 0:
                 x, y = stack.pop()
-                board[x][y] = VISITED
-                if x + 1 <  rowCount and board[x+1][y] == LAND:
+                grid[x][y] = POPED
+                if x+1 < rowCount and grid[x+1][y] == LAND:
                     stack.append((x+1,y))
-                if x - 1 > -1 and board[x-1][y] == LAND:
+                    grid[x+1][y] = INQUEUE # Mark here to avoid duplicates in queue!
+                if x-1 > -1 and grid[x-1][y] == LAND:
                     stack.append((x-1,y))
-                if y + 1 < colCount and board[x][y+1] == LAND:
+                    grid[x-1][y] = INQUEUE
+                if y+1 < colCount and grid[x][y+1] == LAND:
                     stack.append((x,y+1))
-                if y - 1 > -1 and board[x][y-1] == LAND:
+                    grid[x][y+1] = INQUEUE
+                if y-1 > -1 and grid[x][y-1] == LAND:
                     stack.append((x,y-1))
-                  
-        # Iterate though all lands
-        islandsCount = 0
+                    grid[x][y-1] = INQUEUE
+                 
+        res = 0
         for i in range(rowCount):
             for j in range(colCount):
-                if board[i][j] == LAND:
-                    mark((i,j))
-                    islandsCount += 1
+                if grid[i][j] == LAND:
+                    res += 1
+                    mark(i,j)
         
-        return islandsCount
+        return res
