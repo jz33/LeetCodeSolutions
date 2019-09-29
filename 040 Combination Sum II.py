@@ -82,5 +82,4 @@ class Solution:
                             # If count of c is j, then this arr is just generated from previous iteration of 2nd for loop, which is exactly what we need here.
                             if ct == j:
                                 buf[t].append(arr + [c])
-
             return buf[target]
