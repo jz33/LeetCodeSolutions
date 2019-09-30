@@ -1,74 +1,48 @@
 '''
-139 Word Break
-https://oj.leetcode.com/problems/word-break/
+139. Word Break
+https://leetcode.com/problems/word-break/
+
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty words,
+determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+Note:
+
+The same word in the dictionary may be reused multiple times in the segmentation.
+You may assume the dictionary does not contain duplicate words.
+
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet", "code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple", "pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+             Note that you are allowed to reuse a dictionary word.
+             
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: false
 '''
-'''
-A recursive approach with prefix check
-'''
-def isWordBreakRec(tag, book):
-    if tag == '': return True
-    
-    # At least 1 prefix is in dict
-    i = len(tag) - 1
-    while i > -1:
-        if tag[i:] in book: break
-        i -= 1
-            
-    # Not found        
-    if i == -1:return False
-    
-    # Loop each prefix
-    i = 0
-    while i < len(tag)-1:
-        prefix = tag[:i+1]
-        if prefix in book:
-            suffix = tag[i+1:]
-            if isWordBreakRec(suffix,book) == True:
-                return True
-        i += 1
-    return tag in book
-    
-'''
-A DP approach
-'''
-def isWordBreak(tag,book):
-    size = len(tag)
-    if size == 0: return True
-    if tag in book: return True # optional
-    
-    # 'buf[i]' indicates whether tag[0:i] is work break
-    buf = [False]*(size+1)
-    buf[0] = True
-    for i in xrange(1,size):
-        if buf[i] == False and tag[:i] in book:
-            buf[i] = True
-        if buf[i] == True:
-             for j in xrange(i+1,size+1):
-                if buf[j] == False and tag[i:j] in book:
-                    buf[j] = True
-        if buf[size] is True:
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        if s in wordDict:
             return True
-    else:
-        return False
-
-def test(tag,book):
-    print isWordBreakRec(tag,book), ' ', isWordBreak(tag,book)
-
-def main():
-    book = set(["mobile","samsung","sam","sung","man","mango",\
-    "icecream","and","go","i","like","ice","cream"])
-    
-    cases = [\
-        'ilikesamsung',\
-        'iiiiiiii',\
-        '',\
-        'ilikelikeimangoiii',\
-        'samsungandmango',\
-        'samsungandmangok',\
-        ]
         
-    for tag in cases:
-        print isWordBreakRec(tag,book), ' ', isWordBreak(tag,book)
-      
-if __name__ == "__main__":
-    main()
+        size = len(s)
+        
+        # dp [i] means whether s[:i] is composable
+        dp = [False] * (size + 1)
+        dp[0] = True
+        
+        for i in range(1, size+1):
+            for j in range(i):
+                dp[i] = dp[j] and s[j:i] in wordDict
+                if dp[i]:
+                    break
+        
+        return dp[-1]
