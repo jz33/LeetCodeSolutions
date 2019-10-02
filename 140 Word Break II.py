@@ -3,6 +3,9 @@ Word Break II
 https://leetcode.com/problems/word-break-ii/
 '''
 def wordBreakRec(s, src):
+    '''
+    Accepted
+    '''
     ret = [s] if s in src else []
     # At least 1 suffix is in dict
     for i in xrange(len(s)-1,-1,-1):
@@ -19,45 +22,28 @@ def wordBreakRec(s, src):
                 ret.append(prefix + ' ' + t)
     return ret
 
-def wordBreakFromTail(s,src):
+class Solution:
     '''
-    Best DP approach from tail
-    'ref' contains all word breaks in s[k:]
+    Time limit Exceeded
     '''
-    ref = {len(s) : ['']}
-    for i in xrange(len(s)-1,-1,-1):
-        values = []
-        for j in xrange(i+1, len(s)+1):
-            sub = s[i:j]
-            if sub in src:
-                for suffix in ref.get(j,[]):
-                    if suffix == '':
-                        values.append(sub)
-                    else:
-                        values.append(sub + ' ' + suffix)
-        ref[i] = values
-    return ref.get(0,[])
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        size = len(s)
+        book = dict(zip(wordDict, range(len(wordDict)))) # word : index
 
-def wordBreak2(s,src):
-    '''
-    A DP approach from head
-    'ref' contains all word breaks in s[:k]
-    '''
-    ref = {0 : ['']}
-    for i in xrange(len(s)):
-        for j in xrange(i+1, len(s)+1):
-            values = ref.get(j,[])
-            sub = s[i:j]
-            if sub in src:
-                for prefix in ref.get(i,[]):
-                    if prefix == '':
-                        values.append(sub)
-                    else:
-                        values.append(prefix + ' ' + sub)
-            ref[j] = values
-    return ref.get(len(s),[])
+        # dp[i] contains all possible paths for s[:i]
+        dp = [[] for _ in range(size+1)]
+        dp[0].append([])
+        
+        for i in range(1, size+1):
+            for j in range(i):
+                # Build dp[i] based on dp[j] and s[j:i]
+                for path in dp[j]:
+                    index = book.get(s[j:i])
+                    if index is not None:
+                        # Only append index to save time
+                        dp[i].append(path + [index])
 
-s = 'catsanddog'
-ref = set(["cat", "cats", "and", "sand", "dog"])
-r = wordBreakRec(s,ref)
-for row in r: print row
+        res = []
+        for path in dp[-1]:
+            res.append(' '.join([wordDict[index] for index in path]))
+        return res
