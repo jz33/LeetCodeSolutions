@@ -1,33 +1,32 @@
 '''
-Product of Array Except Self
-https://leetcode.com/problems/product-of-array-except-self/
+238. Product of Array Except Self
+Given an array nums of n integers where n > 1,
+return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+
+Example:
+
+Input:  [1,2,3,4]
+Output: [24,12,8,6]
+Note: Please solve it without division and in O(n).
 '''
-def productExceptSelf(nums):
-    if len(nums) < 2: return nums
-    
-    ret = [0 for i in xrange(len(nums))]
-
-    '''
-    From left to right, construct left-prodcut
-    array, i.e., ret[i] = product(nums[0]...nums[i])
-    '''
-    ret[0] = nums[0]
-    for i in xrange(1,len(nums)-1):
-        ret[i] = nums[i] * ret[i-1]
-
-    # The right product beyond current index
-    rt = 1
-
-    '''
-    From right to left, ret[i] = left * right
-    '''
-    for i in xrange(len(nums) - 1, 0, -1):
-        ret[i] = ret[i-1] * rt
-        rt *= nums[i]
-    ret[0] = rt   
-
-    return ret
- 
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        size = len(nums)
+        if not size:
+            return []
         
-nums = [1,2,3,4]
-print productExceptSelf(nums)
+        res = [1] * size
+        
+        # 1. Let res[i] be the product of nums[:i]
+        for i in range(1,size):
+            res[i] = res[i-1] * nums[i-1]
+                
+        # 2. Then, res[-1] is already the answer
+        # From right to left, res[i] = res[i] * right,
+        # where right is product of nums[i+1:]
+        right = 1
+        for i in range(size-1, -1 ,-1):
+            res[i] = res[i] * right
+            right *= nums[i]
+                
+        return res
