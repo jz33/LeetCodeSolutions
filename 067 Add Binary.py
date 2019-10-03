@@ -16,10 +16,10 @@ Output: "10101"
 '''
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        res = [] # list of chars
+        res = [] # list of char bit
         i = len(a) - 1
         j = len(b) - 1
-        acc = 0 # accumulate on 1 bit
+        acc = 0 # carry on 1 bit
         while i > -1 or j > -1 or acc > 0:
             left = ord(a[i]) - ord('0') if i > -1 else 0
             right = ord(b[j]) - ord('0') if j > -1 else 0
@@ -37,6 +37,5 @@ class Solution:
                 res.append('1')
                 acc = 1
             i -= 1
-            j -= 1
-                
+            j -= 1               
         return ''.join(res[::-1])          
