@@ -1,30 +1,52 @@
 '''
-Longest Substring with At Most K Distinct Characters My Submissions QuestionEditorial Solution
+340. Longest Substring with At Most K Distinct Characters
 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+
+Given a string, find the length of the longest substring T that contains at most k distinct characters.
+
+Example 1:
+
+Input: s = "eceba", k = 2
+Output: 3
+Explanation: T is "ece" which its length is 3.
+
+Example 2:
+
+Input: s = "aa", k = 1
+Output: 2
+Explanation: T is "aa" which its length is 2.
 '''
-def lengthOfLongestSubstringKDistinct(s, k):
-    """
-    :type s: str
-    :type k: int
-    :rtype: int
-    """
-    if len(s) <= k: return len(s)
-    j = 0
-    maxSize = k
-    #maxStr = ''
-    ref = {}
-    for i,c in enumerate(s):
-        ref[c] = ref.get(c,0)+1
-        while len(ref) > k:
-            jc = s[j]
-            v = ref.get(jc)
-            if v == 1:
-                del ref[jc]
-            else:
-                ref[jc] = v - 1
-            j += 1
-        if i + 1 - j > maxSize:
-            maxSize = i + 1 - j
-            #maxStr = s[j:i+1]
-    #print maxStr
-    return maxSize
+from collections import Counter
+
+class Solution:
+    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
+        if k == 0:
+            return 0
+        
+        if len(s) <= k:
+            return len(s)
+        
+        # Result
+        maxSize = k
+        
+        # Sliding window caches
+        left = 0
+        book = Counter()
+        distinctCount = 0
+        
+        for i, c in enumerate(s):
+            book[c] += 1
+            if book[c] == 1:
+                distinctCount += 1
+                
+            # Shrink
+            while distinctCount > k:
+                lc = s[left]
+                book[lc] -= 1
+                if book[lc] == 0:
+                    distinctCount -= 1
+                left += 1
+   
+            maxSize = max(maxSize, i - left + 1)
+                    
+        return maxSize
