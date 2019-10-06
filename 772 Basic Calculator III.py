@@ -21,7 +21,7 @@ Some examples:
 '''
 class Solution:
     '''
-    Same like 772. Basic Calculator III
+    Stack, O(n)
     '''
     def comp(self, op: str, num: int, stack):
         if op == '+':
@@ -44,10 +44,12 @@ class Solution:
         for c in s:
             if c.isdecimal():
                 num = num * 10 + int(c)
+                
             elif c == '(':
                 stack.append(op)
                 num = 0
                 op = '+'
+                
             elif c == ')':
                 self.comp(op, num, stack)
                 
@@ -62,6 +64,7 @@ class Solution:
                 # will be an operator, which should not pre-do anything
                 num = 0
                 op = ''
+                
             elif c in ['+', '-', '*', '/']:
                 self.comp(op, num, stack)
                 num = 0
