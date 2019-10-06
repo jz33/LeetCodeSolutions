@@ -19,57 +19,53 @@ Some examples:
 "2*(5+5*2)/3+(6/2+8)" = 21
 "(2+6* 3+5- (3*14/7+2)*5)+3"=-12
 '''
-class Solution(object):
-    def calculate(self, s):
-        
-        def comp(op: str, num: int):
-            if op == '+':
-                stack.append(num)
-            elif op == '-':
-                stack.append(-num)
-            elif op == '*':
-                stack.append(stack.pop() * num)
-            elif op == '/':
-                last = stack.pop()
-                if last // num < 0 and last % num != 0:
-                    stack.append(last // num + 1)
-                else:
-                    stack.append(last // num)
-        
+class Solution:
+    '''
+    Same like 772. Basic Calculator III
+    '''
+    def comp(self, op: str, num: int, stack):
+        if op == '+':
+            stack.append(num)
+        elif op == '-':
+            stack.append(-num)
+        elif op == '*':
+            stack.append(stack.pop() * num)
+        elif op == '/':
+            last = stack.pop()
+            if last // num < 0 and last % num != 0:
+                stack.append(last // num + 1)
+            else:
+                stack.append(last // num)
+    
+    def calculate(self, s: str) -> int:
         stack = []
-        num = 0
         op = '+'
-        for i in range(len(s)):
-            if s[i].isdecimal():
-                num = num * 10 + int(s[i])
-                
-            elif s[i] == '(':
-                # Add to stack, will compute later in ')'
-                stack.append(op)              
+        num = 0
+        for c in s:
+            if c.isdecimal():
+                num = num * 10 + int(c)
+            elif c == '(':
+                stack.append(op)
                 num = 0
                 op = '+'
+            elif c == ')':
+                self.comp(op, num, stack)
                 
-            elif s[i] == ')':
-                comp(op, num)
-                
+                # Compute everything between '(' and ')'
                 num = 0
                 while isinstance(stack[-1], int):
                     num += stack.pop()
-                
-                # Compute op before '('
                 op = stack.pop()
-                comp(op, num)
+                self.comp(op, num, stack)
                 
+                # Set op to nothing, as next char of ')'
+                # will be an operator, which should not pre-do anything
                 num = 0
-                
-                # Set operator to nothing, so
-                # next comp won't do anything
                 op = ''
-                
-            elif s[i] in ['+', '-', '*', '/']:
-                comp(op, num)
+            elif c in ['+', '-', '*', '/']:
+                self.comp(op, num, stack)
                 num = 0
-                op = s[i]
-                
-        comp(op, num) 
+                op = c
+        
+        self.comp(op, num, stack)
         return sum(stack)
