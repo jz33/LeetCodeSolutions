@@ -1,32 +1,47 @@
 '''
-207 Isomorphic Strings
-https://leetcode.com/problems/isomorphic-strings/ 
+205. Isomorphic Strings
+
+Given two strings s and t, determine if they are isomorphic.
+Two strings are isomorphic if the characters in s can be replaced to get t.
+All occurrences of a character must be replaced with another character while preserving the order of characters.
+No two characters may map to the same character but a character may map to itself.
+
+Example 1:
+
+Input: s = "egg", t = "add"
+Output: true
+
+Example 2:
+
+Input: s = "foo", t = "bar"
+Output: false
+
+Example 3:
+
+Input: s = "paper", t = "title"
+Output: true
 '''
-def isIsomorphic(self, x, y):
-    if len(x) != len(y): 
-        return False
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
         
-    map = {}
-    used = {}
-    for i in xrange(0,len(x)):
-        if x[i] in map:
-            if y[i] != map[x[i]]:
-                return False
-        else:
-            if y[i] in used:
-                return False;
+        mapper = {} # map char in s to char in t
+        used = set() # check if char in t is used
+        
+        for i in range(len(s)):
+            cs = s[i]
+            ct = t[i]
+            if cs in mapper:
+                if mapper[cs] != ct:
+                    # cs is pointed to another char, wrong
+                    return False
+            else:
+                if ct in used:
+                    # ct is already pointed to another char
+                    return False
             
-            map[x[i]] = y[i]
-            used[y[i]] = 1
-            
-    return True
-    
-def main():
-    print isIsomorphic('egg','add')
-    print isIsomorphic('foo','bar')
-    print isIsomorphic('paper','title')
-    print isIsomorphic('ppper','ptper')
-    
-if __name__ == '__main__':
-    main()
-            
+                mapper[cs] = ct
+                used.add(ct)
+                
+        return True
