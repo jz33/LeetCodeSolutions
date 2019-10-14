@@ -29,26 +29,25 @@ class Solution:
         '''
         size = len(A)
         res = size + 1 # impossible value
-        
+
         # sumArr[i] is the sum of A[:i+1]
         sumArr= [0] * (size + 1)
         for i in range(size):
             sumArr[i+1] = sumArr[i] + A[i]
-        
-        queue = deque()        
+
+        queue = deque() 
         for i, s in enumerate(sumArr):
-            # The queue is ascending
+            # The queue is kept ascending.
             # If a new value s is smaller than last value of queue,
             # we can dump last value of queue, because the subarray
-            # between future i and current i will have bigger sum and
-            # smaller size
+            # between future i and s will have bigger sum and smaller size
             while queue and s <= sumArr[queue[-1]]:
                 queue.pop()
 
             # Try update result using front of queue
             # Front of queue and i can compose the subarray with largest
-            # sum. If that sum is smaller than K, no more element is queue
-            # will get the result
+            # sum. If even that sum is smaller than K, no more element
+            # in queue will meet the requirement of >= K
             while queue and s - sumArr[queue[0]] >= K:
                 j = queue.popleft()               
                 res = min(res, i-j)
