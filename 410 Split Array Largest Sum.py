@@ -26,18 +26,22 @@ The best way is to split it into [7,2,5] and [10,8],
 where the largest sum among the two subarrays is only 18.
 '''
 class Solution:
+    '''
+    A special binary search method
+    '''
     def splitArray(self, nums: List[int], m: int) -> int:
         size = len(nums)
+        
         # left is max of array, which is smallest possible return
         left = max(nums) 
         # right is sum of array, which is largest possible return
         right = sum(nums)   
         res = right
-        
+
         while left <= right:
             middle = left + ((right - left) >> 1);
 
-            # Counter maximum number of subarrays whose sum is <= middle
+            # Count maximum number of subarrays whose sum is <= middle
             localSum = 0
             counter = 1
             for i in range(size):
