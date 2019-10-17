@@ -1,33 +1,52 @@
-class Vector2D(object):
+'''
+251. Flatten 2D Vector
 
-    def __init__(self, vec2d):
-        """
-        Initialize your data structure here.
-        :type vec2d: List[List[int]]
-        """
-        data = []
-        for row in vec2d:
-            if len(row) > 0:
-                data.append(row)
-        self.data = data
-        self.R = len(data)
-        self.i = 0
-        self.j = 0
+Design and implement an iterator to flatten a 2d vector.
+It should support the following operations: next and hasNext.
 
-    def next(self):
-        """
-        :rtype: int
-        """
-        d = self.data[self.i][self.j]
-        if self.j == len(self.data[self.i])-1:
-            self.i += 1
-            self.j = 0
-        else:
-            self.j += 1
-        return d
-            
-    def hasNext(self):
-        """
-        :rtype: bool
-        """
-        return self.i < self.R - 1 or self.i == self.R - 1 and self.j < len(self.data[-1])
+Example:
+
+Vector2D iterator = new Vector2D([[1,2],[3],[4]]);
+
+iterator.next(); // return 1
+iterator.next(); // return 2
+iterator.next(); // return 3
+iterator.hasNext(); // return true
+iterator.hasNext(); // return true
+iterator.next(); // return 4
+iterator.hasNext(); // return false
+
+'''
+class Vector2D:
+    def __init__(self, v: List[List[int]]):
+        self.v = v
+        self.x = 0
+        self.y = -1
+        self.move()
+
+    def next(self) -> int:
+        res = self.v[self.x][self.y]
+        self.move()
+        return res
+
+    def hasNext(self) -> bool:
+        return self.x < len(self.v)
+    
+    def move(self):
+        '''
+        Move x, y to next valid point
+        '''
+        x = self.x
+        y = self.y
+        v = self.v
+        
+        y += 1
+        while x < len(v):
+            if y >= len(v[x]):
+                x += 1
+                y = 0
+            else:
+                break
+
+        self.x = x
+        self.y = y
