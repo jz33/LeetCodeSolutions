@@ -25,25 +25,12 @@ class Solution:
             mid = left + ((right - left) >> 1)
             if arr[mid] == tag:
                 return mid
-            
-            if mid == left:
-                # Bottom case, left == right or left + 1 == right
-                if tag < arr[left]:
-                    return left
-                elif tag > arr[left] and tag <= arr[right]:
-                    return right
-                else: # tag > arr[right]
-                    return right + 1
-            
-            if arr[mid] < tag:
+            elif arr[mid] < tag:
                 left = mid + 1
             else:
                 right = mid - 1
-        
-        # Reachable when array is empty
-        return 0
-    
-    
+        return left
+      
     def lengthOfLIS(self, nums: List[int]) -> int:        
         # arr is ascending
         arr = []
