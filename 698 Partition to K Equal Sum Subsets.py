@@ -12,7 +12,7 @@ Explanation: It's possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3)
 class Solution:
     def backtrack(self, buckets: List[int], srcIndex: int) -> bool:
         '''
-        Time Complexity: len(buckets) * len(src)
+        Time Complexity: len(buckets) * (len(src))!
         Space Complexity: len(buckets)
         '''
         if srcIndex == len(self.src):
