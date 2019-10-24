@@ -44,6 +44,9 @@ class Solution:
         return matched
     
     def minDominoRotations(self, A: List[int], B: List[int]) -> int:
+        '''
+        Try write the method in more generic way
+        '''
         # Get the key number information from first pair
         nodes = []
         if A[0] == B[0]:
@@ -52,32 +55,23 @@ class Solution:
             nodes = [KeyNode(A[0], 1, 0), KeyNode(B[0], 0, 1)]
             
         for i in range(1, len(A)):
-            a = A[i]
-            b = B[i]
-            if len(nodes) == 2:
-                key0Matched = self.match(nodes[0], A[i], B[i])                
-                key1Matched = self.match(nodes[1], A[i], B[i])
- 
-                if not key0Matched and not key1Matched:
-                    return -1
-                
-                if not key0Matched:
-                    nodes = nodes[1:]
-     
-                if not key1Matched:
-                    nodes = nodes[:1]
-                    
-            else: # len(nodes) == 1
-                keyMatched = self.match(nodes[0], A[i], B[i]) 
-                if not keyMatched:
-                    return -1
+            toRemove = []
+            for j, node in enumerate(nodes):
+                if not self.match(node, A[i], B[i]):
+                    # If current pair does not match any keys,
+                    # the key should be removed
+                    toRemove.append(j)
 
-        if len(nodes) == 2:
-            # If there are 2 keys, then these 2 numbers are just periodically appeared
-            # on A or B. Counts of nodes[0] and nodes[1] are exactly opposite
-            return min(nodes[0].countFromA, nodes[0].countFromB)
-        
-        else: # len(nodes) == 1
-            # Notice the key count can be larger than array size, which means
-            # on some pair, the key appears both on A and B
-            return min(nodes[0].countFromA, nodes[0].countFromB) - (nodes[0].countFromA + nodes[0].countFromB - len(A))
+            if len(toRemove) == len(nodes):
+                return -1
+
+            for j in toRemove:
+                # There should only be 1 j in this question
+                nodes.pop(j)
+
+        # If there are 2 keys, then these 2 numbers are just periodically appeared
+        # on A or B. Counts of nodes[0] and nodes[1] are exactly opposite,
+        # and there will be no duplicates
+        # If there is 1 key, notice the key count sum can be larger than array size,
+        # which means on some pair, the key appears both on A and B
+        return min(nodes[0].countFromA, nodes[0].countFromB) - (nodes[0].countFromA + nodes[0].countFromB - len(A))       
