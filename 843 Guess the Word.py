@@ -39,26 +39,48 @@ Note:  Any solutions that attempt to circumvent the judge will result in disqual
 # """
 # class Master:
 #     def guess(self, word: str) -> int:
-
-from collections import Counter
-from itertools import combinations
+from typing import List, Tuple
+from collections import Counter, deque, defaultdict
+from itertools import combinations, permutations
 
 def matchCount(A: str, B: str) -> int:
     return sum(1 for i in range(6) if A[i] == B[i])
 
+class Master:
+    def __init__(self, wordlist: List[str], secret: str):
+        self.wordSet = set(wordlist)
+        self.secret = secret
+        self.counter = 0
+
+    def guess(self, word: str) -> int:       
+        if len(word) != 6:
+            raise IndexError("Incorret word size!")
+
+        if word not in self.wordSet:
+            return -1
+
+        self.counter += 1
+        print("Try times: ", self.counter)
+
+        mc = matchCount(self.secret, word)
+        if mc == 6:
+            print("You found it!")
+        return mc
+
 class Solution:
     def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
-        if wordlist == ["gaxckt","trlccr","jxwhkz","ycbfps","peayuf","yiejjw","ldzccp","nqsjoa","qrjasy","pcldos","acrtag","buyeia","ubmtpj","drtclz","zqderp","snywek","caoztp","ibpghw","evtkhl","bhpfla","ymqhxk","qkvipb","tvmued","rvbass","axeasm","qolsjg","roswcb","vdjgxx","bugbyv","zipjpc","tamszl","osdifo","dvxlxm","iwmyfb","wmnwhe","hslnop","nkrfwn","puvgve","rqsqpq","jwoswl","tittgf","evqsqe","aishiv","pmwovj","sorbte","hbaczn","coifed","hrctvp","vkytbw","dizcxz","arabol","uywurk","ppywdo","resfls","tmoliy","etriev","oanvlx","wcsnzy","loufkw","onnwcy","novblw","mtxgwe","rgrdbt","ckolob","kxnflb","phonmg","egcdab","cykndr","lkzobv","ifwmwp","jqmbib","mypnvf","lnrgnj","clijwa","kiioqr","syzebr","rqsmhg","sczjmz","hsdjfp","mjcgvm","ajotcx","olgnfv","mjyjxj","wzgbmg","lpcnbj","yjjlwn","blrogv","bdplzs","oxblph","twejel","rupapy","euwrrz","apiqzu","ydcroj","ldvzgq","zailgu","xgqpsr","wxdyho","alrplq","brklfk"]:
-            # Large case, will need 11 times to guess
-            master.guess("hbaczn")
-            return
-
+        '''
+        The core of the algorithm is: which to word to guess?
+        If we chose a word (A), guess it, got the guess result (R), we can be sure that
+        the secret word (S) is among the words whose match count is R to A.
+        Since words are randomly generated, so 0 match is the most common guess result.
+        Therefore, choose the word whose has minimum 0 match count with other words
+        '''
         candidates = range(len(wordlist))
-        while len(candidates) > 0:
-            # Which word to choose?
-            # Notice the words are randomly generated, so "0 match" is most common guess result.
-            # Therefore to reduce the size of candiates more quickly, choose the candidate who has minimum "0 match"s.
-            book = Counter(w1 for w1, w2 in combinations(candidates, 2) if matchCount(wordlist[w1], wordlist[w2]) == 0)
+
+        while True:
+            # Use permutation not combination here, as combination only computes half and so has bias
+            book = Counter(w1 for w1, w2 in permutations(candidates, 2) if matchCount(wordlist[w1], wordlist[w2]) == 0)
             guessWordIndex = min(candidates, key = lambda wi : book[wi])
 
             guessWord = wordlist[guessWordIndex]
@@ -67,3 +89,14 @@ class Solution:
                 return
 
             candidates = [i for i in candidates if matchCount(wordlist[i], guessWord) == guessResult]
+            
+sol = Solution()
+
+secret = "eiowzz"
+wordlist = ["acckzz","ccbazz","eiowzz","abcczz"]
+
+secret = "hbaczn"
+wordlist = ["gaxckt","trlccr","jxwhkz","ycbfps","peayuf","yiejjw","ldzccp","nqsjoa","qrjasy","pcldos","acrtag","buyeia","ubmtpj","drtclz","zqderp","snywek","caoztp","ibpghw","evtkhl","bhpfla","ymqhxk","qkvipb","tvmued","rvbass","axeasm","qolsjg","roswcb","vdjgxx","bugbyv","zipjpc","tamszl","osdifo","dvxlxm","iwmyfb","wmnwhe","hslnop","nkrfwn","puvgve","rqsqpq","jwoswl","tittgf","evqsqe","aishiv","pmwovj","sorbte","hbaczn","coifed","hrctvp","vkytbw","dizcxz","arabol","uywurk","ppywdo","resfls","tmoliy","etriev","oanvlx","wcsnzy","loufkw","onnwcy","novblw","mtxgwe","rgrdbt","ckolob","kxnflb","phonmg","egcdab","cykndr","lkzobv","ifwmwp","jqmbib","mypnvf","lnrgnj","clijwa","kiioqr","syzebr","rqsmhg","sczjmz","hsdjfp","mjcgvm","ajotcx","olgnfv","mjyjxj","wzgbmg","lpcnbj","yjjlwn","blrogv","bdplzs","oxblph","twejel","rupapy","euwrrz","apiqzu","ydcroj","ldvzgq","zailgu","xgqpsr","wxdyho","alrplq","brklfk"]
+
+ms = Master(wordlist, secret)
+sol.findSecretWord(wordlist, ms)
