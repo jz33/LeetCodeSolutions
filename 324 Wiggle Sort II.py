@@ -44,31 +44,34 @@ def quickselect(nums: List[int], target: int) -> int:
     return None
 
 class Solution:
-    def wiggleSort(self, nums: List[int]) -> None:
-        n = len(nums)
-        quickselect(nums, (n >> 1))
+    def newIndex(self,  i):
+        return (1 + (i<<1)) % (self.n | 1)
+    
+    def wiggleSort(self, arr: List[int]) -> None:
         '''
-        Now nums is divided by median
-        Left elements are smaller, put them to even slots from end.
-        This put can put medians at beginning.
-        Right elements are larger, put them in odd slots from beginning.
-        This put can also put medians at end.
+        https://leetcode.com/problems/wiggle-sort-ii/discuss/77682/Step-by-step-explanation-of-index-mapping-in-Java
+        Use quickselect to get median, then:
+        (1) elements smaller than the 'median' are put into the last even slots
+        (2) elements larger than the 'median' are put into the first odd slots
+        (3) the medians are put into the remaining slots.
         '''
-        buf = [None] * n
+        self.n = len(arr)
+        median = quickselect(arr, (self.n >> 1))
+        
+        # 3-colors sort
+        left = 0
+        right = self.n-1
         i = 0
-        j = n-1 if (n & 1) == 1 else n-2
-        while j >= 0:
-            buf[j] = nums[i]
-            i += 1
-            j -= 2
-
-        i = n-1
-        j = 1
-        while j < n:
-            buf[j] = nums[i]
-            i -= 1
-            j += 2
-
-        # Copy back
-        for i in range(n):
-            nums[i] = buf[i]
+        while i <= right:
+            ni = self.newIndex(i)
+            if arr[ni] < median:
+                nr = self.newIndex(right)
+                arr[ni], arr[nr] = arr[nr], arr[ni]
+                right -=1
+            elif arr[ni] == median:
+                i += 1
+            else: # arr[ni] > median
+                nl = self.newIndex(left)
+                arr[ni], arr[nl] = arr[nl], arr[ni]
+                left += 1
+                i += 1
