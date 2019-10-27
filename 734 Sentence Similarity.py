@@ -37,7 +37,8 @@ class Solution:
     
         # The trick of this question is to build pair set like
         # word1 + "|" + word2
-        book = set([p[0] + '|' + p[1] for p in pairs])
+        # Not: book = set([p[0] + '|' + p[1] for p in pairs])
+        book = set(p[0] + '|' + p[1] for p in pairs)
         
         for i in range(l1):
             w1 = words1[i]
