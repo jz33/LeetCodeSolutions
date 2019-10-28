@@ -41,7 +41,7 @@ class Solution:
         while left <= right:
             middle = left + ((right - left) >> 1);
 
-            # Count maximum number of subarrays whose sum is <= middle
+            # Count number of subarrays whose sum is <= middle
             localSum = 0
             counter = 1
             for i in range(size):
@@ -50,6 +50,7 @@ class Solution:
                     counter += 1
                     localSum = nums[i]
 
+            # counter smaller than m is acceptable, because subarray can be divided again
             if counter <= m:
                 res = min(res, middle)
                 right = middle - 1
