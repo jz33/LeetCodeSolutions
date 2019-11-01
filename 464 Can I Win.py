@@ -36,13 +36,16 @@ class Solution:
         '''
         @combination: current combination of numbers represeted by a bitmap
         @total: the sum of current combination numbers
+        @return: if current player (can be player 1 or 2) can win
         '''
         if self.pool[combination] is not None:
-            # Already computed before
             return self.pool[combination]
 
         if total >= self.desiredTotal:
-            # total is picked by opponent
+            # Total is picked by opponent
+            # To fully understand this, for example, think this is turn 3,
+            # and there are 2 numbers picked, if reached here, player 1 is lost
+            # If this is turn 4, there are 3 numbers, and so player 2 is lost
             return False
 
         for i in range(self.maxChoosableInteger):
@@ -68,6 +71,7 @@ class Solution:
         self.maxChoosableInteger = maxChoosableInteger
         self.desiredTotal = desiredTotal
 
-        # pool is a large array contains whether a combination can win or not
+        # The pool is a large array contains whether a combination can win or not
+        # Each pool element is a integer of bitmap
         self.pool = [None] * (1 << maxChoosableInteger)
         return self.dfs(0, 0)
