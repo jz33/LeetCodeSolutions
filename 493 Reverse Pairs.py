@@ -17,79 +17,53 @@ Output: 3
 '''
 from copy import deepcopy
 
-class Solution:
-    def upperBound(self, arr, tag, left, right)->int:
-        '''
-        Find the largest index i of arr where arr[i] * 2 < tag
-        '''
-        bound = None
-        while left <= right:
-            mid = left + ((right - left) >> 1)
-            val = arr[mid]
-
-            if val * 2 < tag:
-                bound = mid
-                left = mid + 1
-            else:
-                right = mid - 1
-        return bound
-
-    def merge(self, arr, buf, lt, mid, rt) -> int:
-        '''
-        Classic merge method for mergesort
-        
-        Merge from back (larger)
-        lt     mid      rt
-        0 1 2 3 4 5 6 7
-        lt     mid    rt
-        0 1 2 3 4 5 6
-        
-        left branch is arr[lt:mid]
-        right branch is arr[mid:rt]
-        '''
-
-        # Compute inversion first
-        inv = 0
-        bound = rt - 1
-        for i in range(mid-1, lt-1, -1): # iterate left branch
-            bound = self.upperBound(arr, arr[i], mid, bound) # find bound in right branch
-            if bound is None:
-                break
-            inv += bound - mid + 1
-        
-        # Do regular merge
-        i = mid - 1
-        j = rt - 1
-        k = rt - 1
-        while i >= lt and j >= mid:
-            if arr[i] <= arr[j]:
-                buf[k] = arr[j]
-                k -= 1
-                j -= 1
-            else:
-                buf[k] = arr[i]
-                k -= 1
-                i -= 1
-                
-        while j >= mid:
+def merge(arr, left, mid, right, buf):
+    '''
+    Regular mergo for mergesort, merge from back.
+    left, mid is from left array.
+    mid+1, right is from right array
+    '''
+    i = mid
+    j = right
+    k = right
+    while i >= left and j > mid:
+        if arr[i] <= arr[j]:
             buf[k] = arr[j]
             k -= 1
             j -= 1
-            
-        arr[max(lt, i):rt] = buf[max(lt, i):rt]
-        return inv
- 
-    def reversePairs(self, arr: List[int]) -> int:
-        # Use mergesort
-        size = len(arr)
-        buf = deepcopy(arr)
-        inv = 0
-        bound = (size << 1)
-        stride = 2 # stride is half the size of array when calling merge    
-        while stride < bound:
-            for left in range(0, size, stride):
-                mid = min(left + (stride >> 1), size);
-                right = min(left + stride, size);
-                inv += self.merge(arr,buf,left,mid,right);
-            stride <<= 1
-        return inv
+        else:
+            buf[k] = arr[i]
+            k -= 1
+            i -= 1
+    
+    # Put rest of right array
+    while j > mid:
+        buf[k] = arr[j]
+        k -= 1
+        j -= 1
+
+    # Copy back
+    arr[left : right+1] = buf[left : right+1]
+
+def mergesort(arr, left, right, buf):
+    if left >= right:
+        return 0
+
+    mid = left + (right - left) // 2
+    count = mergesort(arr, left, mid, buf) + mergesort(arr, mid + 1, right, buf)
+
+    # Count reversed pairs
+    midBegin = mid + 1
+    j = midBegin
+    for i in range(left, midBegin):
+        while j <= right and arr[i] > arr[j] * 2:
+            j += 1
+        count += j - midBegin
+
+    merge(arr, left, mid, right, buf);
+    return count
+
+class Solution:
+    def reversePairs(self, nums: List[int]) -> int:
+        buf = deepcopy(nums)
+        return mergesort(nums, 0, len(nums)-1, buf)
