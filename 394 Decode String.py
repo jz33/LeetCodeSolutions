@@ -20,20 +20,23 @@ s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 '''
 class Solution:
     def decodeString(self, s: str) -> str:
+        '''
+        Similar pattern to Calculator question
+        '''
         stack = []
         count = 0
         for c in s:
             if c.isdecimal():
                 count = count * 10 + int(c)
+            elif c.isalpha():
+                stack.append(c)
             elif c == '[':
                 stack.append(count)
                 count = 0
             elif c == ']':
-                local = []
-                while isinstance(stack[-1], str):
-                    local.append(stack.pop())
-                stack.append(''.join(local[::-1]) * stack.pop())
-            else:
-                stack.append(c)
+                ls = []
+                while stack and isinstance(stack[-1], str):
+                    ls.append(stack.pop())
+                stack.append(''.join(ls[::-1]) * stack.pop())
 
-        return ''.join(stack)                   
+        return ''.join(stack)
