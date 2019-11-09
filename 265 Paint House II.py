@@ -32,6 +32,7 @@ class TwinMins:
         self.m1 = None
         
     def setMin(self, i, v):
+        # Be careful about the order here!
         if self.m0 is None:
             self.m0 = (i, v)
         elif v <= self.m0[1]:
