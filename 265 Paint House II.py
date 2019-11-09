@@ -1,78 +1,75 @@
 '''
 Paint House II
 https://leetcode.com/problems/paint-house-ii/
-'''
-def minCost(costs):
-    """
-    :type costs: List[List[int]]
-    :rtype: int
-    """
-    H = len(costs)
-    if H == 0: return 0
-    C = len(costs[0])
-    if C == 0: return 0
-    if C == 1:
-        return costs[0][0] if H == 1 else 0
-    
-    # buffer for colors of 1 house
-    row = [0 for i in xrange(C)]
-    min1 = 0 # smallest index
-    min2 = 1 # second smallest index, must be different of min1
-    for i in xrange(C):
-        row[i] = costs[0][i]
-        if i == 1:
-            # check if row[min1] < row[min2]
-            if row[min1] > row[min2]:
-                min1, min2 = min2, min1
-        elif i > 1:
-            if row[i] < row[min2]:
-                if row[i] < row[min1]:
-                    min2 = min1
-                    min1 = i
-                else:
-                    min2 = i
-    print row, min1, min2
-                
-    for j in xrange(1,H):
-        newRow = [0 for i in xrange(C)]
-        newMin1 = 0
-        newMin2 = 1
-        for i in xrange(C):
-            # greedy, choose smallest cost of previous
-            if i != min1:
-                newRow[i]  = row[min1] + costs[j][i]
-            # if house index is same, choose second smallest
-            else:
-                newRow[i]  = row[min2] + costs[j][i]
-            
-            if i == 1:
-                if newRow[newMin1] > newRow[newMin2]:
-                    newMin1, newMin2 = newMin2, newMin1
-            elif i > 1:
-                if newRow[i] < newRow[newMin2]:
-                    if newRow[i] < newRow[newMin1]:
-                        newMin2 = newMin1
-                        newMin1 = i
-                    else:
-                        newMin2 = i
-        row = newRow
-        min1 = newMin1
-        min2 = newMin2
-        print row, min1, min2
-        
-    return row[min1]
-'''   
-costs = [
-    [17,2,17],
-    [16,16,5],
-    [14,3,19]
-]
-'''
-costs = [
-    [3,5,3],
-    [6,17,6],
-    [7,13,18],
-    [9,10,18]
-]
 
-print minCost(costs)
+There are a row of n houses, each house can be painted with one of the k colors.
+The cost of painting each house with a certain color is different.
+You have to paint all the houses such that no two adjacent houses have the same color.
+
+The cost of painting each house with a certain color is represented by a n x k cost matrix.
+For example, costs[0][0] is the cost of painting house 0 with color 0; costs[1][2] is the cost of
+painting house 1 with color 2, and so on... Find the minimum cost to paint all houses.
+
+Note:
+All costs are positive integers.
+
+Example:
+
+Input: [[1,5,3],[2,9,4]]
+Output: 5
+Explanation: Paint house 0 into color 0, paint house 1 into color 2. Minimum cost: 1 + 4 = 5; 
+             Or paint house 0 into color 2, paint house 1 into color 0. Minimum cost: 3 + 2 = 5. 
+Follow up:
+Could you solve it in O(nk) runtime?
+'''
+class TwinMins:
+    '''
+    A class manages the 1st minimun and 2nd minimun values
+    '''
+    def __init__(self):
+        # m0 <= m1
+        self.m0 = None
+        self.m1 = None
+        
+    def setMin(self, i, v):
+        if self.m0 is None:
+            self.m0 = (i, v)
+        elif v <= self.m0[1]:
+            self.m0, self.m1 = (i, v), self.m0
+        elif self.m1 is None:
+            self.m1 = (i, v)      
+        elif v < self.m1[1]:
+            self.m1 = (i, v)
+            
+    def update(self, i, v, prev):
+        if i == prev.m0[0]:
+            self.setMin(i, v + prev.m1[1])
+        else:
+            self.setMin(i, v + prev.m0[1])
+            
+    def __repr__(self):
+        return str(self.m0) + " " + str(self.m1)
+                
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        rowCount = len(costs)
+        if not rowCount:
+            return 0
+        
+        colCount = len(costs[0])
+        if colCount == 0:
+            return 0
+        if colCount == 1:
+            return costs[0][0] if rowCount == 1 else 0 
+                
+        tw = TwinMins()
+        for i in range(colCount):
+            tw.setMin(i, costs[0][i])
+        
+        for i in range(1,rowCount):
+            ntw = TwinMins()
+            for j in range(colCount):
+                ntw.update(j, costs[i][j], tw)
+            tw = ntw
+            
+        return tw.m0[1]
