@@ -17,6 +17,7 @@ class Solution:
                 for a, b in [('0','0'), ('1','1'), ('6','9'), ('8','8'), ('9','6')]:
                     newBase.append(a + s + b)
                 for a, b in [('1','1'), ('6','9'), ('8','8'), ('9','6')]:
+                    # Do not add '0' as number cannot start from 0
                     newRes.append(a + s + b)
             base = newBase
             res = newRes
