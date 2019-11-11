@@ -1,4 +1,4 @@
-'''
+/*
 363. Max Sum of Rectangle No Larger Than K
 https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
 
@@ -15,7 +15,7 @@ Explanation: Because the sum of rectangle [[0, 1], [-2, 3]] is 2,
 Note:
 The rectangle inside the matrix must have an area > 0.
 What if the number of rows is much larger than the number of columns?
-'''
+*/
 class Solution {
 public:
     int maxSubArraySumNoLargerThanK(std::vector<int>& arr, int k)
@@ -50,7 +50,7 @@ public:
         int maxSum = INT_MIN;
         
         // Iterate to get all possible accumulation "on a row", i.e., 
-        // @accs records all submatrix sums
+        // @accs records all submatrix sums.
         // The outer loop should iterate rowCount or colCount who is smaller
         if (rowCount <= colCount)
         {
