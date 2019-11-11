@@ -28,33 +28,33 @@ class TrieNode:
     def __init__(self):
         self.children = {}
         self.isEnd = False
-
-class StreamChecker: 
-    def add(self, seq):
+        
+class StreamChecker:
+    def add(self, word: str):
         this = self.root
-        for e in reversed(seq):
+        # Use 'reversed' to avoid string copy
+        for e in reversed(word):
             if e not in this.children:
                 this.children[e] = TrieNode()
             this = this.children[e]
         this.isEnd = True
-
-    def search(self, seq):
+    
+    def search(self, stream: List[str]) -> bool:
         this = self.root
-        for e in reversed(seq):
+        for e in reversed(stream):
             if this.isEnd:
                 return True
             if e not in this.children:
                 return False
             this = this.children[e]
         return this.isEnd
-    
+        
     def __init__(self, words: List[str]):
         self.root = TrieNode()
-        self.maxDepth = 0
         for word in words:
             self.add(word)
-        self.seq = []
+        self.stream = []
 
     def query(self, letter: str) -> bool:
-        self.seq.append(letter)
-        return self.search(self.seq)
+        self.stream.append(letter)
+        return self.search(self.stream)
