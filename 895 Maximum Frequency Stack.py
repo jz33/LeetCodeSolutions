@@ -29,39 +29,32 @@ The stack becomes [5,7,4].
 pop() -> returns 4.
 The stack becomes [5,7].
 '''
-from collections import defaultdict
+from collections import Counter
 
 class FreqStack:
     def __init__(self):
-        self.numberToCount = defaultdict(int) # number : count    
+        # The map is to map the value to its count
+        self.mapper = Counter()  
         
-        # The stacks is stack of stacks
-        # Each stack is a stack of numbers associate with a count,
-        # which is index of stacks + 1
+        # The self.stacks is a stack of stacks
         self.stacks = []
 
-    def push(self, key: int) -> None:
-        stacks = self.stacks
-
-        c = self.numberToCount[key] + 1
-        self.numberToCount[key] = c
-
-        # Push key to stacks[c-1]
-        if c > len(stacks):
-            stacks.append([key])
+    def push(self, x: int) -> None:
+        self.mapper[x] += 1
+        count = self.mapper[x]
+        if count > len(self.stacks):
+            self.stacks.append([x])
         else:
-            stacks[c-1].append(key)
+            self.stacks[count-1].append(x)
 
     def pop(self) -> int:
-        stacks = self.stacks
-        
-        if len(stacks) == 0:
+        if not self.stacks:
             return -1
-          
-        # Pop from last element from last stack
-        res = stacks[-1].pop()
-        if len(stacks[-1]) == 0:
-            stacks.pop()
         
-        self.numberToCount[res] -= 1
-        return res
+        x = self.stacks[-1].pop()
+        self.mapper[x] -= 1
+        
+        if len(self.stacks[-1]) == 0:
+            self.stacks.pop()
+        
+        return x
