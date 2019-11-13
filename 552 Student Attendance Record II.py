@@ -25,54 +25,38 @@ Note: The value of n won't exceed 100,000.
 '''
 MOD = 10**9+7
 
-class Node:
-    def __init__(self):
-        self.total = 0 # total count
-        self.L1 = 0 # string with 1 ending 'L', including AL
-        self.L2 = 0 # string with 2 ending 'L', including ALL
-        self.A = 0 # string contains 1 "A", including AL & ALL
-        self.AL = 0 # string contains 1 "A", 1 ending 'L'
-        self.ALL = 0 # string contains 1 "A", 2 ending 'L'
-
-    def modd(self):
-        self.total %= MOD
-        self.L1 %= MOD
-        self.L2 %= MOD
-        self.A %= MOD
-        self.AL %= MOD
-        self.ALL %= MOD
-        return self
-
 class Solution:
     def checkRecord(self, n: int) -> int:
-        '''
-        Day[i] solely depends on Day[i-1]
-        '''
         # Build day 1, ['P', 'L', 'A']
-        day = Node()
-        day.total = 3 # string with no "L" ending
-        day.L1 = 1
-        day.A = 1
+        total = 3 # total count
+        L1 = 1 # string with 1 ending 'L', including AL
+        L2 = 0 # string with 2 ending 'L', including ALL
+        A = 1 # string contains 1 "A", including AL & ALL
+        AL = 0 # string contains 1 "A", 1 ending 'L'
+        ALL = 0 # string contains 1 "A", 2 ending 'L'
 
         for i in range(1, n):
-            newDay = Node()
-
             # Append 'P'
-            newDay.total = day.total
-            newDay.A = day.A
+            new_total = total
+            new_A = A
 
             # Append 'L'
-            newDay.L1 = day.total - day.L1 - day.L2
-            newDay.L2 = day.L1
-            newDay.AL = day.A - day.AL - day.ALL
-            newDay.ALL = day.AL
-            newDay.A += day.A - day.ALL
-            newDay.total += day.total - day.L2
+            new_L1 = total - L1 - L2
+            new_L2 = L1
+            new_AL = A - AL - ALL
+            new_ALL = AL
+            new_A += A - ALL
+            new_total += total - L2
 
             # Apply 'A'
-            newDay.A += day.total - day.A
-            newDay.total += day.total - day.A
+            new_A += total - A
+            new_total += total - A
 
-            day = newDay.modd()
+            total = new_total % MOD
+            L1 = new_L1
+            L2 = new_L2
+            A = new_A % MOD
+            AL = new_AL
+            ALL = new_ALL
 
-        return day.total
+        return total
