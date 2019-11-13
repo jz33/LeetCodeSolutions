@@ -1,19 +1,22 @@
 '''
 552. Student Attendance Record II
 
-Given a positive integer n, return the number of all possible attendance records with length n, which will be regarded as rewardable. The answer may be very large, return it after mod 109 + 7.
+Given a positive integer n, return the number of all possible attendance records with length n,
+which will be regarded as rewardable. The answer may be very large, return it after mod 109 + 7.
 
 A student attendance record is a string that only contains the following three characters:
 
 'A' : Absent.
 'L' : Late.
 'P' : Present.
-A record is regarded as rewardable if it doesn't contain more than one 'A' (absent) or more than two continuous 'L' (late).
+A record is regarded as rewardable if it doesn't contain more than one 'A' (absent) or
+more than two continuous 'L' (late).
 
 Example 1:
 
 Input: n = 2
-Output: 8 
+Output: 8
+
 Explanation:
 There are 8 records with length 2 will be regarded as rewardable:
 "PP" , "AP", "PA", "LP", "PL", "AL", "LA", "LL"
@@ -39,11 +42,7 @@ class Node:
         self.AL %= MOD
         self.ALL %= MOD
         return self
-        
-    def __str__(self):
-        return r'{}, {}, {}, {}, {}, {}'.format(self.total, self.L1, self.L2, self.A, self.AL, self.ALL)
 
-    
 class Solution:
     def checkRecord(self, n: int) -> int:
         '''
@@ -63,9 +62,9 @@ class Solution:
             newDay.A = day.A
 
             # Append 'L'
-            newDay.L1 = day.total - day.L1 - day.L2 # L0
+            newDay.L1 = day.total - day.L1 - day.L2
             newDay.L2 = day.L1
-            newDay.AL = day.A - day.AL - day.ALL # A0
+            newDay.AL = day.A - day.AL - day.ALL
             newDay.ALL = day.AL
             newDay.A += day.A - day.ALL
             newDay.total += day.total - day.L2
