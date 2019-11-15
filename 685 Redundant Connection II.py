@@ -1,6 +1,6 @@
 '''
 685. Redundant Connection II
-Hard
+https://leetcode.com/problems/redundant-connection-ii/
 
 In this problem, a rooted tree is a directed graph such that,
 there is exactly one node (the root) for which all other nodes are descendants of this node,
@@ -40,9 +40,8 @@ Explanation: The given directed graph will be like this:
 '''
 class UnionFind:
     def __init__(self, nodeCount: int):
-        # The Union-Find graph, where
-        # node[i] points to the parent (not necessisarily its root) of node i+1
-        # nodes[0] is unused
+        # The Union-Find graph, where node[i] points to its parent
+        # (not necessisarily its root). The nodes[0] is unused
         self.nodes = [None] * (nodeCount + 1)
     
     def GetRoot(self, nodeId: int) -> int:
@@ -85,7 +84,7 @@ class Solution:
         1. A Cycle
         2. A node has 2 parents
         '''
-        # Find if there is a node has 2 parents
+        # Find if there is a node who has 2 parents
         N = len(edges)
         nodes = [None] * (N+1)
         candidateEdges = []
@@ -100,7 +99,7 @@ class Solution:
         
         if not candidateEdges:
             # If no node has 2 parents, there must be a cycle
-            # Use solution 684 from Redundant Connection
+            # Use solution 684 Redundant Connection
             return self.findRedundantConnection(edges)
         else:
             # Otherwise, remove 1 candidate, see if valid
