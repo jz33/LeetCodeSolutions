@@ -50,6 +50,8 @@ from collections import Counter
 class Solution:
     def backtrack(self, i: int, people: List[int]) -> int:
         '''
+        Notice this question cannot be done with greedy,
+        because this is NP Complete 3-partition problem
         Similar backtrack method like 40 Combination Sum II
         @i: index of the person who will pay debt to others
         @return: transaction count
