@@ -1,6 +1,13 @@
 '''
 Letter Combinations of a Phone Number 
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+
+Given a string containing digits from 2-9 inclusive,
+return all possible letter combinations that the number could represent.
+
+A mapping of digit to letters (just like on the telephone buttons) is given below.
+Note that 1 does not map to any letters.
+
 Time and Space Complexity: 3^6 * 4^2
 '''
 class FixedArray:
@@ -21,9 +28,6 @@ class FixedArray:
 
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        '''
-        Backtrack
-        '''
         pool = []
         if len(digits) == 0: return pool
         
@@ -60,4 +64,3 @@ class Solution:
         recursive(buffer, 0)
         
         return pool
-                
