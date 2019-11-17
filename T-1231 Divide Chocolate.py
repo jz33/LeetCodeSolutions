@@ -11,8 +11,6 @@ Being generous, you will eat the piece with the minimum total sweetness and give
 
 Find the maximum total sweetness of the piece you can get by cutting the chocolate bar optimally.
 
- 
-
 Example 1:
 
 Input: sweetness = [1,2,3,4,5,6,7,8,9], K = 5
@@ -40,6 +38,7 @@ class Solution:
         left = min(sweetness) 
         right = sum(sweetness)
         res = left
+        
         while left <= right:
             middle = left + ((right - left) >> 1);
 
