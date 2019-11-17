@@ -25,6 +25,9 @@ Output: 30
 '''
 class Solution:    
     def minEatingSpeed(self, piles: List[int], H: int) -> int:
+        '''
+        Similar idea to 410 Split Array Largest Sum.
+        '''
         total = sum(piles)
         
         # left/right is the minimum/maximum bananas to eat
