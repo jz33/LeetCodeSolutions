@@ -26,9 +26,6 @@ The best way is to split it into [7,2,5] and [10,8],
 where the largest sum among the two subarrays is only 18.
 '''
 class Solution:
-    '''
-    A special binary search method
-    '''
     def splitArray(self, nums: List[int], m: int) -> int:
         size = len(nums)
         
