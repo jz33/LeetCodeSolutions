@@ -40,19 +40,17 @@ Explanation: The given directed graph will be like this:
 '''
 class UnionFind:
     def __init__(self, nodeCount: int):
-        # The Union-Find graph, where node[i] points to its parent
-        # (not necessisarily its root). The nodes[0] is unused
-        self.nodes = [None] * (nodeCount + 1)
+        self.nodes = list(range(nodeCount + 1))
     
-    def GetRoot(self, nodeId: int) -> int:
+    def Find(self, i: int) -> int:
         nodes = self.nodes        
-        while nodes[nodeId]:
-            nodeId = nodes[nodeId]
-        return nodeId
+        if nodes[i] != i:
+            nodes[i] = self.Find(nodes[i])
+        return nodes[i]
     
     def Union(self, childNode: int, parentNode: int) -> bool:
-        cr = self.GetRoot(childNode)
-        pr = self.GetRoot(parentNode)
+        cr = self.Find(childNode)
+        pr = self.Find(parentNode)
         
         if cr == pr:
             return False
@@ -84,7 +82,7 @@ class Solution:
         1. A Cycle
         2. A node has 2 parents
         '''
-        # Find if there is a node who has 2 parents
+        # Find if there is a node has 2 parents
         N = len(edges)
         nodes = [None] * (N+1)
         candidateEdges = []
@@ -99,7 +97,7 @@ class Solution:
         
         if not candidateEdges:
             # If no node has 2 parents, there must be a cycle
-            # Use solution 684 Redundant Connection
+            # Use solution 684 from Redundant Connection
             return self.findRedundantConnection(edges)
         else:
             # Otherwise, remove 1 candidate, see if valid
