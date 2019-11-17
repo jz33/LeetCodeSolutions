@@ -35,34 +35,23 @@ Every integer represented in the 2D-array will be between 1 and N, where N is th
 '''
 class UnionFind:
     def __init__(self, nodeCount: int):
-        # The Union-Find graph, where node[i] points to its parent
-        # (not necessisarily its root). The nodes[0] is unused
-        self.nodes = [None] * (nodeCount + 1)
+        self.nodes = list(range(nodeCount+1))
     
-    def GetRoot(self, nodeId: int) -> int:
+    def Find(self, i: int) -> int:
         nodes = self.nodes        
-        while nodes[nodeId]:
-            nodeId = nodes[nodeId]
-        return nodeId
+        if nodes[i] != i:
+            nodes[i] = self.Find(nodes[i])
+        return nodes[i]
     
     def Union(self, left: int, right: int) -> bool:
-        '''
-        The left and right are 2 node ids that together they represent an edge
-        Union is to connect the root of left and right
-        Return true if unioned, i.e., left and right are NOT already connected
-        '''
-        left_root = self.GetRoot(left)
-        right_root = self.GetRoot(right)
+        left_root = self.Find(left)
+        right_root = self.Find(right)
         
         if left_root == right_root:
             # If left and right share same root, they are already connected
             return False
                 
-        # Union, connect the 2 roots
-        if left_root < right_root:
-            self.nodes[right_root] = left_root
-        else:
-            self.nodes[left_root] = right_root
+        self.nodes[left_root] = right_root
         return True
                 
 class Solution:
