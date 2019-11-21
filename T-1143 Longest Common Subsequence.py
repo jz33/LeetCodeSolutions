@@ -1,5 +1,7 @@
 '''
 1143. Longest Common Subsequence
+https://leetcode.com/problems/longest-common-subsequence/submissions/
+
 Given two strings text1 and text2, return the length of their longest common subsequence.
 
 A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted
@@ -40,3 +42,31 @@ class Solution:
                     dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j])
         
         return dp[len(x)][len(y)]
+
+class Solution:
+    def longestCommonSubsequence(self, x: str, y: str) -> int:
+        # Typically, this is N * M matrix, like:
+        # dp = [[0] * (len(x)+1) for _ in range(len(y)+1)]
+        # Since this question only needs last result of the dp matrix,
+        # Use an array to same spaces
+        
+        if len(x) > len(y):
+            x, y = y, x
+            
+        dp = [0] * len(y) # Use longer string
+        
+        for i in range(len(x)):
+            left = 0
+            topLeft = 0
+            for j in range(len(y)):
+                top = dp[j]
+
+                if x[i] == y[j]:
+                    dp[j] = topLeft + 1
+                else:
+                    dp[j] = max(left, top)
+                
+                left = dp[j]
+                topLeft = top
+                
+        return dp[-1]            
