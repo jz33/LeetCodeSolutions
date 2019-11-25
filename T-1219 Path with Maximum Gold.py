@@ -39,15 +39,12 @@ Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
 class Solution:
     def backtrack(self, grid, x, y) -> int:
         maxGold = grid[x][y]
-        
-        for di, d in enumerate([(x-1,y), (x+1,y), (x, y-1), (x, y+1)]):
-            i,j = d
+        for di, (i, j) in enumerate([(x-1,y), (x+1,y), (x, y-1), (x, y+1)]):
             if 0 <= i < self.rowCount and 0 <= j < self.colCount and grid[i][j] != 0:
                 ori = grid[x][y]
                 grid[x][y] = 0
                 gold = self.backtrack(grid, i, j)
                 grid[x][y] = ori
-                    
                 maxGold = max(maxGold, gold + ori)                
         return maxGold
                                         
@@ -58,6 +55,5 @@ class Solution:
         for i in range(self.rowCount):
             for j in range(self.colCount):
                 if grid[i][j] != 0:
-                    maxGold = max(maxGold, self.backtrack(grid, i,j))
-                    
+                    maxGold = max(maxGold, self.backtrack(grid, i,j))                
         return maxGold
