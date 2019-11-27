@@ -1,5 +1,7 @@
 '''
 238. Product of Array Except Self
+https://leetcode.com/problems/product-of-array-except-self/submissions/
+
 Given an array nums of n integers where n > 1,
 return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
 
@@ -11,22 +13,20 @@ Note: Please solve it without division and in O(n).
 '''
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        size = len(nums)
-        if not size:
+        if not nums or len(nums) == 0:
             return []
         
-        res = [1] * size
+        res = [1] * len(nums)
         
-        # 1. Let res[i] be the product of nums[:i]
-        for i in range(1,size):
-            res[i] = res[i-1] * nums[i-1]
-                
-        # 2. Then, res[-1] is already the answer
-        # From right to left, res[i] = res[i] * right,
-        # where right is product of nums[i+1:]
-        right = 1
-        for i in range(size-1, -1 ,-1):
-            res[i] = res[i] * right
-            right *= nums[i]
-                
+        # Reversed Symmetric  
+        p = 1
+        for i in range(1, len(nums)):
+            p *= nums[i-1]
+            res[i] *= p
+                    
+        p = 1
+        for i in range(len(nums)-2,-1,-1):
+            p *= nums[i+1]
+            res[i] *= p
+            
         return res
