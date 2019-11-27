@@ -2,71 +2,77 @@
 Serialize and Deserialize Binary Tree
 https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 
-Serialize and Deserialize tree by level order traversal
+Serialization is the process of converting a data structure or object into a sequence of bits so that
+it can be stored in a file or memory buffer, or transmitted across a network connection link
+to be reconstructed later in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary tree.
+There is no restriction on how your serialization/deserialization algorithm should work.
+You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized
+to the original tree structure.
+
+Example: 
+
+You may serialize the following tree:
+
+    1
+   / \
+  2   3
+     / \
+    4   5
+
+as "[1,2,3,null,null,4,5]"
+Clarification: The above format is the same as how LeetCode serializes a binary tree.
+You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+
+Note: Do not use class member/global/static variables to store states.
+Your serialize and deserialize algorithms should be stateless.
 '''
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Codec:
-    def serialize(self, root):
-        """Encodes a tree to a single string.  
-        :type root: TreeNode
-        :rtype: list[object]
-        """
-        if root is None: return []
+    def serialize(self, root) -> str:
+        if not root:
+            return ''
         
         queue = [root]
-        i = 0 # next node position in queue
-        while i < len(queue):
-            n = queue[i]
+        qi = 0
+        while qi < len(queue):
+            n = queue[qi]
+            qi += 1
             if n is not None:
-                queue.append(n.left)
-                queue.append(n.right)
-            i += 1
+                queue += [n.left, n.right]
+                
+        output = ','.join(str(n.val) if n is not None else 'N' for n in queue)
+        return output
+                
+    def deserialize(self, data) -> 'TreeNode':
+        if not data:
+            return None
         
-        # Remove trailing Nones
-        for i in xrange(len(queue)-1,-1,-1):
-            if queue[i] != None: 
-                break
-        
-        # Convert object to value
-        for i in xrange(len(queue)):
-            queue[i] = queue[i].val if queue[i] is not None else None
-            
-        return queue[:i+1]
-
-    def deserialize(self, data):
-        """Decodes your encoded data to tree.
-        :type data: list[object]
-        :rtype: TreeNode
-        """
-        if len(data) == 0: return None
-        
-        root = TreeNode(data[0])
+        src = data.split(',')
+        si = 1
+        root = TreeNode(src[0])
         queue = [root]
-        i = 0 # next node position in queue
-        j = 1 # next object position in data
-        while j < len(data):
-            n = queue[i]
-            i += 1
-            v = data[j]
-            j += 1
-            if v is not None:
-                n.left = TreeNode(v)
-                queue.append(n.left)
-            if j == len(data): break
-            v = data[j]
-            j += 1
-            if v is not None:
-                n.right = TreeNode(v)
-                queue.append(n.right)
+        qi = 0
+        while si < len(src):
+            n = queue[qi]
+            qi += 1
+            v = src[si]
+            si += 1
+            if v != 'N':
+                c = TreeNode(v)
+                queue.append(c)
+                n.left = c
+            v = src[si]
+            si += 1
+            if v != 'N':
+                c = TreeNode(v)
+                queue.append(c)
+                n.right = c
         return root
-
-sol = Codec()
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
-root.right.left = TreeNode(4)
-root.right.right = TreeNode(5)
-
-r = sol.serialize(root)
-print r
-t = sol.deserialize(r)
-print t, t.left, t.right,t.left.left,t.left.right,t.right.left,t.right.right
