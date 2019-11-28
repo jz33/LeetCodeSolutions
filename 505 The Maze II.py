@@ -82,6 +82,9 @@ class Solution:
         return res
     
     def shortestDistance(self, maze: List[List[int]], start: List[int], destination: List[int]) -> int:
+        '''
+        Dijkstra, time complexity is O(ELogV), which is O(mnlog(mn))
+        '''
         s = (start[0], start[1])
         d = (destination[0], destination[1])
         visited = {s : 0} # {visited node : total cost to reach node}
