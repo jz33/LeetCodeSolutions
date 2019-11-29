@@ -1,48 +1,66 @@
-SIZE = 26
-A = ord('a')
+'''
+211. Add and Search Word - Data structure design
+https://leetcode.com/problems/add-and-search-word-data-structure-design/
 
-class TrieNode(object):   
+Design a data structure that supports the following two operations:
+
+void addWord(word)
+bool search(word)
+search(word) can search a literal word or a regular expression string containing only letters a-z or ..
+A . means it can represent any one letter.
+
+Example:
+
+addWord("bad")
+addWord("dad")
+addWord("mad")
+search("pad") -> false
+search("bad") -> true
+search(".ad") -> true
+search("b..") -> true
+Note:
+You may assume that all words are consist of lowercase letters a-z.
+'''
+class Node: # Trie Node
     def __init__(self):
-        self.ended = False
-        self.sub = [None] * SIZE
-    
-    def insert(self, word, offset):
-        if offset == len(word):
-            self.ended = True
-        elif offset < len(word):
-            i = ord(word[offset]) - A;
-            if self.sub[i] is None:
-                self.sub[i] = TrieNode()
-            self.sub[i].insert(word,offset+1)
+        self.isWord = False
+        self.children = {}
 
-    def exists(self, word, offset):
-        if offset == len(word):
-            return self.ended
-        elif offset < len(word):
-            c = word[offset]
-            if c == '.':
-                for i in xrange(0,SIZE):
-                    if self.sub[i] is not None and self.sub[i].exists(word,offset+1):
-                        return True
-                return False
-            else:
-                i = ord(c) - A
-                return self.sub[i] is not None and self.sub[i].exists(word,offset+1)
-                
 class WordDictionary:
-    # initialize your data structure here.
     def __init__(self):
-        self.node = TrieNode()
+        """
+        Initialize your data structure here.
+        """
+        self.root = Node()
+        
+    def addWord(self, word: str) -> None:
+        """
+        Adds a word into the data structure.
+        """
+        this = self.root
+        for c in word:
+            if c not in this.children:
+                this.children[c] = Node()
+            this = this.children[c]
+        this.isWord = True
 
-    # @param {string} word
-    # @return {void}
-    # Adds a word into the data structure.
-    def addWord(self, word):
-        self.node.insert(word,0)
-
-    # @param {string} word
-    # @return {boolean}
-    # Returns if the word is in the data structure. A word could
-    # contain the dot character '.' to represent any one letter.
-    def search(self, word):
-        return self.node.exists(word,0)
+    def search(self, word: str) -> bool:
+        """
+        Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
+        """
+        queue = collections.deque()
+        queue.append(self.root)
+        for c in word:
+            if not queue:
+                return False
+            
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                if c == '.':
+                    for n in node.children.values():
+                        queue.append(n)
+                else:
+                    if c in node.children:
+                        queue.append(node.children[c])
+        
+        return any(node.isWord for node in queue)
