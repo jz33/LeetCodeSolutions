@@ -21,34 +21,28 @@ from heapq import heappush, heappop
 
 class Solution:
     def smallestRange(self, nums: List[List[int]]) -> List[int]:
-        '''
-        Similar way to 23 Merge K Sorted List
-        Use a heap to get min of all lists
-        Manually update max
-        '''
-        heap = [] # (v, i, j)
+        res = [0, float('inf')]
         
-        # Put first elements into heap
-        for i in range(len(nums)):
-            heappush(heap, (nums[i][0], i, 0))
+        heap = [] # [(value, arr index i, arr[i] index)]
+        for i, arr in enumerate(nums):
+            if arr:
+                heappush(heap, (arr[0], i, 0))
         
-        maxValue = max(row[0] for row in nums)
+        maxVal = max(t[0] for t in heap)
         
-        # Answer
-        left = -1e9
-        right = 1e9
-        
+        # The result interval is the min/max value of the heap
         while heap:
-            v, i, j = heappop(heap) # v is min
-            if right - left > maxValue - v:
-                left = v
-                right = maxValue
+            minVal, i, j = heappop(heap)
+   
+            if maxVal - minVal < res[1] - res[0]:          
+                res = [minVal, maxVal]
             
             if j + 1 == len(nums[i]):
-                return [left, right]
+                return res
             
-            nv = nums[i][j+1]
-            maxValue = max(maxValue, nv)
-            heappush(heap, (nv, i, j+1))
+            nextVal = nums[i][j+1]
+            maxVal = max(maxVal, nextVal)                
             
-        return [left, right]
+            heappush(heap, (nextVal, i, j+1))
+            
+        return res
