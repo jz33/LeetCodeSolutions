@@ -1,3 +1,7 @@
+/*
+218. The Skyline Problem
+https://leetcode.com/problems/the-skyline-problem/
+*/
 class Solution {
     public List<List<Integer>> getSkyline(int[][] buildings) {
         List<int[]> heights = new ArrayList<>();
@@ -20,7 +24,8 @@ class Solution {
                 // Put in height for new building
                 Integer ctr = heightMap.getOrDefault(-h[1], 0);
                 heightMap.put(-h[1], ctr + 1);
-            } else {
+            }
+            else {
                 // Remove finished building
                 Integer ctr = heightMap.get(h[1]);
                 if (ctr == 1) {
