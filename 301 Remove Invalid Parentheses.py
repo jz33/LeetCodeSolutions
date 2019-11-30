@@ -21,72 +21,81 @@ Example 3:
 Input: ")("
 Output: [""]
 '''
-from collections import deque
-
 class Solution:
+    def minRemoveToMakeValid(self, s: List[str]) -> str:
+        '''
+        Similar to 1249. Minimum Remove to Make Valid Parentheses
+        '''
+        invalidLeftBrackets = 0
+        invalidRightBrackets = 0
+        for c in s:
+            if c == '(':
+                invalidLeftBrackets += 1
+            elif c == ')':
+                if invalidLeftBrackets == 0:
+                    invalidRightBrackets += 1
+                else:
+                    invalidLeftBrackets -= 1
+        return invalidLeftBrackets + invalidRightBrackets
+                    
     def isValid(self, s: List[str]) -> bool:
-        # If a string has valid parentheses pairs
-        # Notice input is listified str
+        # If a string is valid parentheses paris
         ctr = 0
-        for ch in s:
-            if ch == '(': ctr += 1
-            elif ch == ')': ctr -= 1
+        for c in s:
+            if c == '(': ctr += 1
+            elif c == ')': ctr -= 1
             if ctr < 0: return False
         return ctr == 0
 
-    def trim(self, ls: List[str]) -> List[str]:
-        # Trim off left and right invalid parentheses to speed up the algorithm
-        # Notice input is listified str
-        length = len(ls)
+    def trim(self, s: List[str]) -> List[str]:
+        # Trim off left and right invalid parentheses to speed up.
+        size = len(s)
         
         left = 0
-        while left < length and ls[left] == ')':
+        while left < size and s[left] == ')':
             left += 1
 
-        right = length - 1
-        while right >= left and ls[right] == '(':
+        right = size - 1
+        while right >= left and s[right] == '(':
             right -= 1
             
-        return ls[left : right+1]
+        return s[left : right+1]
     
     def removeInvalidParentheses(self, s: str) -> List[str]:
-        # Trim off left and right invalid parentheses to speed up
+        '''
+        Optimized BFS
+        Time Complexity: maxDepth * N * N
+        '''
         ls = self.trim(list(s))
         if self.isValid(ls):
             return [''.join(ls)]
 
-        res = []        
-        queue = deque() # [(string, startIndex, lastRemovedChar)]
-        queue.append((ls, 0, ')'))
+        # Compute how many parentheses needs to be removed.
+        # This will be the depth of BFS.
+        removeNeeded = self.minRemoveToMakeValid(ls)
         
-        while len(queue):
-            node, startIndex, lastRemovedChar = queue.popleft()
+        queue = collections.deque() # [(string, lastRemovedIndex, lastRemovedChar)]
+        queue.append((ls, 0, ')'))
+           
+        for _ in range(removeNeeded):
+            for _ in range(len(queue)):
+                node, lastRemovedIndex, lastRemovedChar = queue.popleft()
 
-            # Start from last removal position
-            for i in range(startIndex, len(node)):
-                ch = node[i]
-                if ch != '(' and ch != ')':
-                    continue
+                # Start from last removal position
+                for i in range(lastRemovedIndex, len(node)):
+                    c = node[i]
+                    if c != '(' and c != ')':
+                        continue
 
-                if i != startIndex and node[i-1] == ch:
-                    # Do not repeatedly remove from consecutive parentheses
-                    # Because essentially the removed strings are all same
-                    continue  
+                    if i != lastRemovedIndex and c == node[i-1]:
+                        # Do not repeatedly remove from consecutive parentheses
+                        # Because essentially the removed strings are identical.
+                        continue  
                     
-                if lastRemovedChar == '(' and ch == ')':
-                    # Do not remove a pair of valid parentheses
-                    continue
+                    if lastRemovedChar == '(' and c == ')':
+                        # Do not remove a pair of valid parentheses pair.
+                        continue
                 
-                # Remove ch
-                child = node[:i] + node[i+1:]
-                
-                if self.isValid(child):
-                    res.append(''.join(child))
-                    
-                elif len(res) == 0:
-                    # If no answer is found yet, add to queue and keep BFS.
-                    # Otherwise, no need for next level BFS,
-                    # as we only need to remove least amount of parentheses
-                    queue.append((child, i, ch));
-
-        return res
+                    queue.append((node[:i] + node[i+1:], i, c))
+                            
+        return [''.join(arr) for arr,_,_ in queue if self.isValid(arr)]
