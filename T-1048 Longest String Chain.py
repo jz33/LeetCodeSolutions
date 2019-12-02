@@ -23,7 +23,6 @@ Note:
     1 <= words.length <= 1000
     1 <= words[i].length <= 16
     words[i] only consists of English lowercase letters.
-
 '''
 class Solution:
     def longestStrChain(self, words: List[str]) -> int:
