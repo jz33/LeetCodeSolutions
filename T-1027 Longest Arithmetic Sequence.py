@@ -1,5 +1,6 @@
 '''
 1027. Longest Arithmetic Sequence
+https://leetcode.com/problems/longest-arithmetic-sequence/
 
 Given an array A of integers, return the length of the longest arithmetic subsequence in A.
 
@@ -39,3 +40,15 @@ class Solution:
             maxLength = max(maxLength, cc.most_common(1)[0][1] + 1)
             dp.append(cc)        
         return maxLength
+
+'''
+Flatten the dp matrix to a single dict
+'''
+class Solution:
+    def longestArithSeqLength(self, A: List[int]) -> int:
+        dp = {} # {(index, diff) : count}
+        for i in range(1, len(A)):
+            for j in range(i):
+                diff = A[i] - A[j]
+                dp[i, diff] = dp.get((j, diff), 0) + 1       
+        return max(dp.values()) + 1
