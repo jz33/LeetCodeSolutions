@@ -51,7 +51,7 @@ class Solution:
         leftDepth = self.postorder(rank+1, node.left)
         rightDepth = self.postorder(rank+1, node.right)
         if leftDepth == -1 and rightDepth == -1:
-            # The leaf node can be lcs if its depth is higher
+            # The leaf node can be lca if its depth is higher
             if rank > self.depth:
                 self.depth = rank
                 self.lca = node
@@ -61,7 +61,7 @@ class Solution:
         elif rightDepth == -1:
             return leftDepth
         else:
-            # Non-leaf node can only be lcs if both its child contains deepest nodes
+            # Non-leaf node can only be lca if both children contain deepest nodes
             if leftDepth == rightDepth == self.depth:
                 self.lca = node
             return max(leftDepth, rightDepth)
