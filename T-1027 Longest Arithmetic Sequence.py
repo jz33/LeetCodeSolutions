@@ -26,29 +26,11 @@ Output: 4
 Explanation: 
 The longest arithmetic subsequence is [20,15,10,5].
 '''
-from collections import Counter
-
 class Solution:
     def longestArithSeqLength(self, A: List[int]) -> int:
-        dp = [Counter()] # list of counters {difference : count}
-        maxLength = 1
-        for i in range(1, len(A)):
-            cc = Counter()
-            for j in range(i):
-                diff = A[i] - A[j]
-                cc[diff] = dp[j].get(diff, 0) + 1
-            maxLength = max(maxLength, cc.most_common(1)[0][1] + 1)
-            dp.append(cc)        
-        return maxLength
-
-'''
-Flatten the dp matrix to a single dict
-'''
-class Solution:
-    def longestArithSeqLength(self, A: List[int]) -> int:
-        dp = {} # {(index, diff) : count}
+        dp = collections.Counter()
         for i in range(1, len(A)):
             for j in range(i):
                 diff = A[i] - A[j]
-                dp[i, diff] = dp.get((j, diff), 0) + 1       
+                dp[i, diff] = dp[j, diff] + 1
         return max(dp.values()) + 1
