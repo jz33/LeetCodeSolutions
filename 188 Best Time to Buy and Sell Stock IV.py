@@ -45,6 +45,9 @@ class Solution:
         sells = [0] * (k + 1)
         buys = [float('-inf')] * (k + 1)
         for p in prices:
+            # For sell[i], it is p + previous day buys[i], because you have to buy ith times before sell ith time
+            # For buys[i], it is -p + previous day sells[i-1]
+            # Iterate from right to left is a trick to avoid caching previous day buys and sells
             for j in range(k, 0, -1):
                 sells[j] = max(sells[j], buys[j] + p)
                 buys[j] = max(buys[j], sells[j-1] - p)
