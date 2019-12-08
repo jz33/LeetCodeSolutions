@@ -69,14 +69,8 @@ public:
      
     int maxPathSum(TreeNode* root)
     {
-        if (!root)
-        {
-            return 0;
-        }
-        
         int totalSum = root->val;   
-        getBranchSumRecursively(root, &totalSum);    
-           
+        getBranchSumRecursively(root, &totalSum);
         return totalSum;
     }
 };
