@@ -1,26 +1,28 @@
-class Solution(object):
-    def removeDuplicateLetters(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        size = len(s)
-        A = ord('a')
-        
-        # Build char counter array
-        counter = [0]*26
-        for ch in s:
-            counter[ord(ch) - A] += 1
-        
+'''
+316. Remove Duplicate Letters
+https://leetcode.com/problems/remove-duplicate-letters/
+
+Given a string which contains only lowercase letters,
+remove duplicate letters so that every letter appears once and only once.
+You must make sure your result is the smallest in lexicographical order among all possible results.
+
+Example 1:
+
+Input: "bcabc"
+Output: "abc"
+Example 2:
+
+Input: "cbacdcbc"
+Output: "acdb"
+'''
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        ctr = collections.Counter(s)
         stack = []
-        added = set()
-        for i,c in enumerate(s):
-            if c not in added:
-                # If current char is smaller than top char and top char is not the last one
-                while len(stack) > 0 and stack[-1] > c and counter[ord(stack[-1])-A] > 0:
-                    added.remove(stack[-1])
+        for c in s:
+            if c not in stack:
+                while stack and stack[-1] > c and ctr[stack[-1]] > 0:
                     stack.pop()
                 stack.append(c)
-                added.add(c)
-            counter[ord(c) - A] -= 1
+            ctr[c] -= 1
         return ''.join(stack)
