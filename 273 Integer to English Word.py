@@ -20,41 +20,37 @@ Example 4:
 Input: 1234567891
 Output: "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One"
 '''
-lessThan20 = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
-tens = ["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
-thousands = ["", "Thousand", "Million", "Billion"];
+Under20 = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+Under100 = ["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+Thousands = ["", "Thousand", "Million", "Billion"];
 
 class Solution:
     def numberToWords(self, num: int) -> str:
         if num == 0:
-            return "Zero"
+            return 'Zero'
         
+        # Iterate reversely to deal with very large numbers
         words = []
         i = 0
         while num > 0:
-            # Convert by 1000 unit
-            r = self.under1000(num % 1000)
-            if r != '':
+            s = self.under1000(num % 1000)
+            if s:
                 if i == 0:
-                    words.append(r)
+                    words.append(s)
                 else:
-                    words.append(r + ' ' + thousands[i])
-                    
-            num = num // 1000
+                    words.append(s + ' ' + Thousands[i])
             i += 1
-
-        # Need to reverse!
+            num = num // 1000
         return ' '.join(words[::-1])
     
     def under1000(self, r: int) -> str:
         words = []
         if r >= 100:
-            words.append(lessThan20[r // 100])
-            words.append("Hundred")
+            words += [Under20[r // 100], 'Hundred']
             r = r % 100
         if r >= 20:
-            words.append(tens[r // 10])
+            words.append(Under100[r // 10])
             r = r % 10
         if r > 0:
-            words.append(lessThan20[r])
+            words.append(Under20[r])
         return ' '.join(words)
