@@ -13,20 +13,16 @@ Note: Please solve it without division and in O(n).
 '''
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        if not nums or len(nums) == 0:
-            return []
-        
         res = [1] * len(nums)
         
-        # Reversed Symmetric  
         p = 1
         for i in range(1, len(nums)):
             p *= nums[i-1]
             res[i] *= p
-                    
+        
         p = 1
         for i in range(len(nums)-2,-1,-1):
             p *= nums[i+1]
             res[i] *= p
-            
+        
         return res
