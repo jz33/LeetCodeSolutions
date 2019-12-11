@@ -30,7 +30,7 @@ class Solution:
             
             '''
             In preorder traversal output, if b is after a,
-            it means b is a's child or one of its parent's right child;
+            it means b is child of a or one of its parent's right child;
             In postorder traversal output, if b is after a,
             if means b is a's parent or one of its parent's right child;
             '''
@@ -40,10 +40,9 @@ class Solution:
             else:
                 # Put n to one of the parents' right
                 stack.pop()
-                parent = stack[-1]
-                while pos > book[parent.val]:
-                    parent = stack.pop()
-                parent.right = n
+                while stack and pos > book[stack[-1].val]:
+                    stack.pop()
+                stack.pop().right = n
                 
             stack.append(n)
 
