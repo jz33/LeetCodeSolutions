@@ -53,58 +53,47 @@ int getRigthDepth(Node* n)
     }
     return d;
 }
-
-// Get node count of full complete tree
-int getFullTreeNodeCount(int depth)
+           
+int countNodes(Node* root)
 {
-    return (1 << depth) - 1;
-}
-
-// Get last row node count of complete tree
-int getFullTreeLastRowNodeCount(int depth)
-{
-    return (1 << (depth - 1));
-}
-                
-int countNodes(struct TreeNode* root)
-{
-    int d, rightDepth, lastRowCount;
-    Node* p = root;
     int depth = getLeftDepth(root);
     if (depth <= 1)
+    {
         return depth;
+    }
     
     // The total node count of complete tree is the sum of
     // inner node count + last row node count
     // To count last row node, it needs to find the "break point",
     // which is last node of the tree
-    lastRowCount = 0;
-    for (d = depth-1; d > 0; --d)
+    int lastRowCount = 0;
+    Node* p = root;
+    for (int d = depth-1; d > 0; --d)
     {
-        // First check if left node of p is full tree
-        rightDepth = getRigthDepth(p->left);
+        // Check if left branch of p is full tree
+        // by checking left branch's right depth
+        int rightDepth = getRigthDepth(p->left);
         if (rightDepth == d)
         {
-            // The p->left is full tree, then non-full tree
+            // P's left branch is full tree, then non-full tree
             // can only exist in p->right
-            lastRowCount += getFullTreeLastRowNodeCount(d);
+            // Add the node count of last row of left branch.
+            lastRowCount += (1 << (d - 1));
             p = p->right;
         }
         else
         {
-            // The p->left is non-full tree, move to left,
-            // try find break point
+            // P's left branch is not full tree, move to left
             p = p->left;
         }
     }
     
-    // Now p is on last row.
-    // The p should be the last node of the tree or
-    // the next node of last node of the tree
+    // Now p is on last row, either the last node of the tree or null
     if (p)
     {
         lastRowCount++;
     }
  
-    return getFullTreeNodeCount(depth-1) + lastRowCount;
+    // Plus inner complete tree node count
+    return (1 << (depth - 1)) - 1 + lastRowCount;
 }
