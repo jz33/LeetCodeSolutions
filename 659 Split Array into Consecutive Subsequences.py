@@ -35,20 +35,22 @@ class Solution:
     def isPossible(self, nums: List[int]) -> bool:
         '''
         Build a dict to record subsequences.
-        Key is the max number of a subseq, value is list of
-        subseq sizes, using heap to return shortest subseq
+        Key is the max of a subseq, value is list of
+        subseq sizes, using heap to always try to push shortest subseq first
         '''
         book = collections.defaultdict(list)
         for n in nums:
-            if n-1 not in book or len(book[n-1]) == 0:
+            if len(book[n-2]) > 0 and book[n-2][0] < 3:
+                return False
+            
+            if len(book[n-1]) == 0:
                 heappush(book[n], 1)
             else:
                 ctr = heappop(book[n-1]) + 1
                 heappush(book[n], ctr)
                     
-        for k, ls in book.items():
+        for ls in book.values():
             if any(ctr < 3 for ctr in ls):
                 return False
             
         return True
-        
