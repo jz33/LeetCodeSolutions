@@ -16,12 +16,10 @@ The result of this move is that the string is "aaca",
 of which only "aa" is possible, so the final string is "ca".
 '''
 def removeDuplicates(src: str) -> str:
-    stack = [] # List[character]
-    for e in src:
-        stack.append(e)
-
-        # Remove all equal character pairs
-        while len(stack) > 1 and stack[-1] == stack[-2]:
-            stack = stack[:-2]
-
-    return ''.join([c for c in stack])
+    stack = []
+    for e in S:
+        if stack and e == stack[-1]:
+            stack.pop()
+        else:
+            stack.append(e)
+    return ''.join(stack)
