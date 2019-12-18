@@ -14,31 +14,26 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
 
 Hashmap, Array
 '''
-def longestConsecutive(ls):
-    ref = {}
-    maxlen = 1
-    for n in ls:
-        ref[n] = 1
-    for n in ls:
-        if n in ref:
-            nextVal = n + 1
-            length  = 1
-            while nextVal in ref:
-                length +=1
-                del ref[nextVal]
-                nextVal += 1
-            nextVal = n - 1
-            while nextVal in ref:
-                length +=1
-                del ref[nextVal]
-                nextVal -= 1
-            maxlen = max(length, maxlen)
-    return maxlen
-    
-def main():
-    ls = [1,2,4,5,6,8,9]
-    print ls
-    print longestConsecutive(ls)
-    
-if __name__ == "__main__":
-    main()
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        res = 0
+        ss = set(nums)
+        
+        while ss:
+            e = ss.pop()
+            
+            # Expand from e
+            ctr = 1
+            p = e
+            while p-1 in ss:
+                ctr += 1
+                p -= 1
+                ss.remove(p)
+            p = e
+            while p+1 in ss:
+                ctr += 1
+                p += 1
+                ss.remove(p)
+                
+            res = max(res, ctr)      
+        return res
