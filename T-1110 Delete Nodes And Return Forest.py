@@ -19,40 +19,43 @@ Output: [[1,2,null,4],[6],[7]]
 #         self.val = x
 #         self.left = None
 #         self.right = None
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
 class Solution:
-    def delNodes(self, root: TreeNode, to_delete: List[int]) -> List[TreeNode]:       
+    def postorder(self, node, parent):
+        if node.left:
+            self.postorder(node.left, node)
+        if node.right:
+            self.postorder(node.right, node)
+            
+        if node.val in self.to_delete_set:
+            if node.left and node.left.val not in self.to_delete_set:
+                self.result.append(node.left)
+            if node.right and node.right.val not in self.to_delete_set:
+                self.result.append(node.right)
+        
+            # Actually delete this node
+            if parent:
+                if node == parent.left:
+                    parent.left = None
+                elif node == parent.right:
+                    parent.right = None
+            
+            node.left = None
+            node.right = None
+                    
+    def delNodes(self, root: TreeNode, to_delete: List[int]) -> List[TreeNode]:
         if not root:
             return []
         
-        to_delete_set = set(to_delete)
-        stack = [(root, None)] # [(Node, parent node)], if parent node is none, it is deleted
-        newRoots = []
-        
-        # Level order travsersal
-        while stack:
-            node, parent = stack.pop()
-            
-            # Update newRoots
-            isCurrentNodeDeleted = node.val in to_delete_set
-            if not parent and not isCurrentNodeDeleted:
-                newRoots.append(node)
-            
-            # Next round
-            if node.left:
-                stack.append((node.left, None if isCurrentNodeDeleted else node))
-            if node.right:
-                stack.append((node.right, None if isCurrentNodeDeleted else node))
-                
-            # Actually delete the node
-            if isCurrentNodeDeleted:
-                if parent:
-                    if node == parent.left:
-                        parent.left = None
-                    else:
-                        parent.right = None
-                        
-                node.left = None
-                node.right = None
-                
-        return newRoots  
+        self.to_delete_set = set(to_delete)
+        self.result = []
+        if root.val not in self.to_delete_set:
+            self.result.append(root)
+        self.postorder(root, None)
+        return self.result
