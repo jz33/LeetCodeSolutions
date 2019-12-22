@@ -17,7 +17,7 @@ Output: 10
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:        
         heights = [0] + heights + [0] # just to make code simpler
-        stack = [0] # record indexes, where heights are increasing
+        stack = [0] # stack of indexes, where heights[i] are increasing
         maxRec = 0
         for i, h in enumerate(heights):
             while h < heights[stack[-1]]:
