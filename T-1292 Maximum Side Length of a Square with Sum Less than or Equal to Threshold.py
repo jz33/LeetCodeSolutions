@@ -38,7 +38,7 @@ class Solution:
             for j in range(colCount):
                 accu[i+1][j+1] = accu[i][j+1] + accu[i+1][j] - accu[i][j] + mat[i][j]
       
-        # Binary search on each node
+        # Binary search
         maxSide = 0
         for i in range(rowCount):
             for j in range(colCount):
@@ -58,5 +58,4 @@ class Solution:
                             left = mid + 1
                         else:
                             right = mid - 1
-
         return maxSide
