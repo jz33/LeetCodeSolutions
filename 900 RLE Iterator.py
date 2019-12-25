@@ -61,15 +61,13 @@ class RLEIterator:
         
         if target >= self.intervals[-1][0]:
             return -1
-        
-        '''
-        [0, 8], [3, 5], [5, None]
-        '''
+
         # Binary search on insertion point
         arr = self.intervals
         left = 0
         right = len(arr) - 1
         foundIndex = None
+        
         while left <= right:
             mid = left + (right - left) // 2
             if arr[mid][0] == target:
