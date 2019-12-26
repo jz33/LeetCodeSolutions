@@ -57,9 +57,6 @@ class Slider:
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        '''
-        Sliding Window
-        '''
         maxLen = 0
         left = 0
         slider = Slider()
@@ -70,4 +67,4 @@ class Solution:
                 left += 1
                 slider.remove(lc)
             maxLen = max(maxLen, slider.count)
-        return maxLen       
+        return maxLen
