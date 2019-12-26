@@ -1,35 +1,27 @@
-import random
 '''
-11 Container With Most Water
-https://oj.leetcode.com/problems/container-with-most-water/
-http://yucoding.blogspot.com/2012/12/leetcode-question-22-container-with.html
+11. Container With Most Water
+https://leetcode.com/problems/container-with-most-water/
+
+Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai).
+n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0).
+Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+
+Note: You may not slant the container and n is at least 2.
+
+Example:
+
+Input: [1,8,6,2,5,4,8,3,7]
+Output: 49
 '''
-# generate a random int array with limits [a,b]
-def createRandList(n,a,b):
-    A = []
-    for i in range(n):
-        A.append(random.randint(a,b))
-    return A
-
-def maxRectangleArea(heights):
-    maxArea = 0
-    l = 0
-    r = len(heights)-1
-    if l == r : return 0
-    
-    while l < r:
-        maxArea = max(abs(l-r)*min(heights[l],heights[r]),maxArea)
-        if(heights[l]<=heights[r]): l += 1
-        else : r -= 1
-    return maxArea
-    
-def main():
-    repeat = 1
-    for i in range(repeat):
-        n = i+5
-        heights = createRandList(n,1,(i+n)*2)
-        print heights
-        print maxRectangleArea(heights)
-
-if __name__ == "__main__":
-    main()
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        left = 0
+        right = len(height) - 1
+        res = 0
+        while left < right:
+            res = max(res, abs(left - right) * min(height[left], height[right]))
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
+        return res
