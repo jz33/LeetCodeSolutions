@@ -52,17 +52,21 @@ from heapq import heappush, heappop
 
 class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
-        heap = [] # max heap, stores all available fuels
-        i = 0 # iterator of stations, each station is pushed into heap just once
-        maxDist = startFuel # current maximum reachable distance in current times
-        times = 0 # result, refueled times
-        while maxDist < target:
-            while i < len(stations) and maxDist >= stations[i][0]:
+        i = 0 # iterator of stations
+        reached = startFuel # currently reached distance
+        heap = [] # [station liters], max heap
+        stops = 0
+        while reached < target:
+            # Push to heap
+            while i < len(stations) and stations[i][0] <= reached:
                 heappush(heap, -stations[i][1])
-                # Make sure each station is only pushed once!
                 i += 1
+            
+            # Get from heap
             if not heap:
-                return -1
-            maxDist += -heappop(heap)
-            times += 1
-        return times 
+                return -1 
+            
+            # Pick maximum fuel
+            reached += -heappop(heap)            
+            stops += 1      
+        return stops   
