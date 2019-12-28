@@ -32,19 +32,21 @@ def dot(p1, p2, p3) -> int:
 class Solution:
     def validSquare(self, p1: List[int], p2: List[int], p3: List[int], p4: List[int]) -> bool:
         '''
-        1. Check if there is duplicate points
-        '''
-        pts = [p1, p2, p3, p4]
-        s = set([(p[0], p[1]) for p in pts])
-        if len(s) != 4:
-            return False
-        
-        '''
-        2. Start 1st point. Find its 2 neighbor points and 1 diagnal point.
+        1. Start 1st point. Find its 2 neighbor points and 1 diagnal point by
+        computing Euclidean distances
         '''
         dist12 = euclidean(p1, p2)
+        if isclose(dist12, 0):
+            # Duplicate points
+            return False
+        
         dist13 = euclidean(p1, p3)
+        if isclose(dist13, 0):
+            return False
+        
         dist14 = euclidean(p1, p4)
+        if isclose(dist14, 0):
+            return False
         
         diagnal = None
         neighbors = []
@@ -62,7 +64,7 @@ class Solution:
             return False
         
         '''
-        3. Check angles using dot product. Angle is 90 degree, dot product should be 0
+        2. Check angles using dot product. Angle is 90 degree, dot product should be 0
         '''
         return dot(p1, neighbors[0], diagnal) == 0 and \
                dot(p1, neighbors[1], diagnal) == 0 and \
