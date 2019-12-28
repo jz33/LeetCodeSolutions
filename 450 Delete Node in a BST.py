@@ -46,74 +46,56 @@ Another valid answer is [5,2,6,null,4,null,7].
 #         self.val = x
 #         self.left = None
 #         self.right = None
-from typing import Tuple
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
 class Solution:
     def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
+        # 1. Find the target (to-be-deleted) node
+        parent = None
+        target = root  
+        while target:
+            if target.val == key:
+                break          
+            parent = target
+            target = target.left if key < target.val else target.right
         
-        def getNextNode(n: TreeNode) -> TreeNode:
-            '''
-            Get next node of n, return found node
-            '''
-            found = n.right
-            if not found:
-                return None
-      
-            while found.left:
-                found = found.left
-
-            return found
-        
-        def searchNode(root: TreeNode) -> Tuple[TreeNode, TreeNode]:
-            '''
-            Search key in BST, return found node and its parent
-            '''
-            parent = None
-            found = root
-            
-            while found:
-                if found.val == key:
-                    break
-           
-                parent = found
-
-                if key < found.val:            
-                    found = found.left
-                else:
-                    found = found.right
-                    
-            return found, parent
-        
-        # Main body
-        if not root:
+        if not target:
+            # key not in tree
             return root
         
-        toDelete, toDeleteParent = searchNode(root)
-        if not toDelete:
-            return root
-                
-        nextNode = getNextNode(toDelete)
- 
-        if not toDeleteParent:
-            # Found in root
+        # 2. Get next node of the target node in target node's child tree
+        nextNode = target.right
+        if nextNode:      
+            while nextNode.left:
+                nextNode = nextNode.left
+        
+        # 3. Delete target node
+        if not parent:
             if not nextNode:
+                # Delete root node, no right branch
                 return root.left
             else:
+                # Delete root node, has right branch
                 nextNode.left = root.left
-                return root.right       
+                return root.right
         else:
-            if toDeleteParent.left is toDelete:
-                # found in left
-                if not nextNode:
-                    toDeleteParent.left = toDelete.left
+            targetIsOnLeft = (parent.left == target)
+            # Delete the node, re-assign target's left & right
+            if not nextNode:
+                if targetIsOnLeft:
+                    parent.left = target.left
                 else:
-                    nextNode.left = toDelete.left
-                    toDeleteParent.left = toDelete.right
+                    parent.right = target.left
             else:
-                # found in right
-                if not nextNode:
-                    toDeleteParent.right = toDelete.left
+                nextNode.left = target.left
+                if targetIsOnLeft:
+                    parent.left = target.right
                 else:
-                    nextNode.left = toDelete.left
-                    toDeleteParent.right = toDelete.right
-            return root
+                    parent.right = target.right
+                    
+        return root
