@@ -20,7 +20,8 @@ Output: ""
 '''
 class Solution:
     def largestTimeFromDigits(self, A: List[int]) -> str:
-        # Find hours
+        
+        # Find hours from largest
         for hr in range(23,-1,-1):
             digits = copy.deepcopy(A)
             d0 = hr // 10
@@ -30,6 +31,7 @@ class Solution:
                 digits.remove(d0)
                 digits.remove(d1)
             except ValueError:
+                # If value not in list, Python raises ValueError
                 continue
             
             prefix = str(d0) + str(d1) + ":"
