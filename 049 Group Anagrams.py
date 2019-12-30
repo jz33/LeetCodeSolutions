@@ -1,19 +1,32 @@
-PRIMES =[2, 3, 5, 7, 11 ,13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 107]
-A = ord('a')
+'''
+49. Group Anagrams
+https://leetcode.com/problems/group-anagrams/
 
-def group(strs):
-    ans = []
-    map = {}
-    for s in strs:
-        hash = 1
-        for e in s:
-            hash *= PRIMES[ord(e) - A]
-        if hash in map:
-            map[hash].append(s)
-        else:
-            map[hash] = [s]
-    
-    for v in map.itervalues():
-        ans.append(sorted(v))
-        
-    return ans
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter
+'''
+PRIMES =[2, 3, 5, 7, 11 ,13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 107]
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        book = collections.defaultdict(list) # {hash : [strings]}
+        for s in strs:
+            # Compute hash by multiply chars
+            h = 1
+            for c in s:
+                h *= PRIMES[ord(c) - ord('a')]
+            book[h].append(s)
+        return book.values()
