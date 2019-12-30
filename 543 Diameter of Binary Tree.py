@@ -24,26 +24,19 @@ Note: The length of path between two nodes is represented by the number of edges
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
 class Solution:
-    def rec(self, node):
-        '''
-        Similary to 124 Binary Tree Maximum Path Sum
-        Return count of one-side plus one (singleChoice)
-        '''
+    def postorder(self, node: TreeNode) -> int:
         if not node:
             return 0
         
-        leftCount = self.rec(node.left)
-        rightCount = self.rec(node.right)
+        leftNodeCount = self.postorder(node.left)
+        rightNodeCount = self.postorder(node.right)
         
-        # Max count on 1 node is always the sum of 2 branches
-        self.maxCount = max(self.maxCount, leftCount + rightCount + 1)
+        self.maxNodeCount = max(self.maxNodeCount, leftNodeCount + rightNodeCount + 1)
         
-        # Return only 1 side of branch
-        return max(leftCount, rightCount) + 1
+        return max(leftNodeCount, rightNodeCount) + 1
         
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        self.maxCount = 1
-        self.rec(root)
-        return self.maxCount - 1
+        self.maxNodeCount = 1
+        self.postorder(root)
+        return self.maxNodeCount - 1
