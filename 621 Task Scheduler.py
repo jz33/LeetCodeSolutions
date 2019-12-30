@@ -21,24 +21,26 @@ Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
 Example 2:
 tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
 Output: 16
-Explanation: A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle.
+Explanation: A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
 '''
-from collections import Counter
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
         # Get sorted histogram
-        ctr = Counter(tasks)
+        ctr = collections.Counter(tasks)
         histo = sorted(ctr.values(), key = lambda x : -x)
 
-        # 1. About top n + 1 tasks, they might need idle cycle
-        idles = 0
-        top = histo[0]
-        for i in range(1, n+1):
-            ci = histo[i] if i < len(histo) else 0
-            diff = top - ci
-            if diff > 0:
-                idles += diff - 1
-
-        # 2. However, histo[n+1:] tasks are free to schedule,
-        # therefore scheudle them to idle slots
-        return len(tasks) + max(0, idles - sum(histo[n+1:]))
+        # So we separate top tasks, set each top task with at least
+        # n empty slot to each other.
+        # Then fill other tasks to the empty slots.
+        topTaskCount = histo[0]
+        emptySlots = (topTaskCount - 1) * n
+        filled = 0
+        for i in range(1, len(histo)):
+            count = histo[i]
+            filled += min(count, topTaskCount - 1)
+            if filled >= emptySlots:
+                break
+        
+        # If all empty slots are filled, no need for idle cycles
+        # Otherwise, need idel cycles for the empty slots.
+        return len(tasks) + max(0, emptySlots - filled)
