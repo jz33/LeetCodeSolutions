@@ -1,32 +1,28 @@
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-from collections import deque
-'''
-662 Maximum Width of Binary Tree
-'''
-def widthOfBinaryTree(root):
-    """
-    Level order traversal
-    """
-    if root == None: return None
-    mw = 0
-    dq = deque()
-    dq.append((root,0))
-    while len(dq) > 0:
-        p,left = dq.popleft()
-        dq.appendleft((p,left))
-        p,right = dq.pop()
-        dq.append((p,right))
-        mw = max(mw, right - left)
-
-        for _ in xrange(len(dq)):
-            p,v = dq.popleft()
-            if p.left != None:
-                dq.append((p.left,(v << 1)))
-            if p.right != None:
-                dq.append((p.right,(v << 1)+1))
-    return mw+1
+class Solution:
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        
+        queue = collections.deque() # [(node, position)]
+        queue.append((root, 0)) # position starts from 0
+        maxWidth = 0
+        while queue:
+            maxWidth = max(maxWidth, queue[-1][1] - queue[0][1] + 1)
+            for _ in range(len(queue)):
+                node, pos = queue.popleft()
+                
+                # Positions on 1st row is [0]
+                # 2nd row is [0,1]
+                # 3rd row is [0,1,2,3], so on
+                if node.left:
+                    queue.append((node.left, (pos << 1)))
+                if node.right:
+                    queue.append((node.right, (pos << 1) + 1))
+        return maxWidth
