@@ -26,56 +26,30 @@ Input: s = "aaadbbcc", k = 2
 Output: "abacabcd"
 Explanation: The same letters are at least distance 2 from each other.
 '''
-from collections import Counter
-from heapq import heappush, heappop
-
 class Solution:
     def rearrangeString(self, s: str, k: int) -> str:
-        '''
-        The idea is, schedule top most task in first spot of each cycle k,
-        other spot fills in the current most common task 
-        '''
-        if k == 0:
-            return s
+        # 1. Get the most common char
+        ctr = collections.Counter(s)   
+        topChar, topCharCount = ctr.most_common(1)[0]
         
-        histo = Counter(s)
+        # 2. Build buckets of chars, first char of each bucket is the top char.
+        # Fill other chars to buckets
+        buckets = [[topChar] for _ in range(topCharCount)]
+        bi = 0
+        for char, count in ctr.items():
+            if char != topChar:
+                for _ in range(count):
+                    buckets[bi].append(char)
+                    bi += 1
+                    # If count == topCharCount, fill last bucket, because it has to.
+                    # Otherwise, do not fill last bucket, to put the char to next level.
+                    if count == topCharCount and bi == len(buckets) or \
+                       count < topCharCount and bi == len(buckets) - 1:
+                        bi = 0
+                        
+        # 3. Check buckets. First topCharCount - 1 buckets must have at least k chars
+        # Check from back for speed
+        if any(len(buckets[i]) < k for i in range(topCharCount-2, -1, -1)):
+            return ""
         
-        # Set aside top task
-        top = histo.most_common(1)
-        topTask = top[0][0]
-        topCount = top[0][1]
-
-        # A max heap keeps all tasks except top task
-        heap = [] # [(count, task)], max heap
-        for task, count in histo.items():
-            if task != topTask:
-                heappush(heap, (-count,task))
-
-        res = [None] * len(s)
-        popOuts = []
-        for i in range(len(s)):
-            t = i % k
-            if t == 0 and topCount > 0:
-                # If top task available, use it
-                res[i] = topTask
-                topCount -= 1
-            else:
-                if len(heap) == 0:
-                    return ''
-
-                # Otherwise use the most common one
-                mostCommon = heappop(heap)
-                task = mostCommon[1]       
-                res[i] = task
-
-                count = -mostCommon[0]
-                count -= 1
-                if count > 0:
-                    popOuts.append((-count, task))
-
-            # Put back the entries after a cycle
-            if t == k - 1:
-                while popOuts:
-                    heappush(heap, popOuts.pop())
-
-        return ''.join(res)
+        return ''.join(''.join(b) for b in buckets) 
