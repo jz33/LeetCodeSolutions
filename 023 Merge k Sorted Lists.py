@@ -19,35 +19,34 @@ Output: 1->1->2->3->4->4->5->6
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+from heapq import heappush, heappop, heapify
 
-import heapq
-
-class HeapNode:
-    def __init__(self, node: ListNode):
-        self.node = node
+def lessThan(self, that) -> bool:
+    return self.val < that.val
     
-    # This method is for "<", which is necessary for heap comparison
-    def __lt__(self, that) -> bool:
-        return self.node.val < that.node.val
-
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         root = ListNode(None)
         
-        heap = []     
-        for n in lists:
-            if n:
-                heapq.heappush(heap, HeapNode(n))
+        # Add the comparison method to ListNode
+        ListNode.__lt__ = lessThan
+        
+        heap = [node for node in lists if node is not None]     
+        heapify(heap)
         
         p = root
-        while len(heap) > 0:
-            hn = heapq.heappop(heap)
-            n = hn.node
+        while heap:
+            node = heappop(heap)
             
-            p.next = n
-            p = n
+            p.next = node
+            p = node
             
-            if n.next:
-                heapq.heappush(heap, HeapNode(n.next))
+            if node.next:
+                heappush(heap, node.next)
         
         return root.next
