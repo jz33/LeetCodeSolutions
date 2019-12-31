@@ -1,32 +1,38 @@
-from copy import deepcopy
 '''
-Palindrome Partitioning
+131. Palindrome Partitioning
 https://leetcode.com/problems/palindrome-partitioning/
+
+Given a string s, partition s such that every substring of the partition is a palindrome.
+
+Return all possible palindrome partitioning of s.
+
+Example:
+
+Input: "aab"
+Output:
+[
+  ["aa","b"],
+  ["a","a","b"]
+]
 '''
-pool = []
+from functools import lru_cache
 
-def isPalindrome(s):
-    return s == s[-1::-1]
-
-def allPalindromicSubstrings(src, st, r):
-    global pool
-    if st == len(src):
-        pool.append(deepcopy(r))
-    elif st < len(src):
-        for i in range(st,len(src)):
-            sub = src[st:i+1]
-            if isPalindrome(sub):
-                r.append(sub)
-                allPalindromicSubstrings(src,i+1,r)      
-                r.pop()
-                
-def partition(src):
-    global pool
-    r = []
-    allPalindromicSubstrings(src,0,r)
-    return pool
+class Solution:
+    @lru_cache(None)
+    def isPalindromic(self, s: str) -> bool:
+        return s == s[::-1]
+    
+    def partition(self, s: str) -> List[List[str]]:
+        if len(s) == 1:
+            return [[s]]
         
-src = 'a'
-r = []
-partition(src)
-print pool
+        result = []
+        if self.isPalindromic(s):
+            result.append([s])
+            
+        for i in range(1, len(s)):
+            if self.isPalindromic(s[:i]):
+                for child in self.partition(s[i:]):
+                    result.append([s[:i]] + child)  
+ 
+        return result
