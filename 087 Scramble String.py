@@ -65,7 +65,7 @@ class Solution:
                        for i in range(1, len(s1)))
         
     def isScramble(self, s1: str, s2: str) -> bool:
-        if len(s1) != len(s2):
+        if len(s1) != len(s2) or Counter(s1) != Counter(s2):
             return False
   
         return self.topDown(s1, s2)
