@@ -1,22 +1,39 @@
 '''
-132 Palindrome Partitioning II
-https://oj.leetcode.com/problems/palindrome-partitioning/
-'''
-# 132 https://oj.leetcode.com/discuss/9476/solution-does-not-need-table-palindrome-right-uses-only-space.
-def minCut(s):
-    n = len(s)
-    cut = [] # number of cuts for the first k characters
-    for i in range(0,n+1): cut.append(i-1)
-    for i in range(0,n):
-        j = 0
-        while i-j > -1 and i+j < n and s[i-j] == s[i+j]:
-            cut[i+j+1] = min(cut[i+j+1],1+cut[i-j])
-            j += 1
-            
-        j = 1
-        while i-j+1 > -1 and i+j < n and s[i-j+1] == s[i+j]:
-            cut[i+j+1] = min(cut[i+j+1],1+cut[i-j+1])
-            j += 1
-            
-    return cut[n]
+132. Palindrome Partitioning II
+https://leetcode.com/problems/palindrome-partitioning-ii/
 
+Given a string s, partition s such that every substring of the partition is a palindrome.
+
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+Example:
+
+Input: "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+'''
+class Solution:
+    def minCut(self, s: str) -> int:
+        if s == s[::-1]:
+            return 0
+        
+        n = len(s)
+        
+        # cuts[i] is minimum number of cuts for s[:i]
+        # cuts[0] = -1 is for out of bound case
+        cuts = list(range(-1, n))
+        
+        for i in range(n):
+            # As center is in i, try expand to left and right to find
+            # valid palindroms, then update dp on right most position (y)
+            x, y = i, i
+            while x > -1 and y < n and s[x] == s[y]:
+                cuts[y+1] = min(cuts[y+1], cuts[x] + 1) # cuts has offset 1
+                x, y = x - 1, y + 1
+
+            x, y = i, i + 1
+            while x > -1 and y < n and s[x] == s[y]:
+                cuts[y+1] = min(cuts[y+1], cuts[x] + 1)
+                x, y = x - 1, y + 1
+                
+        return cuts[-1]
