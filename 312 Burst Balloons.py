@@ -22,6 +22,9 @@ Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
              
 '''
 class Solution:
+    '''
+    Bottom-up method
+    '''
     def maxCoins(self, nums: List[int]) -> int:
         nums = [1] + nums + [1]
         n = len(nums)
@@ -40,3 +43,42 @@ class Solution:
                     dp[left][right] = max(dp[left][right], dp[left][i]+dp[i][right]+nums[left]*nums[i]*nums[right])
    
         return dp[0][n-1]
+
+class Solution:
+    '''
+    Top-down method
+    '''
+    def topDown(self, left: int, right: int) -> int:
+        '''
+        left and right are inclusive indexes 
+        '''
+        if self.caches[left][right] is not None:
+            return self.caches[left][right]
+        
+        if left > right:
+            return 0
+        
+        nums = self.nums
+        result = 0
+        if left == right:
+            result = nums[left-1] * nums[left] * nums[left+1]
+        else:
+            # Try burst balloon from left to right.
+            # If i is burst, the cost is equal to dp[left...i-1] + dp[i+1...right]
+            # plus nums[left-1] * nums[i] * nums[right+1], because balloons in 
+            # [left...i-1] and [i+1...right] are all gone.
+            result = max(nums[i] * nums[left-1] * nums[right+1] + \
+                         self.topDown(left, i-1) + self.topDown(i+1, right) \
+                         for i in range(left, right+1))
+                
+        self.caches[left][right] = result
+        return result     
+    
+    def maxCoins(self, nums: List[int]) -> int:
+        self.nums = [1] + nums + [1]
+        n = len(self.nums)
+        
+        # cache[i][j] is the max value in nums[i:j+1]
+        self.caches = [[None] * n for _ in range(n)]
+        
+        return self.topDown(1, n-2)
