@@ -1,55 +1,41 @@
 '''
-Climbing Stairs
-https://oj.leetcode.com/problems/climbing-stairs/
-https://www.codeeval.com/open_challenges/64/
+70. Climbing Stairs
+https://leetcode.com/problems/climbing-stairs/
 
-Fibonacci Numbers
-Might be extremely awkward if the chosen 
-language has no stock MEGA integer implemenation
-'''
-cache = {}
-curr = 0
+You are climbing a stair case. It takes n steps to reach to the top.
 
-def fibonacci(n):
-    global curr
-    if n <= 2:
-        return n
-    if n <= curr:
-        return cache[n]
-    else:
-        a = cache[curr-1]
-        b = cache[curr]
-        c = 0
-        for x in xrange(curr+1,n+1):
-            c = a+b
-            a = b
-            b = c
-            cache[x] = b
-        curr = n
-        return cache[n]
-'''
-A cache-free solution:
-'''
-def climbStairs(self, n):
-    if n == 1:
-        return 1
-    a = 1
-    b = 2
-    c = 3
-    for i in xrange(2,n):
-        c = a + b
-        a = b
-        b = c
-    return b
-    
-def main():
-    global curr
-    cache[1] = 1
-    cache[2] = 2
-    cache[3] = 3
-    curr = 3
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
-    print fibonacci(125)
-    
-if __name__ == '__main__':
-    main()
+Note: Given n will be a positive integer.
+
+Example 1:
+
+Input: 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps
+
+Example 2:
+
+Input: 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+'''
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        '''
+        This is essentially Fibonacci number
+        '''
+        if n == 0:
+            return 0
+        
+        dp = [1,None,0]
+        for i in range(1, n+1):
+            di = i % 3
+            dp[di] = dp[di-1] + dp[di-2]
+            
+        return dp[n % 3]
