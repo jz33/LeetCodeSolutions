@@ -47,3 +47,17 @@ class Solution:
                 return dupl
             
         return -1
+
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        '''
+        Use input array to record previous founds
+        '''
+        e = nums[0]
+        while True:
+            if nums[e] == e or nums[e] == -e:
+                return e
+            ne = nums[e]
+            nums[e] = -e
+            e = ne
+        return -1
