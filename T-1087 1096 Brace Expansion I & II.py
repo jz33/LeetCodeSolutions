@@ -1,4 +1,6 @@
 '''
+1087. Brace Expansion
+https://leetcode.com/problems/brace-expansion/
 1096. Brace Expansion II
 https://leetcode.com/problems/brace-expansion-ii/
 
