@@ -37,8 +37,6 @@ Output: ["a","ab","ac","z"]
 Explanation: Each distinct word is written only once in the final answer.
 
 '''
-import itertools
-
 ADD = 0x0005
 PRODUCT = 0x0006
 
@@ -55,7 +53,7 @@ def product(a, b):
         return set(a+t for t in b)
 
 class Solution:
-    def compute(self, stack, item, operator):
+    def compute(self, operator: int, item: object, stack: List[object]):
         '''
         @item: set of strings or a char list
         '''
@@ -64,77 +62,68 @@ class Solution:
             ss = item
         elif isinstance(item, list) and len(item) > 0:
             ss = ''.join(item)
-        
-        if ss is not None:
+            
+        if ss:
             if operator == ADD:
                 stack.append(ss)
             elif operator == PRODUCT:
                 stack.append(product(stack.pop(), ss))
 
-    def collapse(self, stack):
+    def collapse(self, stack: List[object]):
         '''
-        Calculate between {...}
-        Calculate towards before until ADD or PRODUCT.
-        Calculated result should be a set of strings
+        Calculate between <operater, {...}> or final result <[set or stirng]>
         '''
         ss = set()
-        while stack:
+        while stack and (isinstance(stack[-1], str) or isinstance(stack[-1], set)):
             if isinstance(stack[-1], str):
                 ss.add(stack.pop())
             elif isinstance(stack[-1], set):
                 ss = ss | stack.pop()
-            else: # isinstance(stack[-1], int)
-                operator = stack.pop()
-                self.compute(stack, ss, operator)
-                return # return as result is already appended to stack
-        if ss:
+        
+        if stack:
+            # Computing {...}, there must be an operator ahead
+            operator = stack.pop()
+            self.compute(operator, ss, stack)
+        else:
+            # Compute final result
             stack.append(ss)
 
     def braceExpansionII(self, expression: str) -> List[str]:
-        '''
-        Solution bases on 772. Basic Calculator III
-        '''
-        # stack contains set, string, or operator integers
+        # stack contains set of string, string, or operator integers
+        operator = ADD # either '*' or '+'
         stack = []
         text = []
-        operator = ADD # either '*' or '+'
         for i, c in enumerate(expression):
             if c.isalpha():
                 text.append(c)
 
             elif c == ',':
-                self.compute(stack, text, operator)
-                text = []
+                self.compute(operator, text, stack)
                 operator = ADD
+                text = []
 
             elif c == '{':
-                self.compute(stack, text, operator)
+                self.compute(operator, text, stack)
 
-                if i == 0 or expression[i-1] == ',' or expression[i-1] == '{':                   
-                    # {a,b}
-                    # {a,b},{c,d}
-                    # {{a,b}}
-                    stack.append(ADD)
-                else:
-                    # {a,b}{c,d}{e,f}
-                    # {a,b}abc{a,b}
+                if i > 0 and expression[i-1].isalpha():
                     # {a,b},abc{a,b}
                     stack.append(PRODUCT)
-
-                text = []
+                else:
+                    stack.append(operator)
+                
                 operator = ADD
+                text = []
 
             elif c == '}':
-                self.compute(stack, text, operator)
+                self.compute(operator, text, stack)
                 self.collapse(stack)
-                text = []
                 operator = PRODUCT # {a,b}abc
+                text = []
 
-        self.compute(stack, text, operator)
+        self.compute(operator, text, stack)
         self.collapse(stack)
-
         return sorted(list(stack.pop()))
-        
+    
 '''
 More examples:
 expr = r"{a,b}{c,d}{e,f}" # ["ace","acf","ade","adf","bce","bcf","bde","bdf"]
