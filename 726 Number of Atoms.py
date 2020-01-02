@@ -44,11 +44,11 @@ All atom names consist of lowercase letters, except for the first character whic
 The length of formula will be in the range [1, 1000].
 formula will only consist of letters, digits, and round parentheses, and is a valid formula as defined in the problem.
 '''
-
 from collections import Counter
 
 class Solution:
     def countOfAtoms(self, formula: str) -> str:
+        
         def compute():
             nonlocal stack, atom, count
             if count > 0:
@@ -71,38 +71,48 @@ class Solution:
             # case like (OH)A, out of a parenthese, and get no number but next atom.
             # Do nothing.
 
-            count = 0
             atom = []
-
-        stack = []
+            count = 0
+            
+        def collapse():
+            nonlocal stack
+            
+            cc = Counter()
+            while stack and isinstance(stack[-1], Counter):
+                cc += stack.pop()
+                
+            if stack:
+                # Computing {...}, there must be an "(" ahead
+                stack.pop()
+            stack.append(cc)
+            
         atom = []
         count = 0
+        stack = [] # stack of Counters or operator string
         for char in formula:
             if char.isdecimal():
                 count = count * 10 + int(char)
+                
             elif char.islower():
                 atom.append(char)
+                
             elif char.isupper():
                 compute()
-                atom.append(char)    
+                atom.append(char) 
+                
             elif char == '(':
                 compute()
                 stack.append('(')
+                
             elif char == ')':
-                compute()
-                c = stack.pop()
-                while stack and isinstance(stack[-1], Counter):
-                    c += stack.pop()
-                stack.pop() # '('
-                stack.append(c)
+                compute()                
+                collapse()
 
         compute()
+        collapse()
 
-        total = Counter()
-        for ctr in stack:
-            total += ctr
-
-        ls = sorted(total.items(), key = lambda x : x[0])
+        # Rearrange final output
+        ls = sorted(stack.pop().items(), key = lambda x : x[0])
         res = []
         for atom, ct in ls:
             if ct == 1:
