@@ -39,11 +39,9 @@ In calls to MyCalendarThree.book(start, end), start and end are integers in the 
 '''
 class MyCalendarThree {
 public:
-    std::map<int, int> events; // std::map is a sorted Tree map
+    std::map<int, int> events;
     
-    MyCalendarThree() {
-        
-    }
+    MyCalendarThree() {}
     
     int book(int start, int end) {
         events[start]++;
