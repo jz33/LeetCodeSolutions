@@ -1,4 +1,4 @@
-'''
+/*
 729. My Calendar I
 https://leetcode.com/problems/my-calendar-i/
 
@@ -29,7 +29,8 @@ Note:
 
 The number of calls to MyCalendar.book per test case will be at most 1000.
 In calls to MyCalendar.book(start, end), start and end are integers in the range [0, 10^9].
-'''
+*/
+
 class MyCalendar {
 public:
     std::map<int, int> events;
@@ -51,9 +52,3 @@ public:
         return true;
     }
 };
-
-/**
- * Your MyCalendar object will be instantiated and called as such:
- * MyCalendar* obj = new MyCalendar();
- * bool param_1 = obj->book(start,end);
- */
