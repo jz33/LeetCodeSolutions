@@ -4,52 +4,54 @@ https://leetcode.com/problems/the-skyline-problem/
 */
 class Solution {
 public:
-    std::vector<std::vector<int>> getSkyline(std::vector<std::vector<int>>& buildings) {
-        std::vector<std::pair<int, int>> heights; // [[location, height]]
-        for (auto& b : buildings) {
-            heights.emplace_back(b[0], -b[2]);
-            heights.emplace_back(b[1], b[2]);
-        }
+    vector<vector<int>> getSkyline(vector<vector<int>>& buildings) {
+        std::vector<std::pair<int,int>> src; // [position, height]
         
-        // Sort by location then height. Since building entry's height is minus,
-        // then building entry point will be removed from TreeMap first.
-        std::stable_sort(heights.begin(), heights.end(), [](const auto& a, const auto& b) -> bool {
+        for (auto& b : buildings) {
+            src.emplace_back(b[0], b[2]);
+            src.emplace_back(b[1], -b[2]); // Set minus if leaving building
+        }
+
+        // Notice the sort order is not by default.
+        // If 2 pairs has same position, bigger height goes front,
+        // because we want new building enter before old building leave.
+        std::sort(src.begin(), src.end(), [](const auto& a, const auto& b) -> bool {
             if (a.first == b.first) {
-                return a.second < b.second;
+                return a.second > b.second;
             } else {
                 return a.first < b.first;
             }
         });
         
-        // TreeMap, stores {height : count}
-        std::map<int, int> heightMap;
-        heightMap.emplace(0, 1);
-        
         int prevHeight = 0;
-        std::vector<std::vector<int>> skyLine;
-        
-        for (auto& pair : heights) {
-            int h = pair.second;
-            if (h < 0) {
-                // Put height for new building
-                heightMap[-h]++;
+        std::map<int, int> heightMap; // {height : count}
+        heightMap[0] = 1; // For the first rbegin() call
+        std::vector<std::vector<int>> skyline;
+            
+        for (auto& b : src) {
+            int position = b.first;
+            int height = b.second;
+            
+            if (height > 0) {
+                heightMap[height]++;
             } else {
-                // Reduce or remove height
-                int ctr = heightMap[h];
+                height = -height;
+                int ctr = heightMap[height];
                 if (ctr == 1) {
-                    heightMap.erase(h);
+                    heightMap.erase(height);
                 } else {
-                    heightMap[h]--;
+                    heightMap[height]--;
                 }
             }
             
             int maxHeight = heightMap.rbegin()->first;
             if (maxHeight != prevHeight) {
-                std::vector<int> pp {pair.first, maxHeight};
-                skyLine.emplace_back(pp);
                 prevHeight = maxHeight;
+                std::vector<int> pair {position, maxHeight};
+                skyline.emplace_back(pair);
             }
         }
-        return skyLine;
+             
+        return skyline;    
     }
 };
