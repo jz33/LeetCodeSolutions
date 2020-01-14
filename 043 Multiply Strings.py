@@ -1,35 +1,42 @@
 '''
-Multiply Strings
+43. Multiply Strings
 https://leetcode.com/problems/multiply-strings/
-'''
-Zero = ord('0')
 
-class Solution(object):
-    
-    def charToInt(self, i):
-        return ord(i) - Zero;
+Given two non-negative integers num1 and num2 represented as strings,
+return the product of num1 and num2, also represented as a string.
+
+Example 1:
+
+Input: num1 = "2", num2 = "3"
+Output: "6"
+
+Example 2:
+
+Input: num1 = "123", num2 = "456"
+Output: "56088"
+'''
+class Solution:
+    def productOfChars(self, c1: str, c2: str) -> int:
+        return (ord(c1) - ord('0')) * (ord(c2) - ord('0'))
         
-    def multiply(self, num1, num2):
-        """
-        :type num1: str
-        :type num2: str
-        :rtype: str
-        """
+    def multiply(self, num1: str, num2: str) -> str:
+        if num1 == '0' or num2 == '0':
+            return '0'
+        
+        # Multiplication result's size is either len(num1) + len(num2) or\
+        # len(num1) + len(num2) - 1
         res = [0] * (len(num1) + len(num2))
 
-        for i in xrange(len(num1)-1,-1,-1):
+        for i in range(len(num1)-1,-1,-1):
+            
             carry = 0
-            for j in xrange(len(num2)-1,-1,-1):
-                bit = res[i + j + 1] + self.charToInt(num1[i]) * self.charToInt(num2[j]) + carry
-                res[i + j + 1] = bit % 10
-                carry = bit / 10;
+            for j in range(len(num2)-1,-1,-1):
+                total = res[i+j+1] + self.productOfChars(num1[i], num2[j]) + carry
+                res[i+j+1] = total % 10
+                carry = total // 10       
             res[i] += carry
     
-        i = 0
-        while i < len(res):
-            if res[i] != 0: break
-            i += 1
-        if i == len(res):
-            return "0"
-        else:
-            return ''.join(str(x) for x in res[i:])
+        if res[0] == 0:
+            res = res[1:]
+            
+        return ''.join(str(i) for i in res)
