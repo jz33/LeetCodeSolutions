@@ -18,38 +18,30 @@ According to the example above:
 equations = [ ["a", "b"], ["b", "c"] ],
 values = [2.0, 3.0],
 queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ]. 
-
-The input is always valid. You may assume that evaluating the queries will result in no division by zero and there is no contradiction.
 '''
-from typing import List, Tuple
+from typing import Tuple
 
 class Solution:
+    def getDenominator(self, node: str, graph) -> Tuple[str, float]:
+        '''
+        Essentially, node is a numerator, keep finding the denominator
+        '''
+        division = 1
+        while True:
+            parent, value = graph[node]
+            if parent == node:
+                return node, division
+            division *= value
+            node = parent
+        
+        raise ValueError('Not reachable')
+        
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        '''
-        Union Find graph: {node: (parent, weight)}
-        '''
-        graph = {}
-
-        def getRoot(i : str) -> Tuple[str, int]:
-            '''
-            Return root of i and total weight
-            Notice this question is not optimized by steps
-            '''
-            weight = 1
-            while i in graph:
-                p, w = graph[i]
-                if p == i:
-                    # Get self, means i is root
-                    return i, weight
-                weight *= w
-                i = p
-            return i, weight
-
+        
         # Build Union Find graph
         # 1. Put in all the vertices
-        for eq in equations:
-            f = eq[0]
-            t = eq[1]
+        graph = {} # {numerator : (denominator, division result)}
+        for f, t in equations:
             graph[f] = (f, 1)
             graph[t] = (t, 1)
 
@@ -59,28 +51,28 @@ class Solution:
             t = equations[i][1]
             v = values[i]
 
-            # Union from -> togo
-            rf, wf = getRoot(f)
-            rt, wt = getRoot(t)
-            
-            if rf != rt:
-                graph[rf] = (rt, wt / wf * v) # think why
+            df, wf = self.getDenominator(f, graph)
+            dt, wt = self.getDenominator(t, graph)
+            if df != dt:                          
+                # f / df = wf
+                # t / dt = wt
+                # => df / dt = f / t * wt / wf = v * wf / wt
+                graph[df] = (dt, v * wt / wf)
 
         # 3. Handle queries
-        size = len(queries)
-        res = [-1.0] * size
+        res = [-1.0] * len(queries)
         for i, query in enumerate(queries):
             f = query[0]
             t = query[1]
             if f not in graph or t not in graph:
                 continue
 
-            rf, wf = getRoot(f)
-            rt, wt = getRoot(t)
-            if rf != rt:
-                # f and t are not connected
-                continue
+            df, wf = self.getDenominator(f, graph)
+            dt, wt = self.getDenominator(t, graph)
+            if df == dt:
+                # f / df = wf
+                # t / dt = wt
+                # => f / t =  wf / wt * df / dt = wf / wt
+                res[i] = wf / wt
 
-            res[i] = wf / wt
-
-        return res
+        return res   
