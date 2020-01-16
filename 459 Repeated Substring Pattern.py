@@ -24,6 +24,6 @@ Explanation: It's the substring "abc" four times. (And the substring "abcabc" tw
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:
         '''
-        Basically this question is to ask if a string contains cycles
+        https://leetcode.com/problems/repeated-substring-pattern/discuss/94334/Easy-python-solution-with-explaination
         '''
         return (s+s)[1:-1].find(s) != -1
