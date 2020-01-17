@@ -60,46 +60,51 @@ class Solution:
         t is 2 means it's cat' turn.
         Then the algorithm is to mark all the states to 3 colors.
         '''
-        # moves[s] : the number of untested children move of this state
-        moves = {}
+        # childrenCount[s] : the number of children state of this state
+        childrenCount = {}
         for m in range(len(graph)):
             for c in range(len(graph)):
-                moves[m,c,MOUSE] = len(graph[m])
-                moves[m,c,CAT] = len(graph[c]) if 0 not in graph[c] else len(graph[c]) - 1
+                # mouse can move to anywhere
+                childrenCount[m,c,MOUSE] = len(graph[m]) 
+                # cat cannot move to 0
+                childrenCount[m,c,CAT] = len(graph[c]) if 0 not in graph[c] else len(graph[c]) - 1
 
-        # Mark colors of initial states
+        # Mark colors of initial states.
+        # Default color is DRAW
         colors = Counter() # {[m,c,t] : color}
+        
+        # mouse at node 0, mouse wins
         for i in range(len(graph)):
-            # mouse at node 0, mouse wins
             colors[0, i, MOUSE] = MOUSE
             colors[0, i, CAT] = MOUSE 
 
+        # mouse and cat at same node other that 0, cat wins
         for i in range(1, len(graph)):
-            # mouse and cat at same node other that 0, cat wins
             colors[i, i, MOUSE] = CAT
             colors[i, i, CAT] = CAT
 
-        queue = deque(colors.keys()) # already determined states
+        # starting nodes are already determined states
+        queue = deque(colors.keys()) 
 
         # Iterate, mark colors
         while queue:
             m, c, t = queue.popleft()
-            color = colors[m, c, t] # color is either Mouse or Cat, cannot be Draw
+            color = colors[m, c, t]
 
             for pm, pc, pt in self.getParents(graph, m, c, t):
                 if colors[pm, pc, pt] == DRAW:
                     
                     # If parent node is mouse to move and current node is mouse win, or
-                    # parent node is cat to move and current node is cat win, parent's color can be determined
+                    # parent node is cat to move and current node is cat win, parent's is a win
                     if pt == color:
                         colors[pm, pc, pt] = color
                         queue.append((pm, pc, pt))
 
-                    # Otherwise, parent's color cannot be determinted. If parent's all children cannot determine
-                    # its color, it is lost. Mark its color as opposite of turn
+                    # Otherwise, if parent's all children cannot determine its color,
+                    # its color, it is lost, which is to mark its color as opposite of turn
                     else:
-                        moves[pm, pc, pt] -= 1
-                        if moves[pm, pc, pt] == 0:
+                        childrenCount[pm, pc, pt] -= 1
+                        if childrenCount[pm, pc, pt] == 0:
                             colors[pm, pc, pt] = 3 - pt
                             queue.append((pm, pc, pt))
 
