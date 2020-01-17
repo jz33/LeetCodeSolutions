@@ -53,19 +53,18 @@ class Solution:
         count = 0 # result
         
         for left, right in clips:
-            if left > currRight:
-                # new interval is out of currRight
+            if left > currRight:              
+                # New interval's left is out of currRight
+                # Need to add previous maxRight
                 currRight = maxRight
                 count += 1            
                 if currRight >= T:
                     return count
                 
-                # new interval is out of currRight
+                # New interval's left is out of currRight, bale
                 if left > currRight:
                     return -1
                 
             maxRight = max(maxRight, right)
-        
-        currRight = maxRight
-        count += 1       
-        return count
+            
+        return count + 1 # need to add last maxRight
