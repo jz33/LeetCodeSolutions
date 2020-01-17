@@ -29,16 +29,12 @@ arr will have length in range [1, 10].
 arr[i] will be a permutation of [0, 1, ..., arr.length - 1].
 '''
 class Solution:
-    def maxChunksToSorted(self, arr: List[int]) -> int:        
-        res = 0
+    def maxChunksToSorted(self, arr: List[int]) -> int:
+        chunkCount = 0
         maxVal = 0
         for i, e in enumerate(arr):
             maxVal = max(maxVal, e)
-            
-            # If the array is sorted, max value at i is i.
-            # So if max value of arr[:i+1] is i, there are
-            # only smaller values than i in arr[:i+1], then
-            # arr[:i+1] can be sorted as a chunk
-            if maxVal == i:
-                res += 1             
-        return res
+            if i == maxVal:
+                # max value at index i is i
+                chunkCount += 1
+        return chunkCount
