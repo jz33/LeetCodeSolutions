@@ -37,7 +37,7 @@ class Solution:
 
         for i in range(rowCount):
             for j in range(midCount):
-                if A[i][j] != 0:
+                if A[i][j] != 0: # without this line, this is normal matrix multiplication
                     for k in range(colCount):
                         res[i][k] += A[i][j] * B[j][k]
                         
