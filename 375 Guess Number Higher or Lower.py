@@ -24,27 +24,19 @@ Game over. 8 is the number I picked.
 You end up paying $5 + $7 + $9 = $21.
 Given a particular n ≥ 1, find out how much money you need to have to guarantee a win.
 '''
+from functools import lru_cache
+
 class Solution:
+    
+    @lru_cache(None)
+    def topDown(self, i: int, j: int) -> int:
+        if i >= j:
+            return 0       
+        return min(k + max(self.topDown(i, k-1), self.topDown(k+1, j)) for k in range(i, j+1))
+
     def getMoneyAmount(self, n: int) -> int:
-        # dp is (n+1) * (n+1) matrix
-        # dp[i][j] is the min value of i...j inclusive
-        # dp[i][i] is alwasy 0
-        dp = [[0] * (n+1) for _ in range(n+1)]
-
-        # left + stride = right <= n
-        for stride in range(1, n+1):
-            # left + stride = right <= n
-            for left in range(0, n-stride+1):
-                right = left + stride
-                
-                # i is the number to guess
-                # left < i < right
-                # Clearly, no need to guess right,
-                # then maximum possible guess is (right-1)* stride
-                minVal = (right - 1) * stride
-                for i in range(left+1, right):
-                    minVal = min(minVal, max(dp[left][i-1], dp[i+1][right]) + i)
-
-                dp[left][right] = minVal
-
-        return dp[0][n]
+        '''
+        Let dp[i][j] represents minimum cost in range i...j inclusive,
+        then dp[i][j] = min(k + max(dp[i][k-1], dp[k+1][j]) for k in [i...j])
+        '''
+        return self.topDown(1, n)
