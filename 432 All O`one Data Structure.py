@@ -11,13 +11,13 @@ GetMaxKey() - Returns one of the keys with maximal value. If no element exists, 
 GetMinKey() - Returns one of the keys with minimal value. If no element exists, return an empty string "".
 Challenge: Perform all these in O(1) time complexity.
 '''
-from collections import defaultdict
-
 class Node:
     '''
-    A double linked list node
+    A double linked list node.
+    One node contains keys with same count
     '''
-    def __init__(self):
+    def __init__(self, count: int):
+        self.count = count
         self.keys = set()
         self.next = None
         self.prev = None
@@ -34,21 +34,19 @@ class Node:
         
     def isEmpty(self) -> bool:
         return len(self.keys) == 0
-    
-    def __str__(self) -> str:
-        return '(' + ' '.join(list(self.keys)) + ')'
           
 class DoubleLinkedList:
     def __init__(self):
         # Head and tail are placeholders
-        head = Node()
-        tail = Node()
+        head = Node(0)
+        tail = Node(0)
         head.next = tail
         tail.prev = head
         self.head = head 
         self.tail = tail
         
     def insertAfter(self, pn: Node, n: Node):
+        # Insert n after pn
         n.next = pn.next
         n.prev = pn
         pn.next.prev = n
@@ -58,114 +56,79 @@ class DoubleLinkedList:
         self.insertAfter(pn.prev, n)       
         
     def remove(self, n: Node):
+        # Remove node n
         n.prev.next = n.next
         n.next.prev = n.prev
         n.prev = None
         n.next = None
-        
-    def __str__(self) -> str:
-        arr = []
-        p = self.head
-        while p:
-            arr.append(str(p))
-            p = p.next
-        return '-'.join(arr)
-                
+
 class AllOne:
     def __init__(self):
         """
         Initialize your data structure here.
         """
         self.dll = DoubleLinkedList()
-        self.keyToCount = defaultdict(int) # key : count
-        self.countToNode = {0 : self.dll.head} # count : node
+        self.keyToNode = {} # {key : node}
         
     def inc(self, key: str) -> None:
         """
         Inserts a new key <Key> with value 1. Or increments an existing key by 1.
         """
-        pc = self.keyToCount.get(key, 0) # previous count
-        cc = pc + 1 # current count
-        
-        # Insert node
-        self.insertNodeIfNotExisted(pc, cc)
-            
-         # Remove previous key
-        self.removeKey(key, pc)
-        
-        # Add current key
-        self.addKey(key, cc)
+        n = self.keyToNode.get(key, None)
+        if n is not None:
+            n.remove(key)
+            self.addToNextNode(key, n)
+        else:
+            self.addToNextNode(key, self.dll.head)
                    
     def dec(self, key: str) -> None:
         """
         Decrements an existing key by 1. If Key's value is 1, remove it from the data structure.
         """
-        pc = self.keyToCount.get(key, 0) # previous count
-        if pc > 0:
-            cc = pc - 1
-            
-            # Insert node
-            self.insertNodeIfNotExisted(pc, cc)
-                             
-            # Remove previous key
-            self.removeKey(key, pc)
-            
-            # Add current key
-            self.addKey(key, cc)         
-
+        n = self.keyToNode.get(key, None)
+        if n is not None:
+            n.remove(key)
+            self.addToPrevNode(key, n)
+    
     def getMaxKey(self) -> str:
         """
         Returns one of the keys with maximal value.
         """
-        real_tail = self.dll.tail.prev
-        if not real_tail.isEmpty():
-            return real_tail.get()
+        p = self.dll.tail.prev
+        while p is not None:
+            if not p.isEmpty():
+                return p.get()
+            p = p.prev
         return ''
         
     def getMinKey(self) -> str:
         """
         Returns one of the keys with Minimal value.
         """
-        real_head = self.dll.head.next
-        if not real_head.isEmpty():
-            return real_head.get()       
+        p = self.dll.head.next
+        while p is not None:
+            if not p.isEmpty():
+                return p.get()
+            p = p.next
         return ''
-       
-    def insertNodeIfNotExisted(self, pc: int, cc: int):
-        if cc not in self.countToNode:
-            n = Node()
-            
-            # Notice the trick here, why there is head node inside countToNode,
-            # therefore previous node must exist
-            pn = self.countToNode[pc]
-            
-            if pc < cc:                
-                self.dll.insertAfter(pn, n)
-            else:
-                self.dll.insertBefore(pn, n)
-    
-            self.countToNode[cc] = n
-        
-    def addKey(self, key: str, c: int):
-        # Do not add key to head node
-        if c > 0:
-            n = self.countToNode[c] # must existed
-            n.add(key)
-            self.keyToCount[key] = c
-              
-    def removeKey(self, key: str, c: int):
-        # Do not remove head node
-        if c > 0:
-            n = self.countToNode[c] # must existed
-            n.remove(key)
-            if n.isEmpty():
-                self.dll.remove(n)
-                del self.countToNode[c]
-            del self.keyToCount[key]
 
-# Your AllOne object will be instantiated and called as such:
-# obj = AllOne()
-# obj.inc(key)
-# obj.dec(key)
-# param_3 = obj.getMaxKey()
-# param_4 = obj.getMinKey()
+    def addToNextNode(self, key: str, currentNode: Node):
+        nextNode = currentNode.next
+        if nextNode.count != currentNode.count + 1:
+            nextNode = Node(currentNode.count + 1)
+            self.dll.insertAfter(currentNode, nextNode)
+
+        nextNode.add(key)
+        self.keyToNode[key] = nextNode
+
+    def addToPrevNode(self, key: str, currentNode: Node):
+        if currentNode.count != 1:
+            prevNode = currentNode.prev
+            if prevNode.count != currentNode.count - 1:
+                prevNode = Node(currentNode.count - 1)
+                self.dll.insertBefore(currentNode, prevNode)
+
+            prevNode.add(key)
+            self.keyToNode[key] = prevNode
+        else:
+            del self.keyToNode[key]
