@@ -1,151 +1,77 @@
-#include <iostream>
-#include <sstream>
-#include <vector>
-using namespace std;
-/*
-Word Search II
+'''
+212. Word Search II
 https://leetcode.com/problems/word-search-ii/
-*/
-#define VISITED '!'
-#define SIZE 26
 
-typedef std::vector<std::vector<char> > MAT;
-typedef std::vector<std::string> VEC;
+Given a 2D board and a list of words from the dictionary, find all words in the board.
 
-VEC pool;
-size_t ROW;
-size_t COL;
+Each word must be constructed from letters of sequentially adjacent cell,
+where "adjacent" cells are those horizontally or vertically neighboring.
+The same letter cell may not be used more than once in a word.
 
-class TrieNode
-{
-public:
+Example:
 
-    char key = ' ';
-    bool ended = false; // if there is a word ends here
-    TrieNode* sub[SIZE];
-    
-    TrieNode(char key)
-    {
-        this->key = key;
-        for(size_t i = 0;i != SIZE;i++)
-            this->sub[i] = 0;
-    }
-    
-    ~TrieNode()
-    {
-        for(size_t i = 0;i != SIZE;i++)
-        {
-            delete sub[i];
-        }
-    }
-    
-    void insert(string& word, size_t offset)
-    {
-        char c;
-        int k;
-        if(offset == word.size())
-        {
-            ended = true;
-        }
-        else if(offset < word.size())
-        {
-            c = word[offset];
-            k = c - 'a';
-            if(sub[k] == 0)
-            {
-                sub[k] = new TrieNode(c);
-            }
-            sub[k]->insert(word,offset+1);
-        }
-    }
-};
+Input: 
+board = [
+  ['o','a','a','n'],
+  ['e','t','a','e'],
+  ['i','h','k','r'],
+  ['i','f','l','v']
+]
+words = ["oath","pea","eat","rain"]
 
-void recursive(MAT& mat, TrieNode* node, std::string buf, size_t row, size_t col)
-{
-    char ori;
-    int k;
-    if(node == 0 || mat[row][col] == VISITED)
-        return; 
+Output: ["eat","oath"]
+ 
 
-    ori = mat[row][col];
-    k = ori-'a';
-    if(node->sub[k] != 0)
-    {
-        buf += ori;
-    }
-    else
-        return;
-    
-    if(node->sub[k]->ended)
-    {
-        node->sub[k]->ended = false;
-        pool.push_back(buf);
-    }
-    
-    mat[row][col] = VISITED; 
-    
-    if(row > 0) 
-        recursive(mat,node->sub[k], buf,row - 1, col);
-    if(row < ROW - 1) 
-        recursive(mat,node->sub[k], buf,row + 1, col);
-    if(col > 0)
-        recursive(mat,node->sub[k], buf,row, col - 1);
-    if(col < COL - 1) 
-        recursive(mat,node->sub[k], buf,row, col + 1);
+Note:
 
-    mat[row][col] = ori;
-}
+All inputs are consist of lowercase letters a-z.
+The values of words are distinct.
+'''
+class TrieNode:
+    def __init__(self):
+        self.word = None; # if there is a word ends here, self.word will not be None
+        self.children = {} # a list of 26 possible children
 
-// api
-VEC findWords(MAT& board, VEC& words)
-{
-    pool.clear();
-    ROW = board.size();
-    if(ROW == 0) return pool;
-    COL = board[0].size();
-    if(COL == 0) return pool;
+    def add(self, word: str) -> None:
+        this = self
+        for c in word:
+            if c not in this.children:
+                this.children[c] = TrieNode()
+            this = this.children[c]
+        this.word = word
     
-    TrieNode* node = new TrieNode(' ');
-    for(auto i = words.begin();i!=words.end();i++)
-    {
-        node->insert(*i,0);
-    }
-    
-    for(size_t i = 0;i<ROW;i++)
-    {
-        for(size_t j = 0;j<COL;j++)
-        {
-            std::string buf = "";
-            recursive(board,node,buf,i,j);          
-        }
-    }
-    delete node;
-    return pool;
-}
-
-int main()
-{
-    char arr[] = {\
-        'o','a','a','n',\
-        'e','t','a','e',\
-        'i','h','k','r',\
-        'i','f','l','v' \
-    };
-    MAT board;
-    
-    for(size_t i = 0;i<16;i += 4)
-    {
-        std::vector<char> one(arr+i,arr+i+4);
-        board.push_back(one);
-    }
-    
-    VEC words;
-    words.push_back("oath");
-    words.push_back("pea");
-    words.push_back("eat");
-    words.push_back("rain");
-    
-    findWords(board,words);
-
-    return 0;
-}
+class Solution:
+    def backtrack(self, visited, trieNode, boardNode):
+        if trieNode.word is not None:
+            self.pool.append(trieNode.word)
+            trieNode.word = None # in case of duplicates
+        
+        rowCount = len(self.board)
+        colCount = len(self.board[0])
+        i,j = boardNode
+        for x, y in (i,j+1), (i+1,j), (i,j-1),(i-1,j):
+            if 0 <= x < rowCount and 0 <= y < colCount and (x,y) not in visited:
+                nextTrieNode = trieNode.children.get(self.board[x][y], None)
+                if nextTrieNode:
+                    visited.add((x,y))
+                    self.backtrack(visited, nextTrieNode, (x,y))
+                    visited.remove((x,y))
+         
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        if not board or not board[0]:
+            return []
+        
+        head = TrieNode()
+        for word in words:
+            head.add(word)
+            
+        self.board = board
+        self.pool = []
+        
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                nextTrieNode = head.children.get(self.board[i][j], None)
+                if nextTrieNode:
+                    visited = {(i,j)}
+                    self.backtrack(visited, nextTrieNode, (i,j))                    
+        return self.pool
