@@ -142,28 +142,30 @@ class NumArray:
     Binary Indexed Tree
     '''
     def __init__(self, nums: List[int]):
-        self.nums = nums
+        self.nums = [0] * len(nums)
         self.bits = [0] * (len(nums) + 1)
         for i in range(len(nums)):
-            self.goUp(i+1, nums[i])
-            
+            self.update(i, nums[i])
+        
     def update(self, i: int, val: int):
         diff = val - self.nums[i]
         if diff != 0:
             self.nums[i] = val
-            self.goUp(i+1, diff);
             
+            i += 1 # no need to update bits[0]
+            while i <= len(self.nums):
+                # This is essential from leaf to parents
+                self.bits[i] += diff
+                i += (i & -i)
+                        
     def sumRange(self, i: int, j: int) -> int:
-        return self.goDown(j+1) - self.goDown(i)
+        return self.getSum(j+1) - self.getSum(i)
 
-    def goUp(self, i, val):
-        while i <= len(self.nums):
-            self.bits[i] += val
-            i += (i & -i)
-
-    def goDown(self, i: int) -> int:
+    def getSum(self, i: int) -> int:       
+        # Get sum before index i
+        # This is from parents to leaf
         total = 0
-        while i > 0:
+        while i > 0: # bits[i] is 0, no need
             total += self.bits[i]
             i -= (i & -i)
         return total
