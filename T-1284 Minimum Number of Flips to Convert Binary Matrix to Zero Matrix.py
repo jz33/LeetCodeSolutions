@@ -42,17 +42,13 @@ n == mat[0].length
 1 <= n <= 3
 mat[i][j] is 0 or 1.
 '''
-from heapq import heappush, heappop
-
 class Solution:
     def bitmap(self, mat: List[List[int]]) -> int:
-        rowCount = len(mat)
-        colCount = len(mat[0])
         b = 0
         for i in range(self.rowCount):
             for j in range(self.colCount):
                 if mat[i][j] == 1:
-                    b |= (1 << (i * rowCount + j))
+                    b |= (1 << (i * self.rowCount + j))
         return b
 
     def flip(self, mat: List[List[int]], x: int, y: int) -> List[List[int]]:
@@ -63,29 +59,31 @@ class Solution:
                 newMat[i][j] = 1 - newMat[i][j]
         return newMat
 
-    def minFlips(self, mat: List[List[int]]) -> int:
-        '''
-        Dijkstra with memorization
-        '''     
+    def minFlips(self, mat: List[List[int]]) -> int: 
         self.rowCount = len(mat)
         self.colCount = len(mat[0])
 
-        computed = set() # {bitmap of binary matrix}
-        heap = [(0, mat)] # [(steps, matrix)]
-        while heap:
-            steps, node = heappop(heap)
-            bitmap = self.bitmap(node)
-            if bitmap in computed:
-                continue
-
-            if bitmap == 0:
-                return steps
-
-            computed.add(bitmap)
-
-            for i in range(self.rowCount):
-                for j in range(self.colCount):
-                    newNode = self.flip(node, i, j)
-                    heappush(heap, (steps+1, newNode))
+        bitmap = self.bitmap(mat)
+        if bitmap == 0:
+            return 0
+        
+        computed = {bitmap} # {bitmap of binary matrix}
+        queue = collections.deque([mat]) # [(steps, matrix)]
+        steps = 0
+        while queue:
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                for i in range(self.rowCount):
+                    for j in range(self.colCount):
+                        newNode = self.flip(node, i, j)
+                        bitmap = self.bitmap(newNode)
+                        if bitmap == 0:
+                            return steps + 1
+                        
+                        if bitmap not in computed:
+                            computed.add(bitmap)
+                            queue.append(newNode)
+                        
+            steps += 1
 
         return -1
