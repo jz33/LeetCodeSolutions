@@ -15,6 +15,9 @@ update(1, 2)
 sumRange(0, 2) -> 8
 '''
 class NumArray:
+    '''
+    Segment Tree
+    '''
     def __init__(self, nums: List[int]):
         self.length = len(nums)
         self.tree = []
@@ -131,3 +134,36 @@ def getLeafIndex(i, length):
     Array index => Tree leave node index
     '''
     return length - 1 + i
+
+
+
+class NumArray:
+    '''
+    Binary Indexed Tree
+    '''
+    def __init__(self, nums: List[int]):
+        self.nums = nums
+        self.bits = [0] * (len(nums) + 1)
+        for i in range(len(nums)):
+            self.goUp(i+1, nums[i])
+            
+    def update(self, i: int, val: int):
+        diff = val - self.nums[i]
+        if diff != 0:
+            self.nums[i] = val
+            self.goUp(i+1, diff);
+            
+    def sumRange(self, i: int, j: int) -> int:
+        return self.goDown(j+1) - self.goDown(i)
+
+    def goUp(self, i, val):
+        while i <= len(self.nums):
+            self.bits[i] += val
+            i += (i & -i)
+
+    def goDown(self, i: int) -> int:
+        total = 0
+        while i > 0:
+            total += self.bits[i]
+            i -= (i & -i)
+        return total
