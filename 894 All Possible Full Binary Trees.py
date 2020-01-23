@@ -20,6 +20,15 @@ Output:
 [0,0,0,0,0,0,0],
 [0,0,0,0,0,null,null,null,null,0,0],
 [0,0,0,0,0,null,null,0,0]]
+
+Another way to ask:
+https://leetcode.com/discuss/interview-question/414082/Google-or-Full-Binary-Trees-With-N-Leaves
+
+Given an int n, return a list of all possible full binary trees with n leaf nodes.
+
+Notice that for the full tree, total node = leaf node * 2 - 1
+
+Example:
 '''
 # Definition for a binary tree node.
 # class TreeNode:
