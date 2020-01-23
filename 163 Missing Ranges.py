@@ -1,25 +1,30 @@
 '''
-Missing Ranges
+163. Missing Ranges
 https://leetcode.com/problems/missing-ranges/
+
+Given a sorted integer array nums, where the range of elements are in the inclusive range [lower, upper],
+return its missing ranges.
+
+Example:
+
+Input: nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99,
+Output: ["2", "4->49", "51->74", "76->99"]
 '''
-def findMissingRanges(self, nums, lower, upper):
-    """
-    :type nums: List[int]
-    :type lower: int
-    :type upper: int
-    :rtype: List[str]
-    """
-    res = []
-    j = lower
-    for i,e in enumerate(nums):
-        if e > j:
-            if j == e - 1:
-                res.append(str(j))
-            else:
-                res.append(str(j)+'->'+str(e - 1))
-        j = e + 1
-    if j == upper:
-        res.append(str(j))
-    elif j < upper:
-        res.append(str(j)+'->'+str(upper))
-    return res
+class Solution:
+    def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[str]:
+        res = []
+        i = lower
+        for e in nums:
+            if i < e:
+                if i == e - 1:
+                    res.append(str(i))
+                else:
+                    res.append(str(i)+'->'+str(e - 1))
+            i = e + 1
+            
+        if i == upper:
+            res.append(str(i))
+        elif i < upper:
+            res.append(str(i)+'->'+str(upper))
+            
+        return res
