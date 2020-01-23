@@ -1,33 +1,33 @@
 '''
-Moving Average from Data Stream
+346. Moving Average from Data Stream
 https://leetcode.com/problems/moving-average-from-data-stream/
+
+Given a stream of integers and a window size,
+calculate the moving average of all integers in the sliding window.
+
+Example:
+
+MovingAverage m = new MovingAverage(3);
+m.next(1) = 1
+m.next(10) = (1 + 10) / 2
+m.next(3) = (1 + 10 + 3) / 3
+m.next(5) = (10 + 3 + 5) / 3
 '''
-from collections import deque
+class MovingAverage:
 
-class MovingAverage(object):
-
-    def __init__(self, size):
+    def __init__(self, size: int):
         """
         Initialize your data structure here.
-        :type size: int
         """
-        self.dq = deque()
         self.size = size
-        self.avg = 0
-
-    def next(self, val):
-        """
-        :type val: int
-        :rtype: float
-        """
-        total = self.avg * len(self.dq)
-        if len(self.dq) == self.size:
-            total -= self.dq.popleft()
-        self.dq.append(val)
-        total += val
-        self.avg = total / float(len(self.dq))
-        return self.avg
+        self.queue = collections.deque()
+        self.total = 0
         
-# Your MovingAverage object will be instantiated and called as such:
-# obj = MovingAverage(size)
-# param_1 = obj.next(val)
+    def next(self, val: int) -> float:
+        self.total += val
+        self.queue.append(val)
+        if len(self.queue) > self.size:
+            poped = self.queue.popleft()
+            self.total -= poped
+            
+        return self.total / len(self.queue)
