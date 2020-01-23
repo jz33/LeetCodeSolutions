@@ -1,68 +1,64 @@
-from collections import Counter
 '''
-267 Palindrome Permutation II
+267. Palindrome Permutation II
 https://leetcode.com/problems/palindrome-permutation-ii/
 
-Notice the algorithm to generate permutation is exponential time
+Given a string s, return all the palindromic permutations (without duplicates) of it.
+Return an empty list if no palindromic permutation could be form.
+
+Example 1:
+
+Input: "aabb"
+Output: ["abba", "baab"]
+Example 2:
+
+Input: "abc"
+Output: []
 '''
-def permutations(input, repeat = None):
-    '''
-    :type input: List
-    :type repeat: Int
-    :rtype: Generator[tuple]
-    Iteratively compute permutation of input without duplicates
-    BFS, O(n!)
-    '''
-    repeat = len(input) if repeat is None else r
-    queue = []
-    for i,v in enumerate(input):
-        if i > 0 and v == input[i-1]: continue
-        queue.append(([v],input[:i]+input[i+1:]))
-    for j in xrange(1,repeat):
-        newQ = []
-        for q in queue:
-            prev = q[0]
-            src = q[1]
-            for i,v in enumerate(src):
-                if i > 0 and v == src[i-1]: continue 
-                newQ.append((prev + src[i:i+1], src[:i] + src[i+1:]))
-        queue = newQ
-    for q in queue:
-        yield tuple(q[0])
+from collections import Counter
+
+class Solution:
+    def backtrack(self, histo: 'Counter', sofar: List[str]):
+        if len(sofar) == self.size:
+            self.pool.append(''.join(sofar))
+        else:
+            newHisto = copy.deepcopy(histo)
+            for k,v in histo.items():
+                # To avoid duplicate, select only 1 char from a pair
+                sofar.append(k)
+                newHisto[k] -= 1
+                if newHisto[k] == 0:
+                    del newHisto[k]
+
+                self.backtrack(newHisto, sofar)
+
+                sofar.pop()
+                newHisto[k] += 1
+            
+    def permutations(self, s: List[str]) -> List[str]:
+        '''
+        Similar to Combination Sum II
+        '''
+        histo = Counter(s)
+        self.size = len(s)
+        self.pool = []
+        self.backtrack(histo, [])
+        return self.pool
     
-def permutations2(counter, pool, sofar):
-    '''
-    DFS
-    '''
-    noMore = True
-    for k in counter.keys():
-        if counter[k] == 0: continue
-        counter[k] -= 1
-        permutations2(counter, pool, k + sofar)
-        counter[k] += 1
-        noMore = False
-    if noMore: pool.append(sofar)
-  
-def generatePalindromes(s):
-    """
-    :type s: str
-    :rtype: List[str]
-    """
-    all = Counter(s)
-    oddy = 0
-    single = ''
-    counter = Counter()
-    for k, v in all.iteritems():
-        if v % 2 == 1:
-            oddy += 1
-            single = k
-        counter[k] = v // 2
-    if oddy > 1: return []        
-    pool = []
-    permutations2(counter, pool, '')
-    return [''.join(p + single + p[::-1]) for p in pool]
-    
-class Solution(object):
-    def generatePalindromes(self, s):
-        return generatePalindromes(s)
+    def generatePalindromes(self, s: str) -> List[str]:
+        histo = Counter(s)
+        half = []
+        oddy = None
+        for k,v in histo.items():
+            if v % 2 == 1:
+                if oddy is not None:
+                    return []
+                oddy = k
+            half += [k] * (v // 2)
         
+        res = []
+        for left in self.permutations(half):
+            if not oddy:
+                res.append(left + left[::-1])
+            else:
+                res.append(left + oddy + left[::-1])
+        return res
