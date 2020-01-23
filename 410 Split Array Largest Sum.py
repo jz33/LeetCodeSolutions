@@ -26,32 +26,33 @@ The best way is to split it into [7,2,5] and [10,8],
 where the largest sum among the two subarrays is only 18.
 '''
 class Solution:
-    def splitArray(self, nums: List[int], m: int) -> int:
-        size = len(nums)
-        
-        # left is max of array, which is smallest possible return
-        left = max(nums) 
-        # right is sum of array, which is largest possible return
-        right = sum(nums)   
-        res = right
-
-        while left <= right:
-            middle = left + ((right - left) >> 1);
-
-            # Count number of subarrays whose sum is <= middle
-            localSum = 0
-            counter = 1
-            for i in range(size):
-                localSum += nums[i]
-                if localSum > middle:
-                    counter += 1
-                    localSum = nums[i]
-
-            # counter smaller than m is acceptable, because subarray can be divided again
-            if counter <= m:
-                res = min(res, middle)
-                right = middle - 1
+    def getSubarrayCount(self, nums: List[int], total: int) -> int:
+        ctr = 1
+        s = 0
+        for e in nums:
+            if s + e > total:
+                ctr += 1
+                s = e
             else:
-                left = middle + 1
-
-        return res
+                s += e
+        return ctr
+            
+    def splitArray(self, nums: List[int], m: int) -> int:
+        left = max(nums)
+        right = sum(nums)
+        minSum = right
+        
+        while left <= right:
+            mid = left + (right - left) // 2
+            
+            count = self.getSubarrayCount(nums, mid)      
+            if count > m:
+                # Guessed sum is too small
+                left = mid + 1
+            else:
+                # Guessed sum is large enough to make subarray count
+                # less or equal to m
+                minSum = min(minSum, mid)
+                right = mid - 1
+                
+        return minSum
