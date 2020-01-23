@@ -22,15 +22,6 @@ Output:
  / \   / \
 9   6 3   1
 '''
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -45,6 +36,7 @@ class Solution:
         
         root.left, root.right = root.right, root.left
         
+        # No need to care about returns
         self.invertTree(root.left)
         self.invertTree(root.right)
         
