@@ -20,20 +20,20 @@ class Solution {
 public:
     int maxSubArraySumNoLargerThanK(std::vector<int>& arr, int k)
     {
-        std::set<int> accuSet;
-        accuSet.insert(0);
+        std::set<int> prefixSet; // {prefix sums}
+        prefixSet.insert(0);
         
-        int acc = 0;
+        int prefix = 0;
         int maxVal = INT_MIN;       
         for (int e : arr)
         {
-            acc += e;
-            auto it = accuSet.lower_bound(acc - k);
-            if (it != accuSet.end())
+            prefix += e;
+            auto it = prefixSet.lower_bound(prefix - k);
+            if (it != prefixSet.end())
             {
-                maxVal = std::max(maxVal, acc - *it);                
+                maxVal = std::max(maxVal, prefix - *it);                
             }
-            accuSet.insert(acc);
+            prefixSet.insert(prefix);
         }
         return maxVal;
     }
@@ -52,6 +52,8 @@ public:
         // Iterate to get all possible accumulation "on a row", i.e., 
         // @accs records all submatrix sums.
         // The outer loop should iterate rowCount or colCount who is smaller
+        // Therefore overall time complexity is:
+        // min(rowCount, colCount) ^ 2 * max(rowCount, colCount) * log (max(rowCount, colCount))
         if (rowCount <= colCount)
         {
             for (int r = 0; r < rowCount; ++r)
