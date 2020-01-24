@@ -17,32 +17,24 @@ Output: []
 from collections import Counter
 
 class Solution:
-    def backtrack(self, histo: 'Counter', sofar: List[str]):
-        if len(sofar) == self.size:
-            self.pool.append(''.join(sofar))
-        else:
-            newHisto = copy.deepcopy(histo)
-            for k,v in histo.items():
-                # To avoid duplicate, select only 1 char from a pair
-                sofar.append(k)
-                newHisto[k] -= 1
-                if newHisto[k] == 0:
-                    del newHisto[k]
-
-                self.backtrack(newHisto, sofar)
-
-                sofar.pop()
-                newHisto[k] += 1
-            
-    def permutations(self, s: List[str]) -> List[str]:
+    def permuteUnique(self, nums: List[str]) -> List[List[str]]:
         '''
-        Similar to Combination Sum II
+        This is from 47. Permutations II
         '''
-        histo = Counter(s)
-        self.size = len(s)
-        self.pool = []
-        self.backtrack(histo, [])
-        return self.pool
+        perms, newPerms = [[]], []      
+        for e in nums:
+            for row in perms:
+                
+                # This basic idea is to insert e onto all positions
+                # of previous permutation
+                for i in range(len(row) + 1):
+                    newPerms.append(row[:i] + [e] + row[i:])
+                    
+                    # This is the only added line to handle duplicates
+                    if i < len(row) and row[i] == e: break 
+                    
+            perms, newPerms = newPerms, []
+        return perms
     
     def generatePalindromes(self, s: str) -> List[str]:
         histo = Counter(s)
@@ -56,9 +48,9 @@ class Solution:
             half += [k] * (v // 2)
         
         res = []
-        for left in self.permutations(half):
+        for left in self.permuteUnique(half):
             if not oddy:
-                res.append(left + left[::-1])
+                res.append(''.join(left) + ''.join(left[::-1]))
             else:
-                res.append(left + oddy + left[::-1])
+                res.append(''.join(left) + oddy + ''.join(left[::-1]))
         return res
