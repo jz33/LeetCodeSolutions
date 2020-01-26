@@ -39,9 +39,9 @@ class StreamChecker:
             this = this.children[e]
         this.isEnd = True
     
-    def search(self, stream: List[str]) -> bool:
+    def search(self) -> bool:
         this = self.root
-        for e in reversed(stream):
+        for e in reversed(self.stream):
             if this.isEnd:
                 return True
             if e not in this.children:
@@ -57,4 +57,4 @@ class StreamChecker:
 
     def query(self, letter: str) -> bool:
         self.stream.append(letter)
-        return self.search(self.stream)
+        return self.search()
