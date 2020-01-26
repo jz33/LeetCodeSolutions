@@ -45,16 +45,10 @@ What if the matrix is so large that you can only load up a partial row into the 
 '''
 class Solution:
     def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
-        '''
-        Compare row with previous row, memory friendly
-        '''
         rowCount = len(matrix)
-        colCount = len(matrix[0])      
-        row = matrix[0]
+        colCount = len(matrix[0])
         for i in range(1, rowCount):
-            newRow = matrix[i]
-            for j in range(colCount-1):
-                if row[j] != newRow[j+1]:
+            for j in range(1, colCount):
+                if matrix[i][j] != matrix[i-1][j-1]:
                     return False
-            row = newRow
         return True
