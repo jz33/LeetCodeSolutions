@@ -96,3 +96,28 @@ class Solution:
                         # As the product is in order, do early break
                         break
         return belowCount + countOnWidth
+
+    
+pairs = {0: 0, 1: 1, 6: 9, 8: 8, 9: 6}
+    
+class Solution:
+    '''
+    TLE
+    '''
+    def confusingNumberII(self, N: int) -> int:      
+        count = 0
+        
+        def dfs(num, reversedNum, decimal):
+            nonlocal count
+            count += num != reversedNum
+            for digit, reversedDigit in pairs.items():
+                nextNum = num * 10 + digit
+                if nextNum <= N:
+                    dfs(nextNum, reversedDigit * decimal + reversedNum, decimal * 10)
+                    
+        if N >= 1: dfs(1,1,10)
+        if N >= 6: dfs(6,9,10)
+        if N >= 8: dfs(8,8,10)
+        if N >= 9: dfs(9,6,10)
+            
+        return count
