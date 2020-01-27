@@ -51,8 +51,9 @@ public:
         
         // At a floor, having i eggs, at movement j. Throw 1 egg,
         // if it breaks, using solution with i-1 eggs at movement j - 1;
-        // if it holds, using solution with i eggs at movement j.
-        // Therefore dp[i, j] = dp[i-1, j-1] + dp[i, j-1]
+        // if it holds, using solution with i eggs at movement j - 1.
+        // And at movement j 1 more floor can be determined.
+        // Therefore dp[i, j] = dp[i-1, j-1] + dp[i, j-1] + 1
         // Since j is montonically increasing, only i is needed parameter
         // for bottom-up dynamic programming
         int moveCount = 0;
