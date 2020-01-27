@@ -1,47 +1,58 @@
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
+'''
+271. Encode and Decode Strings
+https://leetcode.com/problems/encode-and-decode-strings/
 
+Design an algorithm to encode a list of strings to a string.
+The encoded string is then sent over the network and is decoded back to the original list of strings.
+
+Machine 1 (sender) has the function:
+
+string encode(vector<string> strs) {
+  // ... your code
+  return encoded_string;
+}
+Machine 2 (receiver) has the function:
+vector<string> decode(string s) {
+  //... your code
+  return strs;
+}
+So Machine 1 does:
+
+string encoded_string = encode(strs);
+and Machine 2 does:
+
+vector<string> strs2 = decode(encoded_string);
+strs2 in Machine 2 should be the same as strs in Machine 1.
+
+Implement the encode and decode methods.
+
+Note:
+
+The string may contain any possible characters out of 256 valid ascii characters.
+Your algorithm should be generalized enough to work on any possible characters.
+Do not use class member/global/static variables to store states. Your encode and decode algorithms should be stateless.
+Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.
+'''
 class Codec:
-    '''
-    Encode and Decode Strings
-    https://leetcode.com/problems/encode-and-decode-strings/
-    '''
-    def encode(self, strs):
+    def encode(self, strs: [str]) -> str:
         """Encodes a list of strings to a single string.
-        
-        :type strs: List[str]
-        :rtype: str
         """
         buf = []
         for s in strs:
-            buf.append(str(len(s)) + '*' +s)
+            buf.append(str(len(s)) + '*' + s)
         return ''.join(buf)
-
-    def decode(self, s):
-        """Decodes a single string to a list of strings.
         
-        :type s: str
-        :rtype: List[str]
+
+    def decode(self, s: str) -> [str]:
+        """Decodes a single string to a list of strings.
         """
         i = 0
-        size = len(s)
         buf = []
-        while i < size:
-            p = s.index('*',i)
-            l = int(s[i:p])
-            buf.append(s[p+1:p+1+l])
-            i = p+1+l
+        while i < len(s):
+            pos = s.index('*',i)
+            length = int(s[i : pos])
+            left = pos + 1
+            right = left + length
+            buf.append(s[left : right])
+            i = right
         return buf
-
-sol = Codec()        
-strs = [
-    'abc',
-    'er*wr',
-    '***',
-    ''
-]
-e = sol.encode(strs)
-pp.pprint(e)
-d = sol.decode(e)
-pp.pprint(d)
-    
