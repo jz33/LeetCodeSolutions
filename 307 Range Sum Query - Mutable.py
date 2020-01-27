@@ -156,7 +156,7 @@ class NumArray:
             while i <= len(self.nums):
                 # This is essential from leaf to parents
                 self.bits[i] += diff
-                i += (i & -i)
+                i += (i & -i) # i & (-i) zeroes all the bits except the least significant one of i
                         
     def sumRange(self, i: int, j: int) -> int:
         return self.getSum(j+1) - self.getSum(i)
