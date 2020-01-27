@@ -30,31 +30,33 @@ Output: 5
 Explanation: You can divide the chocolate to [1,2,2], [1,2,2], [1,2,2]
 '''
 class Solution:
+    def getPiecesCount(self, sweetness: List[int], total: int) -> int:
+        '''
+        Get count of subarrays whose sum is >= total
+        '''
+        count = 0
+        prefixSum = 0
+        for sweet in sweetness:
+            prefixSum += sweet
+            if prefixSum >= total:
+                count += 1
+                prefixSum = 0
+        return count
+            
     def maximizeSweetness(self, sweetness: List[int], K: int) -> int:
-        '''
-        Similar method to 410 Split Array Largest Sum
-        '''
         size = len(sweetness)        
         left = min(sweetness) 
         right = sum(sweetness)
-        res = left
+        maxSweet = left
         
         while left <= right:
-            middle = left + ((right - left) >> 1);
+            mid = left + ((right - left) >> 1);
+            count = self.getPiecesCount(sweetness, mid)
 
-            # Count number of subarrays whose sum is >= middle
-            localSum = 0
-            counter = 0
-            for i in range(size):
-                localSum += sweetness[i]
-                if localSum >= middle:
-                    counter += 1
-                    localSum = 0
-
-            if counter >= K+1:
-                res = max(res, middle)
-                left = middle + 1
+            if count >= K+1:
+                maxSweet = max(maxSweet, mid)
+                left = mid + 1
             else:
-                right = middle - 1
+                right = mid - 1
 
-        return res
+        return maxSweet
