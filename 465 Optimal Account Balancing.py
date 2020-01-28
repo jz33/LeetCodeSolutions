@@ -48,33 +48,32 @@ Therefore, person #1 only need to give person #0 $4, and all debt is settled.
 from collections import Counter
 
 class Solution:
-    def backtrack(self, i: int, people: List[int]) -> int:
+    def backtrack(self, payId: int, debts: List[int]) -> int:
         '''
-        Notice this question cannot be done with greedy,
-        because this is NP Complete 3-partition problem
         Similar backtrack method like 40 Combination Sum II
-        @i: index of the person who will pay debt to others
-        @return: transaction count
+        @payId: index of the person who will pay debt to others
+        @return: minimum transaction count
         '''
-        while i < len(people) and people[i] == 0:
-            i += 1
+        debtSize = len(debts)
+        while payId < debtSize and debts[payId] == 0:
+            payId += 1
 
-        res = float('inf')
-        prev = 0
-        for j in range(i, len(people)):
-            if people[i] > 0 and people[j] < 0 or people[i] < 0 and people[j] > 0 and people[j] != prev:
-                prev = people[j]
-                people[j] += people[i] 
-                res = min(res, 1 + self.backtrack(i+1, people))
-                people[j] -= people[i]
+        minTrans = float('inf')
+        prevPaidDebt = 0
+        for getId in range(payId + 1, debtSize):
+            if debts[payId] > 0 and debts[getId] < 0 or debts[payId] < 0 and debts[getId] > 0 and debts[getId] != prevPaidDebt:
+                prevPaidDebt = debts[getId]
+                debts[getId] += debts[payId] 
+                minTrans = min(minTrans, 1 + self.backtrack(payId + 1, debts))
+                debts[getId] -= debts[payId]
 
-        return 0 if res == float('inf') else res
+        return 0 if minTrans == float('inf') else minTrans
 
     def minTransfers(self, transactions: List[List[int]]) -> int:
         ctr = Counter()
-        for a, b, d in transactions:
-            ctr[a] -= d
-            ctr[b] += d
+        for pa, pb, money in transactions:
+            ctr[pa] -= money
+            ctr[pb] += money
         
-        people = list(ctr.values())
-        return self.backtrack(0, people)
+        debts = list(ctr.values())
+        return self.backtrack(0, debts)
