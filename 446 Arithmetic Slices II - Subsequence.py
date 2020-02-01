@@ -43,31 +43,27 @@ All arithmetic subsequence slices are:
 [2,4,6,8,10]
 [2,6,10]
 '''
-MIN_VALUE = -2**31
-MAX_VALUE = 2**31 - 1
-
 class Solution:
     def numberOfArithmeticSlices(self, A: List[int]) -> int:
-        '''
-        Slices here mean subsequences
-        '''
         if not A or len(A) < 3:
             return 0
     
-        # dp[i] = {diff : count}
+        # dp[i] = {arithmetic subsequence diff : count ending at i}
         dp = [collections.Counter() for _ in range(len(A))]
-        res = 0
+        total = 0
         for i in range(1, len(A)):
             for j in range(i-1, -1, -1):
                 diff = A[i] - A[j]
-                if diff <= MIN_VALUE or diff > MAX_VALUE:
-                    continue
+                c0 = dp[j][diff]
                 
-                c0 = dp[j][diff]     
+                # The number of arithmetic subsequence before i
+                # with diff is c0, so total should add c0, because
+                # with A[i] new size + 1 subsequences of diff are created.
+                total += c0
                 
-                # +1 does not mean the length is increased by 1
-                # by rather there is 1 more subsequence that ends in A[i]
+                # However, the count of subsequence ending on i
+                # with diff should just increase by 1. These sequences are
+                # not necessarily size >= 3, so cannot add to total yet.
                 dp[i][diff] += c0 + 1
-                res += c0
                 
-        return res
+        return total
