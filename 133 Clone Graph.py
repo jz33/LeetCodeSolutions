@@ -8,7 +8,9 @@ Each node in the graph contains a val (int) and a list (List[Node]) of its neigh
 Example:
 
 Input:
-{"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":[{"$ref":"2"},{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],"val":2},{"$ref":"4"}],"val":1}
+{"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":[{"$ref":"2"},
+{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],"val":2},
+{"$ref":"4"}],"val":1}
 
 Explanation:
 Node 1's value is 1, and it has two neighbors: Node 2 and 4.
@@ -21,34 +23,35 @@ The number of nodes will be between 1 and 100.
 The undirected graph is a simple graph, which means no repeated edges and no self-loops in the graph.
 Since the graph is undirected, if node p has node q as neighbor, then node q must have node p as neighbor too.
 You must return the copy of the given node as a reference to the cloned graph.
+'''
 """
 # Definition for a Node.
 class Node:
-    def __init__(self, val, neighbors):
+    def __init__(self, val = 0, neighbors = []):
         self.val = val
         self.neighbors = neighbors
 """
-from typing import Dict
-
 class Solution:
-    def dfsRecursively(self, node: 'Node', book: Dict['Node','Node']) -> 'Node':
+    def dfs(self, node: 'Node') -> 'Node':
+        '''
+        @return: copied node
+        '''
         if not node:
             return None
         
-        if node not in book:
+        computed = self.computed
+        if node not in computed:
             newNode = Node(node.val, None)
-            book[node] = newNode # mark as visited
+            computed[node] = newNode # mark as visited
             
             newNeighbors = []
             for neighbor in node.neighbors:
-                newNeighbors.append(self.dfsRecursively(neighbor, book))
+                newNeighbors.append(self.dfs(neighbor))
 
             newNode.neighbors = newNeighbors
             
-        return book[node]
+        return computed[node]
      
     def cloneGraph(self, node: 'Node') -> 'Node':
-        # Create a dict with {old node : new node},
-        # which is also used to record whether node is copied
-        book = {} 
-        return self.dfsRecursively(node, book)
+        self.computed = {} 
+        return self.dfs(node)
