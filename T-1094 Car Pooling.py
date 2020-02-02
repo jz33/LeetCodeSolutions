@@ -47,7 +47,7 @@ class Solution:
             points.append((endLocation, -passengers))
         
         # Sort by location, then by passengers
-        # Minus passengers go first
+        # End locations go first
         points.sort()
         
         accu = 0
