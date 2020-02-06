@@ -1,48 +1,64 @@
-class ZigzagIterator(object):
+'''
+281. Zigzag Iterator
+https://leetcode.com/problems/zigzag-iterator/
 
-    def __init__(self, v1, v2):
-        """
-        Initialize your data structure here.
-        :type v1: List[int]
-        :type v2: List[int]
-        """
+Given two 1d vectors, implement an iterator to return their elements alternately.
+
+Example:
+
+Input:
+v1 = [1,2]
+v2 = [3,4,5,6] 
+Output: [1,3,2,4,5,6]
+Explanation: By calling next repeatedly until hasNext returns false,
+the order of elements returned by next should be: [1,3,2,4,5,6].
+ 
+
+Follow up:
+
+What if you are given k 1d vectors? How well can your code be extended to such cases?
+
+Clarification for the follow up question:
+The "Zigzag" order is not clearly defined and is ambiguous for k > 2 cases.
+If "Zigzag" does not look right to you, replace "Zigzag" with "Cyclic". For example:
+
+Input:
+[1,2,3]
+[4,5,6,7]
+[8,9]
+
+Output: [1,4,8,2,5,9,3,6,7].
+'''
+from heapq import heappush, heappop
+
+class ZigzagIterator:
+    def __init__(self, v1: List[int], v2: List[int]):
+        '''
+        Compute the complete output data.
+        Similar to merge sorted lists.
+        Easily extand to k vectors cases
+        '''
+        src = [v1, v2]
         data = []
-        cc = 0 # max column count
-        data.append(v1)
-        cc = max(len(v1),cc)
-        data.append(v2)
-        cc = max(len(v2),cc)
-        self.data = data
-        self.rc = 2
-        self.cc = cc
-        self.x = -1
-        self.y = 0
-
-    def next(self):
-        """
-        :rtype: int
-        """
-        return self.data[self.x][self.y]
-
-    def hasNext(self):
-        """
-        :rtype: bool
-        """
-        if self.rc == 0 or self.cc == 0: return False
-        data,cc,rc,x,y = self.data,self.cc,self.rc,self.x,self.y
-
-        while y < cc:
-            if x == rc - 1:
-                x = 0
-                y += 1
-            else:
-                x += 1
-            if y < len(data[x]):
-                self.x,self.y = x,y
-                return True
-        return False
+        heap = [] # [(index in the array, the id of the array)]
+        for arrId, arr in enumerate(src):
+            if arr:
+                heappush(heap, (0, arrId))
         
+        while heap:
+            index, arrId = heappop(heap)
+            data.append(src[arrId][index])
+            
+            if index + 1 < len(src[arrId]):
+                heappush(heap, (index + 1, arrId))
+                
+        self.data = data
+        self.i = 0
 
-# Your ZigzagIterator object will be instantiated and called as such:
-# i, v = ZigzagIterator(v1, v2), []
-# while i.hasNext(): v.append(i.next())
+    def next(self) -> int:
+        r = self.data[self.i]
+        self.i += 1
+        return r
+        
+    def hasNext(self) -> bool:
+        return self.i < len(self.data)
