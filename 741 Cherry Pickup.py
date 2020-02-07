@@ -30,15 +30,15 @@ The player started at (0, 0) and went down, down, right right to reach (2, 2).
 Then, the player went left, up, up, left to return home, picking up one more cherry.
 The total number of cherries picked up is 5, and this is the maximum possible.
 '''
+from functools import lru_cache
+
 class Solution:
+    
+    @lru_cache(None)
     def dfs(self, x0: int, y0: int, x1: int, y1: int) -> int:
         '''
         @return: return cherries picked. If cannot reach end, will return -1
-        '''
-        key = (x0, y0, x1, y1)      
-        if key in self.records:
-            return self.records[key]          
-            
+        '''            
         cherries = -1
         N = len(self.grid)
         
@@ -56,7 +56,6 @@ class Solution:
                 else:
                     cherries += self.grid[x0][y0] + self.grid[x1][y1]
  
-        self.records[key] = cherries
         return cherries
                              
     def cherryPickup(self, grid: List[List[int]]) -> int:
@@ -64,7 +63,5 @@ class Solution:
         The picking process is from start to end and end to start,
         which equalavent to 2 person from start reaching end.
         '''        
-        self.records = {} # {(x0, y0, x1, y1) : cherries}
-        self.grid = grid
-        
+        self.grid = grid      
         return max(self.dfs(0,0,0,0), 0)
