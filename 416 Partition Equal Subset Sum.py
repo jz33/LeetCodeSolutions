@@ -29,10 +29,15 @@ Explanation: The array cannot be partitioned into equal sum subsets.
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         total = sum(nums)
+        if (total & 1) != 0:
+            return False
         
-        # If bits[i] is 1, then it means there is a composable sum i
-        bits = 1
-        for num in nums:
-            bits |= (bits << num)
-            
-        return (total % 2 == 0) and (bits & (1 << (total >> 1))) != 0
+        half = total >> 1
+        
+        dp = [True] + [False] * half
+        for n in nums:
+            # Each n can only be used once, so update from right
+            for i in range(half, n - 1, -1):
+                dp[i] = dp[i] or dp[i - n]
+        
+        return dp[-1]
