@@ -1,38 +1,36 @@
-from copy import deepcopy
 '''
-Subsets II
-https://oj.leetcode.com/problems/subsets-ii/
+90. Subsets II
+https://leetcode.com/problems/subsets-ii/
+
+Given a collection of integers that might contain duplicates,
+nums, return all possible subsets (the power set).
+
+Note: The solution set must not contain duplicate subsets.
+
+Example:
+
+Input: [1,2,2]
+Output:
+[
+  [2],
+  [1],
+  [1,2,2],
+  [2,2],
+  [1,2],
+  []
+]
 '''
-pool = []
+from collections import Counter
 
-def combinationsRec(input, sofar, repeat):
-    global pool
-    if len(sofar) ==  repeat:
-        pool.append(deepcopy(sofar))
-    else:
-        for i in xrange(0,len(input)):
-	    
-            # An important check to reduce branching
-            if len(sofar) + len(input) - i < repeat: break;
-            
-            # Avoid duplicates
-            if i > 0 and input[i] == input[i-1]: 
-                continue;
-
-            sofar.append(input[i]);
-            combinationsRec(input[i+1:], sofar, repeat);
-            sofar.pop();
-			
-def subsetsWithDup(input):
-    global pool
-    del pool[:]
-    
-    input.sort()
-    sofar = []
-    for i in xrange(0,len(input)+1):
-        combinationsRec(input,sofar,i);
-    return pool
-
-input = [1,2,2]
-subsetsWithDup(input);
-print pool
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        counter = Counter(nums)
+        dp = [[]]
+        for key, count in counter.items():
+            newDp = []
+            for times in range(count+1):
+                added = [key] * times
+                for comb in dp:
+                    newDp.append(comb + added)
+            dp = newDp
+        return dp
