@@ -1,86 +1,56 @@
-import sys
-from collections import deque
 '''
-Walls and Gates
+286. Walls and Gates
 https://leetcode.com/problems/walls-and-gates/
 
 You are given a m x n 2D grid initialized with these three possible values.
+
 -1 - A wall or an obstacle.
 0 - A gate.
-INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than2147483647.
-Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with INF.
+INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as
+you may assume that the distance to a gate is less than 2147483647.
+Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate,
+it should be filled with INF.
 
-For example, given the 2D grid:
+Example: 
+
+Given the 2D grid:
+
 INF  -1  0  INF
 INF INF INF  -1
 INF  -1 INF  -1
   0  -1 INF INF
   
 After running your function, the 2D grid should be:
+
   3  -1   0   1
   2   2   1  -1
   1  -1   2  -1
   0  -1   3   4
 '''
-WALL = -1
-GATE = 0
-INF = 2147483647
-R = 0
-C = 0
-
-def mark(mat,x,y):
-    dq = deque()
-    dq.append((x,y,0))
-    while len(dq) > 0:
-        x,y,d = dq.popleft()
-        mat[x][y] = d
-        if x + 1 <  R and mat[x+1][y] != WALL and mat[x+1][y] > d+1:
-            dq.append((x+1,y,d+1))
-        if x - 1 > -1 and mat[x-1][y] != WALL and mat[x-1][y] > d+1:
-            dq.append((x-1,y,d+1))
-        if y + 1 < C  and mat[x][y+1] != WALL and mat[x][y+1] > d+1:
-            dq.append((x,y+1,d+1))
-        if y - 1 > -1 and mat[x][y-1] != WALL and mat[x][y-1] > d+1:
-            dq.append((x,y-1,d+1))
-
-def solve(mat):   
-    global R,C
-    R = len(mat)
-    if R == 0: return
-    C = len(mat[0])
-
-    for i in xrange(R):
-        for j in xrange(C):
-            if mat[i][j] == GATE:
-                mark(mat,i,j)           
-                
-class Solution(object):
-    def wallsAndGates(self, rooms):
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
         """
-        :type rooms: List[List[int]]
-        :rtype: void Do not return anything, modify rooms in-place instead.
+        Do not return anything, modify rooms in-place instead.
         """
-        solve(rooms)
-'''
-rooms = [
-    [INF,  -1,  0,  INF],
-    [INF, INF, INF,  -1],
-    [INF,  -1, INF,  -1],
-    [0,    -1, INF, INF]
-]
-'''
-rooms = [
-    [0,  INF, INF,   0,  -1,  -1, 0,    0,   0,  -1,  -1,   0, INF, INF],
-    [INF, -1, INF,  -1, INF,   0, -1, INF,  -1, INF, INF,  -1,  -1, INF],
-    [0,    0,  -1, INF,  -1, INF, -1,  -1, INF,   0,   0, INF,   0, INF],
-    [-1,   0, INF,  -1,   0,   0, -1, INF,   0, INF,   0,  -1,   0,  -1]
-]  
-sol = Solution()
-sol.wallsAndGates(rooms)
-for row in rooms:
-    for c in row:
-        if c == INF:
-            sys.stdout.write('{0: <5}'.format('INF'))
-        else:
-            sys.stdout.write('{0: <5}'.format(str(c)))
-    sys.stdout.write('\n')
+        if not rooms or not rooms[0]:
+            return
+        
+        rowCount = len(rooms)
+        colCount = len(rooms[0])
+
+        def mark(x,y):
+            queue = collections.deque([(x,y)])
+            steps = 1
+            while queue:
+                for _ in range(len(queue)):
+                    x,y = queue.popleft()
+                    for i,j in (x,y+1), (x,y-1), (x+1,y), (x-1,y):
+                        if 0 <= i < rowCount and 0 <= j < colCount and rooms[i][j] > steps:
+                            rooms[i][j] = steps
+                            queue.append((i,j))
+                steps += 1
+        
+        for i in range(rowCount):
+            for j in range(colCount):
+                if rooms[i][j] == 0:
+                    mark(i,j)
