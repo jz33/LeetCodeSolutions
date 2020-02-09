@@ -83,3 +83,25 @@ class Solution:
                             if ct == j:
                                 buf[t].append(arr + [c])
             return buf[target]
+          
+          
+class Solution:
+    '''
+    An easier version, like Subsets II
+    '''
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        counter = collections.Counter(candidates)
+        pool = []
+        dp = [([], 0)] # [(combination, sum)]
+        for key, count in counter.items():
+            newDp = []
+            for times in range(count+1):
+                newComb = [key] * times
+                newTotal = key * times
+                for comb, total in dp:
+                    if newTotal + total == target:
+                        pool.append(comb + newComb)
+                    elif newTotal + total < target:
+                        newDp.append((comb + newComb, newTotal + total))
+            dp = newDp
+        return pool
