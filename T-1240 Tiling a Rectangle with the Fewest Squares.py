@@ -27,31 +27,33 @@ Constraints:
 1 <= m <= 13
 '''
 class Solution:
-    def dfs(self, recHeight: int, skyline: List[int], squareCount: int):
+    def dfs(self, skyline: List[int], squareCount: int):
         if squareCount >= self.minSquarecount:
             return
-
+        
+        recHeight = self.recHeight
+        
         # Whether rectangle is already fully filled by squares
         if all(h == recHeight for h in skyline):
             self.minSquarecount = min(self.minSquarecount, squareCount);
             return
 
         # Whether skyline is already computed
+        # For same skyline, if current square is bigger than previous computed, return
         key = '-'.join(str(h) for h in skyline)
-        prevSolution = self.solutions.get(key, None)
+        prevSolution = self.computed.get(key)
         if prevSolution is not None and prevSolution <= squareCount:
             return
-        self.solutions[key] = squareCount
+        self.computed[key] = squareCount
 
         # Get minimun height in skyline
         minHeight, left = min((skyline[i], i) for i in range(len(skyline)))
-
-        # minimun height position is the left most minimun height
-        # Now find the right most position of minimun height
+.
+        # Now find the right most position of same minimun height.
         # If putting a new square above minimum height range,
-        # its size will be right - left + 1, which should be smaller than recHeight - minHeight
+        # its size will be right - left + 1, which should be smaller than remaining height (recHeight - minHeight)
         right = left
-        while right + 1 < len(skyline) and skyline[right+1] == minHeight and right+1 - left + 1 <= recHeight - minHeight:
+        while right+1 < len(skyline) and skyline[right+1] == minHeight and right+1 - left + 1 <= recHeight - minHeight:
             right += 1
 
         # Try put squre from right position first, because the new square can be maximun
@@ -62,7 +64,7 @@ class Solution:
             for k in range(left, i+1):
                 nextSkyline[k] += newSquareSize
             
-            self.dfs(recHeight, nextSkyline, squareCount + 1)
+            self.dfs(nextSkyline, squareCount + 1)
         
     def tilingRectangle(self, n: int, m: int) -> int:
         if n == m:
@@ -71,11 +73,12 @@ class Solution:
         if n > m: # let n be smaller
             n, m = m, n
 
+        self.recHeight = m
         self.minSquarecount = float('inf')
-        self.solutions = {} # {skyline hash : square count}
+        self.computed = {} # {skyline hash : previous computed minimum square count}
 
         # skyline along n side is records height on each position
-        # e.g., if skyline = [0,2,2], it means there is a sqaure of size 2
+        # e.g., if skyline = [0,2,2], it means there is 1 square of size 2
         skyline = [0] * n
-        self.dfs(m, skyline, 0)
+        self.dfs(skyline, 0)
         return self.minSquarecount
