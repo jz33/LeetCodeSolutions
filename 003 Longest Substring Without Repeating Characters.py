@@ -19,17 +19,16 @@ Output: 3
 Explanation: The answer is "wke", with the length of 3. 
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 '''
-def lengthOfLongestSubstring(s: str) -> int:
-    # Sliding window
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         book = {}
-        left = 0 # left index of the substring
         maxLength = 0
+        left = 0 # left index of the substring
         for i, e in enumerate(s):
             if e in book:
                 # Simply forward the left margin
-                # Notice buf[e] can be less than left
-                left = max(left, book[e]+1)
+                # Notice book[e] can be less than left
+                left = max(left, book[e] + 1)
             book[e] = i
             maxLength = max(maxLength, i - left + 1)
-            
         return maxLength
