@@ -23,28 +23,20 @@ Example 2:
 Input: piles = [30,11,23,4,20], H = 5
 Output: 30
 '''
-class Solution:    
+class Solution:
+    def getHours(self, piles: List[int], k: int) -> int:
+        return sum(p // k if p % k == 0 else p // k + 1 for p in piles)
+        
     def minEatingSpeed(self, piles: List[int], H: int) -> int:
-        '''
-        Similar idea to 410 Split Array Largest Sum.
-        '''
-        total = sum(piles)
-        
-        # left/right is the minimum/maximum bananas to eat
-        left = total // H if total % H == 0 else total // H + 1
+        left = 1
         right = max(piles)
-        
-        # binary search to lower bound
-        res = right
+        k = right
         while left <= right:
-            mid = left + ((right - left) >> 1)
-            
-            s = sum(p // mid if p % mid == 0 else p // mid + 1 for p in piles)
-            
-            if s <= H:          
-                res = mid
+            mid = left + (right - left) // 2
+            hours = self.getHours(piles, mid)
+            if hours <= H:
+                k = min(k, mid)
                 right = mid - 1
             else:
                 left = mid + 1
-        
-        return res
+        return k
