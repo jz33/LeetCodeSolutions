@@ -52,24 +52,25 @@ Constraints:
 2 <= word.length <= 300
 Each word[i] is an English uppercase letter.
 '''
-def toInt(c: str) -> int:
-    # +1 is to make A like 6 not 0, because '0' means no finger is placed
-    return ord(c) - ord('A') + 6
+INF = float('inf')
 
 class Solution:
-    def dist(self, n1: int, n2: int) -> int:
-        if n1 == 0: # n1 == 0 means n1 finger is not typed yet
+    def dist(self, t: int, f: int) -> int:
+        if f == -1:
+            # -1 means finger is not placed in any letter yet
             return 0
-        return abs(n1 // 6 - n2 // 6) + abs(n1 % 6 - n2 % 6)
-    
+        
+        return abs(t // 6 - f // 6) + abs(t % 6 - f % 6)
+        
     def minimumDistance(self, word: str) -> int:
-        # dp[i,j] is the minimun distance when fingers are at i & j
-        dp, newDp = {(0,0): 0}, {}
+        # dp[i,j] is minimum cost when 2 fingers are at letter i, j
+        dp = {(-1,-1) : 0}        
         for c in word:
-            k = toInt(c)
-            for i, j in dp.keys():
-                # Move 1 of the 2 fingers to c (k)
-                newDp[k,j] = min(newDp.get((k,j), float('inf')), dp[i,j] + self.dist(i,k))
-                newDp[i,k] = min(newDp.get((i,k), float('inf')), dp[i,j] + self.dist(j,k))
-            dp, newDp = newDp, {}        
+            newDp = {}
+            k = ord(c) - ord('A')
+            # Based on current 2 finger positions, move each finger to c.
+            for i,j in dp.keys():
+                newDp[i,k] = min(newDp.get((i,k), INF), dp[i,j] + self.dist(k,j))
+                newDp[k,j] = min(newDp.get((k,j), INF), dp[i,j] + self.dist(k,i))
+            dp = newDp
         return min(dp.values())
