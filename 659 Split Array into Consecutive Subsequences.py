@@ -33,19 +33,22 @@ from heapq import heappush, heappop
 
 class Solution:
     def isPossible(self, nums: List[int]) -> bool:
-        # {ending num : [size subsequences ending with num]}
+        '''
+        Build a dict to record subsequence lengths.
+        Key is the max (right) number of a subsequence, value is list of
+        subsequence sizes.
+        '''
         book = collections.defaultdict(list)
         for n in nums:
             if len(book[n-2]) > 0 and book[n-2][0] < 3:
-                # No more chance to fill subsequence book[n-2][0]
                 return False
-            
-            if len(book[n-1]) == 0:
-                # No previous num
+                    
+            countList = book[n-1]
+            if not countList:
                 heappush(book[n], 1)
             else:
-                # Upgrade n-1 subsequence to n
-                ctr = heappop(book[n-1]) + 1
-                heappush(book[n], ctr)
-          
-        return all(ctr >= 3 for ls in book.values() for ctr in ls)
+                # Use heap to always add to shorted subsequence first
+                count = heappop(book[n-1]) + 1
+                heappush(book[n], count)
+        
+        return all(count >= 3 for countList in book.values() for count in countList)    
