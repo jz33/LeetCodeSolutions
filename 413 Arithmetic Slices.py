@@ -29,19 +29,17 @@ return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] i
 '''
 class Solution:
     def numberOfArithmeticSlices(self, A: List[int]) -> int:
-        '''
-        Slices mean subarrays
-        '''
-        if not A or len(A) < 3:
-            return 0
-
+        # dp[0] is the current difference of arithmetic subarrays
+        # dp[0] is the current arithmetic subarray size
+        dp = [float('inf'), 0]
         res = 0
-        dp = [float('inf'), 0] # [diff, count]
         for i in range(1, len(A)):
             diff = A[i] - A[i-1]
             if diff == dp[0]:
                 dp[1] += 1
-                res += max(dp[1] - 2, 0)
+                
+                # How many arithemtic subarrays ending in i?
+                res += max(0, dp[1] - 2)
             else:
-                dp= [diff, 2]
+                dp = [diff, 2]
         return res
