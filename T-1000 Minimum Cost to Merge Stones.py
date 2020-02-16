@@ -76,24 +76,26 @@ class Solution:
 
         return dp[0][n-1]
 
+
+from functools import lru_cache
+
 class Solution:
     '''
-    A Top-down solution
+    Top-Down
     '''
     def getSum(self, left: int, right: int):
         '''
         Return sum of stones in [left, right + 1]
         '''
-        return self.accu[right+1] - self.accu[left]
+        return self.prefix[right+1] - self.prefix[left]
         
+    @lru_cache(None)
     def topDown(self, left: int, right: int) -> int:
         '''
         Top down dynamic programming computing in range [left, right + 1]
-        So both indexes are inclusive
+        @left: starting index, inclusive
+        @right: starting index, inclusive
         '''
-        if self.caches[left][right] is not None:
-            return self.caches[left][right]
-        
         result = 0
         width = right - left + 1
         if width < self.K:
@@ -101,18 +103,14 @@ class Solution:
         elif width == self.K:
             result = self.getSum(left, right)
         else:
-            result = float('inf')
-
             # Current result is the combination of 2 children results.
             # i is the break point. Notice its increment is K - 1
-            for i in range(left, right, self.K - 1):
-                result = min(result, self.topDown(left, i) + self.topDown(i+1, right))
+            result = min(self.topDown(left, i) + self.topDown(i+1, right) for i in range(left, right, self.K - 1))
 
             # If current subarray a form into a stone, add its cost
             if (width - 1) % (self.K - 1) == 0:
                 result += self.getSum(left, right)       
 
-        self.caches[left][right] = result
         return result
     
     def mergeStones(self, stones: List[int], K: int) -> int:
@@ -123,13 +121,9 @@ class Solution:
         self.K = K
         
         # Prepare prefix sum query
-        accu = [0] * (n+1)
+        prefix = [0] * (n + 1)
         for i in range(n):
-            accu[i+1] = accu[i] + stones[i]
-        self.accu = accu
-        
-        # Prepare top-down dynamic programming caches
-        # caches[i][j] is the minimum cost from stone i to stone j inclusively
-        self.caches = [[None] * n for _ in range(n)]
-        
+            prefix[i+1] = prefix[i] + stones[i]
+        self.prefix = prefix
+   
         return self.topDown(0, n-1)
