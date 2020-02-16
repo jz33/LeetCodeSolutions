@@ -44,17 +44,18 @@ class Solution:
    
         return dp[0][n-1]
 
+  
+from functools import lru_cache
+
 class Solution:
     '''
     Top-down method
     '''
+    @lru_cache(None)
     def topDown(self, left: int, right: int) -> int:
         '''
-        left and right are inclusive indexes 
+        @left and right are inclusive indexes 
         '''
-        if self.caches[left][right] is not None:
-            return self.caches[left][right]
-        
         if left > right:
             return 0
         
@@ -71,14 +72,8 @@ class Solution:
                          self.topDown(left, i-1) + self.topDown(i+1, right) \
                          for i in range(left, right+1))
                 
-        self.caches[left][right] = result
         return result     
     
     def maxCoins(self, nums: List[int]) -> int:
         self.nums = [1] + nums + [1]
-        n = len(self.nums)
-        
-        # cache[i][j] is the max value in nums[i:j+1]
-        self.caches = [[None] * n for _ in range(n)]
-        
-        return self.topDown(1, n-2)
+        return self.topDown(1, len(self.nums)-2)
