@@ -42,7 +42,10 @@ def maxSumOfThreeSubarrays(self, nums: List[int], k: int) -> List[int]:
     for i in range(k, len(nums)+1):
         for j in range(1, 4):
 
+            # If select subarray nums[i-k...i], total sum is:
             selected = dp[i-k][j-1][0] + sums[i] - sums[i-k]
+         
+            # If not select subarray nums[i-k...i], total sum is:
             unSelected = dp[i-1][j][0]
 
             # Not >=, as we prefer earlier indexes
