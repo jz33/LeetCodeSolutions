@@ -20,38 +20,31 @@ Example 3:
 Input: A = [2,-1,2], K = 3
 Output: 3
 '''
-from collections import deque
-
 class Solution:
     def shortestSubarray(self, A: List[int], K: int) -> int:
-        '''
-        Similar method to Sliding Window Maximum
-        '''
-        size = len(A)
-        res = size + 1 # impossible value
-
-        # sumArr[i] is the sum of A[:i+1]
-        sumArr= [0] * (size + 1)
-        for i in range(size):
-            sumArr[i+1] = sumArr[i] + A[i]
-
-        queue = deque() 
-        for i, s in enumerate(sumArr):
-            # The queue is kept ascending.
-            # If a new value s is smaller than last value of queue,
-            # we can dump last value of queue, because the subarray
-            # between future i and s will have bigger sum and smaller size
-            while queue and s <= sumArr[queue[-1]]:
+        res = -1
+        
+        # Build prefix sum array
+        prefixSum = [0] * (len(A)+1)
+        for i in range(len(A)):
+            prefixSum[i+1] = prefixSum[i] + A[i]
+        
+        # Queue contains the index of prefixSum, for all i
+        # in queue, prefixSum[i] is ascending
+        queue = collections.deque()
+        for i, s in enumerate(prefixSum):
+            while queue and s <= prefixSum[queue[-1]]:
                 queue.pop()
-
-            # Try update result using front of queue
-            # Front of queue and i can compose the subarray with largest
-            # sum. If even that sum is smaller than K, no more element
+                
+            # Try update result using queue[0], as
+            # queue[0] and i can compose the subarray with largest sum.
+            # If even that sum is smaller than K, no more element later
             # in queue will meet the requirement of >= K
-            while queue and s - sumArr[queue[0]] >= K:
-                j = queue.popleft()               
-                res = min(res, i-j)
-
+            while queue and s - prefixSum[queue[0]] >= K:
+                j = queue.popleft()
+                if res == -1 or i - j < res:
+                    res = i - j
+            
             queue.append(i)
-
-        return res if res != size + 1 else -1
+            
+        return res
