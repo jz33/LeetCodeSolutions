@@ -67,3 +67,20 @@ class Solution:
             dp[i] = any(dp[j] and s[j:i] in book for j in range(max(0, i-maxSize), i))
             
         return dp[-1]
+
+     
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        '''
+        Simplest iterative solution
+        '''
+        if not wordDict:
+            return False
+        
+        book = set(wordDict)
+        
+        # dp[i] means word[:i] is composable or not
+        dp = [True] + [False] * len(s)
+        for i in range(1, len(s)+1):
+            dp[i] = any(dp[j] and s[j:i] in book for j in range(i))
+        return dp[-1]
