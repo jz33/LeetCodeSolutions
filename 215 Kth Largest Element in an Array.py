@@ -44,3 +44,18 @@ def quickselect(arr, left, right, targetIndex) -> int:
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         return quickselect(nums, 0, len(nums)-1, len(nums) - k)
+    
+ 
+from heapq import heappush, heappop
+
+class Solution:
+    '''
+    A much simpler heap method
+    '''
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heap = [] # min heap, max size is k
+        for n in nums:
+            heappush(heap, n)
+            if len(heap) > k:
+                heappop(heap)
+        return heappop(heap)
