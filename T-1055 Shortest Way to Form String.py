@@ -31,34 +31,36 @@ Constraints:
 Both the source and target strings consist of only lowercase English letters from "a"-"z".
 The lengths of source and target string are between 1 and 1000.
 '''
-from collections import defaultdict
+from copy import deepcopy
 
 class Solution:
     def shortestWay(self, source: str, target: str) -> int:
-        # preprocess source
-        book = defaultdict(list)
-        for i, c in enumerate(source):
-            book[c].append(i)
+        '''
+        O(M+N) method
+        '''
+        # Preprocesing: build the index map on source.
+        # dp[i] is a {char : index} dict where index is the 
+        # closest index of char which appears on i or later than i
+        sourceSize = len(source)
+        dp = [None] * sourceSize
+        dp[-1] = {source[-1] : sourceSize - 1}
+        for i in range(sourceSize-2, -1, -1):
+            dp[i] = deepcopy(dp[i+1])
+            dp[i][source[i]] = i
             
-        ti = 0
-        si = 0
-        res = 1
-        while ti < len(target):
-            tc = target[ti]            
-            if tc not in book:
+        i = sourceSize # iterater for dp (aka, source)
+        cycleCount = 0
+        for t in target:
+            # No appearance of t in source[i:],
+            # or i is at sourceSize, 
+            # reset i to 0
+            if i == sourceSize or t not in dp[i]:
+                i = 0
+                cycleCount += 1
+                
+            togo = dp[i].get(t)
+            if togo is None:
                 return -1
             
-            # Simple pass search, could use binary search
-            for j in book[tc]:
-                if j >= si:
-                    break
-            else:
-                # reset
-                si = 0
-                res += 1
-                continue
-            
-            ti += 1
-            si = j+1
-            
-        return res
+            i = togo + 1         
+        return cycleCount          
