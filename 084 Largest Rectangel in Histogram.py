@@ -30,3 +30,21 @@ class Solution:
                 maxRec = max(maxRec, (i-1-stack[-1]) * recHeight)
             stack.append(i)
         return maxRec
+    
+    
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        '''
+        Another way without adding [0] in front
+        '''
+        heights += [0]
+        stack = []
+        maxArea = 0
+        for i, h in enumerate(heights):
+            while stack and h < heights[stack[-1]]:
+                j = stack.pop()
+                recHeight = heights[j]
+                recWidth = i - 1 - stack[-1] if stack else i
+                maxArea = max(maxArea, recHeight * recWidth)
+            stack.append(i)
+        return maxArea
