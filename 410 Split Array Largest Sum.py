@@ -52,7 +52,7 @@ class Solution:
             else:
                 # Guessed sum is large enough to make subarray count
                 # less or equal to m
-                minSum = min(minSum, mid)
+                minSum = mid
                 right = mid - 1
                 
         return minSum
