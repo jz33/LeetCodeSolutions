@@ -7,21 +7,14 @@ public:
     vector<vector<int>> getSkyline(vector<vector<int>>& buildings) {
         std::vector<std::pair<int,int>> src; // [position, height]
         
+        // Notice entering position's height is set to minus.
+        // This is because we want new building enters before old building leaves.
         for (auto& b : buildings) {
-            src.emplace_back(b[0], b[2]);
-            src.emplace_back(b[1], -b[2]); // Set minus if leaving building
+            src.emplace_back(b[0], -b[2]);
+            src.emplace_back(b[1], b[2]);
         }
 
-        // Notice the sort order is not by default.
-        // If 2 pairs has same position, bigger height goes front,
-        // because we want new building enter before old building leave.
-        std::sort(src.begin(), src.end(), [](const auto& a, const auto& b) -> bool {
-            if (a.first == b.first) {
-                return a.second > b.second;
-            } else {
-                return a.first < b.first;
-            }
-        });
+        std::stable_sort(src.begin(), src.end());
         
         int prevHeight = 0;
         std::map<int, int> heightMap; // {height : count}
@@ -32,10 +25,9 @@ public:
             int position = b.first;
             int height = b.second;
             
-            if (height > 0) {
-                heightMap[height]++;
+            if (height < 0) {
+                heightMap[-height]++;
             } else {
-                height = -height;
                 int ctr = heightMap[height];
                 if (ctr == 1) {
                     heightMap.erase(height);
