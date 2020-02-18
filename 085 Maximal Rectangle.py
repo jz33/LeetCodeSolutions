@@ -16,21 +16,18 @@ Input:
 Output: 6
 '''
 class Solution:
-    def largestRectangleArea(self, heights: List[int]) -> int:        
-        heights = [0] + heights + [0] # just to make code simpler
-        stack = [0] # stack of indexes, where heights[i] are increasing
-        maxRec = 0
+    def largestRectangleArea(self, oriHeights: List[int]) -> int:
+        heights = oriHeights + [0]
+        stack = []
+        maxArea = 0
         for i, h in enumerate(heights):
-            while h < heights[stack[-1]]:
+            while stack and h < heights[stack[-1]]:
                 j = stack.pop()
                 recHeight = heights[j]
-                # recHeight is the target rectangle's height, 
-                # its right is before i, its left is after stack[-1], 
-                # all heights between stack[-1] and j (even not in stack)
-                # should be equal or larger than recHeight
-                maxRec = max(maxRec, (i-1-stack[-1]) * recHeight)
+                recWidth = i - 1 - stack[-1] if stack else i
+                maxArea = max(maxArea, recHeight * recWidth)
             stack.append(i)
-        return maxRec
+        return maxArea
 
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
         '''
