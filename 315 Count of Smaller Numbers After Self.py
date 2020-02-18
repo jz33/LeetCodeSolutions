@@ -125,3 +125,31 @@ class Solution:
         res = [0] * len(arr)
         mergesort(arr, 0, len(arr)-1, buf, res)
         return res
+
+    
+class Solution:
+    '''
+    Simplified mergesort
+    '''
+    def mergesort(self, pairs):
+        if len(pairs) < 2:
+            return pairs
+        
+        mid = len(pairs) // 2
+        pairs = self.mergesort(pairs[:mid]) + self.mergesort(pairs[mid:])
+        
+        # Count inversions
+        j = mid
+        for i in range(mid):
+            while j < len(pairs) and pairs[i][0] > pairs[j][0]:
+                j += 1
+            self.invs[pairs[i][1]] += j - mid
+        
+        return sorted(pairs, key = lambda x : x[0]) # simple merge
+    
+    def countSmaller(self, nums: List[int]) -> List[int]:
+        # value : index pair to remember original index
+        pairs = list(zip(nums, range(len(nums))))
+        self.invs = [0] * len(nums)
+        self.mergesort(pairs)
+        return self.invs
