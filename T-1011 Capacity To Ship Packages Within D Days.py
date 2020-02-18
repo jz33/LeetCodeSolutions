@@ -47,28 +47,26 @@ Explanation:
 4th day: 1, 1
 '''
 class Solution:
+    def getDays(self, weights: List[int], capacity: int) -> int:
+        days = 1
+        ss = 0
+        for w in weights:
+            ss += w
+            if ss > capacity:
+                days += 1
+                ss = w
+        return days
+        
     def shipWithinDays(self, weights: List[int], D: int) -> int:
-        '''
-        Same method as 410. Split Array Largest Sum
-        '''
         left = max(weights)
         right = sum(weights)
         res = right
         while left <= right:
-            mid = left + (right - left) // 2
-            
-            days = 1
-            s = 0
-            for w in weights:
-                s += w
-                if s > mid:
-                    days += 1
-                    s = w
-            
+            mid = (left + right) // 2
+            days = self.getDays(weights, mid)
             if days <= D:
                 res = mid
                 right = mid - 1
             else:
                 left = mid + 1
-        
         return res
