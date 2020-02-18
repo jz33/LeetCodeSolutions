@@ -49,6 +49,7 @@ class Solution:
     def countAllZeroSubmatrices(self, mat: List[List[int]], target: int) -> int:
         '''
         Similar and simpler to 1074. Number of Submatrices That Sum to Target
+        But this is O(n^3)
         '''
         rowCount = len(mat)
         colCount = len(mat[0])
@@ -61,7 +62,7 @@ class Solution:
             arr = [0] * colCount
             for k in range(i, rowCount):
                 # starting column index on arr that arr[left] is 0
-                left = 0 
+                left = 0
                 for c in range(colCount):
                     arr[c] += mat[k][c]
                     if arr[c] == 0:
@@ -69,4 +70,43 @@ class Solution:
                     else:
                         left = c + 1
         
+        return res
+       
+class Solution:
+    def countHisto(self, srcHeights: List[int]) -> int:
+        heights = srcHeights + [0]
+        stack = [] # [height index]
+        count = 0
+        for i, h in enumerate(heights):
+            while stack and h < heights[stack[-1]]:
+                j = stack.pop()
+                ph = heights[j]
+                
+                # So how many new rectangles?
+                # Clearly, new rectangles should all include j column.
+                # Then from j, expand to left, till stack[-1], there are "left" choices
+                # From j to right till i there are "right" choices.
+                # Then rectangle count is left * right
+                left = j - stack[-1] if stack else j + 1
+                right = i - j
+                count += ph * left * right
+            stack.append(i)
+        return count
+    
+    def countAllZeroSubmatrices(self, mat: List[List[int]], target: int) -> int:
+        '''
+        Use 85 Maximal Rectangle, O(n^2)
+        '''
+        rowCount = len(mat)
+        colCount = len(mat[0])
+        res = 0
+
+        heights = [0] * colCount
+        for i in range(rowCount):
+            for c in range(colCount):
+                if mat[i][c] == 0:
+                    heights[c] += 1
+                else:
+                    heights[c] = 0
+            res += self.countHisto(heights)  
         return res
