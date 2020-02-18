@@ -54,7 +54,7 @@ class Solution:
             count = self.getPiecesCount(sweetness, mid)
 
             if count >= K+1:
-                maxSweet = max(maxSweet, mid)
+                maxSweet = mid
                 left = mid + 1
             else:
                 right = mid - 1
