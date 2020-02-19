@@ -38,74 +38,61 @@ class Node:
         self.next = None
         self.prev = None
         
-class LRUCache:
-
-    def __init__(self, capacity: int):
-        self.capacity = capacity
-        self.book = dict() # key : Node
-        head = Node() # head.next point to the least recently used element
+class DoubleLinkedList:
+    def __init__(self):
+        # Head and tail are placeholders
+        head = Node()
         tail = Node()
         head.next = tail
         tail.prev = head
         self.head = head 
-        self.tail = tail      
-        
-    def get(self, key: int) -> int:
-        n = self.book.get(key)
-        
-        if not n:
-            return -1
-        
-        # If n is not already the most recently used
-        if n != self.tail.prev: 
-            self.extract(n)
-            self.append(n) 
+        self.tail = tail
 
-        return n.val
+    def append(self, n: Node):
+        n.prev = self.tail.prev
+        n.next = self.tail
+        self.tail.prev.next = n
+        self.tail.prev = n
 
-    def put(self, key: int, value: int) -> None:
-        n = self.book.get(key)
-        
-        if not n: # add
-            n = Node(key,value) 
-            
-            if len(self.book) == self.capacity:
-                leastUsed = self.head.next
-                self.extract(leastUsed)
-                del self.book[leastUsed.key]
-                
-            self.book[key] = n
-            self.append(n)
-            
-        else: # update
-            n.val = value
-
-            # If n is not already the most recently used
-            if n != self.tail.prev:
-                self.extract(n)
-                self.append(n) 
-                
-    def extract(self, n: Node):
-        '''
-        Delete node from itse parent and child
-        '''
+    def remove(self, n: Node):
         n.prev.next = n.next
         n.next.prev = n.prev
         n.prev = None
         n.next = None
-    
-    def append(self, n: Node):
-        '''
-        Append node to tail
-        '''
-        self.tail.prev.next = n
-        n.prev = self.tail.prev
-        self.tail.prev = n
-        n.next = self.tail 
         
+class LRUCache:
 
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.keyToNode = {} # key : Node
+        self.dll = DoubleLinkedList()
 
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+    def get(self, key: int) -> int:
+        n = self.keyToNode.get(key)        
+        if not n:
+            return -1
+          
+        self.dll.remove(n)
+        self.dll.append(n) 
+
+        return n.val
+
+    def put(self, key: int, value: int) -> None:
+        n = self.keyToNode.get(key)
+        if not n:
+            # add
+            n = Node(key,value) 
+            
+            if len(self.keyToNode) == self.capacity:
+                leastUsed = self.dll.head.next
+                self.dll.remove(leastUsed)
+                del self.keyToNode[leastUsed.key]
+                
+            self.keyToNode[key] = n
+            self.dll.append(n)
+            
+        else:
+            # update
+            n.val = value
+            self.dll.remove(n)
+            self.dll.append(n)
