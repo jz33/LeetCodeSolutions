@@ -1,73 +1,38 @@
 '''
-Majority Element II
+229. Majority Element II
 https://leetcode.com/problems/majority-element-ii/
-'''
-def majorityElement(ls):
-    if len(ls) == 1: return [ls[0]]
-    
-    # There are at most 2 this kinda elements
-    major = []
-    counter = [0,0]
-    for i in xrange(0,len(ls)):
-        e = ls[i]
-        if counter[0] > 0 and counter[1] > 0:
-            if e == major[0]:
-                counter[0] += 1
-            elif e == major[1]:
-                counter[1] += 1
-            else:
-                counter[0] -= 1
-                counter[1] -= 1
-        elif counter[0] > 0:
-            if e == major[0]:
-                counter[0] += 1
-            else:
-                if len(major) == 1:
-                    major.append(e)
-                else: 
-                    major[1] = e
-                counter[1] = 1
-        elif counter[1] > 0:
-            if e == major[1]:
-                counter[1] += 1
-            else:
-                major[0] = e
-                counter[0] = 1
-        else:
-            if len(major) == 0:
-                major.append(e)
-                counter[0] = 1
-            elif len(major) == 1:
-                if e == major[0]:
-                    counter[0] = 1
-                else:
-                    major.append(e)
-                    counter[1] = 1
-            else:
-                if e == major[0]:
-                    counter[0] = 1
-                elif e == major[1]:
-                    counter[1] = 1
-                else:
-                    major[0] = e 
-                    counter[0] = 1
-                
-        print major,counter
-    
-    ret = []
-    for m in major:
-        ctr = 0
-        for e in ls:
-            if e == m:
-                ctr += 1
-            if ctr > len(ls) / 3:
-                ret.append(m)
-                break
-    
-    return ret        
 
-    
-#ls = [1,1,3,1,2,2,2,3,1,3,3]
-ls = [0,-1,2,-1]
-print ls
-print majorityElement(ls)
+Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+
+Note: The algorithm should run in linear time and in O(1) space.
+
+Example 1:
+
+Input: [3,2,3]
+Output: [3]
+
+Example 2:
+
+Input: [1,1,1,3,3,2,2,2]
+Output: [1,2]
+'''
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        if len(nums) < 2:
+            return nums
+        
+        count = [0, 0]
+        major = [0, 1]
+        for n in nums:
+            if n == major[0]:
+                count[0] += 1
+            elif n == major[1]:
+                count[1] += 1
+            elif count[0] == 0:
+                count[0], major[0] = 1, n
+            elif count[1] == 0:
+                count[1], major[1] = 1, n
+            else:
+                count = [count[0] - 1, count[1] - 1]
+        
+        return [m for m in major if nums.count(m) > len(nums) // 3]
