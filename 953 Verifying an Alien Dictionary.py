@@ -29,31 +29,17 @@ According to lexicographical rules "apple" > "app", because 'l' > '∅',
 where '∅' is defined as the blank character which is less than any other character (More info).
 '''
 class Solution:
-    def charToInt(self, ch: str) -> int:
-        return ord(ch) - ord('a')
-    
-    def lessThan(self, a: str, b: str, book: List[int]) -> bool:
-        size = min(len(a), len(b))
-        for i in range(size):
+    def lessThan(self, a: str, b: str, book) -> bool:
+        for i in range(min(len(a), len(b))):
             ca = a[i]
             cb = b[i]
             if ca != cb:
-                ia = book[self.charToInt(ca)]
-                ib = book[self.charToInt(cb)]
-                if ia < ib:
-                    return True
-                else: # ia > ib
-                    return False
-        
+                return book[ca] < book[cb]
         return len(a) <= len(b)
-        
+                    
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        book = [None] * 26 # char : index
-        for i, ch in enumerate(order):
-            book[self.charToInt(ch)] = i
-        
-        for i in range(1, len(words)):
-            if not self.lessThan(words[i-1], words[i], book):
+        book = dict(zip(order, range(len(order)))) # {char : index}
+        for i in range(len(words)-1):
+            if not self.lessThan(words[i], words[i+1], book):
                 return False
-        
         return True
