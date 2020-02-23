@@ -1,7 +1,7 @@
-973 K Closest Points to Origin
+'''
+973. K Closest Points to Origin
 https://leetcode.com/problems/k-closest-points-to-origin/
 
-'''
 We have a list of points on the plane.  Find the K closest points to the origin (0, 0).
 
 (Here, the distance between two points on a plane is the Euclidean distance.)
@@ -170,6 +170,9 @@ class EuclideanWrapper:
         return str(self.point) + ", " + str(self.length)
     
 class Solution:
+    '''
+    Use my own implementation of heap
+    '''
     def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
         n = len(points)
         arr = [EuclideanWrapper(point) for point in points]
@@ -182,4 +185,23 @@ class Solution:
             poped.append(heap.pop().point)
  
         return poped
-        
+
+
+
+from heapq import heappush, heappop
+class Solution:
+    '''
+    Use python's heap
+    '''
+    def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
+        heap = [] # max heap
+        for p in points:
+            d = p[0] * p[0] + p[1] * p[1]
+            heappush(heap, (-d, p))
+            if len(heap) > K:
+                heappop(heap)
+                
+        res = []
+        while heap:
+            res.append(heappop(heap)[1])
+        return res
