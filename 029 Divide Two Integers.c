@@ -40,26 +40,28 @@ int mul(int x, int y){
     return z;
 }
 
-int divide(int dividend, int divisor){
-    long long re,up,lo,mul,quo;
-    if (!divisor || (dividend == INT_MIN && divisor == -1))
+int divide(int dividend, int divisor) {
+    if (!divisor || (dividend == INT_MIN && divisor == -1)) {
         return INT_MAX;
+    }
+    int sign = !((dividend > 0) ^ (divisor > 0));
         
-    up = (LL)dividend;
+    LL up = (LL)dividend;
     up = up < 0 ? -up : up;
-    lo = (LL)divisor;
-    lo = lo < 0 ? -lo  : lo;
-    re = 0;
     
-    while (up >= lo){ 
-        mul = lo;
-        quo = 1;
-        while ((mul << 1) < up){
+    LL lo = (LL)divisor;
+    lo = lo < 0 ? -lo  : lo;
+    
+    LL res = 0;
+    while (up >= lo) { 
+        LL mul = lo;
+        LL quo = 1;
+        while ((mul << 1) < up) {
             mul <<= 1;
             quo <<= 1;
         }
         up -= mul;
-        re += quo;
+        res += quo;
     }
-    return (dividend < 0) ^ (divisor < 0) ? (int)(-re) : (int)re; 
+    return sign ? (int)res : (int)(-res); 
 }
