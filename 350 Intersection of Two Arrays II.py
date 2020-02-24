@@ -20,16 +20,10 @@ The result can be in any order.
 '''
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        book1 = {}
-        for e in nums1:
-            book1[e] = book1.get(e,0) + 1
-    
+        ctr1 = collections.Counter(nums1)
         intersection = []
         for e in nums2:
-            # Avoid deletion from book1
-            count = book1.get(e, 0)
-            if count > 0:
+            if ctr1[e] > 0:
                 intersection.append(e)
-                book1[e] -= 1
-                
+                ctr1[e] -= 1
         return intersection
