@@ -25,21 +25,20 @@ Explanation: A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A
 '''
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        # Get sorted histogram
+        # Get histogram
         ctr = collections.Counter(tasks)
-        histo = sorted(ctr.values(), key = lambda x : -x)
-
+        
         # So we separate top tasks, set each top task with at least
         # n empty slot to each other.
         # Then fill other tasks to the empty slots.
-        topTaskCount = histo[0]
+        topTask, topTaskCount = ctr.most_common(1)[0]
         emptySlots = (topTaskCount - 1) * n
         filled = 0
-        for i in range(1, len(histo)):
-            count = histo[i]
-            filled += min(count, topTaskCount - 1)
-            if filled >= emptySlots:
-                break
+        for key, count in ctr.items():
+            if key != topTask:
+                filled += min(count, topTaskCount - 1)
+                if filled >= emptySlots:
+                    break
         
         # If all empty slots are filled, no need for idle cycles
         # Otherwise, need idel cycles for the empty slots.
