@@ -36,7 +36,6 @@ Note:
 grid[i][j] is only 0, 1, or 2.
 '''
 from collections import deque
-
 INF = float('inf')
 
 class Solution:
@@ -46,30 +45,27 @@ class Solution:
         rowCount = len(grid)
         colCount = len(grid[0])
         
-        # Records shortest distance from a good orange to a rotten orange
-        mat = [[INF] * colCount for _ in range(rowCount)]
-
+        # Gather all rotten oranges, fresh orange count
+        freshCount = 0
+        rottens = deque()
         for i in range(rowCount):
             for j in range(colCount):
-                # BFS from rotten orange
-                if grid[i][j] == 2:
-                    queue = deque([(i,j)])
-                    dist = 1
-                    while queue:
-                        for _ in range(len(queue)):
-                            x, y = queue.popleft()
-                            for a, b in (x+1,y),(x-1,y),(x,y+1),(x,y-1):
-                                if 0 <= a < rowCount and 0 <= b < colCount and grid[a][b] == 1 and dist < mat[a][b]:
-                                    mat[a][b] = dist
-                                    queue.append((a,b))
-                        dist += 1
-        
-        maxD = 0
-        for i in range(rowCount):
-            for j in range(colCount): 
-                if grid[i][j] == 1:
-                    if mat[i][j] == INF:
-                        return -1
-                    maxD = max(maxD, mat[i][j])
+                v = grid[i][j]
+                if v == 1:
+                    freshCount += 1
+                elif v == 2:
+                    rottens.append((i,j))
+                
+        steps = 0
+        while rottens and freshCount:
+            # Each iteration is the rotten map
+            for _ in range(len(rottens)):
+                x, y = rottens.popleft()
+                for a, b in (x+1,y),(x-1,y),(x,y+1),(x,y-1):
+                    if 0 <= a < rowCount and 0 <= b < colCount and grid[a][b] == 1:
+                        freshCount -= 1
+                        grid[a][b] = 2
+                        rottens.append((a,b))
+            steps += 1
  
-        return maxD
+        return steps if freshCount == 0 else -1
