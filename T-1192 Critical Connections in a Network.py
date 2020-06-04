@@ -42,11 +42,11 @@ class Solution:
                 self.dfs(neighbor, curr, depth+1)
                 lowestDepths[curr] = min(lowestDepths[curr], lowestDepths[neighbor])
 
-                # So neighbor's depth is always +1 of curr's depth.
+                # So neighbor's depth is always + 1 of curr's depth.
                 # And if there is 2nd path from neighbor to curr, neighbor's
-                # lowest depth will be updated to curr's lowest depth or smaller.
+                # lowest depth will be updated to curr's depth or even smaller.
                 # So by contraction, if neighbor's depth is same as its lowest,
-                # there is no 2nd path connection neighbor to curr
+                # there is no 2nd path connecting neighbor to curr node.
                 if depths[neighbor] == lowestDepths[neighbor]:
                     self.bridges.append([curr, neighbor])
        
@@ -82,7 +82,7 @@ class Solution:
 class Solution:
     '''
     Tarjan, O(E+V)
-    This is to find critical nodes (articulations)
+    https://stackoverflow.com/questions/28917290/how-can-i-find-bridges-in-an-undirected-graph
     '''
     def dfs(self, curr: int, parent: int, depth: int):
         '''
@@ -104,14 +104,15 @@ class Solution:
                 self.dfs(neighbor, curr, depth + 1)
                 lowestDepths[curr] = min(lowestDepths[curr], lowestDepths[neighbor])
 
-                # If curr is the staring node and has more than 1 unvisited neighbor,
-                # it is articulation point
+                # If curr is the staring node and has more than 1 unvisited neighbor (which means
+                # at least 2 of curr's neighbors cannot visit each other in lower dfs cycles,
+                # which means they can only reach each other via curr), then curr is articulation point.
                 if curr == parent and unvisitedNeighborCount > 1: 
                     self.articulations.add(curr)
   
                 # Or curr is not starting node but at least one of its neighbor's lowest depth
-                # is bigger than curr's depth (which means there is no path from nodes prevous
-                # to curr that can reach this neighbor), curr is also articulation point
+                # is bigger than curr's depth (which means there is no path from nodes previous
+                # to curr that can reach this neighbor), then curr is also an articulation point
                 if curr != parent and lowestDepths[neighbor] >= depths[curr]:
                     self.articulations.add(curr)
 
