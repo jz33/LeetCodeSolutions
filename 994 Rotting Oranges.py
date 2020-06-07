@@ -35,7 +35,6 @@ Note:
 1 <= grid[0].length <= 10
 grid[i][j] is only 0, 1, or 2.
 '''
-from collections import deque
 INF = float('inf')
 
 class Solution:
@@ -47,7 +46,7 @@ class Solution:
         
         # Gather all rotten oranges, fresh orange count
         freshCount = 0
-        rottens = deque()
+        rottens = [] # Use simpler stakc
         for i in range(rowCount):
             for j in range(colCount):
                 v = grid[i][j]
@@ -58,14 +57,14 @@ class Solution:
                 
         steps = 0
         while rottens and freshCount:
-            # Each iteration is the rotten map
-            for _ in range(len(rottens)):
-                x, y = rottens.popleft()
+            newRottens = []
+            for x, y in rottens:
                 for a, b in (x+1,y),(x-1,y),(x,y+1),(x,y-1):
                     if 0 <= a < rowCount and 0 <= b < colCount and grid[a][b] == 1:
                         freshCount -= 1
                         grid[a][b] = 2
-                        rottens.append((a,b))
+                        newRottens.append((a,b))
+            rottens = newRottens
             steps += 1
  
         return steps if freshCount == 0 else -1
