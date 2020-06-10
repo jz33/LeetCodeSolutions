@@ -90,3 +90,28 @@ class Solution:
         
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
         return sorted(logs, key = cmp_to_key(self.comp))
+
+class Solution:
+    '''
+    A much concise way
+    '''
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        def compare(log: str):
+            # Return a tuple and "sorted" method will use the tuple elements
+            # from left to right to do the comparison.
+            
+            # "1" is max split count, that is, only split log into 2 substrings
+            identifier, content = log.split(" ", 1)
+            
+            # For digital logs return (1,) for letter logs return (0,) thus
+            # letter logs appear before digital logs.
+            if content[0].isdigit():
+                # Digital logs' order should be preserved,
+                # this is achievable because Python's sort is stable sort.
+                return (1, 0, 0)
+            else:
+                # Compare letter logs first by content, if tie,
+                # compare by identifier.
+                return (0, content, identifier)
+
+        return sorted(logs, key = compare)
