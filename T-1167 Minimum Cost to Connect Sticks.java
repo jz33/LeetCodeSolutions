@@ -29,6 +29,11 @@ import java.util.*;
 class Solution {
     public int connectSticks(int[] sticks) {
         int size = sticks.length;
+        if (size == 0) {
+            return 0;
+        }
+        
+        // Notice 0 size to init pq will cause exception
         PriorityQueue<Integer> queue = new PriorityQueue<>(sticks.length);
         for (int i = 0; i < size; ++i) {
             queue.offer(sticks[i]);
