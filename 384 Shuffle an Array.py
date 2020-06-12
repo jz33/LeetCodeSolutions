@@ -1,67 +1,45 @@
-def PermsIterative(iterable, r = None):
-    '''
-    Based on recursive method
-    '''
-    n = len(iterable)
-    r = n if r is None else r
-    if r > n:
-        return
-    pool = range(n)
-    stack = []
-    l = 0 # level
-    s = 0 # swap index
-    while s < n or len(stack) > 0:
-        if l + 1 == r:
-            yield tuple(iterable[pool[k]] for k in xrange(n))
-            # go up
-            l,s = stack.pop()
-            pool[l],pool[s] = pool[s],pool[l]
-            s += 1
-        elif s == n:
-            # go up
-            l,s = stack.pop()
-            pool[l],pool[s] = pool[s],pool[l]
-            s += 1
-        else:
-            # go down
-            pool[l],pool[s] = pool[s],pool[l]
-            stack.append((l,s))
-            l += 1
-            s = l
+'''
+384. Shuffle an Array
+https://leetcode.com/problems/shuffle-an-array/
 
+Shuffle a set of numbers without duplicates.
+
+Example:
+
+// Init an array with set 1, 2, and 3.
+int[] nums = {1,2,3};
+Solution solution = new Solution(nums);
+
+// Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.
+solution.shuffle();
+
+// Resets the array back to its original configuration [1,2,3].
+solution.reset();
+
+// Returns the random shuffling of array [1,2,3].
+solution.shuffle();
+'''
 from random import randint
 from copy import deepcopy
 
-class Solution(object):
+class Solution:
 
-    def __init__(self, nums):
-        """
-        :type nums: List[int]
-        """
-        self.ori = nums
+    def __init__(self, nums: List[int]):
+        self.arr = nums
 
-    def reset(self):
+    def reset(self) -> List[int]:
         """
         Resets the array to its original configuration and return it.
-        :rtype: List[int]
         """
-        return self.ori
-        
-    def shuffle(self):
+        return self.arr
+
+    def shuffle(self) -> List[int]:
         """
         Returns a random shuffling of the array.
-        :rtype: List[int]
         """
-        n = len(self.ori)
-        res = deepcopy(self.ori)   
-        for i in xrange(n):
-            j = randint(i,n-1)
-            res[i],res[j] = res[j],res[i]
+        res = deepcopy(self.arr)
+        size = len(res)
+        for i in range(size - 1):
+            togo = randint(i, size - 1)
+            res[i], res[togo] = res[togo], res[i]
         return res
-        
-
-
-# Your Solution object will be instantiated and called as such:
-# obj = Solution(nums)
-# param_1 = obj.reset()
-# param_2 = obj.shuffle()
