@@ -41,3 +41,29 @@ class Solution:
         self.invertTree(root.right)
         
         return root
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        '''
+        Iterative level order traversal
+        '''
+        if not root:
+            return root
+        
+        stack = [root]
+        while stack:
+            newStack = []
+            for node in stack:
+                node.left, node.right = node.right, node.left
+                if node.left:
+                    newStack.append(node.left)
+                if node.right:
+                    newStack.append(node.right)
+            stack = newStack
+        return root  
