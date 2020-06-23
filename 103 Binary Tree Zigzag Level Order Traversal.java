@@ -1,4 +1,4 @@
-'''
+/*
 103 Binary Tree Zigzag Level Order Traversal
 https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 
@@ -20,14 +20,7 @@ return its zigzag level order traversal as:
   [20,9],
   [15,7]
 ]
-'''
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
+*/
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
