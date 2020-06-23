@@ -18,35 +18,27 @@ Explanation:
 
 '''
 class Solution:
-    def find(self, word: str, book: 'set[str]') -> bool:
-        if len(book) == 0:
+    def wordBreak(self, word: str, book: 'set[str]') -> bool:
+        if not book:
             return False
         
         size = len(word)
-        
-        # dp[i] means if word[:i] is in Concatenated word
-        dp = [False] * (size + 1)
-        dp[0] = True
-        
-        # Iterate all substrings
-        # Same method like Word Break
-        for i in range(1, size+1):
-            for j in range(size):
-                dp[i] = dp[j] and word[j:i] in book
-                if dp[i]:
-                    break
-        
+        dp = [True] + [False] * size
+
+        for i in range(1, size + 1):
+            dp[i] = any(dp[j] and word[j:i] in book for j in range(i))
+  
         return dp[-1]
     
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
-        # Only need to refer the words that are already processed
-        # As shorter word is sorted to front
-        dones = set()
+        # The trick of performance gain is to sort words by length, and so
+        # shorter words come to front. And for finding word part (word break),
+        # only use visited words as book
         words.sort(key = lambda x : len(x))
-        
+        book = set()
         res = []
         for word in words:
-            if self.find(word, dones):
+            if self.wordBreak(word, book):
                 res.append(word)
-            dones.add(word)
+            book.add(word)
         return res
