@@ -51,3 +51,33 @@ class Solution:
                     self.bfs(grid, visited, (i,j))
                     island += 1
         return island
+
+    
+class Solution:
+    '''
+    DFS
+    '''
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid or not grid[0]:
+            return 0
+        
+        rowCount = len(grid)
+        colCount = len(grid[0])
+        visited = [[False] * colCount for _ in range(rowCount)]
+        
+        def dfs(i, j):
+            nonlocal visited
+            if 0 <= i < rowCount and 0 <= j < colCount and grid[i][j] == '1' and visited[i][j] == False:
+                visited[i][j] = True                
+                for x, y in (i+1, j), (i-1, j), (i, j+1), (i, j-1):
+                    dfs(x, y)
+                
+        # Set of direction paths
+        islandCount = 0
+        for i in range(rowCount):
+            for j in range(colCount):
+                if grid[i][j] == '1' and visited[i][j] == False:
+                    islandCount += 1
+                    dfs(i, j)
+
+        return islandCount
