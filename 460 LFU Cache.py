@@ -35,15 +35,15 @@ class Node:
     '''
     A double linked list node
     '''
-    def __init__(self, key = None, value = None, count = 0):
+    def __init__(self, key = None, val = None, count = 0):
         self.key = key
-        self.value = value
+        self.val = val
         self.count = count
         self.next = None
         self.prev = None
  
     def __str__(self) -> str:
-        return '(' + str(self.key) + ' : ' + str(self.value) + ')'
+        return '(' + str(self.key) + ' : ' + str(self.val) + ')'
     
 class DoubleLinkedList:
     def __init__(self):
@@ -85,95 +85,98 @@ class DoubleLinkedList:
         n.prev = None
         n.next = None
         
-class LFUCache:
-    def __init__(self, capacity: int):
-        self.capacity = capacity
-        
-        # Essentially, this is double linked list matrix
+class DoubleLinkedListMatrix:
+    '''
+    Double linked list of double linked list!
+    '''
+    def __init__(self):
         head = DoubleLinkedList()
         tail = DoubleLinkedList()
         head.next = tail
         tail.prev = head
         self.head = head 
         self.tail = tail
-        
-        self.keyToNode = {} # key : Node
         self.countToDLL = {0 : head} # count : double linked list 
+        
+    def addDll(self, count: int):
+        '''
+        Append new dll if not existed
+        '''
+        if count > 0 and count not in self.countToDLL:
+            dll = DoubleLinkedList()            
+            prevDll = self.countToDLL[count - 1]
+
+            # Append new dll after previous dll
+            dll.next = prevDll.next
+            dll.prev = prevDll
+            dll.next.prev = dll
+            prevDll.next = dll
+
+            self.countToDLL[count] = dll
+        
+    def appendNode(self, node: Node):
+        count = node.count
+        if count > 0:
+            dll = self.countToDLL[count]
+            dll.append(node)
+        
+    def removeNode(self, node: Node):
+        count = node.count
+        if count > 0:
+            dll = self.countToDLL[count]
+            dll.remove(node)
+            
+            # Remove linked list if empty
+            if dll.isEmpty():       
+                dll.prev.next = dll.next
+                dll.next.prev = dll.prev
+                dll.next = None
+                dll.prev = None
+                del self.countToDLL[count]
+                
+    def upgradeNode(self, node: Node):
+        '''
+        Node must exist.
+        Notice the order here. Must try add new dll first,
+        as it uses count - 1 to find previous dll.
+        '''
+        self.addDll(node.count + 1)
+        self.removeNode(node)
+        node.count += 1
+        self.appendNode(node)
+
+class LFUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.matrix = DoubleLinkedListMatrix(); 
+        self.keyToNode = {} # key : Node
 
     def get(self, key: int) -> int:
         if self.capacity == 0:
             return -1
         
-        n = self.keyToNode.get(key, None)
-        if n:
-            n.count += 1
-            ret = n.value           
-            self.upgrade(n)       
-            return ret
+        node = self.keyToNode.get(key, None)
+        if node:
+            self.matrix.upgradeNode(node)
+            return node.val
         
         return -1
 
-    def put(self, key: int, value: int) -> None:
+    def put(self, key: int, val: int) -> None:
         if self.capacity == 0:
             return
         
-        n = self.keyToNode.get(key, None)
-        if n:          
-            n.count += 1
-            n.value = value
+        node = self.keyToNode.get(key, None)
+        if node:          
+            node.val = val
         else:
             if len(self.keyToNode) == self.capacity:
-                top = self.head.next.head.next;
-                self.removeNode(top.count, top)
+                topDll = self.matrix.head.next
+                topNode = topDll.head.next
+                self.matrix.removeNode(topNode)
+                del self.keyToNode[topNode.key]
 
-            n = Node(key, value, 1)
-            
-        self.upgrade(n)
-            
-    def upgrade(self, n: Node):
-        newCount = n.count
-        self.insertDLLIfNotExisted(newCount)
-        self.removeNode(newCount-1, n)
-        self.appendNode(newCount, n)  
-    
-    def insertDLLIfNotExisted(self, c: int):
-        if c not in self.countToDLL:
-            dll = DoubleLinkedList()            
-            pdll = self.countToDLL[c-1]
-            
-            # Insert new dll after previous dll
-            dll.next = pdll.next
-            dll.prev = pdll
-            dll.next.prev = dll
-            pdll.next = dll
-    
-            self.countToDLL[c] = dll
-    
-    def removeNode(self, c: int, n: Node):
-        if c > 0:
-            dll = self.countToDLL[c] # must existed
-            dll.remove(n)
-            if dll.isEmpty():
-                
-                # Remove dll itself
-                dll.prev.next = dll.next
-                dll.next.prev = dll.prev
-                dll.next = None
-                dll.prev = None
-                
-                del self.countToDLL[c] # must existed
-    
-            del self.keyToNode[n.key]
-        
-    def appendNode(self, c: int, n: Node):
-        if c > 0:
-            dll = self.countToDLL[c] # must existed
-            dll.append(n)
-            
-            self.keyToNode[n.key] = n
+            node = Node(key, val, 0) # Use 0 as count will be upgraded
+            self.keyToNode[key] = node
 
-
-# Your LFUCache object will be instantiated and called as such:
-# obj = LFUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+        self.matrix.upgradeNode(node)
