@@ -36,35 +36,43 @@ Return 3. The paths that sum to 8 are:
 #         self.left = None
 #         self.right = None
 
-from collections import Counter
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def rec(self, node: TreeNode, total: int, rootSums: 'Counter'):
+    def preorder(self, node: TreeNode, total: int, rootSums: 'Counter'):
         '''
         @total: total sum from root till parent
         '''
         if not node:
             return
         
+        # If root till current node's sum is target?
         total += node.val
         if total == self.target:
-            self.count += 1
+            self.result += 1
         
-        self.count += rootSums[total - self.target]
+        # If there is a path from root to a parent node of curr node
+        # whose path sum is total - target, that means the child
+        # node of this parent node to current node has sum of target.
+        self.result += rootSums[total - self.target]
         
         rootSums[total] += 1
-        self.rec(node.left, total, rootSums)
-        self.rec(node.right, total, rootSums)
+        self.preorder(node.left, total, rootSums)
+        self.preorder(node.right, total, rootSums)
         rootSums[total] -= 1
-         
+
     def pathSum(self, root: TreeNode, target: int) -> int:
-        self.count = 0
+        self.result = 0 # result
         self.target = target
         
         # rootSums records the sums from root to all previous nodes
         # for this question's example, if at node 1, rootSums should 
         # contain [10, 15, 17]
-        rootSums = Counter()
-        self.rec(root, 0, rootSums)
+        rootSums = collections.Counter()
+        self.preorder(root, 0, rootSums)
         
-        return self.count
+        return self.result
