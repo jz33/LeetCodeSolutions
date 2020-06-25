@@ -36,42 +36,50 @@ randomSet.insert(2);
 randomSet.getRandom();
 '''
 class RandomizedSet:
+
     def __init__(self):
+        """
+        Initialize your data structure here.
+        """
         self.dic = {} # {value : index}
         self.arr = [] # [values]
+        
 
     def insert(self, val: int) -> bool:
+        """
+        Inserts a value to the set. Returns true if the set did not already contain the specified element.
+        """
         existed = val in self.dic
         if not existed:
-            
-            # Put into arr
             self.arr.append(val)
-            
-            # Put into dic
             self.dic[val] = len(self.arr) - 1
-        
         return not existed
+        
 
     def remove(self, val: int) -> bool:
-        existed = val in self.dic
-        if existed:         
-            pos = self.dic[val]
+        """
+        Removes a value from the set. Returns true if the set contained the specified element.
+        """
+        dic, arr = self.dic, self.arr
+        existed = val in dic
+        if existed:
+            # Remove from dic
+            pos = dic[val]
+            del dic[val]
             
             # Swap last value to pos
-            if pos != len(self.arr) - 1:               
-                lastVal = self.arr[-1]
-                self.arr[pos] = lastVal
+            if pos != len(arr) - 1:               
+                lastVal = arr[-1]
+                arr[pos] = lastVal
                 
                 # Update dic on last value
-                self.dic[lastVal] = pos
+                dic[lastVal] = pos
             
             # pop val from arr
-            self.arr.pop()
-        
-            # pop val from dic
-            del self.dic[val]
+            arr.pop()
 
         return existed  
+        
 
     def getRandom(self) -> int:
         """
