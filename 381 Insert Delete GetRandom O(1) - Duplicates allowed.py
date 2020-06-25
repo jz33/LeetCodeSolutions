@@ -36,51 +36,47 @@ collection.getRandom();
 class RandomizedCollection:
 
     def __init__(self):
-        self.dic = collections.defaultdict(list) # {value : [indexes]}
+        """
+        Initialize your data structure here.
+        """
+        self.dic = collections.defaultdict(set) # {value : set[indexes]}
         self.arr = [] # [values]
-        
 
     def insert(self, val: int) -> bool:
         """
         Inserts a value to the collection. Returns true if the collection did not already contain the specified element.
         """
         existed = val in self.dic
-            
-        # Put into arr
         self.arr.append(val)
-            
-        # Put into dic
-        self.dic[val].append(len(self.arr) - 1)
-        
+        self.dic[val].add(len(self.arr) - 1)
         return not existed
-
+        
     def remove(self, val: int) -> bool:
         """
         Removes a value from the collection. Returns true if the collection contained the specified element.
         """
-        existed = val in self.dic        
+        dic, arr = self.dic, self.arr
+        existed = val in dic        
         if existed:
             
-            # Pop from dic
-            pos = self.dic[val].pop()
-            if len(self.dic[val]) == 0:
-                del self.dic[val]
+            # Remove a random index from dic
+            pos = dic[val].pop()
+            if not dic[val]:
+                del dic[val]
             
             # Swap last value to pos
-            lastIndex = len(self.arr) - 1
+            lastIndex = len(arr) - 1
             if pos != lastIndex:
-                lastVal = self.arr[-1]
-                self.arr[pos] = lastVal
-                
-                # Update dic
-                self.dic[lastVal].remove(lastIndex) # for simplicity
-                self.dic[lastVal].append(pos)
+                lastVal = arr[-1]
+                arr[pos] = lastVal
+
+                dic[lastVal].remove(lastIndex)
+                dic[lastVal].add(pos)
             
-            # Pos from arr
-            self.arr.pop()
+            # Remove from arr
+            arr.pop()
         
         return existed
-        
 
     def getRandom(self) -> int:
         """
