@@ -1,5 +1,5 @@
 '''
-Burst Balloons
+312. Burst Balloons
 https://leetcode.com/problems/burst-balloons/
 
 Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums.
@@ -23,7 +23,7 @@ Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 '''
 class Solution:
     '''
-    Bottom-up method
+    Bottom-up method, 3D
     '''
     def maxCoins(self, nums: List[int]) -> int:
         nums = [1] + nums + [1]
