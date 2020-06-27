@@ -1,4 +1,7 @@
 '''
+1000. Minimum Cost to Merge Stones
+https://leetcode.com/problems/minimum-cost-to-merge-stones/
+
 There are N piles of stones arranged in a row.  The i-th pile has stones[i] stones.
 
 A move consists of merging exactly K consecutive piles into one pile,
