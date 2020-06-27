@@ -27,11 +27,12 @@ Given a particular n ≥ 1, find out how much money you need to have to guarante
 from functools import lru_cache
 
 class Solution:
-    
     @lru_cache(None)
     def topDown(self, i: int, j: int) -> int:
+        # i, j are inclusive
         if i >= j:
-            return 0       
+            return 0
+ 
         return min(k + max(self.topDown(i, k-1), self.topDown(k+1, j)) for k in range(i, j+1))
 
     def getMoneyAmount(self, n: int) -> int:
