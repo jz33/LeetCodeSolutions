@@ -41,17 +41,21 @@ the gap between the 5th and 6th stone is too large.
 '''
 class Solution:
     def canCross(self, stones: List[int]) -> bool:
-        # dp[i] stores a set of total steps that stone[i] can be reached
-        # dp[stone[0]] is dummy
-        dp = {}
-        for s in stones:
-            dp[s] = set()
-        dp[stones[0]].add(0)
+        dp = {} # {stone : set(units jumped to this stone)}
+        for stone in stones:
+            dp[stone] = set()
+        dp[stones[0]] = {0}
         
-        for i in range(len(stones)):
-            for k in dp[stones[i]]:
-                for step in [k-1, k, k+1]:
-                    if step > 0 and stones[i] + step in dp:
-                        dp[stones[i] + step].add(step)
-                        
+        for i in range(len(stones) - 1):
+            stone = stones[i]
+            units = dp.get(stone)
+            
+            # Notie units on a stone can be null. Not all stone has to be reached.
+            for unit in units:
+                for nextUnit in unit - 1, unit, unit + 1:
+                    
+                    # Next jump must > 0 and must on a stone
+                    if nextUnit > 0 and stone + nextUnit in dp:
+                        dp[stone + nextUnit].add(nextUnit)
+        
         return len(dp[stones[-1]]) > 0
