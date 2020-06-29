@@ -53,9 +53,13 @@ class Solution:
             # Notie units on a stone can be null. Not all stone has to be reached.
             for unit in units:
                 for nextUnit in unit - 1, unit, unit + 1:
+                    # Next jump must go forward (thus > 0)
+                    if nextUnit > 0:
+                        nextStone = stone + nextUnit
+                        if nextStone == stones[-1]:
+                            return True
                     
-                    # Next jump must > 0 and must on a stone
-                    if nextUnit > 0 and stone + nextUnit in dp:
-                        dp[stone + nextUnit].add(nextUnit)
+                        if nextStone in dp:
+                            dp[nextStone].add(nextUnit)
         
-        return len(dp[stones[-1]]) > 0
+        return False
