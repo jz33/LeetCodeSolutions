@@ -23,14 +23,22 @@ class Foo:
         self.b23 = Barrier(2)
 
     def first(self, printFirst: 'Callable[[], None]') -> None:
+        
+        # printFirst() outputs "first". Do not change or remove this line.
         printFirst()
+        
         self.b12.wait()
 
     def second(self, printSecond: 'Callable[[], None]') -> None:
         self.b12.wait()
+
+        # printSecond() outputs "second". Do not change or remove this line.
         printSecond()
+        
         self.b23.wait()
 
     def third(self, printThird: 'Callable[[], None]') -> None:
         self.b23.wait()
+        
+        # printThird() outputs "third". Do not change or remove this line.
         printThird()
