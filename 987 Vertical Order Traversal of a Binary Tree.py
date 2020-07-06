@@ -39,27 +39,42 @@ However, in the report "[1,5,6]", the node value of 5 comes first since 5 is sma
 #         self.val = x
 #         self.left = None
 #         self.right = None
-from collections import defaultdict, deque
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
         if not root:
             return []
         
-        xbook = defaultdict(list) # { X : [values]}
-        queue = deque()
-        queue.append((root, 0))
-        while queue:
-            row = defaultdict(list) # { X : [values]}        
-            for _ in range(len(queue)):
-                node, x = queue.popleft()
+        histo = collections.defaultdict(list) # { X value : [node values]}
+        stack = [(root, 0)] # [(node, X value)]
+        maxX = float('-inf')
+        minX = float('inf')
+        while stack:
+            row = collections.defaultdict(list)
+            newStack = []
+            for node, x in stack:
                 row[x].append(node.val)
+                maxX = max(maxX, x)
+                minX = min(minX, x)
                 if node.left:
-                    queue.append((node.left, x - 1))
+                    newStack.append((node.left, x - 1))
                 if node.right:
-                    queue.append((node.right, x + 1))
+                    newStack.append((node.right, x + 1))
 
             for k,v in row.items():
-                xbook[k] += sorted(v)
+                histo[k] += sorted(v)
             
-        return [v for _,v in sorted(xbook.items(), key = lambda x : x[0])]
+            stack = newStack
+            
+        # Use max x and min x to iterate histogram. This avoids sort.
+        result = []
+        for i in range(minX, maxX + 1):
+            values = histo.get(i)
+            if values:
+                result.append(values)
+        return result
