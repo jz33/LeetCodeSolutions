@@ -48,7 +48,7 @@ class Solution:
             cut1 = (s1 >> 1) if (s1 & 1) else (s1 >> 1) - 1
             s2 = len(nums2)
             cut2 = (s2 >> 1) if (s2 & 1) else (s2 >> 1) - 1
-            cut = min(cut1, cut2)
+            cut = min(cut1, cut2) # how many elements need to abandon, same for both array
             
             m1 = median(nums1)
             m2 = median(nums2)
