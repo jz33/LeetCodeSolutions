@@ -30,10 +30,24 @@ class Solution {
             return head;
         }
         
-        ListNode newHead = reverseList(head.next);
-            
-        head.next.next = head;
+        ListNode newHead = dfs(head);
         head.next = null;
+        return newHead;
+    }
+    
+    /**
+    *@node: != null
+    *@return: new head of the reversed list
+    */
+    private ListNode dfs(ListNode node) {
+        if (node.next == null) {
+            return node;
+        }
+        
+        ListNode newHead = dfs(node.next);
+        
+        // Redirect
+        node.next.next = node;
         
         return newHead;
     }
@@ -50,6 +64,7 @@ class Solution {
         ListNode p1 = head.next;
         head.next = null;
         while (p1.next != null) {
+            
             // Assign
             ListNode p2 = p1.next;
             
