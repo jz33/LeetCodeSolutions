@@ -56,19 +56,46 @@ Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
              Thefore INT_MIN (−231) is returned.
 */
-
-int myAtoi(char * str){
-    int sign = 1, base = 0, i = 0;
-    while (str[i] == ' ') { i++; }
-    if (str[i] == '-' || str[i] == '+') {
-        sign = 1 - 2 * (str[i++] == '-'); 
-    }
-    while (str[i] >= '0' && str[i] <= '9') {
-        if (base > INT_MAX / 10 || (base == INT_MAX / 10 && str[i] - '0' > 7)) {
-            if (sign == 1) return INT_MAX;
-            else return INT_MIN;
+class Solution {
+    public int myAtoi(String str) {
+        // Skip heading spaces
+        int i = 0;
+        for (; i < str.length() && str.charAt(i) == ' '; ++i);
+        if (i == str.length()) {
+            return 0;
         }
-        base  = 10 * base + (str[i++] - '0');
+
+        // Sign
+        int sign = 1; // 1 if positive, -1 if negative
+        char c = str.charAt(i);
+        if (c == '-' || c == '+') {
+            if (c == '-') {
+                sign = -1;
+            }
+            i++;
+        }
+                
+        // Numbers
+        int n = 0;
+        for (; i < str.length(); ++i) {
+            c = str.charAt(i);
+            
+            // Just this question, if encounter a non-numeric char, break;
+            if (!(c >= '0' && c <= '9')) {
+                break;
+            }
+          
+            // On c or java, 32 bit integer's max value is 2^31 - 1 (2147483647), min value is -2^31 (-21474836478)
+            // So if n > 214748364 or n == 214748364 and c > 7 (not c >= 7), do early break to avoid overflow
+            if (n > Integer.MAX_VALUE / 10 || (n == Integer.MAX_VALUE / 10 && c - '0' > 7)) {
+                if (sign == 1) {
+                    return Integer.MAX_VALUE;
+                } else {
+                    return Integer.MIN_VALUE;
+                }
+            }
+            n  = 10 * n + (c - '0');
+        }
+        return n * sign;
     }
-    return base * sign;
 }
