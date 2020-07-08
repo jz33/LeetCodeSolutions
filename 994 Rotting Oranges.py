@@ -55,6 +55,7 @@ class Solution:
                 elif v == 2:
                     rottens.append((i,j))
                 
+        # Apply BFS for all rotten oranges. This is faster than apply 1 by 1.
         steps = 0
         while rottens and freshCount:
             newRottens = []
