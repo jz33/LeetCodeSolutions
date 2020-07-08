@@ -79,24 +79,35 @@ Output:
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
-from collections import deque, defaultdict
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def verticalOrder(self, root: TreeNode) -> List[List[int]]:
         if not root:
             return []
         
-        queue = deque([(root, 0)]) # [(node, offset)]
-        book = defaultdict(list) # {offset : [values]}
-        
-        while queue:
-            node, offset = queue.popleft()
-            book[offset].append(node.val)
+        pairs = [(root, 0)] # [(node, x offset)]
+        book = collections.defaultdict(list) # {x offset : [values]}
+        minOffset = 0
+        maxOffset = 0
+        while pairs:
+            newPairs = []
+            for node, offset in pairs:
+                book[offset].append(node.val)
+                minOffset = min(minOffset, offset)
+                maxOffset = max(maxOffset, offset)
+                if node.left:
+                    newPairs.append((node.left, offset - 1))
+                if node.right:
+                    newPairs.append((node.right, offset + 1))
+            pairs = newPairs
             
-            if node.left:
-                queue.append((node.left, offset - 1))
-            if node.right:
-                queue.append((node.right, offset + 1))
-        
-        return [ls for _, ls in sorted(book.items())]
+        # User min/max offset to avoid sorting
+        res = []
+        for offset in range(minOffset, maxOffset + 1):
+            res.append(book[offset])
+        return res
