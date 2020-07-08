@@ -43,27 +43,29 @@ Output: [3, 4]
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
         '''
-        The idea is to remove leaves layer by layer
+        The idea is to remove leaves layer by layer until
+        there are no more inner nodes
         '''
-        graph = {}
-        for i in range(n):
-            graph[i] = set()        
+        graph = collections.defaultdict(set)
         for x, y in edges:
             graph[x].add(y)
             graph[y].add(x)
                 
         leaves = [i for i in range(n) if len(graph[i]) <= 1]
-        remainNodeCount = n - len(leaves)
+        innerNodeCount = n - len(leaves)
         
-        while remainNodeCount > 0:
+        while innerNodeCount > 0:
             newLeaves = []
             for leaf in leaves:
-                if len(graph[leaf]) > 0:
-                    parent = graph[leaf].pop()
-                    graph[parent].remove(leaf)
-                    if len(graph[parent]) == 1:
-                        newLeaves.append(parent)
+                # Remove this leaf
+                parent = graph[leaf].pop()
+                graph[parent].remove(leaf)
+                
+                # If parent becomes a new leaf
+                if len(graph[parent]) == 1:
+                    newLeaves.append(parent)
+        
             leaves = newLeaves
-            remainNodeCount -= len(leaves)
-            
+            innerNodeCount -= len(newLeaves)
+
         return leaves
