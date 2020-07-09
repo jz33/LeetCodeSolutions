@@ -20,27 +20,24 @@ class Solution:
         
         rowCount = len(grid)
         colCount = len(grid[0])
+        if rowCount == 1 and colCount == 1:
+            return 1
+
+        seen = [[False] * colCount for _ in range(rowCount)]
+        seen[0][0] = True
         
-        # Notice the trap of this question.
-        # Since there are diagonal movement, the BFS iteration
-        # with steps count won't work. (Think why)
-        # Instead record smallest steps on each node
-        MAX_VALUE = (rowCount + 1) * (colCount + 1)
-        seen = [[MAX_VALUE] * colCount for _ in range(rowCount)]
-        seen[0][0] = 1
-        
-        points = {(0,0)} # Use set to avoid duplicates
+        points = [(0,0)]
+        steps = 1
         while points:
-            newPoints = set()
-            for x, y in points:
-                steps = seen[x][y]
-                
-                # Notice the direction order here. Go diagonals first
+            newPoints = []
+            for x, y in points:   
                 for d0, d1 in [(1,1),(0,1),(1,0),(1,-1),(0,-1),(-1,1),(-1,0),(-1,-1)]:
                     i, j = x + d0, y + d1
-                    if 0 <= i < rowCount and 0 <= j < colCount and grid[i][j] == 0 and steps + 1 < seen[i][j]:
-                        seen[i][j] = steps + 1
-                        newPoints.add((i,j))
+                    if i == rowCount - 1 and j == colCount - 1:
+                        return steps + 1
+                    if 0 <= i < rowCount and 0 <= j < colCount and grid[i][j] == 0 and not seen[i][j]:
+                        seen[i][j] = True
+                        newPoints.append((i,j))
+            steps += 1
             points = newPoints
-
-        return seen[-1][-1] if seen[-1][-1] != MAX_VALUE else -1
+        return -1
