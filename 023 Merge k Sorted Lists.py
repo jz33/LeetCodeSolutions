@@ -16,30 +16,22 @@ Output: 1->1->2->3->4->4->5->6
 '''
 # Definition for singly-linked list.
 # class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 from heapq import heappush, heappop, heapify
 
-def lessThan(self, that) -> bool:
-    return self.val < that.val
-    
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        root = ListNode(None)
+        fakeHead = ListNode(None)
         
         # Add the comparison method to ListNode
-        ListNode.__lt__ = lessThan
+        ListNode.__lt__ = lambda this, that : this.val < that.val
         
         heap = [node for node in lists if node is not None]     
         heapify(heap)
         
-        p = root
+        p = fakeHead
         while heap:
             node = heappop(heap)
             
@@ -49,4 +41,33 @@ class Solution:
             if node.next:
                 heappush(heap, node.next)
         
-        return root.next
+        return fakeHead.next
+
+
+# A more general way
+class ComparableListNode:
+    def __init__(self, node: ListNode):
+        self.node = node
+    
+    def __lt__(self, that) -> bool:
+        return self.node.val < that.node.val
+
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        fakeHead = ListNode()
+    
+        heap = [ComparableListNode(node) for node in lists if node is not None]
+        heapify(heap)
+        
+        p = fakeHead
+        while heap:
+            compNode = heappop(heap)
+            node = compNode.node
+            
+            p.next = node
+            p = node
+            
+            if node.next:
+                heappush(heap, ComparableListNode(node.next))
+        
+        return fakeHead.next
