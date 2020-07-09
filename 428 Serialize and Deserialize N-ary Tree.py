@@ -37,43 +37,63 @@ class Node(object):
         self.val = val
         self.children = children
 """
-class Codec:
+c"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
 
+class Codec:
     def serialize(self, root: 'Node') -> str:
+        """Encodes a tree to a single string.
+        
+        :type root: Node
+        :rtype: str
+        """
         if not root:
             return ''
         
         # Do level order serialization
         # Use None as delimiter of nodes
-        queue = [root, None]
-        qi = 0
-        while qi < len(queue):
-            j = qi
-            while queue[j] != None:
-                node = queue[j]
-                queue += node.children
-                queue.append(None)
-                j += 1
-            qi = j + 1
+        arr = [root, None]
+        i = 0 # iterator of arr
+        while i < len(arr):
+            node = arr[i]
+            i += 1
+            if node is not None:
+                arr += node.children
+                arr.append(None)
             
-        return ','.join(str(n.val) if n is not None else 'N' for n in queue)        
-
+        return ','.join(str(n.val) if n is not None else 'N' for n in arr)  
+        
+	
     def deserialize(self, data: str) -> 'Node':
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: Node
+        """
         if not data:
             return None
         
         src = data.split(',')
-        si = 2 # iteratro of source
+        si = 2 # iterator of src
         root = Node(src[0], [])
         queue = [root]
         qi = 0 # iterator of queue
         while si < len(src):
-            n = queue[qi]
+            node = queue[qi]
             qi += 1
             while src[si] != 'N':
-                c = Node(src[si], [])
-                n.children.append(c)
-                queue.append(c)
+                child = Node(src[si], [])
+                node.children.append(child)
+                queue.append(child)
                 si += 1
-            si += 1 
+            si += 1 # skip 'N'
         return root
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.deserialize(codec.serialize(root))
