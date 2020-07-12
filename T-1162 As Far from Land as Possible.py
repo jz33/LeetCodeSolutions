@@ -32,30 +32,32 @@ class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
         rowCount = len(grid)
         colCount = len(grid[0])
-        
+
         # Get all lands
         lands = []
-        hasWater = False
+        waterCount = 0
         for i in range(rowCount):
             for j in range(colCount):
                 if grid[i][j] == 1:
                     lands.append((i,j))
                 else:
-                    hasWater = True
-        
-        if not hasWater or not lands:
+                    waterCount +=1
+
+        if not waterCount or not lands:
             return -1
 
         # Group BFS for all lands
         seen = [[False] * colCount for _ in range(rowCount)]
-        dist = -1 # Be careful of iteration count!
-        while lands:
+        dist = 0
+        while lands and waterCount:
             newLands = []
             for i,j in lands:
                 for x, y in (i, j+1), (i, j-1), (i+1, j), (i-1, j):
                     if 0 <= x < rowCount and 0 <= y < colCount and grid[x][y] == 0 and seen[x][y] is False:
                         seen[x][y] = True
                         newLands.append((x, y))
+                    
+            waterCount -= len(newLands)
             lands = newLands
             dist += 1
         return dist
