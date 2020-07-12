@@ -33,36 +33,25 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
  */
 
 class Solution {
-    class VisitedNode {
-        TreeNode node;
-        boolean isRightChildVisited = false;
-
-        VisitedNode(TreeNode node) {
-            this.node = node;
-            this.isRightChildVisited = false;
-        }
-    }
-    
     public List<Integer> postorderTraversal(TreeNode root) {
         /*
         An iterative method without reverse
         */
-        List<Integer> res = new ArrayList();
-        Stack<VisitedNode> stack = new Stack();
-        TreeNode p = root;
-        while (p != null || !stack.isEmpty()) {
-            if (p != null) {
-                stack.add(new VisitedNode(p));
-                p = p.left;
-            } else if (stack.peek().isRightChildVisited) {
-                p = stack.pop().node;
-                res.add(p.val);
-                p = null;
+        List<Integer> result = new ArrayList();
+        Stack<TreeNode> stack = new Stack();
+        TreeNode curr = root;
+        TreeNode last = null; // Last node added to result
+        while (curr != null || !stack.isEmpty()) {
+            if (curr != null) {
+                stack.add(curr);
+                curr = curr.left;
+            } else if (stack.peek().right != null && stack.peek().right != last) {
+                curr = stack.peek().right;
             } else {
-                stack.peek().isRightChildVisited = true;
-                p = stack.peek().node.right;
+                last = stack.pop();
+                result.add(last.val);
             }
         }
-        return res;
+        return result;
     }
 }
