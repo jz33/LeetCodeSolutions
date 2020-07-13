@@ -31,36 +31,45 @@ The substring with start index = 0 is "ab", which is an anagram of "ab".
 The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 '''
-from collections import Counter
+class SlidingWindow:
+    def __init__(self, pattern: str):
+        self.pattern = pattern
+        self.histo = Counter(pattern)
+        self.validCount = 0
+        self.seen = collections.Counter()
+        
+    def remove(self, char: str):
+        self.seen[char] -= 1
+        if self.seen[char] < self.histo[char]:
+            self.validCount -= 1
+            
+    def add(self, char: str):
+        self.seen[char] += 1
+        if self.seen[char] <= self.histo[char]:
+            self.validCount += 1
 
+    def isValid(self) -> bool:
+        return self.validCount == len(self.pattern)
+    
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         if not s or not p or len(s) < len(p):
             return []
         
-        p_book = Counter(p)
-        p_size = len(p)
-        
-        # Iteration recorder (the sliding window)
-        book = Counter()
-        validCount  = 0 # found valid chars
+        sw = SlidingWindow(p)
         
         res = []
         for i, c in enumerate(s):
             # Remove old char
-            if i - p_size > -1:
-                old_char = s[i-p_size]
-                book[old_char] -= 1
-                if book[old_char] < p_book[old_char]:
-                    validCount -= 1
-            
+            if i >= len(p):
+                char = s[i - len(p)]
+                sw.remove(char)
+
             # Add new char
-            book[c] += 1
-            if book[c] <= p_book[c]:
-                validCount += 1
-                         
+            sw.add(c)
+      
             # Update Result
-            if validCount == p_size:
-                res.append(i - p_size + 1)
+            if sw.isValid():
+                res.append(i - len(p) + 1)
                 
         return res
