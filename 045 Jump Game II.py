@@ -21,16 +21,24 @@ class Solution:
         if len(nums) < 2:
             return 0
         
-        currPos = 0
-        for steps in range(1, len(nums)):
-            nextPos = currPos + nums[currPos]
-            
-            if nextPos >= len(nums) - 1:
+        jump = 0 # current position ready to jump
+        steps = 1
+        while nums[jump] != 0: # if cannot jump anywhere, bail
+          
+            # Get right bound of this jump
+            right = jump + nums[jump]
+            if right >= len(nums) - 1:
                 return steps
             
-            if nextPos == currPos:
-                return -1
+            # Determine where to jump next
+            # Be greedy, choose next position who has max jump for next round
+            maxJump = 0
+            for i in range(jump + 1, right + 1):
+                nexJump = i + nums[i]
+                if nexJump >= maxJump: # >= is better than >
+                    maxJump = nexJump
+                    jump = i
             
-            _, currPos = max((nums[i] + i, i) for i in range(currPos+1, nextPos+1))
-            
+            steps += 1
+
         return -1
