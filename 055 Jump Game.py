@@ -24,16 +24,24 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum
 '''
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        if not nums:
+        if len(nums) < 2:
             return True
         
-        currPos = 0
-        while True:
-            nextPos = currPos + nums[currPos]
-            if nextPos >= len(nums) - 1:
+        jump = 0 # current position ready to jump
+        while nums[jump] != 0: # if cannot jump anywhere, bail
+          
+            # Get right bound of this jump
+            right = jump + nums[jump]
+            if right >= len(nums) - 1:
                 return True
-            if nextPos == currPos:
-                return False
             
-            _, currPos = max((nums[i] + i, i) for i in range(currPos+1, nextPos+1))            
-        return True
+            # Determine where to jump next
+            # Be greedy, choose next position who has max jump for next round
+            maxJump = 0
+            for i in range(jump + 1, right + 1):
+                nexJump = i + nums[i]
+                if nexJump >= maxJump:
+                    maxJump = nexJump
+                    jump = i
+
+        return False
