@@ -55,63 +55,56 @@ Could you devise a constant space solution?
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-#include <stack>
-#include <algorithm>
-
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 class Solution {
-public:
-    void recoverTree(TreeNode* root)
-    {
-        // These 2 are the missplaced nodes
-        // For an inorder traversal, result array is like:
-        // ... -> left -> .... -> right ->...
-        // therefore left > left + 1, right < right - 1
-        TreeNode* left = nullptr;
-        TreeNode* right = nullptr;
-        int howManyAbnormalNodesFound = 0; // Should found 2
+    public void recoverTree(TreeNode root) {
+        Stack<TreeNode> stack = new Stack();
+        TreeNode curr = root;
+        TreeNode prev = null;
+        TreeNode left = null;
+        TreeNode right = null;
         
-        std::stack<TreeNode*> stack;
-        TreeNode* curr = root; // current node
-        TreeNode* prev = nullptr; // previous node
-        while (curr || !stack.empty() && howManyAbnormalNodesFound < 2)
-        {
-            if (curr)
-            {
+        while (curr != null || !stack.isEmpty()) {
+            if (curr != null) {
                 stack.push(curr);
-                curr = curr->left;
-            }
-            else
-            {
-                curr = stack.top();
-                stack.pop();
-                
-                if (prev && curr->val < prev->val)
-                {
-                    // Found abnormal node
-                    // Must found left first
-                    
-                    ++howManyAbnormalNodesFound;                
-                    if (!left)
-                    {
+                curr = curr.left;
+            } else {
+                curr = stack.pop();
+                if (prev != null && prev.val > curr.val) {
+                    // Meet a wrong pair
+                    // Be careful of 2 cases:
+                    // 1 2 3 5 4 6, L = 5, R = 4
+                    // 1 2 5 4 3 6, L = 5, R = 3
+                    if (left == null) {
                         left = prev;
-                        
-                        // Assign right too, as right can be next node of left
-                        right = curr; 
-                    }
-                    else
-                    {
                         right = curr;
-                    }                  
+                    } else {
+                        right = curr;
+                    }
                 }
-                
                 prev = curr;
-                curr = curr->right;
+                curr = curr.right;
             }
         }
         
-        if (left && right)
-        {
-            std::swap(left->val, right->val);
+        if (left != null && right != null) {
+            int val = left.val;
+            left.val = right.val;
+            right.val = val;
         }
     }
-};
+}
