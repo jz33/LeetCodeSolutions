@@ -1,4 +1,4 @@
-'''
+/*
 1099. Two Sum Less Than K
 https://leetcode.com/problems/two-sum-less-than-k/
 
@@ -18,7 +18,7 @@ Input: A = [10,20,30], K = 15
 Output: -1
 Explanation: 
 In this case it's not possible to get a pair sum less that 15.
-'''
+*/
 class Solution {
 public:
     int twoSumLessThanK(vector<int>& A, int K) {
@@ -40,4 +40,3 @@ public:
         return res;
     }
 };
-
