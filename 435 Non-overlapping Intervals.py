@@ -38,5 +38,5 @@ class Solution:
             if start < previousEnd:
                 toRemove += 1
             else:
-                previousEnd = max(previousEnd, end)
+                previousEnd = end
         return toRemove
