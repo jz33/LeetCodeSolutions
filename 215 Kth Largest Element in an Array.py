@@ -16,46 +16,35 @@ Output: 4
 Note: 
 You may assume k is always valid, 1 ≤ k ≤ array's length.
 '''
-import random
+from random import randint
 
-def partition(arr, left, right) -> int:
-    rd = random.randint(left, right)
-    rv = arr[rd]
-    pivot = left
-    arr[rd], arr[right] = arr[right], arr[rd]
+def partition(arr: List[int], left: int, right: int) -> int:
+    randomIndex = randint(left, right)
+    randomVal = arr[randomIndex]
+    arr[right], arr[randomIndex] = arr[randomIndex], arr[right]
+    pivotIndex = left
     for i in range(left, right):
-        if arr[i] < rv:
-            arr[pivot], arr[i] = arr[i], arr[pivot]
-            pivot += 1
-    arr[pivot], arr[right] = arr[right], arr[pivot]
-    return pivot
+        if arr[i] < randomVal:
+            arr[i], arr[pivotIndex] = arr[pivotIndex], arr[i]
+            pivotIndex += 1
+    arr[right], arr[pivotIndex] = arr[pivotIndex], arr[right]
+    return pivotIndex
 
-def quickselect(arr, left, right, targetIndex) -> int:
-    if left >= right:
+def quickselect(arr: List[int], left: int, right: int, targetIndex: int) -> int:
+    if left == right:
         return arr[left]
-    pivot = partition(arr, left, right)
-    if pivot == targetIndex:
-        return arr[pivot]
-    elif pivot < targetIndex:
-        return quickselect(arr, pivot + 1, right, targetIndex)
+    
+    pivotIndex = partition(arr, left, right)
+    if pivotIndex == targetIndex:
+        return arr[pivotIndex]
+    elif pivotIndex < targetIndex:
+        return quickselect(arr, pivotIndex + 1, right, targetIndex)
     else:
-        return quickselect(arr, left, pivot - 1, targetIndex)
-    
-class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        return quickselect(nums, 0, len(nums)-1, len(nums) - k)
-    
- 
-from heapq import heappush, heappop
+        return quickselect(arr, left, pivotIndex - 1, targetIndex)
 
 class Solution:
-    '''
-    A much simpler heap method
-    '''
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        heap = [] # min heap, max size is k
-        for n in nums:
-            heappush(heap, n)
-            if len(heap) > k:
-                heappop(heap)
-        return heappop(heap)
+        '''
+        Quick Select, average O(n)
+        '''
+        return quickselect(nums, 0, len(nums)-1, len(nums)-k)
