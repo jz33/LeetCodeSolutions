@@ -30,33 +30,29 @@ Follow up:
 Try to solve it in O(n log k) time and O(n) extra space.
 '''
 from heapq import heappush, heappop
-from collections import Counter
 
-class Node:
-    def __init__(self, word: List[str], count: int):
+class HeapNode:
+    def __init__(self, word: str, count: int):
         self.word = word
         self.count = count
         
     def __lt__(self, that):
-        '''
-        This is for a minimum heap
-        '''
         if self.count != that.count:
             return self.count < that.count
+        
+        # Think why...
         return self.word > that.word
-    
+        
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        heap = []
-        for word, count in Counter(words).items():
-            heappush(heap, Node(word, count))
-            
-            # The trick is here, always keep the size of heap under k.
-            # Therefore the heap must be a min heap.
+        counter = collections.Counter(words)
+        
+        heap = [] # [HeapNode], min heap
+        for word, count in counter.items():
+            heappush(heap, HeapNode(word, count))
             if len(heap) > k:
                 heappop(heap)
-        
-        # The question guarantees k is valid
+    
         res = []
         while heap:
             res.append(heappop(heap).word)
