@@ -47,26 +47,28 @@ Explanation:
 4th day: 1, 1
 '''
 class Solution:
-    def getDays(self, weights: List[int], capacity: int) -> int:
-        days = 1
-        ss = 0
-        for w in weights:
-            ss += w
-            if ss > capacity:
-                days += 1
-                ss = w
-        return days
-        
     def shipWithinDays(self, weights: List[int], D: int) -> int:
-        left = max(weights)
-        right = sum(weights)
-        res = right
+        left = max(weights) # a ship at least has to contain the max weight
+        right = sum(weights) # one ship contains all!
+        result = right
         while left <= right:
-            mid = (left + right) // 2
-            days = self.getDays(weights, mid)
+            limit = left + (right - left) // 2
+            days = self.getDays(weights, limit)
+            
             if days <= D:
-                res = mid
-                right = mid - 1
+                # The limit is high enough, update result and try lower limit
+                result = limit
+                right = limit - 1
             else:
-                left = mid + 1
-        return res
+                left = limit + 1
+        return result
+    
+    def getDays(self, weights: List[int], limit: int) -> int:
+        days = 0
+        total = 0
+        for w in weights:
+            total += w
+            if total > limit:
+                days += 1
+                total = w
+        return days + 1 # + 1 because total > 0
