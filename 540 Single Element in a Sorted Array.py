@@ -29,9 +29,9 @@ class Solution:
             mid = left + (right - left) // 2
             
             # Make mid an even index
-            if (mid & 1) == 1:
-                mid = mid ^ 1
-            
+            mid = ((mid >> 1) << 1)
+
+            # See example to understand
             if nums[mid] == nums[mid+1]:
                 left = mid + 2
             else:
