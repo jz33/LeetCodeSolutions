@@ -48,17 +48,23 @@ No user visits two websites at the same time.
 class Solution:
     def mostVisitedPattern(self, username: List[str], timestamp: List[int], website: List[str]) -> List[str]:
         # [(timestamp, move, webiste)]
-        tuples = sorted(zip(timestamp, username, website))
+        logs = sorted(zip(timestamp, username, website))
 
-        userWebs = collections.defaultdict(list)
-        for _, u, w in tuples:
-            userWebs[u].append(w)
+        userToWebs = collections.defaultdict(list) # {user : [visited websites ordered by timestamp]}
+        for _, username, website in logs:
+            userToWebs[username].append(website)
         
-        triCount = collections.Counter() # {3 web combination : appearance count}
-        for webList in userWebs.values():
-            for triple in set(itertools.combinations(webList, 3)):
+        triCount = collections.Counter() # {3 website combination triple : count}
+        for websiteList in userToWebs.values():
+            # Use "set" as 1 triple of 1 user counts as 1
+            for triple in set(itertools.combinations(websiteList, 3)):
                 triCount[triple] += 1
             
-        # Sort by count then by key string 
-        triples = sorted(triCount, key = lambda triple : (-triCount[triple], triple))
-        return triples[0]
+        # Find larget visited triple
+        resultTriple = None
+        resultCount = 0
+        for triple, count in triCount.items():
+            if count > resultCount or count == resultCount and triple < resultTriple:
+                resultCount = count
+                resultTriple = triple
+        return resultTriple
