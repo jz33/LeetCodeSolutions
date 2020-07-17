@@ -41,37 +41,38 @@ class TrieNode:
         this.word = word
     
 class Solution:
-    def backtrack(self, visited, trieNode, boardNode):
-        if trieNode.word is not None:
-            self.pool.append(trieNode.word)
-            trieNode.word = None # in case of duplicates
-        
-        rowCount = len(self.board)
-        colCount = len(self.board[0])
-        i,j = boardNode
-        for x, y in (i,j+1), (i+1,j), (i,j-1),(i-1,j):
-            if 0 <= x < rowCount and 0 <= y < colCount and (x,y) not in visited:
-                nextTrieNode = trieNode.children.get(self.board[x][y], None)
-                if nextTrieNode:
-                    visited.add((x,y))
-                    self.backtrack(visited, nextTrieNode, (x,y))
-                    visited.remove((x,y))
-         
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         if not board or not board[0]:
             return []
         
+        rowCount = len(board)
+        colCount = len(board[0])
+        
         head = TrieNode()
         for word in words:
             head.add(word)
-            
-        self.board = board
-        self.pool = []
+
+        pool = [] # result
+      
+        def backtrack(visited, node, i, j):
+            if node.word is not None:
+                pool.append(node.word)
+                node.word = None # kill this word!
+
+            for x, y in (i,j+1), (i+1,j), (i,j-1),(i-1,j):
+                if 0 <= x < rowCount and 0 <= y < colCount and (x,y) not in visited:
+                    nextNode = node.children.get(board[x][y])
+                    if nextNode:
+                        visited.add((x,y))
+                        backtrack(visited, nextNode, x, y)
+                        visited.remove((x,y))
         
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                nextTrieNode = head.children.get(self.board[i][j], None)
-                if nextTrieNode:
+        for i in range(rowCount):
+            for j in range(colCount):
+                letter = board[i][j]
+                nextNode = head.children.get(letter)
+                if nextNode:
                     visited = {(i,j)}
-                    self.backtrack(visited, nextTrieNode, (i,j))                    
-        return self.pool
+                    backtrack(visited, nextNode, i, j)
+
+        return pool
