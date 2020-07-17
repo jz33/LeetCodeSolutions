@@ -31,45 +31,35 @@ class Interval:
         self.start = start
         self.end = end
 """
-class HeapNode:
-    def __init__(self, interval):
-        self.start = interval.start
-        self.end = interval.end
-        
-    def __lt__(self, that):
-        if self.start != that.start:
-            return self.start < that.start
-        else:
-            return self.end < that.end
-
-    def __str__(self):
-        return str(self.start) + "-" + str(self.end)
-        
+"""
+# Definition for an Interval.
+class Interval:
+    def __init__(self, start: int = None, end: int = None):
+        self.start = start
+        self.end = end
+"""
 class Solution:
-    def employeeFreeTime(self, schedule: 'list<list<Interval>>') -> 'list<Interval>':
-        heap = [] # [(start, end)]
+    def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
+        heap = [] # [(start, end)], min heap
+        for employee in schedule:
+            for interval in employee:
+                heappush(heap, (interval.start, interval.end))
         
-        # Push all intervals into heap
-        for row in schedule:
-            for e in row:
-                heappush(heap, HeapNode(e))
-        
-        if len(heap) < 1:
+        if not heap:
             return []
         
         node = heappop(heap)
-        res = []
+        result = []
         while heap:
             top = heap[0]
-            if node.end < top.start:
-                # Case 1, found a new free slot
-                res.append(Interval(node.end, top.start))
+            if node[1] < top[0]:
+                # Case 1, an unoverlapped interval (a new free slot)
+                result.append(Interval(node[1], top[0]))
                 node = heappop(heap)
-            elif node.end < top.end:
-                # Case 2, found a new node with later end time
+            elif node[1] < top[1]:
+                # Case 2, next node with later end time
                 node = heappop(heap)
             else:
                 # Case 3, current node all covers next node
-                heappop(heap)
-            
-        return res
+                heappop(heap)         
+        return result
