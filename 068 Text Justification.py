@@ -64,43 +64,60 @@ Output:
 ]
 '''
 class Solution:
-    def pack(self, words: List[str], maxWidth: int) -> str:
-        wordsWidth = sum(len(word) for word in words)
-        totalSpaceWidth = maxWidth - wordsWidth
-        spaceCount = len(words) - 1
-        if spaceCount == 0:
-            return words[0] + ' ' * totalSpaceWidth
-        
-        mod = totalSpaceWidth % spaceCount
-        if mod == 0:
-            spaceWidth = totalSpaceWidth // spaceCount
-            return (' ' * spaceWidth).join(words)
-        else:
-            smallerSpaceWidth = totalSpaceWidth // spaceCount
-            biggerSpaceCount = mod
-            res = [words[0]]
-            for i in range(1, len(words)):
-                if i < biggerSpaceCount + 1:
-                    res.append(' ' * (smallerSpaceWidth+1))
-                else:
-                    res.append(' ' * smallerSpaceWidth)
-                res.append(words[i])
-            return ''.join(res)
-        
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
-        length = 0 # words widths + spaces
-        leftIndex = 0
         result = []
-        for i, word in enumerate(words):
-            nextLength = length + 1 + len(word) if length > 0 else len(word)
-            if nextLength > maxWidth:
-                result.append(self.pack(words[leftIndex : i], maxWidth))
-                length = len(word)
-                leftIndex = i
-            else:
-                length = nextLength
         
-        lastLine = ' '.join(words[leftIndex:])
+        def pack(line: List[str], wordsWidth: int) -> str:
+            '''
+            Give a line of words, pack them with spaces
+            '''
+            totalSpaceWidth = maxWidth - wordsWidth
+            if len(line) == 1:
+                # Only 1 word, put word first then add spaces
+                return line[0] + ' ' * totalSpaceWidth
+
+            spaceCount = len(line) - 1
+            mod = totalSpaceWidth % spaceCount
+            if mod == 0:
+                # Distribute space between words evenly
+                spaceWidth = totalSpaceWidth // spaceCount
+                return (' ' * spaceWidth).join(line)
+            else:
+                # There will be 2 kinds of spaces with different space width.
+                smallerSpaceWidth = totalSpaceWidth // spaceCount
+                biggerSpaceWidth = smallerSpaceWidth + 1
+                biggerSpaceCount = mod
+                
+                result = [line[0]]
+                for i in range(1, len(line)):
+                    # Pack bigger space first
+                    if i <= biggerSpaceCount:
+                        result.append(' ' * biggerSpaceWidth)
+                    else:
+                        result.append(' ' * smallerSpaceWidth)
+        
+                    result.append(line[i])
+    
+                return ''.join(result)
+        
+        line = [] # a line of words waiting to be packed
+        wordsWidth = 0 # total word width in line (not including spaces)
+        for word in words:
+            # Current total width + next word + spaces
+            totalNextWidth = (wordsWidth + len(word) + len(line)) if line else len(word)
+            
+            if totalNextWidth > maxWidth:
+                # No more word to add, pack and reset
+                result.append(pack(line, wordsWidth))
+                line = [word]
+                wordsWidth = len(word)
+            else:
+                # Add current word to line
+                line.append(word)
+                wordsWidth += len(word)
+        
+        # Last line
+        lastLine = ' '.join(line)
         result.append(lastLine + ' ' * (maxWidth - len(lastLine)))
         
         return result
