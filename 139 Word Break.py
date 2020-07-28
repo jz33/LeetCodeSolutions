@@ -52,7 +52,7 @@ class Solution:
 
 class Solution:
     '''
-    An iterative solution
+    An iterative solution with max length early break
     '''
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         if not wordDict:
@@ -84,3 +84,21 @@ class Solution:
         for i in range(1, len(s)+1):
             dp[i] = any(dp[j] and s[j:i] in book for j in range(i))
         return dp[-1]
+      
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        '''
+        Simplest iterative solution, faster than above
+        '''
+        if not wordDict:
+            return False
+        
+        book = set(wordDict)
+        
+        # If i in dp, it means word[:i] is composable
+        dp = [0]
+        for i in range(1, len(s)+1):
+            if any(s[j:i] in book for j in dp):
+                dp.append(i)
+
+        return dp[-1] == len(s)
