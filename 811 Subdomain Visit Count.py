@@ -43,10 +43,14 @@ class Solution:
     def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
         subdomainCount = collections.Counter()
         for entry in cpdomains:
-            count, domain = entry.split(' ', 1)
-            words = domain.split('.')
-            for i in range(len(words)):
-                subdomain = '.'.join(words[i:])
-                subdomainCount[subdomain] += int(count)
+            countStr, domain = entry.split(' ', 1)
+            count = int(countStr)
+            subdomainCount[domain] += count
+    
+            dotIndex = domain.find('.')
+            while dotIndex != -1:
+                subdomain = domain[dotIndex + 1:]
+                subdomainCount[subdomain] += count
+                dotIndex = domain.find('.', dotIndex + 1)
         
         return ['{} {}'.format(count, name) for name, count in subdomainCount.items()]
