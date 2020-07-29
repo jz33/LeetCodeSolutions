@@ -1,6 +1,6 @@
 '''
 44 Wildcard Matching
-https://oj.leetcode.com/problems/wildcard-matching/
+https://leetcode.com/problems/wildcard-matching/
 
 Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
 
@@ -81,3 +81,31 @@ Output: false
                     dp[i][j] = matchCurrrent and dp[i+1][j+1]
 
         return dp[0][0]
+
+
+from functools import lru_cache
+
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        sl = len(s)
+        pl = len(p)
+        
+        @lru_cache(None)
+        def topDown(si: int, pi: int) -> bool:
+            '''
+            @si: index in s
+            @pi: index in p
+            '''
+            # If pattern is empty, string must be empty
+            if pi == pl:
+                return si == sl
+
+            # If current pattern is '*', skip '*' or let '*' matches more than 1 char in string
+            if pi < pl and p[pi] == '*':
+                return topDown(si, pi + 1) or si < sl and topDown(si + 1, pi)
+            
+            # If next pattern char is not '*' or pattern reached last char,
+            # current must match and later must match too.
+            return si < sl and (p[pi] == '?' or p[pi] == s[si]) and topDown(si + 1, pi + 1)
+        
+        return topDown(0, 0)
