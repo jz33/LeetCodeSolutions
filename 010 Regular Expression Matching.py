@@ -1,4 +1,7 @@
 '''
+10. Regular Expression Matching
+https://leetcode.com/problems/regular-expression-matching/
+
 Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
 
 '.' Matches any single character.
@@ -81,24 +84,34 @@ def isMatch(txt: str, pat: str) -> bool:
     return dp[0][0]
 
 
-def isMatch(st,si,pt,pi):
+from functools import lru_cache
+
+class Solution:
     '''
-    Old Recursive methd
-    st : string, si: string index
-    pt : pattern, pi: pattern index
-    Notice Python substring is deep copy
+    Simple Top Down
     '''
-    # if pattern is empty, string must be empty
-    if pi >= len(pt): # pi can be larger than len(pt)
-        return si == len(st)
-    
-    # if string is empty, next pattern must be '*'
-    if si == len(st):
-        return pi+1 < len(pt) and pt[pi+1] == '*' and isMatch(st,si,pt,pi+2)
-    
-    # if next pattern is not '*' or pattern reached last char
-    if pi+1 < len(pt) and pt[pi+1] != '*' or pi + 1 == len(pt):
-        return (pt[pi] == '.' or pt[pi] == st[si]) and isMatch(st,si+1,pt,pi+1)
-    
-    # next pattern is '*': Skip '*' or assume '*' matches more than 1 chars
-    return isMatch(st,si,pt,pi+2) or (pt[pi] == '.' or pt[pi] == st[si]) and isMatch(st,si+1,pt,pi)
+    def isMatch(self, s: str, p: str) -> bool:
+        sl = len(s)
+        pl = len(p)
+
+        @lru_cache(None)
+        def topDown(si: int, pi: int) -> bool:
+            '''
+            @si: index in s
+            @pi: index in p
+            '''
+            # If pattern is empty, string must be empty
+            if pi >= pl: # Not pi == pl because there is pi + 2
+                return si == sl
+
+            isMatched = si < sl and (p[pi] == '.' or p[pi] == s[si]) 
+
+            # If next pattern is '*', skip '*' or if current match, let '*' matches more than 1 char in string
+            if pi + 1 < pl and p[pi + 1] == '*':
+                return topDown(si, pi + 2) or isMatched and topDown(si + 1, pi)
+            
+            # If next pattern char is not '*' or pattern reached last char,
+            # current must match and later must match too.
+            return isMatched and topDown(si + 1, pi + 1)
+        
+        return topDown(0, 0)
