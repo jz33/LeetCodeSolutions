@@ -87,9 +87,6 @@ def isMatch(txt: str, pat: str) -> bool:
 from functools import lru_cache
 
 class Solution:
-    '''
-    Simple Top Down
-    '''
     def isMatch(self, s: str, p: str) -> bool:
         sl = len(s)
         pl = len(p)
@@ -101,7 +98,7 @@ class Solution:
             @pi: index in p
             '''
             # If pattern is empty, string must be empty
-            if pi >= pl: # Not pi == pl because there is pi + 2
+            if pi == pl:
                 return si == sl
 
             isMatched = si < sl and (p[pi] == '.' or p[pi] == s[si]) 
