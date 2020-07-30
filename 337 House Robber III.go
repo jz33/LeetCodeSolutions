@@ -1,6 +1,6 @@
-'''
+/*
 337. House Robber III
-Medium
+https://leetcode.com/problems/house-robber-iii/
 
 The thief has found himself a new place for his thievery again. There is only one entrance to this area,
 called the "root." Besides the root, each house has one and only one parent house. After a tour,
@@ -34,24 +34,42 @@ Input: [3,4,5,1,3,null,1]
 
 Output: 9
 Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
-'''
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+*/
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
 
-class Solution:  
-    def postorder(self, node: TreeNode) -> List[int]:
-        if not node:
-            return [0,0]
-        
-        leftDp = self.postorder(node.left)
-        rightDp = self.postorder(node.right)
-        
-        maxCash = max(node.val + leftDp[-2] + rightDp[-2], leftDp[-1] + rightDp[-1])
-        return [leftDp[-1] + rightDp[-1], maxCash]
-        
-    def rob(self, root: TreeNode) -> int:
-        return self.postorder(root)[-1]
+func Max(x, y int) int {
+    if x > y {
+        return x
+    }
+    return y
+}
+
+/**
+*@return: [max cash if current node is NOT stolen,
+max cash at current node (does not matter current is stolen or not)]
+*/
+func postorder(node *TreeNode) (int, int) {
+    if node == nil {
+        return 0, 0
+    }
+    
+    leftNo, leftMax := postorder(node.Left)
+    rightNo, rightMax := postorder(node.Right)
+    
+    maxValNo := leftMax + rightMax
+    maxValHas := node.Val + leftNo + rightNo
+    
+    return maxValNo, Max(maxValNo, maxValHas)
+}
+
+func rob(root *TreeNode) int {
+    _, max := postorder(root)
+    return max
+}
