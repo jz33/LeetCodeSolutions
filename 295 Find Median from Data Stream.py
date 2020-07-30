@@ -1,5 +1,6 @@
 '''
 295. Find Median from Data Stream
+https://leetcode.com/problems/find-median-from-data-stream/
 
 Median is the middle value in an ordered integer list.
 If the size of the list is even, there is no middle value.
@@ -28,27 +29,25 @@ Follow up:
 If all integer numbers from the stream are between 0 and 100, how would you optimize it?
 If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it?
 '''
-from heapq import heappush, heappop
+from heapq import heappush, heappop, heappushpop
 
 class MedianFinder:
 
-    def __init__(self):     
-        # Either these 2 heaps have same # of elements
-        # Or minHeap has 1 more element than maxHeap
-        self.maxHeap = [] # negatives
+    def __init__(self):
+        # Either these 2 heaps have same number of elements,
+        # or minHeap has 1 more element than maxHeap
+        self.maxHeap = []
         self.minHeap = [] 
 
-    def addNum(self, n: int) -> None:
+    def addNum(self, num: int) -> None:
         maxHeap = self.maxHeap
         minHeap = self.minHeap
         
         if len(maxHeap) == len(minHeap):
-            heappush(maxHeap, -n)
-            p = -heappop(maxHeap)
+            p = -heappushpop(maxHeap, -num)
             heappush(minHeap, p)           
         else:
-            heappush(minHeap, n)
-            p = heappop(minHeap)
+            p = heappushpop(minHeap, num)
             heappush(maxHeap, -p)
 
     def findMedian(self) -> float:
@@ -59,3 +58,8 @@ class MedianFinder:
             return float(-maxHeap[0] + minHeap[0]) / 2.0
         else:
             return float(minHeap[0])
+
+# Your MedianFinder object will be instantiated and called as such:
+# obj = MedianFinder()
+# obj.addNum(num)
+# param_2 = obj.findMedian()
