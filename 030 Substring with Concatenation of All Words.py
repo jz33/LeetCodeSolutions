@@ -22,46 +22,60 @@ Input:
   words = ["word","good","best","word"]
 Output: []
 '''
-from collections import Counter
+class SlidingWindow:
+    def __init__(self, refer, referCount):
+        self.refer = refer
+        self.referCount = referCount
+        self.reset()
+        
+    def reset(self):
+        self.win = collections.Counter()
+        self.winCount = 0
+        
+    def isMatched(self) -> bool:
+        return self.winCount == self.referCount
 
+    def add(self, e: str):
+        self.win[e] += 1
+        if self.win[e] <= self.refer[e]:
+            self.winCount += 1
+    
+    def pop(self, e: str):
+        self.win[e] -= 1
+        if self.win[e] < self.refer[e]:
+            self.winCount -= 1
+    
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         if not s or not words:
             return []
-        
+    
         width = len(words[0])
         if width * len(words) > len(s):
             return []
         
-        wordsBook = Counter(words) # {word : count}
-        res = []
+        refer = collections.Counter(words)
+        result = []
         
-        for i in range(width):          
-            # Do sliding window
-            sBook = Counter()
-            found = 0
-            left = i
-            for j in range(i, len(s), width):
-                substr = s[j : j + width]
-                if substr in wordsBook:
-                    # Shrink
-                    while sBook[substr] == wordsBook[substr]:
-                        leftSubstr = s[left: left + width]
+        # Performing sliding window matching on each width
+        for start in range(width):
+            sw = SlidingWindow(refer, len(words))
+            left = start
+            for right in range(start, len(s), width):
+                substr = s[right : right + width]
+                
+                if substr not in refer:
+                    sw.reset()
+                    left = right + width
+                else:         
+                    sw.add(substr)
+                    
+                    if right - left == width * len(words):
+                        leftSubstr = s[left : left + width]
                         left += width
-                        sBook[leftSubstr] -= 1
-                        found -= 1
-                    
-                    # Extend
-                    sBook[substr] += 1
-                    found += 1
-                    
-                    # Update result
-                    if found == len(words):
-                        res.append(left)
-                else:
-                    # Reset
-                    sBook = Counter()
-                    found = 0
-                    left = j + width
-        
-        return res
+                        sw.pop(leftSubstr)
+                
+                    if sw.isMatched():
+                        result.append(left)
+                        
+        return result
