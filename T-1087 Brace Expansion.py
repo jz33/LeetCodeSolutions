@@ -1,8 +1,6 @@
 '''
 1087. Brace Expansion
 https://leetcode.com/problems/brace-expansion/
-1096. Brace Expansion II
-https://leetcode.com/problems/brace-expansion-ii/
 
 Under a grammar given below, strings can represent a set of lowercase words.
 Let's use R(expr) to denote the set of words the expression represents.
@@ -38,6 +36,9 @@ Input: "{{a,z},a{b,c},{ab,z}}"
 Output: ["a","ab","ac","z"]
 Explanation: Each distinct word is written only once in the final answer.
 
+'''
+'''
+Same solution of Brace Expansion I & II
 '''
 ADD = 0x0005
 PRODUCT = 0x0006
