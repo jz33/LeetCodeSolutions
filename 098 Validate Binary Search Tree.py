@@ -33,15 +33,17 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 '''
 # Definition for a binary tree node.
 # class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
-        prev = None # previous node
-        curr = root
+        '''
+        Use inorder traversal
+        '''
+        prev, curr = None, root
         stack = []
         while curr or stack:
             if curr:
@@ -49,11 +51,52 @@ class Solution:
                 curr = curr.left
             else:
                 curr = stack.pop()
-                
                 if prev and prev.val >= curr.val:
                     return False
-                
-                prev = curr
-                curr = curr.right
-        
+                prev, curr = curr, curr.right        
         return True
+       
+
+class Solution:
+    '''
+    Preorder
+    '''
+    def preorder(self, node: TreeNode, minVal: int, maxVal: int) -> bool:
+        if not node:
+            return True
+        
+        if node.val <= minVal or node.val >= maxVal:
+            return False
+        
+        return self.preorder(node.left, minVal, node.val) and self.preorder(node.right, node.val, maxVal)
+        
+    def isValidBST(self, root: TreeNode) -> bool:
+        return self.preorder(root, float('-inf'), float('inf'))
+     
+
+from typing import Tuple
+MAX_INT = float('inf')
+MIN_INT = float('-inf')
+
+class Solution:
+    def postorder(self, node: TreeNode) -> Tuple[bool, int, int]:
+        '''
+        @return: is BST, min val, max val
+        '''
+        if not node:
+            return True, MAX_INT, MIN_INT # Notice the order of last 2!
+        
+        isBSTLeft, minLeft, maxLeft = self.postorder(node.left)
+        if not isBSTLeft:
+            return False, None, None
+        
+        isBSTRight, minRight, maxRight = self.postorder(node.right)
+        if not isBSTRight:
+            return False, None, None
+        
+        return maxLeft < node.val < minRight, \
+               minLeft if node.left else node.val, \
+               maxRight if node.right else node.val
+    
+    def isValidBST(self, root: TreeNode) -> bool:
+        return self.postorder(root)[0]
