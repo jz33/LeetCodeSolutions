@@ -35,23 +35,21 @@ class State(Enum):
     NoCameraNotMonitored = 3
 
 class Solution:
-    def postorder(self, node: TreeNode):
-        '''
-        @return [count of cameras if install camera on node, count of camers if not install]
-        '''
+    def postorder(self, node: TreeNode) -> State:
         if not node:
             return State.NoCameraMonitored
         
         leftState = self.postorder(node.left)
         rightState = self.postorder(node.right)
         
+        # This has to be first condition, because any of the children who is no camera and
+        # not monitored, this node has to install a camera
         if leftState == State.NoCameraNotMonitored or rightState == State.NoCameraNotMonitored:
-            # This has to be first condition, think why
             self.cameraCount += 1
             return State.HasCamera
-        
+
         elif leftState == State.HasCamera or rightState == State.HasCamera:
-            return State.NoCameraMonitored    
+            return State.NoCameraMonitored
         
         else: # leftState == State.NoCameraMonitored and rightState == State.NoCameraMonitored:
             return State.NoCameraNotMonitored
