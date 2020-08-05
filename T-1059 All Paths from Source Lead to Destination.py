@@ -53,45 +53,46 @@ edges[i].length == 2
 0 <= destination <= n - 1
 '''
 class Solution:
-    def dfs(self, node: int):
-        self.states[node] = 1
-        
-        reached = False
-        if len(self.graph[node]) == 0:
-            if node == self.destination:
-                reached = True
-        else:
-            for togo in self.graph[node]:
-                state_togo = self.states[togo]
-                if state_togo == 1 or state_togo == 2:
-                    # One of the path cannot reach, totally cannot reach
-                    reached = False
-                    break
-                if state_togo == 0:
-                    self.dfs(togo)                  
-                if self.states[togo] == 3:
-                    reached = True
-                    
-        self.states[node] = 3 if reached else 2
-        
-    def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:        
-        # preprocess graph
-        # Use set to avoid duplicate edges
+    def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
         graph = collections.defaultdict(set)
         for f, t in edges:
             graph[f].add(t)
             
-        # If destination node is not an ending node
+        # If destination node is not an ending node, bail
         if len(graph[destination]) != 0:
             return False
         
-        # 0. Undetermined
-        # 1. Visiting
-        # 2. Not reached destination
-        # 3. Reached destination
-        self.states = [0] * n
-        self.destination = destination
-        self.graph = graph
-        self.dfs(source)
+        # The state of a node has following options:
+        # 0. Undetermined (initial state)
+        # 1. Visiting or cannot reach destination
+        # 2. Can reach destination
+        states = [0] * n
         
-        return all(self.states[i] == 0 or self.states[i] == 3 for i in range(n))
+        def dfs(node: int):
+            states[node] = 1
+        
+            reachable = False
+            if len(graph[node]) == 0:
+                # Reachable only if this is destination node
+                if node == destination:
+                    reachable = True
+            else:
+                for togo in graph[node]:
+                    state_togo = states[togo]
+                    if state_togo == 0:
+                        dfs(togo)
+                    if state_togo == 1:
+                        # Either next node cannot reach destination, 
+                        # or next node is visiting (thus looping),
+                        # then this node is not reachable, even if
+                        # other next nodes can reach destination.
+                        reachable = False
+                        break          
+                    if states[togo] == 2:
+                        reachable = True
+            
+            if reachable:
+                states[node] = 2
+        
+        dfs(source)
+        return all(states[i] == 0 or states[i] == 2 for i in range(n))
