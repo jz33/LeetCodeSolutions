@@ -38,34 +38,35 @@ Output: -1
 Explanation: 
 We need to eliminate at least two obstacles to find such a walk.
 '''
-from collections import deque
-
 class Solution:
     def shortestPath(self, grid: List[List[int]], k: int) -> int:
         rowCount = len(grid)
         colCount = len(grid[0])
         
-        queue = deque() # [(point, remain remove times)]
-        queue.append((0,0,k))
-        visited = {(0,0,k)}
+        stack = [(0, 0, k)] # [(x, y, available elimination count)]
+        visited = {(0, 0, k)}
         steps = 0
-        while queue:
-            for _ in range(len(queue)):
-                x,y,r = queue.popleft()
-                if x == rowCount -1 and y == colCount - 1:
+        while stack:
+            newStack = []
+            for x, y, r in stack:
+                if x == rowCount - 1 and y == colCount - 1:
                     return steps
                 
-                for inc in [(0,1), (1,0), (-1,0), (0,-1)]:
-                    i, j = x+inc[0], y+inc[1]
+                for i, j in (x, y+1), (x, y-1), (x+1, y), (x-1, y):
                     if 0 <= i < rowCount and 0 <= j < colCount:
                         if grid[i][j] == 0:
-                            if (i,j,r) not in visited:
-                                queue.append((i,j,r))
-                                visited.add((i,j,r))
+                            node = (i, j, r)
+                            if node not in visited:
+                                visited.add(node)
+                                newStack.append(node)
+                                
                         elif r > 0:
-                            if (i,j,r-1) not in visited:
-                                queue.append((i,j,r-1))
-                                visited.add((i,j,r-1))
+                            node = (i, j, r-1)
+                            if node not in visited:
+                                visited.add(node)
+                                newStack.append(node)
+                                
+            stack = newStack
             steps += 1
             
         return -1
