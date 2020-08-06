@@ -28,37 +28,42 @@ The number of edges in the graph will not exceed 32000.
 Each graph[i] will be a sorted list of different integers, chosen within the range [0, graph.length - 1].
 '''
 class Solution:
-    def dfs(self, node):
-        if self.results[node] != 0:
-            return
-        self.results[node] = 1 # visiting
-        
-        cycled = False
-        for neighbor in self.graph[node]:
-            if self.results[neighbor] == 1 or self.results[neighbor] == 2:
-                cycled = True
-            else:
-                self.dfs(neighbor)
-                if self.results[neighbor] == 2:
-                    cycled = True    
-
-        self.results[node] = 2 if cycled else 3  
-                            
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         '''
-        Detect cylces on directed graph.
-        If a node is on cycle or any of its sub nodes on cycle, it is not safe start.
+        Safe nodes are not on cycle or its child nodes on cycle.
         '''
-        self.graph = graph
-
-        # Result records
-        # 0: undetermined
-        # 1: visiting
-        # 2: cycled
-        # 3: uncycled
-        self.results = [0] * len(graph)
+        nodeCount = len(graph)
+ 
+        # The state of a node has following options:
+        # 0. Undetermined (initial state)
+        # 1. Visiting or cycled
+        # 2. Non-cycled (safe)
+        states = [0] * nodeCount
         
-        for i in range(len(graph)):
-            self.dfs(i)
-            
-        return [i for i in range(len(graph)) if self.results[i] == 3]
+        def dfs(node: int):
+            if states[node] != 0:
+                # This is necessary because dfs starts on all nodes,
+                # and so there can be duplicate visit on a node.
+                return
+            states[node] = 1
+
+            cycled = True
+            if len(graph[node]) == 0:
+                cycled = False
+            else:
+                for togo in graph[node]:
+                    dfs(togo)
+                    
+                    if states[togo] == 1:
+                        cycled = True
+                        break
+                    else:
+                        cycled = False
+
+            if not cycled:
+                states[node] = 2
+        
+        for i in range(nodeCount):
+            dfs(i)
+
+        return [i for i in range(nodeCount) if states[i] == 2]
