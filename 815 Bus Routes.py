@@ -22,35 +22,33 @@ Output: 2
 Explanation:
 The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6.
 '''
-from collections import defaultdict, deque
-
 class Solution:
     def numBusesToDestination(self, routes: List[List[int]], S: int, T: int) -> int:
-        # {stop id : [bus ids]}
-        graph = defaultdict(list)
-        for i,stops in enumerate(routes):
-            for s in stops:
-                graph[s].append(i)
+        # Build a reversed stop -> bus graph
+        stopToBus = collections.defaultdict(list) # {stop id : [bus ids]}
+        for bus, stops in enumerate(routes):
+            for stop in stops:
+                stopToBus[stop].append(bus)
                 
         visitedBuses = set()
         visitedStops = { S }
-        queue = deque()
-        queue.append(S)
+        stops = [S]
         busCount = 0
-        while queue:
-            for _ in range(len(queue)):
-                node = queue.popleft()
-                if node == T:
+        while stops:
+            newStops = []
+            for stop in stops:
+                if stop == T:
                     return busCount
                 
-                for bus in graph[node]:
+                for bus in stopToBus[stop]:
                     if bus not in visitedBuses:
                         visitedBuses.add(bus)
                         for stop in routes[bus]:
                             if stop not in visitedStops:
                                 visitedStops.add(stop)
-                                queue.append(stop)
-                         
+                                newStops.append(stop)
+            
+            stops = newStops
             busCount += 1
         
-        return -1            
+        return -1   
