@@ -78,17 +78,17 @@ class Solution:
                     reachable = True
             else:
                 for togo in graph[node]:
-                    state_togo = states[togo]
-                    if state_togo == 0:
+                    if states[togo] == 0:
                         dfs(togo)
-                    if state_togo == 1:
+                        
+                    if states[togo] == 1:
                         # Either next node cannot reach destination, 
                         # or next node is visiting (thus looping),
                         # then this node is not reachable, even if
                         # other next nodes can reach destination.
                         reachable = False
                         break          
-                    if states[togo] == 2:
+                    else:
                         reachable = True
             
             if reachable:
