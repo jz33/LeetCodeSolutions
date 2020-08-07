@@ -43,47 +43,52 @@ Follow up:
 
 Can you do it in time complexity O(k log mn), where k is the length of the positions?
 '''
-from typing import Tuple
+class UnionFind:
+    def __init__(self):
+        self.tree = {}
+        # For performance, do not count root from tree for perform
+        self.rootCount = 0
 
-class Solution:
-    def getParent(self, node: Tuple[int,int]) -> Tuple[int,int]:
+    def find(self, node):
         tree = self.tree
-        while node in tree and tree[node] != node:
-            node = tree[node]
-        return node
+        if tree[node] != node:
+            tree[node] = self.find(tree[node])
+        return tree[node]
     
-    def union(self, start) -> int:
+    def union(self, node):
+        '''
+        The uniqueness of this union find problem is here:
+        for performance, union 4 neighbors together.
+        '''
         tree = self.tree
         
-        # 1. Find root of all 4 neighbors
+        # Get all unique roots from neighbor
+        x, y = node
         roots = set()
-        i,j = start
-        for neighbor in (i+1, j), (i-1, j), (i, j+1), (i, j-1):
+        for neighbor in [(x, y+1), (x, y-1), (x+1, y), (x-1, y)]:
             if neighbor in tree:
-                roots.add(self.getParent(neighbor))
-
-        rootsCount = len(roots)
-        if not roots:
-            tree[start] = start
-        else:
-            root = roots.pop()
-            for nr in roots:
-                tree[nr] = root
-            tree[start] = root
-            
-        return rootsCount
-    
+                roots.add(self.find(neighbor))
+        
+        # Just set all neighbor's root to current node
+        for root in roots:
+            tree[root] = node
+        
+        # Set current node's root as self
+        tree[node] = node
+        
+        # All neighbors + current node are going to be unioned as one
+        self.rootCount += 1 - len(roots)
+        
+class Solution:
     def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
-        self.tree = {} # Union Find tree, {point : parent point}
-        counts = []
-        for positions in positions:
-            point = (positions[0], positions[1])
-            previousCount = 0 if not counts else counts[-1]
-            
-            if point not in self.tree: 
-                rootsCount = self.union(point)
-                counts.append(previousCount + 1 - rootsCount)
+        result = []
+        graph = UnionFind()
+        for x, y in positions:
+            node = (x, y)
+            if node in graph.tree:
+                result.append(result[-1])
             else:
-                counts.append(previousCount)
+                graph.union(node)
+                result.append(graph.rootCount)
                 
-        return counts
+        return result
