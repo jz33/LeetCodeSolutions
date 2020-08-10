@@ -23,20 +23,19 @@ class Solution:
         '''
         Similar pattern to Calculator question
         '''
-        stack = []
+        stack = [] # [counts or chars]
         count = 0
         for c in s:
-            if c.isdecimal():
-                count = count * 10 + int(c)
-            elif c.isalpha():
-                stack.append(c)
-            elif c == '[':
+            if c == '[':
                 stack.append(count)
                 count = 0
             elif c == ']':
-                ls = []
+                strs = []
                 while stack and isinstance(stack[-1], str):
-                    ls.append(stack.pop())
-                stack.append(''.join(ls[::-1]) * stack.pop())
-
+                    strs.append(stack.pop())
+                stack.append(''.join(strs[::-1]) * stack.pop())
+            elif c.isalpha():
+                stack.append(c)
+            else: # c.isdigit(), most expensive call
+                count = count * 10 + int(c)
         return ''.join(stack)
