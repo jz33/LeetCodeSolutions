@@ -25,24 +25,37 @@ Return the following binary tree:
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def buildRecursively(self, postorder: List[int], inorder: List[int]) -> TreeNode:
-        '''
-        postorder: an subarray of original postorder array
-        inorder: an subarray of original inorder array
-        '''
-        if not postorder or not inorder:
-            return None
-
-        v = postorder[-1]                  
-        vi = inorder.index(v)  
-        
-        n = TreeNode(v)  
-        n.left = self.buildRecursively(postorder[:vi], inorder[:vi])
-        n.right = self.buildRecursively(postorder[vi:-1], inorder[vi+1:])
-        
-        return n
-    
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
-        return self.buildRecursively(postorder, inorder)
+        size = len(inorder)
+        
+        # Create a {value : index} map from inorder array
+        valueToIndex = dict(zip(inorder, range(size)))
+        
+        def topDown(left: int, right: int, start: int) -> TreeNode:
+            '''
+            @left: left index of postorder subarray inclusive
+            @right: right index of postorder subarray, inclusive
+            @start: left index of inorder subarray, inclusive
+            '''
+            if left > right:
+                return None
+            
+            # Find the value in inorder array, 
+            # compute cut width
+            value = postorder[right]
+            mid = valueToIndex[value] 
+            width = mid - start
+            
+            node = TreeNode(value)
+            node.left = topDown(left, left + width - 1, start)
+            node.right = topDown(left + width, right - 1, mid + 1)
+            return node
+        
+        return topDown(0, size - 1, 0)
