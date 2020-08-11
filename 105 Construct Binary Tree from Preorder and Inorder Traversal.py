@@ -27,23 +27,38 @@ Accepted
 #         self.left = None
 #         self.right = None
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def buildRecursively(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        '''
-        preorder: an subarray of original preorder array
-        inorder: an subarray of original inorder array
-        '''
-        if not preorder or not inorder:
-            return None
-        
-        v = preorder[0]                  
-        vi = inorder.index(v)  
-        
-        n = TreeNode(v)  
-        n.left = self.buildRecursively(preorder[1: 1+vi], inorder[:vi])
-        n.right = self.buildRecursively(preorder[1+vi:], inorder[vi+1:])
-        
-        return n
-    
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        return self.buildRecursively(preorder, inorder)
+        size = len(preorder)
+        
+        # Create a {value : index} map from inorder array
+        valueToIndex = dict(zip(inorder, range(size)))
+        
+        def topDown(left: int, right: int, start: int) -> TreeNode:
+            '''
+            @left: left index of preorder subarray inclusive
+            @right: right index of preorder subarray, inclusive
+            @start: left index of inorder subarray, inclusive
+            '''
+            if left > right:
+                return None
+            
+            value = preorder[left]
+            node = TreeNode(value)
+            
+            # Find the value in inorder array, 
+            # compute cut width
+            mid = valueToIndex[value] 
+            width = mid - start
+            
+            node.left = topDown(left + 1, left + width, start)
+            node.right = topDown(left + width + 1, right, mid + 1)
+            return node
+        
+        return topDown(0, size - 1, 0)
