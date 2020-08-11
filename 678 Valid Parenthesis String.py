@@ -1,26 +1,52 @@
+'''
+678. Valid Parenthesis String
+https://leetcode.com/problems/valid-parenthesis-string/
+
+Given a string containing only three types of characters: '(', ')' and '*',
+write a function to check whether this string is valid. We define the validity of a string by these rules:
+
+Any left parenthesis '(' must have a corresponding right parenthesis ')'.
+Any right parenthesis ')' must have a corresponding left parenthesis '('.
+Left parenthesis '(' must go before the corresponding right parenthesis ')'.
+'*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or an empty string.
+An empty string is also valid.
+
+Example 1:
+Input: "()"
+Output: True
+
+Example 2:
+Input: "(*)"
+Output: True
+
+Example 3:
+Input: "(*))"
+Output: True
+Note:
+The string size will be in the range [1, 100].
+'''
 class Solution:
     def checkValidString(self, s: str) -> bool:
-        
-        minL = 0 # Only count '(' as left
-        maxL = 0 # Count '(' and '*' as left  
+        minLeftCount = 0 # Count only '(' as left parenthesis
+        maxLeftCount = 0 # Count both '(' and '*' as left parenthesis
         
         for c in s:
             if c == '(':
-                minL += 1
-                maxL += 1
+                minLeftCount += 1
+                maxLeftCount += 1
             elif c == ')':
-                minL -= 1
-                maxL -= 1
-            else:
-                minL -= 1
-                maxL += 1
+                minLeftCount -= 1
+                maxLeftCount -= 1
+            else: # c == '*'
+                minLeftCount -= 1
+                maxLeftCount += 1
             
-            # If total '(' + '*' is less than ')', it must be invalid
-            if maxL < 0: return False
+            # If anytime '(' + '*' is less than ')', invalid
+            if maxLeftCount < 0:
+                return False
             
             # If left is exhausted, convert a '*' to '('
-            minL = max(minL, 0)
+            minLeftCount = max(minLeftCount, 0)
         
         # There should not be outstanding '('
-        return minL == 0
-            
+        return minLeftCount == 0
