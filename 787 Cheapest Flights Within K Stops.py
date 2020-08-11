@@ -1,5 +1,6 @@
 '''
 787. Cheapest Flights Within K Stops
+https://leetcode.com/problems/cheapest-flights-within-k-stops/
 
 There are n cities connected by m flights. Each fight starts from city u and arrives at v with a price w.
 
@@ -36,26 +37,20 @@ from heapq import heappush, heappop
 
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, K: int) -> int:
-        '''
-        Dijkstra, worst time O(E + V * logV)
-        '''
         graph = defaultdict(list)
-        for flight in flights:
-            f = flight[0] # from
-            t = flight[1] # togo
-            c = flight[2] # cost
+        for f, t, c in flights:
             graph[f].append((t, c))
 
+        # Dijkstra: O(E + logV)
+        # No need to record visisted nodes as there are no cycles
         heap = [(0, src, 0)] # [(cost, node, step)]
-
-        # BFS. No need to record visisted nodes as there are no cycles
         while heap:
             cost, node, step = heappop(heap)
             if node == dst:
                 return cost
 
             if step < K + 1:
-                for t,c in graph[node]:
+                for t, c in graph[node]:
                     heappush(heap, (cost + c, t, step+1))
 
         return -1
