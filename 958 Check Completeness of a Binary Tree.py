@@ -31,26 +31,23 @@ class Solution:
             return True
         
         queue = collections.deque([root])
-        last = False # reached last node ?
+        last = False # true if reached last node
         
-        while queue and not last:
-            for _ in range(len(queue)):
-                node = queue.popleft()
-                if not node.left and node.right:
+        while queue:
+            node = queue.popleft()
+            if not node.left and node.right:
+                return False
+
+            if node.left:
+                if last:
                     return False
-                                                  
-                if node.left:
-                    if last:
-                        return False
-                    queue.append(node.left)
-                if node.right:
-                    if last:
-                        return False
-                    queue.append(node.right)
-                    
-                last = last or not node.left or not node.right
+                queue.append(node.left)
+
+            if node.right:
+                if last:
+                    return False
+                queue.append(node.right)
+
+            last = last or not node.left or not node.right
         
-        if last:
-            return all(node.left is None and node.right is None for node in queue)
-        else:
-            return not queue
+        return True
