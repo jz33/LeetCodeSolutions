@@ -33,9 +33,15 @@ Accepted
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        size = len(preorder)
+        size = len(inorder)
         
         # Create a {value : index} map from inorder array
         valueToIndex = dict(zip(inorder, range(size)))
@@ -49,14 +55,13 @@ class Solution:
             if left > right:
                 return None
             
-            value = preorder[left]
-            node = TreeNode(value)
-            
             # Find the value in inorder array, 
             # compute cut width
+            value = preorder[left]
             mid = valueToIndex[value] 
             width = mid - start
             
+            node = TreeNode(value)
             node.left = topDown(left + 1, left + width, start)
             node.right = topDown(left + width + 1, right, mid + 1)
             return node
