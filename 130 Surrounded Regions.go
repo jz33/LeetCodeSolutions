@@ -1,4 +1,4 @@
-'''
+/*
 130.Surrounded Regions
 https://leetcode.com/problems/surrounded-regions/
 
@@ -23,7 +23,7 @@ Explanation:
 Surrounded regions shouldn’t be on the border, which means that any 'O' on the border of the board are not flipped to 'X'.
 Any 'O' that is not on the border and it is not connected to an 'O' on the border will be flipped to 'X'.
 Two cells are connected if they are adjacent cells connected horizontally or vertically.
-'''
+*/
 var Directions = [8]int{0, 1, 0, -1, 1, 0, -1, 0}
 
 /*
@@ -52,7 +52,7 @@ func solve(board [][]byte) {
                     y := p[1] + Directions[d+1]
                     if x >= 0 && x < rowCount && y >= 0 && y < colCount && board[x][y] == 'O'{
                         // To avoid duplicate entry in stack,
-                        // set visited here not at beginning of this function
+                        // set visited here before pushing into stack
                         board[x][y] = 'V'
                         newStack = append(newStack, []int{x,y})
                     }
@@ -62,6 +62,7 @@ func solve(board [][]byte) {
         }
     }
     
+    // 1. BFS from borders
     colBorders := [2]int{0, colCount-1}
     for i := 0; i < rowCount; i++ {
         for _, j := range colBorders {
@@ -82,6 +83,7 @@ func solve(board [][]byte) {
         }
     }
     
+    // 2. Update result
     for i := 0; i < rowCount; i++ {
         for j := 0; j < colCount; j++ {
             if board[i][j] == 'V'{
