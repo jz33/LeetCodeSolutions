@@ -101,7 +101,7 @@ class Solution:
                 return si == sl
 
             # If current pattern is '*', skip '*' or let '*' matches more than 1 char in string
-            if pi < pl and p[pi] == '*':
+            if p[pi] == '*':
                 return topDown(si, pi + 1) or si < sl and topDown(si + 1, pi)
             
             # If next pattern char is not '*' or pattern reached last char,
