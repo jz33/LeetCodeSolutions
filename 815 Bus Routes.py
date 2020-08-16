@@ -24,6 +24,9 @@ The best strategy is take the first bus to the bus stop 7, then take the second 
 '''
 class Solution:
     def numBusesToDestination(self, routes: List[List[int]], S: int, T: int) -> int:
+        '''
+        Real interview question of Convoy, inc, 20200814
+        '''
         # Build a reversed stop -> bus graph
         stopToBus = collections.defaultdict(list) # {stop id : [bus ids]}
         for bus, stops in enumerate(routes):
