@@ -29,17 +29,14 @@ return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] i
 '''
 class Solution:
     def numberOfArithmeticSlices(self, A: List[int]) -> int:
-        # dp[0] is the current difference of arithmetic subarrays
-        # dp[0] is the current arithmetic subarray size
-        dp = [float('inf'), 0]
+        diff = None # Difference between 2 consective elements
+        count = 1 # Count of Arithmetic subarray size
         res = 0
         for i in range(1, len(A)):
-            diff = A[i] - A[i-1]
-            if diff == dp[0]:
-                dp[1] += 1
-                
-                # How many arithemtic subarrays ending in i?
-                res += max(0, dp[1] - 2)
+            if A[i] - A[i-1] == diff:
+                count += 1           
+                res += max(0, count - 2)
             else:
-                dp = [diff, 2]
+                diff = A[i] - A[i-1]
+                count = 2
         return res
