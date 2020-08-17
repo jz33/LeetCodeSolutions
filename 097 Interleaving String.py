@@ -22,16 +22,17 @@ class Solution:
         dp = set() # set((next index in s1, next index in s2))
         dp.add((0,0))
         for c in s3:
-            dpNext = set()
+            newDp = set()
             
             for i,j in dp:
                 if i < len(s1) and c == s1[i]:
-                    dpNext.add((i+1,j))
+                    newDp.add((i+1,j))
                 if j < len(s2) and c == s2[j]:
-                    dpNext.add((i,j+1))
+                    newDp.add((i,j+1))
                     
-            if not dpNext:
-                return False           
-            dp = dpNext 
+            if not newDp:
+                return False
+            
+            dp = newDp 
             
         return True
