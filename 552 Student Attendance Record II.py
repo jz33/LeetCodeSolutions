@@ -1,5 +1,6 @@
 '''
 552. Student Attendance Record II
+https://leetcode.com/problems/student-attendance-record-ii/
 
 Given a positive integer n, return the number of all possible attendance records with length n,
 which will be regarded as rewardable. The answer may be very large, return it after mod 109 + 7.
@@ -28,12 +29,12 @@ MOD = 10**9+7
 class Solution:
     def checkRecord(self, n: int) -> int:
         # Build day 1, ['P', 'L', 'A']
-        total = 3 # total count
-        L1 = 1 # string with 1 ending 'L', including AL
-        L2 = 0 # string with 2 ending 'L', including ALL
-        A = 1 # string contains 1 "A", including AL & ALL
-        AL = 0 # string contains 1 "A", 1 ending 'L'
-        ALL = 0 # string contains 1 "A", 2 ending 'L'
+        total = 3 # total rewardable combination count
+        L1 = 1 # combination with exact 1 ending 'L', including AL
+        L2 = 0 # combination with exact 2 ending 'L', including ALL
+        A = 1 # combination contains 1 "A", including AL & ALL
+        AL = 0 # combination contains 1 "A", exact 1 ending 'L'
+        ALL = 0 # combination contains 1 "A", exact 2 ending 'L'
 
         for i in range(1, n):
             # Append 'P'
@@ -52,6 +53,7 @@ class Solution:
             new_A += total - A
             new_total += total - A
 
+            # Update states
             total = new_total % MOD
             L1 = new_L1
             L2 = new_L2
