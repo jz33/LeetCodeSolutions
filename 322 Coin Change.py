@@ -20,14 +20,12 @@ Note:
 You may assume that you have an infinite number of each kind of coin.
 '''
 class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int: 
-        # Be careful when amount == 0
-        INF = (amount + 1) * 2
-        dp = [INF] * (amount+1)
-        dp[0] = 0
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        INF = float('inf')
         
+        # dp[i] is the minimum coin required to get amount i
+        dp = [0] + [INF] * amount
         for c in coins:
-            for i in range(c,amount+1):
+            for i in range(c, amount + 1):
                 dp[i] = min(dp[i], dp[i-c] + 1)
-    
         return dp[-1] if dp[-1] != INF else -1
