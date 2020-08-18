@@ -31,7 +31,7 @@ class Solution:
                 count = 0
             elif c == ']':
                 strs = []
-                while stack and isinstance(stack[-1], str):
+                while isinstance(stack[-1], str):
                     strs.append(stack.pop())
                 stack.append(''.join(strs[::-1]) * stack.pop())
             elif c.isalpha():
