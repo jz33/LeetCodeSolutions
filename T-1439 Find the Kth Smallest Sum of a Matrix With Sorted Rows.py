@@ -69,6 +69,5 @@ class Solution:
     def kthSmallest(self, mat: List[List[int]], k: int) -> int:
         res = mat[0]
         for i in range(1, len(mat)):
-            # 200 is the upper bound of this question
-            res = self.kSmallestPairs(res, mat[i], 200)
+            res = self.kSmallestPairs(res, mat[i], k)
         return res[k-1]
