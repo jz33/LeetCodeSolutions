@@ -26,38 +26,35 @@ Note:
 All of the nodes' values will be unique.
 p and q are different and both values will exist in the BST.
 */
+
 /**
  * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
  * }
  */
 
-class Solution {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // Ensure p.val < q.val
-        if (p.val > q.val) {
-            TreeNode t = p;
-            p = q;
-            q = t;
-        }
+function lowestCommonAncestor(root: TreeNode, p: TreeNode, q: TreeNode): TreeNode | null {
+    // For a BST, the lca of 2 nodes is the first node from root whose value is between the 2 nodes' values
+    const smallerValue: number = p.val < q.val ? p.val : q.val;
+    const biggerValue: number = p.val > q.val ? p.val : q.val;
 
-        // From root, find first node whose val is between p.val and q.val
-        TreeNode res = root;
-        while (res != null) {
-            if (res.val < p.val) {
-                res = res.right;
-            } else if( res.val > q.val) {
-                res = res.left;
-            } else {
-                return res;
-            }
+    let curr = root;
+    while (curr) {
+        if (curr.val > biggerValue) {
+            curr = curr.left;
+        } else if (curr.val < smallerValue) {
+            curr = curr.right;
+        } else {
+            return curr;
         }
-        
-        // Not reachable if p, q are valid
-        return res;
     }
-}
+    return curr;
+};
