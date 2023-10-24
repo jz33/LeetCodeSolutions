@@ -31,6 +31,7 @@ Constraints:
     All Node.val are unique.
     p != q
 '''
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -39,7 +40,9 @@ Constraints:
 #         self.right = None
 
 class Solution:
-    def isChildExisting(self, root: 'TreeNode', child: 'TreeNode'):
+    def isChildExisting(self, root: 'TreeNode' or None, child: 'TreeNode'):
+        if not root:
+            return False;
         curr = root
         stack = []
         while curr or stack:
@@ -52,11 +55,14 @@ class Solution:
                 curr = stack.pop().right
         return False
     
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        # Same solution as 236. Lowest Common Ancestor of a Binary Tree
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode' or None:
+        # Find the 1st node. The Find 2nd node from the 1st node or 1st node's parent nodes.
+        # The LCA is either 1st node or one of 1st node's parents.
         
         firstNode = None
         secondNode = None
+
+        # Preorder traversal to find 1st node
         curr = root
         stack = []
         while curr or stack:
@@ -74,15 +80,20 @@ class Solution:
             else:
                 curr = stack.pop().right
 
+        # Not even found 1st node, no LCA
         if firstNode is None:
             return None
 
+        # The 1st node can be the LCA if 2nd node is found in its children
         if self.isChildExisting(firstNode, secondNode):
             return firstNode
 
+        # The LCA can be a parent of 1st node
         while stack:
             lca = stack.pop()
-            if self.isChildExisting(lca, secondNode):
+            # Only need to check the node itself + right branch,
+            # as left branch is already traversed
+            if lca.val == secondNode.val or self.isChildExisting(lca.right, secondNode):
                 return lca
   
         return None
