@@ -39,40 +39,42 @@ n == nums1.length == nums2.length
 0 <= nums1[i], nums2[i] <= 100
 */
 class SparseVector {
-    data: Array<[number, number]> = []
+    // [[index, value]]
+    public data: [number, number][] = []
 
     constructor(nums: number[]) {
-        const size = nums.length
-        for (let i = 0; i < size; ++i) {
-            let n: number = nums[i]
-            if (n !== 0) {
-                this.data.push([i, n])
+        nums.map((value, index) => {
+            if (value !== 0) {
+                this.data.push([index, value]);
             }
-        }
+        })
     }
 
-    // Return the dotProduct of two sparse vectors
-    dotProduct(that: SparseVector): number {
-        const xs = this.data.length
-        const ys = that.data.length
-        let x: number = 0
-        let y: number = 0
-        let r: number = 0
-        while (x < xs && y < ys) {
-            let xv = this.data[x]
-            let yv = that.data[y]
-            if (xv[0] == yv[0]) {
-                r += xv[1] * yv[1]
+	// Return the dotProduct of two sparse vectors
+    public dotProduct(that: SparseVector): number {
+		let result: number = 0
+        let x = 0
+        let y = 0
+        while (x < this.data.length && y < that.data.length) {
+            const [xi, xv] = this.data[x]
+            const [yi, yv] = that.data[y]
+            if (xi == yi) {
+                result += xv * yv
                 x++
                 y++
-            }
-            else if (xv[0] < yv[0]) {
+            } else if (xi < yi) {
                 x++
-            }
-            else {
+            } else {
                 y++
             }
         }
-        return r
+        return result
     }
 }
+
+/**
+ * Your SparseVector object will be instantiated and called as such:
+ * var v1 = new SparseVector(nums1)
+ * var v2 = new SparseVector(nums1)
+ * var ans = v1.dotProduct(v2)
+ */
