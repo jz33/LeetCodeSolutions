@@ -36,6 +36,13 @@ p and q are different and both values will exist in the binary tree.
 #         self.left = None
 #         self.right = None
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution:
     def isChildExisting(self, root: 'TreeNode' or None, child: 'TreeNode'):
         if not root:
@@ -88,9 +95,9 @@ class Solution:
         # The LCA can be a parent of 1st node
         while stack:
             lca = stack.pop()
-            # Only need to check the node itself + right branch,
-            # as left branch is already traversed
-            if lca.val == secondNode.val or self.isChildExisting(lca.right, secondNode):
+            # Only need to check the node's right branch,
+            # as itself and its left branch is already traversed
+            if self.isChildExisting(lca.right, secondNode):
                 return lca
   
         return None
