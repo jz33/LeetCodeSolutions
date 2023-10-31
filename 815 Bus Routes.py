@@ -22,36 +22,38 @@ Output: 2
 Explanation:
 The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6.
 '''
+'''
+Real interview question of Convoy, inc, 20200814
+'''
+
+from collections import defaultdict
+
 class Solution:
-    def numBusesToDestination(self, routes: List[List[int]], S: int, T: int) -> int:
-        '''
-        Real interview question of Convoy, inc, 20200814
-        '''
-        # Build a reversed stop -> bus graph
-        stopToBus = collections.defaultdict(list) # {stop id : [bus ids]}
-        for bus, stops in enumerate(routes):
+    def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
+        # Build a {stop : [bus ids]} map
+        stopToBuses = defaultdict(list)
+        for busId, stops in enumerate(routes):
             for stop in stops:
-                stopToBus[stop].append(bus)
-                
-        visitedBuses = set()
-        visitedStops = { S }
-        stops = [S]
-        busCount = 0
+                stopToBuses[stop].append(busId)
+
+        # Save the bus id to improve performance
+        visitedBuses = set() # set(busIds)
+        visitedStops = { source } # set(stopIds)
+        stops = [source]
+        steps = 0
         while stops:
             newStops = []
             for stop in stops:
-                if stop == T:
-                    return busCount
+                if stop == target:
+                    return steps
                 
-                for bus in stopToBus[stop]:
-                    if bus not in visitedBuses:
-                        visitedBuses.add(bus)
-                        for stop in routes[bus]:
+                for busId in stopToBuses[stop]:
+                    if busId not in visitedBuses:
+                        visitedBuses.add(busId)
+                        for stop in routes[busId]:
                             if stop not in visitedStops:
                                 visitedStops.add(stop)
                                 newStops.append(stop)
-            
             stops = newStops
-            busCount += 1
-        
-        return -1   
+            steps += 1
+        return -1
