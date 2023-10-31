@@ -38,6 +38,14 @@ class Node:
         self.next = next
 """
 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, next=None):
+        self.val = val
+        self.next = next
+"""
+
 class Solution:
     def insertNext(self, prevNode: 'Node', nextNode: 'Node'):
         # Insert next node to prev node
@@ -45,13 +53,13 @@ class Solution:
         prevNode.next = nextNode
 
     def insert(self, head: 'Optional[Node]', insertVal: int) -> 'Node':
-        curr = head
         newNode = Node(insertVal)
 
         if not head:
             newNode.next = newNode
             return newNode
 
+        curr = head
         while True:
             if insertVal >= curr.val and insertVal <= curr.next.val:
                 # Find the insertion point, return
@@ -65,9 +73,10 @@ class Solution:
                 
             curr = curr.next
             if curr == head:
+                # It's like a do..while loop
                 break;
-        
-        # Here, there are only 1 possible cases:
+    
+        # Here, there are only 2 possible scenarios:
         # 1. Only 1 node in the list, and insertVal != head.val
         # 2. All nodes in the list has the same value and insertVal != head.val
         self.insertNext(head, newNode)
