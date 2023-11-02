@@ -2,37 +2,40 @@
 1216. Valid Palindrome III
 https://leetcode.com/problems/valid-palindrome-iii/
 
-Given a string s and an integer k, find out if the given string is a K-Palindrome or not.
+Given a string s and an integer k, return true if s is a k-palindrome.
 
-A string is K-Palindrome if it can be transformed into a palindrome by removing at most k characters from it.
+A string is k-palindrome if it can be transformed into a palindrome by removing at most k characters from it.
 
 Example 1:
 
 Input: s = "abcdeca", k = 2
 Output: true
 Explanation: Remove 'b' and 'e' characters.
+
+Example 2:
+
+Input: s = "abbababa", k = 1
+Output: true
+
+Constraints:
+    1 <= s.length <= 1000
+    s consists of only lowercase English letters.
+    1 <= k <= s.length
 '''
-class Solution:
-    def longestCommonSubsequence(self, a: str, b: str) -> int:
-        if len(a) < len(b):
-            a, b = b, a
-        
-        dp = [0] * len(b) # Use shorter buffer
-        for i in range(len(a)):
-            left = 0
-            topLeft = 0
-            for j in range(len(b)):
-                top = dp[j]
-                if a[i] == b[j]:
-                    dp[j] = topLeft + 1
-                else:
-                    dp[j] = max(top, left)
-                left = dp[j]
-                topLeft = top
-        return dp[-1]
+def longestCommonSubsequence(x: str, y: str) -> int:
+    # Same idea as 1143. Longest Common Subsequence,
+    # dp[i][j] means the longest common subsequence of x[:i+1], y[j+1]
+    dp = [[0] * (len(y)+1) for _ in range(len(x)+1)]
     
-    def longestPalindromicSubsequence(self, a: str) -> int:
-        return self.longestCommonSubsequence(a, a[::-1])
-        
+    for i in range(len(x)):
+        for j in range(len(y)):
+            if x[i] == y[j]:
+                dp[i+1][j+1] = 1 + dp[i][j]
+            else:
+                dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j])
+    
+    return dp[len(x)][len(y)]
+
+class Solution:
     def isValidPalindrome(self, s: str, k: int) -> bool:
-        return self.longestPalindromicSubsequence(s) + k >= len(s)
+        return longestCommonSubsequence(s, s[::-1]) + k >= len(s)
