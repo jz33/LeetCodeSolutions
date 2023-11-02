@@ -27,7 +27,7 @@ Constraints:
     1 <= nums[i] <= 107
     nums is sorted in ascending order, and all the elements are unique.
     1 <= k <= 108
-'''
+*/
 function missingElement(nums: number[], k: number): number {
     // Observation:
     // On index i, the count of missing numbers on its left (exclusive)
