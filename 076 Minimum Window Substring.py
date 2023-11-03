@@ -2,16 +2,38 @@
 76. Minimum Window Substring
 https://leetcode.com/problems/minimum-window-substring/
 
-Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+Given two strings s and t of lengths m and n respectively, return the minimum window
+substring
+of s such that every character in t (including duplicates) is included in the window.
+If there is no such substring, return the empty string "".
 
-Example:
+The testcases will be generated such that the answer is unique.
 
-Input: S = "ADOBECODEBANC", T = "ABC"
+Example 1:
+
+Input: s = "ADOBECODEBANC", t = "ABC"
 Output: "BANC"
-Note:
+Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
 
-If there is no such window in S that covers all characters in T, return the empty string "".
-If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
+Example 2:
+
+Input: s = "a", t = "a"
+Output: "a"
+Explanation: The entire string s is the minimum window.
+
+Example 3:
+
+Input: s = "a", t = "aa"
+Output: ""
+Explanation: Both 'a's from t must be included in the window.
+Since the largest window of s only has one 'a', return empty string.
+
+
+Constraints:
+    m == s.length
+    n == t.length
+    1 <= m, n <= 105
+    s and t consist of uppercase and lowercase English letters.
 '''
 class SlidingWindow:
     def __init__(self, pattern: str):
@@ -24,39 +46,37 @@ class SlidingWindow:
         return self.validCount == self.patternSize
     
     def add(self, char: str):
-        self.counter[char] += 1
-        if self.counter[char] <= self.patternCounter[char]:
+        newCharCount = self.counter[char] + 1
+        self.counter[char] = newCharCount
+        if newCharCount <= self.patternCounter[char]:
             self.validCount += 1
     
     def remove(self, char: str):
-        self.counter[char] -= 1
-        if self.counter[char] < self.patternCounter[char]:
+        newCharCount = self.counter[char] - 1
+        self.counter[char] = newCharCount
+        if newCharCount < self.patternCounter[char]:
             self.validCount -= 1
     
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        sw = SlidingWindow(t)
+        window = SlidingWindow(t)
         resultStart = None
         resultSize = len(s) + 1 # Not len(s)
-        i = 0
-        start = 0
-        while i < len(s) or sw.isMatched():        
-            if not sw.isMatched():
-                # Not match yet
-                c = s[i]
-                i += 1
-                sw.add(c)
-            else:
-                # Matched.
-                # Try update result
-                size = i - start
+        left = 0
+        right = 0
+        while left < len(s):
+            # Extend
+            while right < len(s) and not window.isMatched():
+                window.add(s[right])
+                right += 1
+            # Update result
+            if (window.isMatched()):
+                size = right - left
                 if size < resultSize:
                     resultSize = size
-                    resultStart = start
+                    resultStart = left
+            # Shrink
+            window.remove(s[left])
+            left += 1
 
-                # Shrink from left
-                c = s[start]
-                start += 1
-                sw.remove(c)
-    
         return s[resultStart : resultStart + resultSize] if resultStart is not None else ''
