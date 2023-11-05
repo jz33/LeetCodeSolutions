@@ -26,12 +26,11 @@ Constraints:
     The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 */
 function maxProduct(nums: number[]): number {
-    // The maxValue and minValue on index i means
-    // the max / min product value in subarray [:i]
-    let maxValue = 1;
-    let minValue = 1;
-    let result = Number.MIN_SAFE_INTEGER;
-    for (const value of nums) {
+    let maxValue = nums[0];
+    let minValue = nums[0];
+    let result = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        const value = nums[i];
         [maxValue, minValue] = [
             Math.max(value, value * maxValue, value * minValue),
             Math.min(value, value * maxValue, value * minValue),
@@ -40,3 +39,4 @@ function maxProduct(nums: number[]): number {
     }
     return result;
 }
+
