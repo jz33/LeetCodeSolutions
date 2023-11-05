@@ -25,9 +25,6 @@ Constraints:
     -104 <= nums[i] <= 104
 */
 function maxSubArray(nums: number[]): number {
-    if (!nums.length) {
-        return 0;
-    }
     let result = nums[0];
     let total = nums[0];
     for (let i = 1; i < nums.length; i++) {
