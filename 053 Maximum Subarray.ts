@@ -31,12 +31,9 @@ function maxSubArray(nums: number[]): number {
     let result = nums[0];
     let total = nums[0];
     for (let i = 1; i < nums.length; i++) {
-        if (total < 0) {
-            total = nums[i];
-        } else {
-            total = total + nums[i];
-        }
+        total = Math.max(total + nums[i], nums[i]);
         result = Math.max(result, total);
     }
     return result;
 }
+
