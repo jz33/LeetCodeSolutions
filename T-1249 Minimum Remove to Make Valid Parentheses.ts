@@ -1,5 +1,6 @@
 /*
 1249. Minimum Remove to Make Valid Parentheses
+https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
 
 Given a string s of '(' , ')' and lowercase English characters. 
 
@@ -41,8 +42,10 @@ Constraints:
 
 */
 function minRemoveToMakeValid(s: string): string {
-    const rightBrackets: number[] = []; // Record indexes of invalid right brackets to remove
-    const leftBrackets: number[] = []; // Record indexes of left brackets.
+    // Record indexes of invalid right brackets who has no matching left brackets
+    const rightBrackets: number[] = [];
+    // Record indexes of left brackets. The leftover left brackets are invalid
+    const leftBrackets: number[] = [];
     for (let i = 0; i < s.length; i++) {
         const char = s[i];
         if (char === '(') {
@@ -55,12 +58,19 @@ function minRemoveToMakeValid(s: string): string {
             }
         }
     }
-    // Re-construct the string without the characters in above records.
-    const charList = Array.from(s);
-    const toRemoveChar = '|';
-    rightBrackets.forEach((i) => (charList[i] = toRemoveChar));
-    leftBrackets.forEach((i) => (charList[i] = toRemoveChar));
-    return charList.filter((c) => c !== toRemoveChar).join('');
-}
-
+    // Re-construct the string without the indexes saved in left / right stacks
+    const newChars: string[] = [];
+    let iLeft = 0;
+    let iRight = 0;
+    for (let i = 0; i < s.length; i++) {
+        if (iLeft < leftBrackets.length && leftBrackets[iLeft] === i) {
+            iLeft++;
+        } else if (iRight < rightBrackets.length && rightBrackets[iRight] === i) {
+            iRight++;
+        } else {
+            newChars.push(s[i]);
+        }
+    }
+    return newChars.join('');
+};
 
