@@ -2,44 +2,66 @@
 621. Task Scheduler
 https://leetcode.com/problems/task-scheduler/
 
-Given a char array representing tasks CPU need to do.
-It contains capital letters A to Z where different letters represent different tasks.
-Tasks could be done without original order. Each task could be done in one interval.
-For each interval, CPU could finish one task or just be idle.
+Given a characters array tasks, representing the tasks a CPU needs to do, where each letter represents a different task.
+Tasks could be done in any order. Each task is done in one unit of time.
+For each unit of time, the CPU could complete either one task or just be idle.
 
-However, there is a non-negative cooling interval n that means between two same tasks,
-there must be at least n intervals that CPU are doing different tasks or just be idle.
+However, there is a non-negative integer n that represents the cooldown period between two same tasks
+(the same letter in the array), that is that there must be at least n units of time between any two same tasks.
 
-You need to return the least number of intervals the CPU will take to finish all the given tasks.
+Return the least number of units of times that the CPU will take to finish all the given tasks.
 
 Example 1:
 
 Input: tasks = ["A","A","A","B","B","B"], n = 2
 Output: 8
-Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
+Explanation: 
+A -> B -> idle -> A -> B -> idle -> A -> B
+There is at least 2 units of time between any two same tasks.
 
 Example 2:
-tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
+
+Input: tasks = ["A","A","A","B","B","B"], n = 0
+Output: 6
+Explanation: On this case any permutation of size 6 would work since n = 0.
+["A","A","A","B","B","B"]
+["A","B","A","B","A","B"]
+["B","B","B","A","A","A"]
+...
+And so on.
+
+Example 3:
+
+Input: tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
 Output: 16
-Explanation: A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
+Explanation: 
+One possible solution is
+A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
+
+Constraints:
+    1 <= task.length <= 104
+    tasks[i] is upper-case English letter.
+    The integer n is in the range [0, 100].
 '''
 class Solution:
-    def leastInterval(self, tasks: List[str], n: int) -> int:
-        # Get histogram
+    def leastInterval(self, tasks: List[str], idleNeeded: int) -> int:
+        # Build histogram {taskId : count}
         ctr = collections.Counter(tasks)
         
-        # So we separate top tasks, set each top task with at least
-        # n empty slot to each other.
-        # Then fill other tasks to the empty slots.
-        topTask, topTaskCount = ctr.most_common(1)[0]
-        emptySlots = (topTaskCount - 1) * n
-        filled = 0
-        for key, count in ctr.items():
-            if key != topTask:
-                filled += min(count, topTaskCount - 1)
-                if filled >= emptySlots:
+        # Separate the top tasks, each top task in one bucket.
+        # Then to separate the top task, each bucket should have
+        # idleNeeded empty slots.
+        # Then fill the empty slots with other tasks.
+        topTaskId, topTaskCount = ctr.most_common(1)[0]
+        emptySlots = (topTaskCount - 1) * idleNeeded
+        emptySlotsFilled = 0
+        for taskId, count in ctr.items():
+            if taskId != topTaskId:
+                # Non-top task's count <= topTaskCout
+                emptySlotsFilled += min(count, topTaskCount - 1)
+                if emptySlotsFilled >= emptySlots:
                     break
         
         # If all empty slots are filled, no need for idle cycles
         # Otherwise, need idel cycles for the empty slots.
-        return len(tasks) + max(0, emptySlots - filled)
+        return len(tasks) + max(0, emptySlots - emptySlotsFilled)
