@@ -31,7 +31,7 @@ class Solution:
         size = len(nums)
         perms = []
         def topDown(arr: List[int], start: int):
-            if start == size:
+            if start == size - 1:
                 perms.append(arr)
             else:
                 for i in range(start, size):
