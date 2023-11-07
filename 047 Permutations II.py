@@ -2,31 +2,40 @@
 47. Permutations II
 https://leetcode.com/problems/permutations-ii/
 
-Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+Given a collection of numbers, nums, that might contain duplicates,
+return all possible unique permutations in any order.
 
-Example:
+Example 1:
 
-Input: [1,1,2]
+Input: nums = [1,1,2]
 Output:
-[
-  [1,1,2],
-  [1,2,1],
-  [2,1,1]
-]
+[[1,1,2],
+ [1,2,1],
+ [2,1,1]]
+
+Example 2:
+
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+Constraints:
+
+    1 <= nums.length <= 8
+    -10 <= nums[i] <= 10
+    
 '''
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        perms, newPerms = [[]], []      
+        # This idea is to incrementally build the permuations by each element:
+        # insert e onto all positions of previous permutation
+        perms = [[]]      
         for e in nums:
+            nextPerms = []
             for row in perms:
-                
-                # This basic idea is to insert e onto all positions
-                # of previous permutation
                 for i in range(len(row) + 1):
-                    newPerms.append(row[:i] + [e] + row[i:])
-                    
-                    # This is the only added line to handle duplicates
+                    nextPerms.append(row[:i] + [e] + row[i:])
+                    # Above line inserts an e before row[i]. If row[i] == e,
+                    # then inserting e after row[i] will cause duplicate
                     if i < len(row) and row[i] == e: break 
-                    
-            perms, newPerms = newPerms, []
+            perms = nextPerms
         return perms
