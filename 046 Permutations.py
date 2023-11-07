@@ -24,13 +24,35 @@ Constraints:
     All the integers of nums are unique.
 '''
 class Solution:
+    '''
+    A classic recursive method
+    '''
     def permute(self, nums: List[int]) -> List[List[int]]:
-        perms, newPerms = [[]], []      
+        size = len(nums)
+        perms = []
+        def topDown(arr: List[int], start: int):
+            if start == size:
+                perms.append(arr)
+            else:
+                for i in range(start, size):
+                    arrCopy = arr[:] # deepcopy
+                    arrCopy[i], arrCopy[start] = arrCopy[start], arrCopy[i]
+                    topDown(arrCopy, start + 1)
+        topDown(nums, 0)
+        return perms
+
+class Solution:
+    '''
+    Iterative
+    '''
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        # The idea is to incrementally build the permuations by each element:
+        # insert e onto all positions of previous permutation
+        perms = [[]]      
         for e in nums:
+            nextPerms = []
             for row in perms:
-                # The idea is to insert e onto all positions
-                # of previous permutation
                 for i in range(len(row) + 1):
-                    newPerms.append(row[:i] + [e] + row[i:])
-            perms, newPerms = newPerms, []
+                    nextPerms.append(row[:i] + [e] + row[i:])
+            perms = nextPerms
         return perms
