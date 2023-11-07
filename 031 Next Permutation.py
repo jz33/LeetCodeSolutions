@@ -2,45 +2,77 @@
 31. Next Permutation
 https://leetcode.com/problems/next-permutation/
 
-Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
 
-If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+    For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
 
-The replacement must be in-place and use only constant extra memory.
+The next permutation of an array of integers is the next lexicographically greater permutation of its integer.
+More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
 
-Here are some examples.
-Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+    For example, the next permutation of arr = [1,2,3] is [1,3,2].
+    Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+    While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
 
-1,2,3 → 1,3,2
-3,2,1 → 1,2,3
-1,1,5 → 1,5,1
+Given an array of integers nums, find the next permutation of nums.
+
+The replacement must be in place and use only constant extra memory.
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [1,3,2]
+
+Example 2:
+
+Input: nums = [3,2,1]
+Output: [1,2,3]
+
+Example 3:
+
+Input: nums = [1,1,5]
+Output: [1,5,1]
+
+ 
+
+Constraints:
+
+    1 <= nums.length <= 100
+    0 <= nums[i] <= 100
+
 
 '''
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
-        if not nums or not len(nums):
+        if len(nums) < 2:
             return
-        
-        # From back, find first number who is smaller than its next number
-        for i in range(len(nums)-2,-1,-1):
+   
+        # From right, find pivot, aka, the first number who is smaller than its right neighbor.
+        pivot = None
+        for i in range(len(nums)-2, -1, -1):
             if nums[i] < nums[i+1]:
+                pivot = i
                 break
-        else:
-            # If not found, set i to -1 for reverse
-            i = -1
-            
-        # Reverse all the numbers after i
-        nums[i+1:] = nums[i+1:][::-1]
-        
-        # If i is not found, we have converted from last permutation to first one.
-        # e.g, [3,2,1] => [1,2,3]. Done
-        if i == -1:
+
+        if pivot is None:
+            # All elements of nums are in descending order,
+            # aka, nums is in its last permutation state.
+            # Reverse all and return
+            nums[:] = nums[::-1]
             return
-        
-        # Find first number after i that is larger than nums[i]
-        for j in range(i+1, len(nums)):
-            if nums[j] > nums[i]:
+
+        # Reverse all the numbers after pivot,
+        # because elements in nums[pivot+1:] are in descending order,
+        # aka, nums[pivot+1:] is in its last permutation.
+        # After reverse, nums[pivot+1:] is in ascending order
+        nums[pivot+1:] = nums[pivot+1:][::-1]
+
+        # Find first number after pivot that is larger than nums[pivot]
+        bigger = pivot
+        for i in range(pivot+1, len(nums)):
+            if nums[i] > nums[pivot]:
+                bigger = i
                 break
-                
-        # Swap nums[i], nums[j]. Done
-        nums[i], nums[j] = nums[j], nums[i]
+
+        # The bigger number must exist, as last permutation case is filtered before.
+        # Swap. Done
+        nums[pivot], nums[bigger] = nums[bigger], nums[pivot]
