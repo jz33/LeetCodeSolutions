@@ -25,6 +25,27 @@ Constraints:
     
 '''
 class Solution:
+    '''
+    Recursive
+    '''
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        size = len(nums)
+        perms = []
+        def topDown(arr: List[int], start: int):
+            if start == size - 1:
+                perms.append(arr)
+            else:
+                for i in range(start, size):
+                    if i != start and arr[i] == arr[start]:
+                        continue
+                    arr[i], arr[start] = arr[start], arr[i]
+                    # deepcopy the array
+                    topDown(arr[:], start + 1)
+                    
+        topDown(sorted(nums), 0)
+        return perms
+
+class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         # This idea is to incrementally build the permuations by each element:
         # insert e onto all positions of previous permutation
@@ -39,3 +60,4 @@ class Solution:
                     if i < len(row) and row[i] == e: break 
             perms = nextPerms
         return perms
+
