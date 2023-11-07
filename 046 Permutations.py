@@ -25,7 +25,7 @@ Constraints:
 '''
 class Solution:
     '''
-    A classic recursive method
+    Recursive
     '''
     def permute(self, nums: List[int]) -> List[List[int]]:
         size = len(nums)
@@ -35,10 +35,11 @@ class Solution:
                 perms.append(arr)
             else:
                 for i in range(start, size):
-                    arrCopy = arr[:] # deepcopy
-                    arrCopy[i], arrCopy[start] = arrCopy[start], arrCopy[i]
-                    topDown(arrCopy, start + 1)
-        topDown(nums, 0)
+                    arr[i], arr[start] = arr[start], arr[i]
+                    # deepcopy the array
+                    topDown(arr[:], start + 1)
+                    
+        topDown(sorted(nums), 0)
         return perms
 
 class Solution:
