@@ -2,53 +2,72 @@
 588. Design In-Memory File System
 https://leetcode.com/problems/design-in-memory-file-system/
 
-Design an in-memory file system to simulate the following functions:
+Design a data structure that simulates an in-memory file system.
 
-ls: Given a path in string format. If it is a file path, return a list that only contains this file's name.
-If it is a directory path, return the list of file and directory names in this directory.
-Your output (file and directory names together) should in lexicographic order.
+Implement the FileSystem class:
+    FileSystem() Initializes the object of the system.
+    List<String> ls(String path)
+        If path is a file path, returns a list that only contains this file's name.
+        If path is a directory path, returns the list of file and directory names in this directory.
+    The answer should in lexicographic order.
+    void mkdir(String path) Makes a new directory according to the given path. The given directory path does not exist. If the middle directories in the path do not exist, you should create them as well.
+    void addContentToFile(String filePath, String content)
+        If filePath does not exist, creates that file containing given content.
+        If filePath already exists, appends the given content to original content.
+    String readContentFromFile(String filePath) Returns the content in the file at filePath.
 
-mkdir: Given a directory path that does not exist, you should make a new directory according to the path.
-If the middle directories in the path don't exist either, you should create them as well. This function has void return type.
+Example 1:
 
-addContentToFile: Given a file path and file content in string format.
-If the file doesn't exist, you need to create that file containing given content.
-If the file already exists, you need to append given content to original content. This function has void return type.
+Input
+["FileSystem", "ls", "mkdir", "addContentToFile", "ls", "readContentFromFile"]
+[[], ["/"], ["/a/b/c"], ["/a/b/c/d", "hello"], ["/"], ["/a/b/c/d"]]
+Output
+[null, [], null, null, ["a"], "hello"]
 
-readContentFromFile: Given a file path, return its content in string format.
+Explanation
+FileSystem fileSystem = new FileSystem();
+fileSystem.ls("/");                         // return []
+fileSystem.mkdir("/a/b/c");
+fileSystem.addContentToFile("/a/b/c/d", "hello");
+fileSystem.ls("/");                         // return ["a"]
+fileSystem.readContentFromFile("/a/b/c/d"); // return "hello"
+
+Constraints:
+    1 <= path.length, filePath.length <= 100
+    path and filePath are absolute paths which begin with '/' and do not end with '/' except that the path is just "/".
+    You can assume that all directory names and file names only contain lowercase letters, and the same names will not exist in the same directory.
+    You can assume that all operations will be passed valid parameters, and users will not attempt to retrieve file content or list a directory or file that does not exist.
+    1 <= content.length <= 50
+    At most 300 calls will be made to ls, mkdir, addContentToFile, and readContentFromFile.
 '''
+from typing import Union
+
 class Node:
-    def __init__(self, isFile = False):
-        self.isFile = isFile # is file or directory
+    '''
+    Trie node
+    '''
+    def __init__(self):
         self.children = {} # {directory name : node }
-        self.content = None # file content
+        self.content = None # If file, str ; not file, None
         
 class FileSystem:
     def __init__(self):
         self.root = Node()
 
-    def getNode(self, path: str) -> Node:
-        '''
-        Private
-        Get the node with given path.
-        Return None if node not existed.
-        '''
+    def getNode(self, path: str) -> Union[Node, None]:
         node = self.root
-        subs = [s for s in path.split('/') if len(s) > 0] # notice split can have '' strings
+        # Notice split can result '' strings
+        subs = [s for s in path.split('/') if len(s) > 0]
         for sub in subs:
             node = node.children.get(sub)
             if not node:
                 return None
         return node
     
-    def createNode(self, path: str) -> Node:
-        '''
-        Private
-        Get the node with give path.
-        If direcotyr not existed, create. Return leaf node
-        '''
+    def getOrCreateNode(self, path: str) -> Node:
         node = self.root
-        subs = [s for s in path.split('/') if len(s) > 0] # notice split can have '' strings
+        # Notice split can result '' strings
+        subs = [s for s in path.split('/') if len(s) > 0]
         for sub in subs:
             if sub not in node.children:
                 node.children[sub] = Node()
@@ -59,26 +78,25 @@ class FileSystem:
         node = self.getNode(path)
         if not node:
             return []
-        elif node.isFile:
+        elif node.content:
             i = path.rfind('/')
             return [path[i+1:]] # [filename]
         else:
             return sorted(node.children.keys())
 
     def mkdir(self, path: str) -> None:
-        self.createNode(path)
+        self.getOrCreateNode(path)
 
     def addContentToFile(self, path: str, content: str) -> None:
-        fileNode = self.createNode(path)
-        if fileNode.isFile:
+        fileNode = self.getOrCreateNode(path)
+        if fileNode.content:
             fileNode.content += content # append to existing file
         else:
-            fileNode.isFile = True # new file
             fileNode.content = content
             
     def readContentFromFile(self, path: str) -> str:
         fileNode = self.getNode(path)
-        if fileNode and fileNode.isFile:
+        if fileNode and fileNode.content:
             return fileNode.content
         else:
             return ''
