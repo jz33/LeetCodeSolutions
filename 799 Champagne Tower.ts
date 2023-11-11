@@ -10,7 +10,6 @@ For example, after one cup of champagne is poured, the top most glass is full.  
 
 Now after pouring some non-negative integer cups of champagne, return how full the jth glass in the ith row is (both i and j are 0-indexed.)
 
-
 Example 1:
 
 Input: poured = 1, query_row = 1, query_glass = 1
@@ -29,10 +28,8 @@ Input: poured = 100000009, query_row = 33, query_glass = 17
 Output: 1.00000
 
 Constraints:
-
     0 <= poured <= 109
     0 <= query_glass <= query_row < 100
-
 */
 function champagneTower(poured: number, query_row: number, query_glass: number): number {
     // Build the DP from 0 to query_row
