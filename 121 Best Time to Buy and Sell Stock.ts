@@ -35,3 +35,20 @@ function maxProfit(prices: number[]): number {    let profit = 0;
     }
     return profit;
 }
+
+function maxProfit(prices: number[]): number {
+    let profit = 0;
+    let lowestPrice = prices[0];
+    for (let i = 1; i < prices.length; i++) {
+        const price = prices[i];
+        if (price < lowestPrice) {
+            // If price goes lower, keep finding the lowest price
+            lowestPrice = price;
+        } else {
+            // Sell the stock on lowest price
+            profit = Math.max(profit, price - lowestPrice);
+        }
+    }
+    return profit;
+}
+
