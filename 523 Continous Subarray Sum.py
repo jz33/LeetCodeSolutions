@@ -1,45 +1,52 @@
 '''
 523. Continuous Subarray Sum
-Given a list of non-negative numbers and a target integer k,
-write a function to check if the array has a continuous subarray of size at least 2 that sums up to a multiple of k,
-that is, sums up to n*k where n is also an integer.
+https://leetcode.com/problems/continuous-subarray-sum/
+
+Given an integer array nums and an integer k, return true if nums has a good subarray or false otherwise.
+
+A good subarray is a subarray where:
+
+    its length is at least two, and
+    the sum of the elements of the subarray is a multiple of k.
+
+Note that:
+
+    A subarray is a contiguous part of the array.
+    An integer x is a multiple of k if there exists an integer n such that x = n * k. 0 is always a multiple of k.
 
 Example 1:
 
-Input: [23, 2, 4, 6, 7],  k=6
-Output: True
-Explanation: Because [2, 4] is a continuous subarray of size 2 and sums up to 6.
+Input: nums = [23,2,4,6,7], k = 6
+Output: true
+Explanation: [2, 4] is a continuous subarray of size 2 whose elements sum up to 6.
 
 Example 2:
 
-Input: [23, 2, 6, 4, 7],  k=6
-Output: True
-Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42.
+Input: nums = [23,2,6,4,7], k = 6
+Output: true
+Explanation: [23, 2, 6, 4, 7] is an continuous subarray of size 5 whose elements sum up to 42.
+42 is a multiple of 6 because 42 = 7 * 6 and 7 is an integer.
+
+Example 3:
+
+Input: nums = [23,2,6,4,7], k = 13
+Output: false
+
+Constraints:
+    1 <= nums.length <= 105
+    0 <= nums[i] <= 109
+    0 <= sum(nums[i]) <= 231 - 1
+    1 <= k <= 231 - 1
 '''
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-        '''
-        Idea: for nums, lets s[i] be sum of nums[0]...nums[i], then
-        if j > i + 1, and s[j] % k ==  s[i] % k, then nums[i+1:j+1] is the subarray whose
-        sum is multiple of k
-         '''
-        # {sum : index}
-        # Assume sum of 0 is already there
-        # Think case like [5], 5, and [5,5], 5
-        ref = {0:-1}
-        # local sum
-        s = 0
-        for i,e in enumerate(nums):
-            s += e
-            if k != 0: 
-                s %= k
-                
-            j = ref.get(s)
-            if j is None:
-                ref[s] = i
-    
-            # If i - j > 1, then the subarray is [j+1:i+1]
-            elif i - j > 1:
+        prefixSums = {0 : -1} # {prefix sum : end index}
+        ps = 0 # current prefix sum
+        for i, e in enumerate(nums):
+            ps =  (ps + e) % k # k > 0
+            end = prefixSums.get(ps)
+            if end is None:
+                prefixSums[ps] = i
+            elif i - end > 1: # The subarray has length at least 2
                 return True
-
         return False
