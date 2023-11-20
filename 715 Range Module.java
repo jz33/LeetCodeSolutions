@@ -2,75 +2,87 @@
 715. Range Module
 https://leetcode.com/problems/range-module/
 
-A Range Module is a module that tracks ranges of numbers. Your task is to design and
-implement the following interfaces in an efficient manner.
+A Range Module is a module that tracks ranges of numbers.
+Design a data structure to track the ranges represented as half-open intervals and query about them.
 
-addRange(int left, int right) Adds the half-open interval [left, right), tracking every real number in that interval.
-Adding an interval that partially overlaps with currently tracked numbers should
-add any numbers in the interval [left, right) that are not already tracked.
-queryRange(int left, int right) Returns true if and only if every real number in the interval [left, right) is
-currently being tracked.
-removeRange(int left, int right) Stops tracking every real number currently being tracked in the interval [left, right).
+A half-open interval [left, right) denotes all the real numbers x where left <= x < right.
+
+Implement the RangeModule class:
+
+    RangeModule() Initializes the object of the data structure.
+    void addRange(int left, int right) Adds the half-open interval [left, right), tracking every real number in that interval. Adding an interval that partially overlaps with currently tracked numbers should add any numbers in the interval [left, right) that are not already tracked.
+    boolean queryRange(int left, int right) Returns true if every real number in the interval [left, right) is currently being tracked, and false otherwise.
+    void removeRange(int left, int right) Stops tracking every real number currently being tracked in the half-open interval [left, right).
 
 Example 1:
-addRange(10, 20): null
-removeRange(14, 16): null
-queryRange(10, 14): true (Every number in [10, 14) is being tracked)
-queryRange(13, 15): false (Numbers like 14, 14.03, 14.17 in [13, 15) are not being tracked)
-queryRange(16, 17): true (The number 16 in [16, 17) is still being tracked, despite the remove operation)
-Note:
 
-A half open interval [left, right) denotes all real numbers left <= x < right.
-0 < left < right < 10^9 in all calls to addRange, queryRange, removeRange.
-The total number of calls to addRange in a single test case is at most 1000.
-The total number of calls to queryRange in a single test case is at most 5000.
-The total number of calls to removeRange in a single test case is at most 1000.
+Input
+["RangeModule", "addRange", "removeRange", "queryRange", "queryRange", "queryRange"]
+[[], [10, 20], [14, 16], [10, 14], [13, 15], [16, 17]]
+Output
+[null, null, null, true, false, true]
+
+Explanation
+RangeModule rangeModule = new RangeModule();
+rangeModule.addRange(10, 20);
+rangeModule.removeRange(14, 16);
+rangeModule.queryRange(10, 14); // return True,(Every number in [10, 14) is being tracked)
+rangeModule.queryRange(13, 15); // return False,(Numbers like 14, 14.03, 14.17 in [13, 15) are not being tracked)
+rangeModule.queryRange(16, 17); // return True, (The number 16 in [16, 17) is still being tracked, despite the remove operation)
+
+ 
+
+Constraints:
+
+    1 <= left < right <= 109
+    At most 104 calls will be made to addRange, queryRange, and removeRange.
+
+
 */
 class RangeModule {
-    // {start index, end index}
+    // Ordered map of strict non-overlapping ranges: {start index, end index}
+    // Strict non-overlapping: [3,5], [5,8] are not allowed, should be [3,8]
     private TreeMap<Integer, Integer> map = new TreeMap<>();
     
     public RangeModule() {}
     
     public void addRange(int left, int right) {
-        // Notice since left < right, so if prevLeft exists,
-        // prevRight exists. If prevLeft not exists, prevRight not exists too.
-        Integer prevLeft = map.floorKey(left);
-        Integer prevRight = map.floorKey(right);
-        
-        if (prevLeft != null && map.get(prevLeft) >= left){
-            left = prevLeft;
+        var leftRange = map.floorEntry(left);
+        var rightRange = map.floorEntry(right);
+
+        if (leftRange != null && leftRange.getValue() >= left){
+            left = leftRange.getKey();
         }
-        if (prevRight != null && map.get(prevRight) > right){
-            right = map.get(prevRight);
+        if (rightRange != null && rightRange.getValue() >= right){
+            right = rightRange.getValue();
         }
         
+        map.subMap(left, true, right, true).clear();
         map.put(left, right);
-       
-        // Clean up overlapped intervals between putLeft and putRight.
-        // Notice the inclusive and exclusive on boundaries
-        map.subMap(left, false, right, true).clear();
     }
     
     public boolean queryRange(int left, int right) {
-        Integer prevLeft = map.floorKey(left);
-        return prevLeft != null && map.get(prevLeft) >= right;
+        var range = map.floorEntry(left);
+        return range != null && range.getValue() >= right;
     }
     
     public void removeRange(int left, int right) {
-        Integer prevLeft = map.floorKey(left);
-        Integer prevRight = map.floorKey(right);
-        
-        // Put right side first because prevLeft can overlap previous key
-        if (prevRight != null && map.get(prevRight) > right) {
-            map.put(right, map.get(prevRight));
+        var leftRange = map.lowerEntry(left);
+        var rightRange = map.lowerEntry(right); 
+        if (leftRange != null && leftRange.getValue() > left) {
+            map.put(leftRange.getKey(), left);
+        }
+        if (rightRange != null && rightRange.getValue() > right) {
+            map.put(right, rightRange.getValue());
     	}
-        if (prevLeft != null && map.get(prevLeft) > left) {
-            map.put(prevLeft, left);
-        }      
-                
-        // Clean up overlapped intervals between left and right.
-        // Notice the inclusive and exclusive on boundaries        
         map.subMap(left, true, right, false).clear();
     }
 }
+
+/**
+ * Your RangeModule object will be instantiated and called as such:
+ * RangeModule obj = new RangeModule();
+ * obj.addRange(left,right);
+ * boolean param_2 = obj.queryRange(left,right);
+ * obj.removeRange(left,right);
+ */
