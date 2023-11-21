@@ -45,31 +45,29 @@ class TreeNode {
         this.right = (right === undefined ? null : right)
     }
 }
-
 function upsideDownBinaryTree(root: TreeNode | null): TreeNode | null {
-    let newHead: TreeNode | null = root
-    if (!root || root.left === null) {
-        return newHead
+    if (!root?.left) {
+        return root;
     }
 
-    let stack: Array<TreeNode | null> = [root]
-    let p: TreeNode | null = root.left
+    const stack: TreeNode[] = [root];
+    let p: TreeNode | null = root.left;
     while (p) {
-        stack.push(p)
-        p = p.left
+        stack.push(p);
+        p = p.left;
     }
 
-    newHead = stack.pop()!
-    p = newHead
-    while (stack.length !== 0) {
-        let q: TreeNode | null = stack.pop()!
-        p.left = q.right
-        p.right = q
+    const newHead = stack.pop()!;
+    p = newHead;
+    while (stack.length) {
+        const q = stack.pop()!;
+        p.left = q.right;
+        p.right = q;
 
-        q.left = null
-        q.right = null
-        p = q
+        q.left = null;
+        q.right = null;
+        p = q;
     }
 
-    return newHead
+    return newHead;
 }
