@@ -52,6 +52,7 @@ function getLowerBound(nums: number[], target: number): number {
             right = mid - 1;
         }
     }
+    // Return left if asking for insertion point
     return bound === null ? -1 : bound;
 }
 
@@ -76,6 +77,7 @@ function getUpperBound(nums: number[], target: number): number {
             right = mid - 1;
         }
     }
+    // Return left if asking for insertion point
     return bound === null ? -1 : bound;
 }
 
