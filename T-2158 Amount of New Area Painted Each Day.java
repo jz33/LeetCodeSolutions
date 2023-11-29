@@ -6,9 +6,11 @@ There is a long and thin painting that can be represented by a number line.
 You are given a 0-indexed 2D integer array paint of length n, where paint[i] = [starti, endi].
 This means that on the ith day you need to paint the area between starti and endi.
 
-Painting the same area multiple times will create an uneven painting so you only want to paint each area of the painting at most once.
+Painting the same area multiple times will create an uneven painting so
+you only want to paint each area of the painting at most once.
 
-Return an integer array worklog of length n, where worklog[i] is the amount of new area that you painted on the ith day.
+Return an integer array worklog of length n,
+where worklog[i] is the amount of new area that you painted on the ith day.
 
 Example 1:
 
@@ -47,12 +49,9 @@ On day 1, paint nothing because everything between 2 and 4 was already painted o
 The amount of new area painted on day 1 is 0.
 
 Constraints:
-
     1 <= paint.length <= 105
     paint[i].length == 2
     0 <= starti < endi <= 5 * 104
-
-
 */
 class Solution {
     public int getOverlap(int aLeft, int aRight, int bLeft, int bRight) {
