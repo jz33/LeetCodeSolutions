@@ -70,7 +70,7 @@ class Solution:
                 # There must be an operator ahead of '('
                 stack.append(operator)
                 operator = '+'
-                number = 0 # not needed ?
+                # number = 0 # Not needed as number is set to 0 on previous operator
             elif c == ')':
                 compute()
 
