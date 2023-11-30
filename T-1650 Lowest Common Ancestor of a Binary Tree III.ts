@@ -13,7 +13,9 @@ class Node {
     public Node parent;
 }
 
-According to the definition of LCA on Wikipedia: "The lowest common ancestor of two nodes p and q in a tree T is the lowest node that has both p and q as descendants (where we allow a node to be a descendant of itself)."
+According to the definition of LCA on Wikipedia:
+"The lowest common ancestor of two nodes p and q in a tree T is the lowest node that
+has both p and q as descendants (where we allow a node to be a descendant of itself)."
 
 Example 1:
 
@@ -75,4 +77,6 @@ function lowestCommonAncestor(p: Node | null, q: Node | null): Node | null {
     curr = curr.parent;
   }
   return null;
+
+  // An alterative way without buffer is like in 160. Intersection of Two Linked Lists
 }
