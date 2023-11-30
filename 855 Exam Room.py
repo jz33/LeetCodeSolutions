@@ -54,7 +54,6 @@ class Interval:
         self.maxSize = maxSize
         self.left = left
         self.right = right
-        self.size = right - left + 1
 
     def getSeatId(self) -> int:
         """
