@@ -5,8 +5,6 @@ https://leetcode.com/problems/binary-tree-right-side-view/
 Given the root of a binary tree, imagine yourself standing on the right side of it,
 return the values of the nodes you can see ordered from top to bottom.
 
- 
-
 Example 1:
 
 Input: root = [1,2,3,null,5,null,4]
@@ -22,29 +20,10 @@ Example 3:
 Input: root = []
 Output: []
 
- 
-
 Constraints:
-
     The number of nodes in the tree is in the range [0, 100].
     -100 <= Node.val <= 100
-
-
 */
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
-
 function rightSideView(root: TreeNode | null): number[] {
     const result: number[] = [];
     if (!root) {
@@ -53,6 +32,7 @@ function rightSideView(root: TreeNode | null): number[] {
     // Even though only the right-most node's value on each level is needed,
     // it is necessary to save all nodes as it cannot guarantee right-most node
     // is always from the right-most parent.
+    // This is differernt to 545. Boundary of Binary Tree
     let row = [root];
     while (row.length) {
         const newRow: TreeNode[] = [];
