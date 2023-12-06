@@ -8,27 +8,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Binary Search
 
-33 Search in Rotated Sorted Array
-
-34 Find First and Last Position of Element in Sorted Array
-
-35 Search Insert Position
-
-154 Find Minimum in Rotated Sorted Array II
-
-162 Find Peak Element [**Facebook**]
-
-163 Longest Increasing Subsequence [**TikTok**]
-
-540 Single Element in a Sorted Array
-
-658 Find K Closest Elements [**Facebook**]
-
-1060 Missing Element in Sorted Array [**Facebook**]
-
-1095 Find in Mountain Array
-
-2089 Find Target Indices After Sorting Array [**TikTok**]
+[33. Search in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/033%20Search%20in%20Rotated%20Sorted%20Array.java) [**Facebook**]\
+[34. Find First and Last Position of Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/034%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.ts) [**Facebook**]\
+[35. Search Insert Position](https://github.com/jz33/LeetCodeSolutions/blob/master/035%20Search%20Insert%20Position.ts)\
+[162. Find Peak Element](https://github.com/jz33/LeetCodeSolutions/blob/master/162%20Find%20Peak%20Element.py) [**Facebook**]\
+[163. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
+[658. Find K Closest Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/658%20Find%20K%20Closest%20Elements.py) [**Facebook**]\
+[1060. Missing Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1060%20Missing%20Element%20in%20Sorted%20Array.ts) [**Facebook**]\
+[1095. Find in Mountain Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1095%20Find%20in%20Mountain%20Array.py)\
+[2089. Find Target Indices After Sorting Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2089%20Find%20Target%20Indices%20After%20Sorting%20Array.ts) [**TikTok**]
 
 ### Binary Guess
 
