@@ -29,8 +29,7 @@ class Solution:
         seen = set(nums) 
         while seen:
             value = seen.pop()
-            print(value)
-            # Expand from value
+            # Expand left and right from value
             count = 1
             pointer = value
             while pointer - 1 in seen:
