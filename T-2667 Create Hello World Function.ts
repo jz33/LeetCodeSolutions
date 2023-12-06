@@ -28,7 +28,7 @@ Constraints:
     0 <= args.length <= 10
 */
 function createHelloWorld() {
-	return function(..._args): string {
+    return function(..._args): string {
         return 'Hello World';
     };
 };
