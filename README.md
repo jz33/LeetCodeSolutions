@@ -20,63 +20,48 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Binary Guess
 
-774 Minimize Max Distance to Gas Station
-
-875 Koko Eating Bananas
-
-1011 Capacity To Ship Packages Within D Days [**Facebook**]
+[774. Minimize Max Distance to Gas Station](https://github.com/jz33/LeetCodeSolutions/blob/master/774%20Minimize%20Max%20Distance%20to%20Gas%20Station.py)\
+[875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py)\
+[1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]
 
 ### O(n)
 
-### Hashmap or Caching
+### Hashmap
 
-128 Longest Consecutive Sequence
-
-217 Contains Duplicate [**Facebook**]
-
-359 Logger Rate Limiter [**Google**]
-
-380 Insert Delete GetRandom O(1) [**Facebook, TikTok**]
-
-1762 Buildings With an Ocean View [**Facebook**]
-
-2365 Task Scheduler II [**Facebook**]
+[128. Longest Consecutive Sequence](https://github.com/jz33/LeetCodeSolutions/blob/master/128%20Longest%20Consecutive%20Sequence.py)\
+[217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
+[219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
+[380 Insert Delete GetRandom O(1)](https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py) [**Facebook, TikTok**]\
+[2365. Task Scheduler II]() [**Facebook**]
 
 ### Two Pointers Both Sides
 
-1 Two Sum
-
-15 3Sum [**Facebook**]
-
-125 Valid Palindrome [**Facebook**]
-
-167 Two Sum II - Input array is sorted
-
-680 Valid Palindrome II [**Facebook**]
-
-2422 Merge Operations to Turn Array Into a Palindrome [**TikTok**]
+[1. Two Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/0001%20Two%20Sum.py)\
+[15. 3Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/015%203Sum.ts) [**Facebook**]\
+[125. Valid Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/125%20Valid%20Palindrome.py) [**Facebook**]\
+[167. Two Sum II - Input array is sorted](https://github.com/jz33/LeetCodeSolutions/blob/master/167%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.ts)\
+[680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.ts) [**Facebook**]\
+[2422. Merge Operations to Turn Array Into a Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2422%20Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome.ts) [**TikTok**]
 
 ### Two Pointers Merge
 
-2 Add Two Numbers [**Amazon**]
-
-88 Merge Sorted Array [**Facebook**]
-
-415 Add Strings [**Facebook**]
-
-1570 Dot Product of Two Sparse Vectors [**Facebook**]
-
-1662 Check If Two String Arrays are Equivalent
-
-1868 Product of Two Run-Length Encoded Arrays [**Facebook**]
+[2. Add Two Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/0002%20Add%20Two%20Numbers.java) [**Amazon**]\
+[88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.ts) [**Facebook**]\
+[415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
+[1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
+[1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
+[1868. Product of Two Run-Length Encoded Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1868%20Product%20of%20Two%20Run-Length%20Encoded%20Arrays.py) [**Facebook**]
 
 ### Sliding Window
 
-3 Longest Substring Without Repeating Characters [**Facebook**]
-
-346 Moving Average from Data Stream [**Facebook**]
-
-30 Substring with Concatenation of All Words 31. Minimum Window Substring \*\* Facebook 32. Minimum Size Subarray Sum \*\*\* 33. Longest Substring with At Least K Repeating Characters 34. Find All Anagrams in a String 35. Permutation in String 36. Subarray Product Less Than K 37. Minimum Window Subsequence 38. Subarrays with K Different Integers # Double Sliding Window 39. Number of Substrings Containing All Three Characters \*\* Facebook
+[3. Longest Substring Without Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/0003%20Longest%20Substring%20Without%20Repeating%20Characters.py) [**Amazon, TikTok**]\
+[346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
+[76. Minimum Window Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/076%20Minimum%20Window%20Substring.py) [**Facebook**]\
+[209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
+[395. Longest Substring with At Least K Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/395%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.py) [**TikTok]\
+[713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
+[992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
+[1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.ts) [**Facebook**]
 
 # Sliding Window on Monotonic Queue
 
@@ -98,6 +83,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 61. Largest Values From Labels
 62. The kth Factor of n \*\* Facebook
 63. Find Palindrome With Fixed Length
+
+[1762. Buildings With an Ocean View]() [**Facebook**]
+
 
 **Prefix Sum or Prefix Max**
 
