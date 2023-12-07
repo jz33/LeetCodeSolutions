@@ -53,19 +53,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
 [1868. Product of Two Run-Length Encoded Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1868%20Product%20of%20Two%20Run-Length%20Encoded%20Arrays.py) [**Facebook**]
 
-### Sliding Window
-
-[3. Longest Substring Without Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/0003%20Longest%20Substring%20Without%20Repeating%20Characters.py) [**Amazon, TikTok**]\
-[346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
-[76. Minimum Window Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/076%20Minimum%20Window%20Substring.py) [**Facebook**]\
-[209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
-[239. Sliding Window Maximum](https://github.com/jz33/LeetCodeSolutions/blob/master/239%20Sliding%20Window%20Maximum.py) [**Facebook**]\
-[395. Longest Substring with At Least K Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/395%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.py) [**TikTok]\
-[713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
-[992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
-[1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.ts) [**Facebook**]
-
-
 ### 1-D Iteration or Greedy
 
 [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
@@ -90,16 +77,25 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
 [560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]\
 
+### Sliding Window
+
+[3. Longest Substring Without Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/0003%20Longest%20Substring%20Without%20Repeating%20Characters.py) [**Amazon, TikTok**]\
+[346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
+[76. Minimum Window Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/076%20Minimum%20Window%20Substring.py) [**Facebook**]\
+[209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
+[239. Sliding Window Maximum](https://github.com/jz33/LeetCodeSolutions/blob/master/239%20Sliding%20Window%20Maximum.py) [**Facebook**]\
+[395. Longest Substring with At Least K Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/395%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.py) [**TikTok**]\
+[713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
+[992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
+[1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.ts) [**Facebook**]
+
 ### Monotonic Stack
 
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.ts) [**Facebook**]\
-72. Largest Rectangle in Histogram
-73. Maximal Rectangle
-74. Remove K Digits \*\* TikTok
-75. Daily Temperatures \*\* TikTok
-76. Online Stock Span
-77. Odd Even Jump
-78. Number of Visible People in a Queue
+[84. Largest Rectangle in Histogram](https://github.com/jz33/LeetCodeSolutions/blob/master/084%20Largest%20Rectangle%20in%20Histogram.py) [**Facebook**]\
+[402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) [**TikTok**]\
+[739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.ts) [**TikTok**]\
+[1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]
 
 ### Stack, Calculator
 
@@ -198,6 +194,35 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### O(n^2) or O(n^3)
 
+### Matrix, BFS
+
+200. Number of Islands \*\* Facebook
+201. Walls and Gates
+202. Longest Increasing Path in a Matrix ** Facebook ** TikTok
+203. Flood Fill
+204. Snakes and Ladders
+205. Rotting Oranges
+206. Shortest Path in Binary Matrix \*\* Facebook
+207. As Far from Land as Possible
+208. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
+
+### Matrix, DFS
+
+694. Number of Distinct Islands
+
+### Matrix, 2-D
+
+48. Rotate Image
+49. Spiral Matrix
+50. Sparse Matrix Multiplication
+51. Toeplitz Matrix
+52. Rotating the Box \*\* TikTok
+
+### Matrix, 3-D
+
+363. Max Sum of Rectangle No Larger Than K
+364. Number of Submatrices That Sum to Target \*\*\*
+
 ### Bucket Sort
 
 358. Rearrange String k Distance Apart
@@ -207,7 +232,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 362. Divide Array in Sets of K Consecutive Numbers
 363. Longest Happy String
 
-**Palindromes**
+### Palindromes
 
 5 Longest Palindromic Substring
 647 Palindromic Substrings
@@ -406,36 +431,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 108. Construct Binary Tree from Preorder and Postorder Traversal
 109. Construct Binary Search Tree from Preorder Traversal
 
-### Graph & Matrix
-
-### Matrix, BFS
-
-200. Number of Islands \*\* Facebook
-201. Walls and Gates
-202. Longest Increasing Path in a Matrix ** Facebook ** TikTok
-203. Flood Fill
-204. Snakes and Ladders
-205. Rotting Oranges
-206. Shortest Path in Binary Matrix \*\* Facebook
-207. As Far from Land as Possible
-208. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
-
-### Matrix, DFS
-
-694. Number of Distinct Islands
-
-### Matrix, 2-D
-
-48. Rotate Image
-49. Spiral Matrix
-50. Sparse Matrix Multiplication
-51. Toeplitz Matrix
-52. Rotating the Box \*\* TikTok
-
-### Matrix, 3-D
-
-363. Max Sum of Rectangle No Larger Than K
-364. Number of Submatrices That Sum to Target \*\*\*
+### Graph
 
 ### Union Find
 
