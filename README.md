@@ -13,6 +13,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [35. Search Insert Position](https://github.com/jz33/LeetCodeSolutions/blob/master/035%20Search%20Insert%20Position.ts)\
 [162. Find Peak Element](https://github.com/jz33/LeetCodeSolutions/blob/master/162%20Find%20Peak%20Element.py) [**Facebook**]\
 [163. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
+[528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
 [658. Find K Closest Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/658%20Find%20K%20Closest%20Elements.py) [**Facebook**]\
 [1060. Missing Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1060%20Missing%20Element%20in%20Sorted%20Array.ts) [**Facebook**]\
 [1095. Find in Mountain Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1095%20Find%20in%20Mountain%20Array.py)\
@@ -25,15 +26,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]
 
 ### O(n)
-
-### Hashmap
-
-[128. Longest Consecutive Sequence](https://github.com/jz33/LeetCodeSolutions/blob/master/128%20Longest%20Consecutive%20Sequence.py)\
-[217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
-[219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
-[380 Insert Delete GetRandom O(1)](https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py) [**Facebook, TikTok**]\
-[398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
-[2365. Task Scheduler II]() [**Facebook**]
 
 ### Two Pointers Both Sides
 
@@ -67,23 +59,32 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
 [2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
 
+### Hashmap
+
+[128. Longest Consecutive Sequence](https://github.com/jz33/LeetCodeSolutions/blob/master/128%20Longest%20Consecutive%20Sequence.py)\
+[217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
+[219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
+[380 Insert Delete GetRandom O(1)](https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py) [**Facebook, TikTok**]\
+[398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
+[2365. Task Scheduler II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2365%20Task%20Scheduler%20II.ts) [**Facebook**]
+
 ### Prefix Sum or Prefix Max
 
 [303. Range Sum Query - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/303%20Range%20Sum%20Query%20-%20Immutable.js)\
 [304. Range Sum Query 2D - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/304%20Range%20Sum%20Query%202D%20-%20Immutable.py) [**Facebook**]\
-[670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.ts) [**Facebook**]\
 [325. Maximum Size Subarray Sum Equals k](https://github.com/jz33/LeetCodeSolutions/blob/master/325%20Maximum%20Size%20Subarray%20Sum%20Equals%20k.py)\
 [523. Continuous Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/523%20Continous%20Subarray%20Sum.py) [**Facebook**]\
 [528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
 [560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]\
+[670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.ts) [**Facebook**]\
 
 ### Sliding Window
 
 [3. Longest Substring Without Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/0003%20Longest%20Substring%20Without%20Repeating%20Characters.py) [**Amazon, TikTok**]\
-[346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
 [76. Minimum Window Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/076%20Minimum%20Window%20Substring.py) [**Facebook**]\
 [209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
 [239. Sliding Window Maximum](https://github.com/jz33/LeetCodeSolutions/blob/master/239%20Sliding%20Window%20Maximum.py) [**Facebook**]\
+[346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
 [395. Longest Substring with At Least K Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/395%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.py) [**TikTok**]\
 [713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
 [992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
@@ -99,23 +100,20 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Stack, Calculator
 
-224. Basic Calculator
-225. Basic Calculator II
-226. Basic Calculator III \*\* TikTok
-227. Mini Parser
-228. Decode String \*\* TikTok
-229. Number of Atoms
+[224. Basic Calculator](https://github.com/jz33/LeetCodeSolutions/blob/master/224%20Basic%20Calculator.ts)\
+[227. Basic Calculator II](https://github.com/jz33/LeetCodeSolutions/blob/master/227%20Basic%20Calculator%20II.py) [**Facebook**]\
+[772. Basic Calculator III](https://github.com/jz33/LeetCodeSolutions/blob/master/772%20Basic%20Calculator%20III.py) [**TikTok**]\
+[394. Decode String](https://github.com/jz33/LeetCodeSolutions/blob/master/394%20Decode%20String.py) [**TikTok**]
 
 ### Stack, Parentheses
 
-20. Valid Parentheses
-21. Longest Valid Parentheses
-22. Exclusive Time of Functions \*\* Facebook
-23. Valid Parenthesis String
-24. Score of Parentheses \*\* TikTok
-25. Minimum Add to Make Parentheses Valid
-26. Minimum Remove to Make Valid Parentheses \*\* Facebook
-27. Minimum Insertions to Balance a Parentheses String \*\* Facebook
+[20. Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/020%20Valid%20Parentheses.py)\
+[301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) [**Facebook**]\
+[636. Exclusive Time of Functions](https://github.com/jz33/LeetCodeSolutions/blob/master/636%20Exclusive%20Time%20of%20Functions.ts) [**Facebook**]\
+[856. Score of Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/856%20Score%20of%20Parentheses.py) [**TikTok**]\
+[921. Minimum Add to Make Parentheses Valid](https://github.com/jz33/LeetCodeSolutions/blob/master/921%20Minimum%20Add%20to%20Make%20Parentheses%20Valid.go) [**Facebook**]\
+[1249. Minimum Remove to Make Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1249%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses.py) [**Facebook**]\
+[1541. Minimum Insertions to Balance a Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1541%20Minimum%20Insertions%20to%20Balance%20a%20Parentheses%20String.ts)
 
 ### Intervals
 
@@ -241,7 +239,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Backtracking
 
-22. Generate Parentheses
+[22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
 23. Sudoku Solver
 24. Combination Sum II
 25. N-Queens
