@@ -32,6 +32,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
 [219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
 [380 Insert Delete GetRandom O(1)](https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py) [**Facebook, TikTok**]\
+[398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
 [2365. Task Scheduler II]() [**Facebook**]
 
 ### Two Pointers Both Sides
@@ -58,51 +59,40 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
 [76. Minimum Window Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/076%20Minimum%20Window%20Substring.py) [**Facebook**]\
 [209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
+[239. Sliding Window Maximum](https://github.com/jz33/LeetCodeSolutions/blob/master/239%20Sliding%20Window%20Maximum.py) [**Facebook**]\
 [395. Longest Substring with At Least K Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/395%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.py) [**TikTok]\
 [713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
 [992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
 [1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.ts) [**Facebook**]
 
-# Sliding Window on Monotonic Queue
 
-239. Sliding Window Maximum \*\*\*
-240. Maximum Average Subarray II
-241. Shortest Subarray with Sum at Least K \*\*\*
+### 1-D Iteration or Greedy
 
-# 1-D Iteration, Greedy
+[45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
+[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
+[229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
+[240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
+[384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
+[408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
+[418. Sentence Screen Fitting](https://github.com/jz33/LeetCodeSolutions/blob/master/418%20Sentence%20Screen%20Fitting.py) [**TikTok**]\
+[605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
+[621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) [**TikTok**]\
+[1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
+[2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
 
-621 Task Scheduler **TikTok** 45. Jump Game II 46. Best Time to Buy and Sell Stock 47. Best Time to Buy and Sell Stock II 48. Majority Element II 49. Search a 2D Matrix II 50. Increasing Triplet Subsequence \*\* TikTok 51. Valid Word Abbreviation \*\* Facebook 52. Sentence Screen Fitting \*\* TikTok
+### Prefix Sum or Prefix Max
 
-54. Course Schedule III
-55. Maximum Length of Pair Chain
-56. Can Place Flowers \*\* Facebook
-57. Maximum Swap
-58. Expressive Words
-59. Campus Bikes
-60. Two City Scheduling \*\* TikTok
-61. Largest Values From Labels
-62. The kth Factor of n \*\* Facebook
-63. Find Palindrome With Fixed Length
+[303. Range Sum Query - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/303%20Range%20Sum%20Query%20-%20Immutable.js)\
+[304. Range Sum Query 2D - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/304%20Range%20Sum%20Query%202D%20-%20Immutable.py) [**Facebook**]\
+[670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.ts) [**Facebook**]\
+[325. Maximum Size Subarray Sum Equals k](https://github.com/jz33/LeetCodeSolutions/blob/master/325%20Maximum%20Size%20Subarray%20Sum%20Equals%20k.py)\
+[523. Continuous Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/523%20Continous%20Subarray%20Sum.py) [**Facebook**]\
+[528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
+[560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]\
 
-[1762. Buildings With an Ocean View]() [**Facebook**]
+### Monotonic Stack
 
-
-**Prefix Sum or Prefix Max**
-
-303 Range Sum Query - Immutable
-304 Range Sum Query 2D - Immutable **Facebook**
-307 Range Sum Query - Mutable
-308 Range Sum Query 2D - Mutable
-325 Maximum Size Subarray Sum Equals k
-523 Continuous Subarray Sum **Facebook**
-528 Random Pick with Weight **Facebook**
-560 Subarray Sum Equals K **Facebook**
-1010 Pairs of Songs With Total Durations Divisible by 60 **TikTok**
-1314 Matrix Block Sum
-
-# Monotonic Stack
-
-71. Simplify Path
+[71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.ts) [**Facebook**]\
 72. Largest Rectangle in Histogram
 73. Maximal Rectangle
 74. Remove K Digits \*\* TikTok
@@ -111,7 +101,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 77. Odd Even Jump
 78. Number of Visible People in a Queue
 
-# Stack, Calculator
+### Stack, Calculator
 
 224. Basic Calculator
 225. Basic Calculator II
@@ -120,7 +110,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 228. Decode String \*\* TikTok
 229. Number of Atoms
 
-# Stack, Parentheses
+### Stack, Parentheses
 
 20. Valid Parentheses
 21. Longest Valid Parentheses
@@ -131,7 +121,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 26. Minimum Remove to Make Valid Parentheses \*\* Facebook
 27. Minimum Insertions to Balance a Parentheses String \*\* Facebook
 
-# Intervals
+### Intervals
 
 56. Merge Intervals \*\* Facebook
 57. Insert Intervals
@@ -145,7 +135,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 65. Meeting Scheduler
 66. Remove Interval
 
-# Hashing
+### Hashing
 
 49. Group Anagrams
 50. Repeated DNA Sequences
@@ -154,18 +144,14 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 53. Maximum Product of Word Lengths
 54. Custom Sort String
 
----
+### O(nlog(n))
 
-O(nlog(n))
-
----
-
-# Sort
+### Sort
 
 1366. Rank Teams by Votes \*\* TikTok
 1367. Maximum Length of Semi-Decreasing Subarrays \*\* TikTok
 
-# Heap
+### Heap
 
 23. Merge k Sorted Lists \*\* Facebook
 24. The Skyline Problem
@@ -177,11 +163,11 @@ O(nlog(n))
 30. K Closest Points to Origin \*\* Facebook
 31. Minimum Cost to Connect Sticks
 
-# Double Heap
+### Double Heap
 
 295. Find Median from Data Stream
 
-# Treemap
+### Treemap
 
 480. Sliding Window Median \*\* Python SortedDict
 481. Range Module \*\* Java TreeMap
@@ -190,18 +176,18 @@ O(nlog(n))
 484. Exam Room \*\* Python SortedList
 485. Amount of New Area Painted Each Day ** TikTok ** Python SortedDict
 
-# Divide and Conquer
+### Divide and Conquer
 
 4 Median of Two Sorted Arrays **Facebook**
 215 Kth Largest Element in an Array **Facebook**
 
-# Mergesort
+### Mergesort
 
 315. Count of Smaller Numbers After Self \*\*\*
 316. Count of Range Sum
 317. Reverse Pairs
 
-# Trie
+### Trie
 
 208. Implement Trie
 209. Add and Search Word - Data structure design
@@ -210,13 +196,9 @@ O(nlog(n))
 212. Design Search Autocomplete System
 213. Stream of Characters
 
----
+### O(n^2) or O(n^3)
 
-O(n^2) or O(n^3)
-
----
-
-# Bucket Sort
+### Bucket Sort
 
 358. Rearrange String k Distance Apart
 359. Split Array into Consecutive Subsequences
@@ -230,13 +212,9 @@ O(n^2) or O(n^3)
 5 Longest Palindromic Substring
 647 Palindromic Substrings
 
----
+### Exponential or Factorial
 
-Exponential or Factorial
-
----
-
-# Backtracking
+### Backtracking
 
 22. Generate Parentheses
 23. Sudoku Solver
@@ -250,18 +228,18 @@ Exponential or Factorial
 31. Letter Tile Possibilities
 32. Path with Maximum Gold
 
-# DFS
+### DFS
 
 22. Generate Parentheses
 23. Palindrome Partitioning
 24. Expression Add Operators
 25. Robot Room Cleaner
-26. Stickers to Spell Word \*\* Facebook
+[691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
 27. Tiling a Rectangle with the Fewest Squares
 
-# Permutations
+### Permutations
 
-17. Letter Combinations of a Phone Number
+[17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
 18. Next Permutation
 19. Permutations
 20. Permutations II
@@ -271,13 +249,9 @@ Exponential or Factorial
 24. Number of Squareful Arrays \*\* Facebook
 25. Number of Ways to Split a String \*\* TikTok
 
----
+### Dynamic Programming
 
-Dynamic Programming
-
----
-
-# Constant State Dynamic Programming
+### Constant State Dynamic Programming
 
 53. Maximum Subarray
 54. Decode Ways
@@ -287,7 +261,7 @@ Dynamic Programming
 58. Maximum Subarray Sum with One Deletion \*\* Facebook
 59. The Number of Beautiful Subsets \*\* Facebook
 
-# 1-D Cache 1-D Dynamic Programming
+### 1-D Cache 1-D Dynamic Programming
 
 42. Trapping Rain Water \*\* Facebook
 43. Best Time to Buy and Sell Stock III
@@ -297,7 +271,7 @@ Dynamic Programming
 47. Longest Arithmetic Subsequence of Given Difference
 48. Count Increasing Quadruplets \*\* TikTok
 
-# 1-D Cache 2-D Dynamic Programming
+### 1-D Cache 2-D Dynamic Programming
 
 39. Combination Sum == 518. Coin Change 2
 40. Interleaving String
@@ -308,7 +282,7 @@ Dynamic Programming
 45. Longest String Chain
 46. Number of Dice Rolls With Target Sum
 
-# 2-D Cache 2-D Dynamic Programming
+### 2-D Cache 2-D Dynamic Programming
 
 40. Combination Sum II
 41. Minimum Path Sum
@@ -321,7 +295,7 @@ Dynamic Programming
 48. Maximum Length of Repeated Subarray
 49. Longest Common Subsequence
 
-# Top down Dynamic Programming
+### Top down Dynamic Programming
 
 10. Regular Expression Matching
 11. Wildcard Matching
@@ -333,19 +307,15 @@ Dynamic Programming
 17. Minimum Cost Tree From Leaf Values
 18. Minimum Difficulty of a Job Schedule
 
----
+### Linked List
 
-Linked List
-
----
-
-# Double Linked List
+### Double Linked List
 
 146. LRU Cache \*\*\*
 147. All O`one Data Structure
 148. LFU Cache \*\*\*
 
-# Single Linked List
+### Single Linked List
 
 138. Copy List with Random Pointer \*\* Facebook
      141 Linked List Cycle
@@ -358,13 +328,9 @@ Linked List
 144. Insert into a Sorted Circular Linked List
 145. Linked List Components
 
----
+### Tree
 
-Tree
-
----
-
-# Preorder Traversal
+### Preorder Traversal
 
 226. Invert Binary Tree
 227. Flatten Nested List Iterator
@@ -376,7 +342,7 @@ Tree
 233. Construct Binary Search Tree from Preorder Traversal
 234. Maximum Difference Between Node and Ancestor
 
-# Inorder Traversal
+### Inorder Traversal
 
 98. Validate Binary Search Tree
 99. Recover Binary Search Tree
@@ -384,7 +350,7 @@ Tree
 101.  Convert BST to Greater Tree
 102.  Two Sum BSTs
 
-# Postorder Traversal
+### Postorder Traversal
 
 95. Unique Binary Search Trees II
 96. Binary Tree Maximum Path Sum
@@ -401,7 +367,7 @@ Tree
 107.  Tree Diameter
       2265 Count Nodes Equal to Average of Subtree **Facebook**
 
-# Level Order Traversal
+### Level Order Traversal
 
 100. Same Tree
 101. Symmetric Tree
@@ -414,25 +380,25 @@ Tree
 108. Nested List Weight Sum \*\* Facebook
 109. Check Completeness of a Binary Tree
 
-# Tree, DFS
+### Tree, DFS
 
 545. Boundary of Binary Tree
 
-# LCA
+### LCA
 
-235. Lowest Common Ancestor of a Binary Search Tree
-236. Lowest Common Ancestor of a Binary Tree
-237. Smallest Subtree with all the Deepest Nodes == 1123. Lowest Common Ancestor of Deepest Leaves \*\* Facebook
-238. Lowest Common Ancestor of a Binary Tree II \*\* Facebook
-239. Lowest Common Ancestor of a Binary Tree III \*\* Facebook
-240. Step-By-Step Directions From a Binary Tree Node to Another \*\* TikTok
+235. Lowest Common Ancestor of a Binary Search Tree [**Facebook**]\
+236. Lowest Common Ancestor of a Binary Tree [**Facebook**]\
+237. Smallest Subtree with all the Deepest Nodes == 1123. Lowest Common Ancestor of Deepest Leaves [**Facebook**]\
+238. Lowest Common Ancestor of a Binary Tree II [**Facebook**]\
+239. Lowest Common Ancestor of a Binary Tree III [**Facebook**]\
+240. Step-By-Step Directions From a Binary Tree Node to Another [**TikTok**]\
 
-# Binary Search Tree
+### Binary Search Tree
 
 776. Split BST
 777. Find Elements in a Contaminated Binary Tree
 
-# Tree Construction
+### Tree Construction
 
 105. Construct Binary Tree from Preorder and Inorder Traversal
 106. Construct Binary Tree from Inorder and Postorder Traversal
@@ -440,13 +406,9 @@ Tree
 108. Construct Binary Tree from Preorder and Postorder Traversal
 109. Construct Binary Search Tree from Preorder Traversal
 
----
+### Graph & Matrix
 
-Graph & Matrix
-
----
-
-# Matrix, BFS
+### Matrix, BFS
 
 200. Number of Islands \*\* Facebook
 201. Walls and Gates
@@ -458,11 +420,11 @@ Graph & Matrix
 207. As Far from Land as Possible
 208. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
 
-# Matrix, DFS
+### Matrix, DFS
 
 694. Number of Distinct Islands
 
-# Matrix, 2-D
+### Matrix, 2-D
 
 48. Rotate Image
 49. Spiral Matrix
@@ -470,12 +432,12 @@ Graph & Matrix
 51. Toeplitz Matrix
 52. Rotating the Box \*\* TikTok
 
-# Matrix, 3-D
+### Matrix, 3-D
 
 363. Max Sum of Rectangle No Larger Than K
 364. Number of Submatrices That Sum to Target \*\*\*
 
-# Union Find
+### Union Find
 
 305. Number of Islands II
 306. Evaluate Division
@@ -488,7 +450,7 @@ Graph & Matrix
 313. Regions Cut By Slashes
 314. Connecting Cities With Minimum Cost
 
-# Topological Sort O(E + V)
+### Topological Sort O(E + V)
 
 210. Course Schedule II \*\* TikTok
 211. Alien Dictionary \*\* Facebook
@@ -498,7 +460,7 @@ Graph & Matrix
 215. Course Schedule IV
 216. Find All Possible Recipes from Given Supplies \*\* TikTok
 
-# Dijkstra E \* log(V)
+### Dijkstra E \* log(V)
 
 490. The Maze
 491. Cheapest Flights Within K Stops
@@ -506,7 +468,7 @@ Graph & Matrix
 492. Path With Maximum Minimum Value
      Google Onsite 03 Minimum Modification on Matrix Route
 
-# BFS
+### BFS
 
 126. Word Ladder
 127. Word Ladder II
@@ -517,48 +479,25 @@ Graph & Matrix
 132. Possible Bipartition.ts \*\* TikTok
 133. Jump Game IV \*\* TikTok
 
-# DFS
+### DFS
 
 133. Clone Graph
 134. Cherry Pickup
 135. Find Eventual Safe States
 136. All Paths from Source Lead to Destination
 
-# Special Graph Algorithms
+### Special Graph Algorithms
 
 834. Sum of Distances in Tree # Tree DP \*\* TikTok
 835. Optimize Water Distribution in a Village # Kruskal
 836. Critical Connections in a Network # Tarjan
 837. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
 
----
-
-Brainteaser
-
----
-
-459. Repeated Substring Pattern
-460. Max Chunks To Make Sorted II
-461. Max Chunks To Make Sorted
-462. Distinct Subsequences II
-463. Largest Time for Given Digits
-464. Element Appearing More Than 25% In Sorted Array
-
----
-
-Automata
-
----
+### Automata
 
 65. Valid Number \*\* Facebook
-66. Longest Mountain in Array
-67. Monotonic Array
 
----
-
-Math: Numbers
-
----
+### Math: Numbers
 
 8. String to Integer (atoi)
 9. Integer to Roman
@@ -573,24 +512,7 @@ Math: Numbers
 17. Prison Cells After N Days
 18. Confusing Number II
 
----
+### Math: Geometry
 
-Math: Random
+[150. Rectangle Area](https://github.com/jz33/LeetCodeSolutions/blob/master/223%20Rectangel%20Area.py)
 
----
-
-384. Shuffle an Array
-385. Random Pick Index
-386. Random Pick with Weight
-
----
-
-Math: Geometry
-
----
-
-149. Max Points on a Line # Mocked
-150. Rectangle Area
-151. Valid Square
-152. Rectangle Overlap
-153. Minimum Area Rectangle
