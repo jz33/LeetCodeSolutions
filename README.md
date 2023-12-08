@@ -39,8 +39,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Two Pointers Merge
 
 [2. Add Two Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/0002%20Add%20Two%20Numbers.java) [**Amazon**]\
+[56. Merge Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/056%20Merge%20Intervals.py) [**Facebook**]\
 [88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.ts) [**Facebook**]\
 [415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
+[986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.ts) [**Facebook**, union not intersection]\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
 [1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
 [1868. Product of Two Run-Length Encoded Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1868%20Product%20of%20Two%20Run-Length%20Encoded%20Arrays.py) [**Facebook**]
@@ -117,7 +119,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Intervals
 
-56. Merge Intervals \*\* Facebook
 57. Insert Intervals
 58. Meeting Rooms II \*\* TikTok
 59. Non-overlapping Intervals
@@ -388,7 +389,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 105.  Delete Nodes And Return Forest
 106.  Lowest Common Ancestor of Deepest Leaves
 107.  Tree Diameter
-      2265 Count Nodes Equal to Average of Subtree **Facebook**
+[865. Smallest Subtree with all the Deepest Nodes](https://github.com/jz33/LeetCodeSolutions/blob/master/865%20Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes.ts)
+2265. Count Nodes Equal to Average of Subtree **Facebook**
+
+### LCA
+
+[235. Lowest Common Ancestor of a Binary Search Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/235%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree.ts)\
+[236. Lowest Common Ancestor of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.py) [**Facebook**]\
+[1644. Lowest Common Ancestor of a Binary Tree II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1644%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20II.py) [**Facebook**]\
+[1650. Lowest Common Ancestor of a Binary Tree III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1650%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20III.ts) [**Facebook**]\
 
 ### Level Order Traversal
 
@@ -406,15 +415,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Tree, DFS
 
 545. Boundary of Binary Tree
-
-### LCA
-
-235. Lowest Common Ancestor of a Binary Search Tree [**Facebook**]\
-236. Lowest Common Ancestor of a Binary Tree [**Facebook**]\
-237. Smallest Subtree with all the Deepest Nodes == 1123. Lowest Common Ancestor of Deepest Leaves [**Facebook**]\
-238. Lowest Common Ancestor of a Binary Tree II [**Facebook**]\
-239. Lowest Common Ancestor of a Binary Tree III [**Facebook**]\
-240. Step-By-Step Directions From a Binary Tree Node to Another [**TikTok**]\
 
 ### Binary Search Tree
 
