@@ -2,7 +2,9 @@
 112. Path Sum
 https://leetcode.com/problems/path-sum/
 
-Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+Given the root of a binary tree and an integer targetSum,
+return true if the tree has a root-to-leaf path such that
+adding up all the values along the path equals targetSum.
 
 A leaf is a node with no children.
 
@@ -28,7 +30,6 @@ Output: false
 Explanation: Since the tree is empty, there are no root-to-leaf paths.
 
 Constraints:
-
     The number of nodes in the tree is in the range [0, 5000].
     -1000 <= Node.val <= 1000
     -1000 <= targetSum <= 1000
