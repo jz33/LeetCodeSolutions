@@ -101,3 +101,51 @@ class Solution:
                 return lca
   
         return None
+
+'''
+Recursive method.
+Same method as 1644. Lowest Common Ancestor of a Binary Tree II
+'''
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        foundP, foundQ = False, False
+
+        def postorder(node: Union['TreeNode', None]) -> Union['TreeNode', None]:
+            '''
+            @return: p or q or lca, or None if no p or q not found under this tree
+            '''
+            nonlocal foundP, foundQ
+            if foundP and foundQ:
+                return None
+            if node is None:
+                return None
+
+            left = postorder(node.left)
+            right = postorder(node.right)
+            if left and right:
+                # This node is the LCA, as p and q are on each branch
+                foundLCA = True
+                return node
+            elif node.val == p.val:
+                # This node is p, it could be the LCA.
+                foundP = True
+                return node
+            elif node.val == q.val:
+                # This node is q, it could be the LCA.
+                foundQ = True
+                return node
+            elif left:
+                # Found p or q in left branch
+                return left
+            elif right:
+                # Found p or q in left branch
+                return right
+            else:
+                # Not found p or q in this tree
+                return None
+
+        lca = postorder(root)
+
+        # Even if lca is not None, it is possible only one of p or q exists,
+        # therefore must make sure both p and q are found
+        return lca if foundP and foundQ else None
