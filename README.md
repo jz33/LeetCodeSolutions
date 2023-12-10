@@ -193,22 +193,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### O(n^2) or O(n^3)
 
-### Matrix, BFS
-
-200. Number of Islands \*\* Facebook
-201. Walls and Gates
-202. Longest Increasing Path in a Matrix ** Facebook ** TikTok
-203. Flood Fill
-204. Snakes and Ladders
-205. Rotting Oranges
-206. Shortest Path in Binary Matrix \*\* Facebook
-207. As Far from Land as Possible
-208. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
-
-### Matrix, DFS
-
-694. Number of Distinct Islands
-
 ### Matrix, 2-D
 
 48. Rotate Image
@@ -431,6 +415,22 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Graph
 
+### Matrix, BFS
+[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**]\
+[827. Making A Large Island](https://github.com/jz33/LeetCodeSolutions/blob/master/827%20Making%20A%20Large%20Island.py) [**Facebook**]\
+201. Walls and Gates
+202. Longest Increasing Path in a Matrix ** Facebook ** TikTok
+203. Flood Fill
+204. Snakes and Ladders
+205. Rotting Oranges
+206. Shortest Path in Binary Matrix \*\* Facebook
+207. As Far from Land as Possible
+209. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
+
+### Matrix, DFS
+
+[694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.ts)
+     
 ### Union Find
 
 305. Number of Islands II
@@ -489,7 +489,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Automata
 
-65. Valid Number \*\* Facebook
+[65. Valid Number](https://github.com/jz33/LeetCodeSolutions/blob/master/065%20Valid%20Number.py) [**Facebook**]
 
 ### Math: Numbers
 
