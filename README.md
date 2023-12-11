@@ -346,6 +346,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [144. Binary Tree Preorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/144%20Binary%20Tree%20Preorder%20Traversal.ts)\
 [341. Flatten Nested List Iterator](https://github.com/jz33/LeetCodeSolutions/blob/master/341%20Flatten%20Nested%20List%20Iterator.py)\
 [437. Path Sum III](https://github.com/jz33/LeetCodeSolutions/blob/master/437%20Path%20Sum%20III.py)\
+[545. Boundary of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/545%20Boundary%20of%20Binary%20Tree.py) \
+[958. Check Completeness of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/958%20Check%20Completeness%20of%20a%20Binary%20Tree.py)\
 
 ### Inorder Traversal, BST
 
@@ -383,14 +385,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)\
 [314. Binary Tree Vertical Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/314%20Binary%20Tree%20Vertical%20Order%20Traversal.py) [**Facebook**]\
 [339. Nested List Weight Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/339%20Nested%20List%20Weight%20Sum.ts) [**Facebook**]\
-[958. Check Completeness of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/958%20Check%20Completeness%20of%20a%20Binary%20Tree.py)\
 [987. Vertical Order Traversal of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/987%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree.py) [**Facebook**]
 
 ### Divide and Conquer on Tree
 
 [105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.py)\
 [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/106%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.py)\
-[545. Boundary of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/545%20Boundary%20of%20Binary%20Tree.py) \
 [889. Construct Binary Tree from Preorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/889%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Postorder%20Traversal.py)
 
 ### Graph
