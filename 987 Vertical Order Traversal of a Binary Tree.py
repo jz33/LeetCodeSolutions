@@ -2,79 +2,86 @@
 987. Vertical Order Traversal of a Binary Tree
 https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
 
-Given a binary tree, return the vertical order traversal of its nodes values.
+Given the root of a binary tree, calculate the vertical order traversal of the binary tree.
 
-For each node at position (X, Y), its left and right children respectively will be at positions (X-1, Y-1) and (X+1, Y-1).
+For each node at position (row, col),
+its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively.
+The root of the tree is at (0, 0).
 
-Running a vertical line from X = -infinity to X = +infinity, whenever the vertical line touches some nodes,
-we report the values of the nodes in order from top to bottom (decreasing Y coordinates).
+The vertical order traversal of a binary tree is a list of
+top-to-bottom orderings for each column index starting from the leftmost column and
+ending on the rightmost column. There may be multiple nodes in the same row and same column.
+In such a case, sort these nodes by their values.
 
-If two nodes have the same position, then the value of the node that is reported first is the value that is smaller.
-
-Return an list of non-empty reports in order of X coordinate.  Every report will have a list of values of nodes.
+Return the vertical order traversal of the binary tree.
 
 Example 1:
 
-Input: [3,9,20,null,null,15,7]
+Input: root = [3,9,20,null,null,15,7]
 Output: [[9],[3,15],[20],[7]]
-
-Explanation: 
-Without loss of generality, we can assume the root node is at position (0, 0):
-Then, the node with value 9 occurs at position (-1, -1);
-The nodes with values 3 and 15 occur at positions (0, 0) and (0, -2);
-The node with value 20 occurs at position (1, -1);
-The node with value 7 occurs at position (2, -2).
+Explanation:
+Column -1: Only node 9 is in this column.
+Column 0: Nodes 3 and 15 are in this column in that order from top to bottom.
+Column 1: Only node 20 is in this column.
+Column 2: Only node 7 is in this column.
 
 Example 2:
 
-Input: [1,2,3,4,5,6,7]
+Input: root = [1,2,3,4,5,6,7]
 Output: [[4],[2],[1,5,6],[3],[7]]
-Explanation: 
-The node with value 5 and the node with value 6 have the same position according to the given scheme.
-However, in the report "[1,5,6]", the node value of 5 comes first since 5 is smaller than 6.
+Explanation:
+Column -2: Only node 4 is in this column.
+Column -1: Only node 2 is in this column.
+Column 0: Nodes 1, 5, and 6 are in this column.
+          1 is at the top, so it comes first.
+          5 and 6 are at the same position (2, 0), so we order them by their value, 5 before 6.
+Column 1: Only node 3 is in this column.
+Column 2: Only node 7 is in this column.
+
+Example 3:
+
+Input: root = [1,2,3,4,6,5,7]
+Output: [[4],[2],[1,5,6],[3],[7]]
+Explanation:
+This case is the exact same as example 2, but with nodes 5 and 6 swapped.
+Note that the solution remains the same since 5 and 6 are in the same location and should be ordered by their values.
+
+Constraints:
+    The number of nodes in the tree is in the range [1, 1000].
+    0 <= Node.val <= 1000
 '''
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution:
+    '''
+    Nearly same approach as 314. Binary Tree Vertical Order Traversal
+    '''
     def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
         if not root:
             return []
         
-        histo = collections.defaultdict(list) # { X value : [node values]}
-        stack = [(root, 0)] # [(node, X value)]
-        maxX = float('-inf')
-        minX = float('inf')
-        while stack:
-            row = collections.defaultdict(list)
-            newStack = []
-            for node, x in stack:
-                row[x].append(node.val)
-                maxX = max(maxX, x)
-                minX = min(minX, x)
+        nodes = [(root, 0)] # [(node, x offset)]
+        book = collections.defaultdict(list) # {x offset : [values]}
+        minOffset = 0
+        maxOffset = 0
+        while nodes:
+            newNodes = []
+            # Use an inner book to track values as it requires the values
+            # on same row on same offset to be sorted
+            newBook = collections.defaultdict(list)
+            for node, offset in nodes:
+                newBook[offset].append(node.val)
+                minOffset = min(minOffset, offset)
+                maxOffset = max(maxOffset, offset)
                 if node.left:
-                    newStack.append((node.left, x - 1))
+                    newNodes.append((node.left, offset - 1))
                 if node.right:
-                    newStack.append((node.right, x + 1))
-
-            for k,v in row.items():
-                histo[k] += sorted(v)
+                    newNodes.append((node.right, offset + 1))
             
-            stack = newStack
+            nodes = newNodes
+            for offset, values in newBook.items():
+                book[offset] += sorted(values)
             
-        # Use max x and min x to iterate histogram. This avoids sort.
+        # User min/max offset to avoid sorting
         result = []
-        for i in range(minX, maxX + 1):
-            values = histo.get(i)
-            if values:
-                result.append(values)
+        for offset in range(minOffset, maxOffset + 1):
+            result.append(book[offset])
         return result
