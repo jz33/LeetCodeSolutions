@@ -339,79 +339,59 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Tree
 
 ### Preorder Traversal
+[100. Same Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/100%20Same%20Tree.py)\
+[101. Symmetric Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/101%20Symmetric%20Tree.py)\
+[112. Path Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/112%20Path%20Sum.py)\
+[113. Path Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/113%20Path%20Sum%20II.py)\
+[144. Binary Tree Preorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/144%20Binary%20Tree%20Preorder%20Traversal.ts)\
+[341. Flatten Nested List Iterator](https://github.com/jz33/LeetCodeSolutions/blob/master/341%20Flatten%20Nested%20List%20Iterator.py)\
+[437. Path Sum III](https://github.com/jz33/LeetCodeSolutions/blob/master/437%20Path%20Sum%20III.py)\
 
-226. Invert Binary Tree
-227. Flatten Nested List Iterator
-228. Lexicographical Numbers
-229. Flatten a Multilevel Doubly Linked List
-230. Path Sum III
-231. K-th Smallest in Lexicographical Order
-232. Flip Equivalent Binary Trees \*\*\*
-233. Construct Binary Search Tree from Preorder Traversal
-234. Maximum Difference Between Node and Ancestor
+### Inorder Traversal, BST
 
-### Inorder Traversal
-
-98. Validate Binary Search Tree
-99. Recover Binary Search Tree
-100.  Kth Smallest Element in a BST
-101.  Convert BST to Greater Tree
-102.  Two Sum BSTs
+[94. Binary Tree Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/094%20Binary%20Tree%20Inorder%20Traversal.java)\
+[98. Validate Binary Search Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/098%20Validate%20Binary%20Search%20Tree.py)\
+[100. Same Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/100%20Same%20Tree.py)\
+[173. Binary Search Tree Iterator](https://github.com/jz33/LeetCodeSolutions/blob/master/173%20Binary%20Search%20Tree%20Iterator.py) [**Facebook**]\
+[230. Kth Smallest Element in a BST](https://github.com/jz33/LeetCodeSolutions/blob/master/230%20Kth%20Smallest%20Element%20in%20a%20BST.py)\
+[426. Convert Binary Search Tree to Sorted Doubly Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/426%20Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List.py) [**Facebook**]\
+[1008. Construct Binary Search Tree from Preorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1008%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal.py)
 
 ### Postorder Traversal
 
-95. Unique Binary Search Trees II
-96. Binary Tree Maximum Path Sum
-97. Binary Tree Postorder Traversal
-98. Lowest Common Ancestor of a Binary Tree
-99. Largest BST Subtree \*\* TikTok
-100.  House Robber III
-101.  Diameter of Binary Tree \*\* Facebook
-102.  Find Duplicate Subtrees
-103.  All Possible Full Binary Trees
-104.  Binary Tree Cameras # Greedy
-105.  Delete Nodes And Return Forest
-106.  Lowest Common Ancestor of Deepest Leaves
-107.  Tree Diameter
-[865. Smallest Subtree with all the Deepest Nodes](https://github.com/jz33/LeetCodeSolutions/blob/master/865%20Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes.ts)
-2265. Count Nodes Equal to Average of Subtree **Facebook**
+[95. Unique Binary Search Trees II](https://github.com/jz33/LeetCodeSolutions/blob/master/095%20Unique%20Binary%20Search%20Trees%20II.py)\
+[124. Binary Tree Maximum Path Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/124%20Binary%20Tree%20Maximum%20Path%20Sum.py)\
+[145. Binary Tree Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/145%20Binary%20Tree%20Postorder%20Traversal.ts)\
+[333. Largest BST Subtree](https://github.com/jz33/LeetCodeSolutions/blob/master/333%20Largest%20BST%20Subtree.ts) [**TikTok**]\
+[543. Diameter of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/543%20Diameter%20of%20Binary%20Tree.ts) [**Facebook**]\
+[865. Smallest Subtree with all the Deepest Nodes](https://github.com/jz33/LeetCodeSolutions/blob/master/865%20Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes.ts)\
+[2265. Count Nodes Equal to Average of Subtree](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2265%20Count%20Nodes%20Equal%20to%20Average%20of%20Subtree.ts)
 
 ### LCA
 
 [235. Lowest Common Ancestor of a Binary Search Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/235%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree.ts)\
 [236. Lowest Common Ancestor of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.py) [**Facebook**]\
 [1644. Lowest Common Ancestor of a Binary Tree II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1644%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20II.py) [**Facebook**]\
-[1650. Lowest Common Ancestor of a Binary Tree III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1650%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20III.ts) [**Facebook**]\
+[1650. Lowest Common Ancestor of a Binary Tree III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1650%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20III.ts) [**Facebook**]
 
 ### Level Order Traversal
 
-100. Same Tree
-101. Symmetric Tree
-102. Binary Tree Level Order Traversal
-103. Binary Tree Zigzag Level Order Traversal
-104. Path Sum
-105. Binary Tree Right Side View \*\* Facebook
-106. Serialize and Deserialize Binary Tree
-107. Binary Tree Vertical Order Traversal \*\* Facebook
-108. Nested List Weight Sum \*\* Facebook
-109. Check Completeness of a Binary Tree
+[102. Binary Tree Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/102%20Binary%20Tree%20Level%20Order%20Traversal.java)\
+[103. Binary Tree Zigzag Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/103%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.py)\
+[199. Binary Tree Right Side View](https://github.com/jz33/LeetCodeSolutions/blob/master/199%20Binary%20Tree%20Right%20Side%20View.ts) [**Facebook**]\
+[226. Invert Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/226%20Invert%20Binary%20Tree.py)\
+[297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)\
+[314. Binary Tree Vertical Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/314%20Binary%20Tree%20Vertical%20Order%20Traversal.py) [**Facebook**]\
+[339. Nested List Weight Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/339%20Nested%20List%20Weight%20Sum.ts) [**Facebook**]\
+[958. Check Completeness of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/958%20Check%20Completeness%20of%20a%20Binary%20Tree.py)\
+[987. Vertical Order Traversal of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/987%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree.py) [**Facebook**]
 
-### Tree, DFS
+### Divide and Conquer on Tree
 
-545. Boundary of Binary Tree
-
-### Binary Search Tree
-
-776. Split BST
-777. Find Elements in a Contaminated Binary Tree
-
-### Tree Construction
-
-105. Construct Binary Tree from Preorder and Inorder Traversal
-106. Construct Binary Tree from Inorder and Postorder Traversal
-107. Convert Sorted List to Binary Search Tree
-108. Construct Binary Tree from Preorder and Postorder Traversal
-109. Construct Binary Search Tree from Preorder Traversal
+[105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.py)\
+[106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/106%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.py)\
+[545. Boundary of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/545%20Boundary%20of%20Binary%20Tree.py) \
+[889. Construct Binary Tree from Preorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/889%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Postorder%20Traversal.py)
 
 ### Graph
 
