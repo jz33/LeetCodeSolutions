@@ -12,7 +12,8 @@ Example 1:
 
 Input: root = [1,2,3,4,5,6]
 Output: true
-Explanation: Every level before the last is full (ie. levels with node-values {1} and {2, 3}), and all nodes in the last level ({4, 5, 6}) are as far left as possible.
+Explanation: Every level before the last is full (ie. levels with node-values {1} and {2, 3}),
+and all nodes in the last level ({4, 5, 6}) are as far left as possible.
 
 Example 2:
 
@@ -31,10 +32,8 @@ def getTotalNodeCount(root: Optional[TreeNode]) -> int:
     return 1 + getTotalNodeCount(root.left) + getTotalNodeCount(root.right)
 
 class Solution:
-
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         totalNodeCount = getTotalNodeCount(root)
-        print(totalNodeCount)
 
         def preorder(node: Optional[TreeNode], index: int) -> bool:
             if not node:
