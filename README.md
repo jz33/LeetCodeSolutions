@@ -414,15 +414,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Union Find
 
 305. Number of Islands II
-306. Evaluate Division
-307. Friend Circles
-308. Accounts Merge
-309. Sentence Similarity II
-310. Bricks Falling When Hit
-311. Similar String Groups
-312. Most Stones Removed with Same Row or Column
-313. Regions Cut By Slashes
-314. Connecting Cities With Minimum Cost
+[399. Evaluate Division](https://github.com/jz33/LeetCodeSolutions/blob/master/399%20Evaluate%20Division.py) [**TikTok**]\
+547. Friend Circles
+721. Accounts Merge
+737. Sentence Similarity II
+803. Bricks Falling When Hit
+839. Similar String Groups
+947. Most Stones Removed with Same Row or Column
+959. Regions Cut By Slashes
+1135. Connecting Cities With Minimum Cost
 
 ### Topological Sort O(E + V)
 
@@ -472,7 +472,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [65. Valid Number](https://github.com/jz33/LeetCodeSolutions/blob/master/065%20Valid%20Number.py) [**Facebook**]
 
 ### Math: Numbers
-
+633 Sum of Square Numbers
 8. String to Integer (atoi)
 9. Integer to Roman
 10. Roman to Integer
