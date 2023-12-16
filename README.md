@@ -43,23 +43,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.ts) [**Facebook**]\
 [415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
 [986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.ts) [**Facebook**, union not intersection]\
+[1229. Meeting Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1229%20Meeting%20Scheduler.py)\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
 [1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
 [1868. Product of Two Run-Length Encoded Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1868%20Product%20of%20Two%20Run-Length%20Encoded%20Arrays.py) [**Facebook**]
-
-### 1-D Iteration or Greedy
-
-[45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
-[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
-[229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
-[240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
-[384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
-[408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
-[418. Sentence Screen Fitting](https://github.com/jz33/LeetCodeSolutions/blob/master/418%20Sentence%20Screen%20Fitting.py) [**TikTok**]\
-[605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
-[621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) [**TikTok**]\
-[1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
-[2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
 
 ### Hashmap
 
@@ -68,6 +55,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
 [380 Insert Delete GetRandom O(1)](https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py) [**Facebook, TikTok**]\
 [398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
+[763. Partition Labels](https://github.com/jz33/LeetCodeSolutions/blob/master/763%20Partition%20Labels.py)\
 [2365. Task Scheduler II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2365%20Task%20Scheduler%20II.ts) [**Facebook**]
 
 ### Prefix Sum or Prefix Max
@@ -78,7 +66,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [523. Continuous Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/523%20Continous%20Subarray%20Sum.py) [**Facebook**]\
 [528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
 [560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]\
-[670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.ts) [**Facebook**]\
+[670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.ts) [**Facebook**]
 
 ### Sliding Window
 
@@ -117,27 +105,27 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1249. Minimum Remove to Make Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1249%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses.py) [**Facebook**]\
 [1541. Minimum Insertions to Balance a Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1541%20Minimum%20Insertions%20to%20Balance%20a%20Parentheses%20String.ts)
 
-### Intervals
+### 1-D Iteration or Greedy
 
-57. Insert Intervals
-58. Meeting Rooms II \*\* TikTok
-59. Non-overlapping Intervals
-60. Minimum Number of Arrows to Burst Balloons
-61. Employee Free Time
-62. Partition Labels
-63. Interval List Intersections \*\* Facebook
-64. Video Stitching
-65. Meeting Scheduler
-66. Remove Interval
+[45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
+[57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
+[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
+[229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
+[240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
+[253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py)[**Facebook**]\
+[384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
+[408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
+[418. Sentence Screen Fitting](https://github.com/jz33/LeetCodeSolutions/blob/master/418%20Sentence%20Screen%20Fitting.py) [**TikTok**]\
+[435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
+[605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
+[621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) [**TikTok**]\
+[1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
+[2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
 
-### Hashing
-
+# Hashing
 49. Group Anagrams
-50. Repeated DNA Sequences
-51. Group Shifted Strings
-52. Unique Word Abbreviation
-53. Maximum Product of Word Lengths
-54. Custom Sort String
+249. Group Shifted Strings
+791. Custom Sort String
 
 ### O(nlog(n))
 
