@@ -1,4 +1,4 @@
-/*
+'''
 1570. Dot Product of Two Sparse Vectors
 https://leetcode.com/problems/dot-product-of-two-sparse-vectors/
 
@@ -33,48 +33,28 @@ Input: nums1 = [0,1,0,0,2,0,0], nums2 = [1,0,0,0,3,0,4]
 Output: 6
 
 Constraints:
-
     n == nums1.length == nums2.length
     1 <= n <= 10^5
     0 <= nums1[i], nums2[i] <= 100
-*/
-class SparseVector {
-    // [[index, value]]
-    public data: [number, number][] = []
+'''
+class SparseVector:
+    def __init__(self, nums: List[int]):
+        self.data = list(filter(lambda pair : pair[1] != 0, enumerate(nums)))
 
-    constructor(nums: number[]) {
-        nums.map((value, index) => {
-            if (value !== 0) {
-                this.data.push([index, value]);
-            }
-        })
-    }
-
-    // Return the dotProduct of two sparse vectors
-    public dotProduct(that: SparseVector): number {
-		let result: number = 0
-        let x = 0
-        let y = 0
-        while (x < this.data.length && y < that.data.length) {
-            const [xi, xv] = this.data[x]
-            const [yi, yv] = that.data[y]
-            if (xi == yi) {
-                result += xv * yv
-                x++
-                y++
-            } else if (xi < yi) {
-                x++
-            } else {
-                y++
-            }
-        }
+    # Return the dotProduct of two sparse vectors
+    def dotProduct(self, that: 'SparseVector') -> int:
+        result = 0
+        si = 0 # pointer for self
+        ti = 0 # pointer for that
+        while si < len(self.data) and ti < len(that.data):
+            sj, sv = self.data[si]
+            tj, tv = that.data[ti]
+            if sj == tj:
+                result += sv * tv
+                si += 1
+                ti += 1
+            elif sj < tj:
+                si += 1
+            else:
+                ti += 1
         return result
-    }
-}
-
-/**
- * Your SparseVector object will be instantiated and called as such:
- * var v1 = new SparseVector(nums1)
- * var v2 = new SparseVector(nums1)
- * var ans = v1.dotProduct(v2)
- */
