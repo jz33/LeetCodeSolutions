@@ -56,6 +56,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [380 Insert Delete GetRandom O(1)](https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py) [**Facebook, TikTok**]\
 [398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
 [763. Partition Labels](https://github.com/jz33/LeetCodeSolutions/blob/master/763%20Partition%20Labels.py)\
+[791. Custom Sort String](https://github.com/jz33/LeetCodeSolutions/blob/master/791%20Custom%20Sort%20String.py)[**Facebook**]\
 [2365. Task Scheduler II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2365%20Task%20Scheduler%20II.ts) [**Facebook**]
 
 ### Prefix Sum or Prefix Max
@@ -88,14 +89,14 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.ts) [**TikTok**]\
 [1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]
 
-### Stack, Calculator
+### Stack on Calculator
 
 [224. Basic Calculator](https://github.com/jz33/LeetCodeSolutions/blob/master/224%20Basic%20Calculator.ts)\
 [227. Basic Calculator II](https://github.com/jz33/LeetCodeSolutions/blob/master/227%20Basic%20Calculator%20II.py) [**Facebook**]\
 [772. Basic Calculator III](https://github.com/jz33/LeetCodeSolutions/blob/master/772%20Basic%20Calculator%20III.py) [**TikTok**]\
 [394. Decode String](https://github.com/jz33/LeetCodeSolutions/blob/master/394%20Decode%20String.py) [**TikTok**]
 
-### Stack, Parentheses
+### Stack on Parentheses
 
 [20. Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/020%20Valid%20Parentheses.py)\
 [301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) [**Facebook**]\
@@ -122,10 +123,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
 [2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
 
-# Hashing
-49. Group Anagrams
-249. Group Shifted Strings
-791. Custom Sort String
+### Hashing
+
+[49. Group Anagrams](https://github.com/jz33/LeetCodeSolutions/blob/master/049%20Group%20Anagrams.py)\
+[249. Group Shifted Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/249%20Group%20Shifted%20Strings.py) [**Facebook**]\
 
 ### O(nlog(n))
 
