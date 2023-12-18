@@ -46,6 +46,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1229. Meeting Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1229%20Meeting%20Scheduler.py)\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
 [1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
+[1768. Merge Strings Alternately](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1768%20Merge%20Strings%20Alternately.ts)\
 [1868. Product of Two Run-Length Encoded Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1868%20Product%20of%20Two%20Run-Length%20Encoded%20Arrays.py) [**Facebook**]
 
 ### Hashmap
@@ -456,26 +457,14 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 836. Critical Connections in a Network # Tarjan
 837. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
 
-### Automata
-
-[65. Valid Number](https://github.com/jz33/LeetCodeSolutions/blob/master/065%20Valid%20Number.py) [**Facebook**]
-
-### Math: Numbers
-633 Sum of Square Numbers
-8. String to Integer (atoi)
-9. Integer to Roman
-10. Roman to Integer
-11. Pow(x, n)
-12. Single Number II
-    231。 Power of Two
-13. Integer to English Words
-14. Remove 9
-15. Consecutive Numbers Sum
-16. X of a Kind in a Deck of Cards
-17. Prison Cells After N Days
-18. Confusing Number II
-
-### Math: Geometry
-
-[150. Rectangle Area](https://github.com/jz33/LeetCodeSolutions/blob/master/223%20Rectangel%20Area.py)
+### Math Numbers Binary or Geometry
+[8. String to Integer (atoi)](https://github.com/jz33/LeetCodeSolutions/blob/master/008%20String%20to%20Integer%20(atoi).java)\
+[12. Integer to Roman](https://github.com/jz33/LeetCodeSolutions/blob/master/012%20Integer%20to%20Roman.py)\
+[13. Roman to Integer](https://github.com/jz33/LeetCodeSolutions/blob/master/013%20Roman%20To%20Integer.py)\
+[50. Pow(x, n)](https://github.com/jz33/LeetCodeSolutions/blob/master/050%20Pow(x%2C%20n).py) [**Facebook**]\
+[65. Valid Number](https://github.com/jz33/LeetCodeSolutions/blob/master/065%20Valid%20Number.py) [**Facebook**]\
+[150. Rectangle Area](https://github.com/jz33/LeetCodeSolutions/blob/master/223%20Rectangel%20Area.py)\
+[231. Power of Two](https://github.com/jz33/LeetCodeSolutions/blob/master/231%20Power%20of%20Two.js)\
+[273. Integer to English Words](https://github.com/jz33/LeetCodeSolutions/blob/master/273%20Integer%20to%20English%20Word.py)\
+[633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)\
 
