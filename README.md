@@ -86,6 +86,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.ts) [**Facebook**]\
 [84. Largest Rectangle in Histogram](https://github.com/jz33/LeetCodeSolutions/blob/master/084%20Largest%20Rectangle%20in%20Histogram.py) [**Facebook**]\
+[155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) double stack\
 [402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) [**TikTok**]\
 [739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.ts) [**TikTok**]\
 [1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]
@@ -156,7 +157,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 480. Sliding Window Median \*\* Python SortedDict
 481. Range Module \*\* Java TreeMap
-482. Max Stack \*\* TikTok
+[716. Max Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/716%20Max%20Stack.py) [**TikTok**]\
 483. My Calendar I
 484. Exam Room \*\* Python SortedList
 485. Amount of New Area Painted Each Day ** TikTok ** Python SortedDict
@@ -307,14 +308,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Linked List
 
-### Double Linked List
-
-146. LRU Cache \*\*\*
-147. All O`one Data Structure
-148. LFU Cache \*\*\*
-
 ### Single Linked List
 
+19. Remove Nth Node From End of List [**Facebook**]\
 138. Copy List with Random Pointer \*\* Facebook
      141 Linked List Cycle
      142 Linked List Cycle II
@@ -325,6 +321,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 143. Add Two Numbers II
 144. Insert into a Sorted Circular Linked List
 145. Linked List Components
+
+### Double Linked List
+
+[146. LRU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/146%20LRU%20Cache.py) [**Facebook, TikTok**] dll + hashmap \
+[432. All O`one Data Structure](https://github.com/jz33/LeetCodeSolutions/blob/master/432%20All%20O%60one%20Data%20Structure.py) dll + hashmap \
+[460. LFU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/460%20LFU%20Cache.py) dll matrix + hashmap \
 
 ### Tree
 
