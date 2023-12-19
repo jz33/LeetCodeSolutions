@@ -213,7 +213,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Permutations
 
-31. Next Permutation
 46. Permutations
 47. Permutations II
 77. Combinations
@@ -433,15 +432,17 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 1192. Critical Connections in a Network # Tarjan
 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
 
-### Numbers Binary or Geometry
+### Math, Numbers, Binary or Geometry
 [8. String to Integer (atoi)](https://github.com/jz33/LeetCodeSolutions/blob/master/008%20String%20to%20Integer%20(atoi).java)\
 [12. Integer to Roman](https://github.com/jz33/LeetCodeSolutions/blob/master/012%20Integer%20to%20Roman.py)\
 [13. Roman to Integer](https://github.com/jz33/LeetCodeSolutions/blob/master/013%20Roman%20To%20Integer.py)\
+[31. Next Permutation](https://github.com/jz33/LeetCodeSolutions/blob/master/031%20Next%20Permutation.py) [**Facebook**]\
 [50. Pow(x, n)](https://github.com/jz33/LeetCodeSolutions/blob/master/050%20Pow(x%2C%20n).py) [**Facebook**]\
 [65. Valid Number](https://github.com/jz33/LeetCodeSolutions/blob/master/065%20Valid%20Number.py) [**Facebook**]\
 [78. Subsets](https://github.com/jz33/LeetCodeSolutions/blob/master/078%20Subsets.ts) [**Facebook**]\
 [150. Rectangle Area](https://github.com/jz33/LeetCodeSolutions/blob/master/223%20Rectangel%20Area.py)\
 [231. Power of Two](https://github.com/jz33/LeetCodeSolutions/blob/master/231%20Power%20of%20Two.js)\
+[268. Missing Number](https://github.com/jz33/LeetCodeSolutions/blob/master/268%20Missing%20Number.js)\
 [273. Integer to English Words](https://github.com/jz33/LeetCodeSolutions/blob/master/273%20Integer%20to%20English%20Word.py)\
-[633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)\
+[633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)
 
