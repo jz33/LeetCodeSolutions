@@ -211,42 +211,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 5 Longest Palindromic Substring
 647 Palindromic Substrings
 
-### Exponential or Factorial
-
-### Backtracking
-
-[22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
-23. Sudoku Solver
-24. Combination Sum II
-25. N-Queens
-26. Word Search
-27. Reconstruct Itinerary
-28. Optimal Account Balancing
-29. Partition to K Equal Sum Subsets
-30. Unique Paths III
-31. Letter Tile Possibilities
-32. Path with Maximum Gold
-
-### DFS
-
-22. Generate Parentheses
-23. Palindrome Partitioning
-24. Expression Add Operators
-25. Robot Room Cleaner
-[691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
-27. Tiling a Rectangle with the Fewest Squares
-
 ### Permutations
 
-[17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
-18. Next Permutation
-19. Permutations
-20. Permutations II
-21. Combinations
-22. Subsets \*\* Facebook
-23. 24 Game
-24. Number of Squareful Arrays \*\* Facebook
-25. Number of Ways to Split a String \*\* TikTok
+31. Next Permutation
+46. Permutations
+47. Permutations II
+77. Combinations
+679. 24 Game
+996. Number of Squareful Arrays ** Facebook
+1573. Number of Ways to Split a String ** TikTok
 
 ### Dynamic Programming
 
@@ -283,28 +256,32 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 2-D Cache 2-D Dynamic Programming
 
-40. Combination Sum II
-41. Minimum Path Sum
-42. Subsets II
-43. Edit Distance
-44. Dungeon Game
-45. Maximal Square == 1277. Count Square Submatrices with All Ones
-46. Frog Jump
-47. Longest Palindromic Subsequence
-48. Maximum Length of Repeated Subarray
-49. Longest Common Subsequence
+[39. Combination Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/039%20Combination%20Sum.py) [**Facebook**]\
+64. Minimum Path Sum
+90. Subsets II
+72. Edit Distance
+174. Dungeon Game
+221. Maximal Square == 1277. Count Square Submatrices with All Ones
+403. Frog Jump
+516. Longest Palindromic Subsequence
+718. Maximum Length of Repeated Subarray
+1143. Longest Common Subsequence
 
 ### Top down Dynamic Programming
 
+[17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
+[22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
+[78. Subsets](https://github.com/jz33/LeetCodeSolutions/blob/master/078%20Subsets.ts) [**Facebook**]\
+[691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
 10. Regular Expression Matching
-11. Wildcard Matching
-12. Scramble String
-13. Burst Balloons
-14. Guess Number Higher or Lower II
-15. Can I Win
-16. Minimum Cost to Merge Stones
-17. Minimum Cost Tree From Leaf Values
-18. Minimum Difficulty of a Job Schedule
+44. Wildcard Matching
+87. Scramble String
+312. Burst Balloons
+375. Guess Number Higher or Lower II
+464. Can I Win
+1000. Minimum Cost to Merge Stones
+1130. Minimum Cost Tree From Leaf Values
+1335. Minimum Difficulty of a Job Schedule
 
 ### Linked List
 
@@ -381,8 +358,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Graph
 
-### Matrix, BFS
+### BFS on Matrix
+
 [200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**]\
+[317. Shortest Distance from All Buildings](https://github.com/jz33/LeetCodeSolutions/blob/master/317%20Shorted%20Distance%20from%20All%20Buildings.py) [**Facebook**]\
 [827. Making A Large Island](https://github.com/jz33/LeetCodeSolutions/blob/master/827%20Making%20A%20Large%20Island.py) [**Facebook**]\
 201. Walls and Gates
 202. Longest Increasing Path in a Matrix ** Facebook ** TikTok
@@ -393,8 +372,11 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 207. As Far from Land as Possible
 209. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
 
-### Matrix, DFS
+### DFS or Backtracking on Matrix
 
+[51. N-Queens](https://github.com/jz33/LeetCodeSolutions/blob/master/051%20N-Queens.py)\
+[79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) [**Facebook**]\
+[489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py)\
 [694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.ts)
      
 ### Union Find
@@ -428,30 +410,31 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 492. Path With Maximum Minimum Value
      Google Onsite 03 Minimum Modification on Matrix Route
 
-### BFS
+# BFS
 
 126. Word Ladder
-127. Word Ladder II
-128. Remove Invalid Parentheses \*\* Facebook
-129. Minimum Genetic Mutation
-130. Is Graph Bipartite
-131. Bus Routes \*\* TikTok
-132. Possible Bipartition.ts \*\* TikTok
-133. Jump Game IV \*\* TikTok
+126. Word Ladder II
+301. Remove Invalid Parentheses ** Facebook
+433. Minimum Genetic Mutation
+785. Is Graph Bipartite
+815. Bus Routes ** TikTok
+886. Possible Bipartition.ts ** TikTok
+1345. Jump Game IV ** TikTok
 
-### DFS
+# DFS or Backtracking
 
 133. Clone Graph
-134. Cherry Pickup
-135. Find Eventual Safe States
-136. All Paths from Source Lead to Destination
+[332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py)\
+741. Cherry Pickup
+802. Find Eventual Safe States
+1059. All Paths from Source Lead to Destination
 
-### Special Graph Algorithms
+# Special Graph Algorithms
 
-834. Sum of Distances in Tree # Tree DP \*\* TikTok
-835. Optimize Water Distribution in a Village # Kruskal
-836. Critical Connections in a Network # Tarjan
-837. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
+834. Sum of Distances in Tree # Tree DP ** TikTok
+1168. Optimize Water Distribution in a Village # Kruskal
+1192. Critical Connections in a Network # Tarjan
+1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
 
 ### Math Numbers Binary or Geometry
 [8. String to Integer (atoi)](https://github.com/jz33/LeetCodeSolutions/blob/master/008%20String%20to%20Integer%20(atoi).java)\
