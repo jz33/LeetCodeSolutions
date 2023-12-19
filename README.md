@@ -224,39 +224,38 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Dynamic Programming
 
 ### Constant State Dynamic Programming
-
 53. Maximum Subarray
-54. Decode Ways
-55. Maximum Product Subarray
-56. House Robber
-57. House Robber II
-58. Maximum Subarray Sum with One Deletion \*\* Facebook
-59. The Number of Beautiful Subsets \*\* Facebook
+91. Decode Ways
+152. Maximum Product Subarray
+198. House Robber
+213. House Robber II
+1186. Maximum Subarray Sum with One Deletion ** Facebook
+2597. The Number of Beautiful Subsets ** Facebook
 
 ### 1-D Cache 1-D Dynamic Programming
-
-42. Trapping Rain Water \*\* Facebook
-43. Best Time to Buy and Sell Stock III
-44. Champagne Tower \*\* TikTok
-45. Maximum Sum of Two Non-Overlapping Subarrays
-46. Shortest Distance to Target Color
-47. Longest Arithmetic Subsequence of Given Difference
-48. Count Increasing Quadruplets \*\* TikTok
+42. Trapping Rain Water ** Facebook
+123. Best Time to Buy and Sell Stock III
+799. Champagne Tower ** TikTok
+1031. Maximum Sum of Two Non-Overlapping Subarrays
+1182. Shortest Distance to Target Color
+1218. Longest Arithmetic Subsequence of Given Difference
+2552. Count Increasing Quadruplets ** TikTok
 
 ### 1-D Cache 2-D Dynamic Programming
 
-39. Combination Sum == 518. Coin Change 2
-40. Interleaving String
-41. Word Break ** Facebook ** TikTok
-42. Best Time to Buy and Sell Stock IV
-43. Perfect Squares == 322. Coin Change
-44. Combination Sum IV
-45. Longest String Chain
-46. Number of Dice Rolls With Target Sum
+97. Interleaving String
+139. Word Break ** Facebook ** TikTok
+188. Best Time to Buy and Sell Stock IV
+226. Perfect Squares == 322. Coin Change
+377. Combination Sum IV
+1048. Longest String Chain
+1155. Number of Dice Rolls With Target Sum 
 
-### 2-D Cache 2-D Dynamic Programming
+### 2-D Dynamic Programming
 
+[17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
 [39. Combination Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/039%20Combination%20Sum.py) [**Facebook**]\
+[518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
 64. Minimum Path Sum
 90. Subsets II
 72. Edit Distance
@@ -267,11 +266,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 718. Maximum Length of Repeated Subarray
 1143. Longest Common Subsequence
 
-### Top down Dynamic Programming
+### Top down Dynamic Programming (Recursive + Memorization)
 
-[17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
 [22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
-[78. Subsets](https://github.com/jz33/LeetCodeSolutions/blob/master/078%20Subsets.ts) [**Facebook**]\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
 10. Regular Expression Matching
 44. Wildcard Matching
@@ -297,7 +294,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [146. LRU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/146%20LRU%20Cache.py) [**Facebook, TikTok**] dll + hashmap \
 [432. All O`one Data Structure](https://github.com/jz33/LeetCodeSolutions/blob/master/432%20All%20O%60one%20Data%20Structure.py) dll + hashmap \
-[460. LFU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/460%20LFU%20Cache.py) dll matrix + hashmap \
+[460. LFU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/460%20LFU%20Cache.py) dll matrix + hashmap
 
 ### Tree
 
@@ -436,12 +433,13 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 1192. Critical Connections in a Network # Tarjan
 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
 
-### Math Numbers Binary or Geometry
+### Numbers Binary or Geometry
 [8. String to Integer (atoi)](https://github.com/jz33/LeetCodeSolutions/blob/master/008%20String%20to%20Integer%20(atoi).java)\
 [12. Integer to Roman](https://github.com/jz33/LeetCodeSolutions/blob/master/012%20Integer%20to%20Roman.py)\
 [13. Roman to Integer](https://github.com/jz33/LeetCodeSolutions/blob/master/013%20Roman%20To%20Integer.py)\
 [50. Pow(x, n)](https://github.com/jz33/LeetCodeSolutions/blob/master/050%20Pow(x%2C%20n).py) [**Facebook**]\
 [65. Valid Number](https://github.com/jz33/LeetCodeSolutions/blob/master/065%20Valid%20Number.py) [**Facebook**]\
+[78. Subsets](https://github.com/jz33/LeetCodeSolutions/blob/master/078%20Subsets.ts) [**Facebook**]\
 [150. Rectangle Area](https://github.com/jz33/LeetCodeSolutions/blob/master/223%20Rectangel%20Area.py)\
 [231. Power of Two](https://github.com/jz33/LeetCodeSolutions/blob/master/231%20Power%20of%20Two.js)\
 [273. Integer to English Words](https://github.com/jz33/LeetCodeSolutions/blob/master/273%20Integer%20to%20English%20Word.py)\

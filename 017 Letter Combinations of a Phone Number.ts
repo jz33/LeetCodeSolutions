@@ -1,4 +1,4 @@
-'''
+/*
 17. Letter Combinations of a Phone Number
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
@@ -24,7 +24,7 @@ Output: ["a","b","c"]
 Constraints:
     0 <= digits.length <= 4
     digits[i] is a digit in the range ['2', '9'].
-'''
+*/
 const PhoneDigitCharsMap: Record<string, string[]> = {
     '2': ['a', 'b', 'c'],
     '3': ['d', 'e', 'f'],
@@ -42,17 +42,17 @@ function letterCombinations(digits: string): string[] {
     }
 
     // Incrementally increase pool size by appending new chars
-    let pool: string[][] = [];
-    pool[0] = [];
+    let results: string[][] = [];
+    results[0] = [];
 
     for (const digit of digits) {
-        const newPool: string[][] = [];
-        for (const row of pool) {
+        const newResults: string[][] = [];
+        for (const row of results) {
             for (const char of PhoneDigitCharsMap[digit]) {
-                newPool.push(row.concat([char]));
+                newResults.push(row.concat(char));
             }
         }
-        pool = newPool;
+        results = newResults;
     }
-    return pool.map((row) => row.join(''));
+    return results.map((row) => row.join(''));
 }
