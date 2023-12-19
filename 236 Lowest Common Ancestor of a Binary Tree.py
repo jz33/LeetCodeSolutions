@@ -23,26 +23,13 @@ Output: 5
 Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of
 itself according to the LCA definition.
  
-Note:
-
-All of the nodes' values will be unique.
-p and q are different and both values will exist in the binary tree.
+Constraints:
+    The number of nodes in the tree is in the range [2, 105].
+    -109 <= Node.val <= 109
+    All Node.val are unique.
+    p != q
+    p and q will exist in the tree.
 '''
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 class Solution:
     def isChildExisting(self, root: 'TreeNode' or None, child: 'TreeNode'):
         if not root:
@@ -102,11 +89,11 @@ class Solution:
   
         return None
 
-'''
-Recursive method.
-Same method as 1644. Lowest Common Ancestor of a Binary Tree II
-'''
 class Solution:
+    '''
+    Postorder recursive method.
+    Same method as 1644. Lowest Common Ancestor of a Binary Tree II
+    '''
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         foundP, foundQ = False, False
 
@@ -116,6 +103,7 @@ class Solution:
             '''
             nonlocal foundP, foundQ
             if foundP and foundQ:
+                # P & Q are found in sibling branches. Return to save time.
                 return None
             if node is None:
                 return None
@@ -123,8 +111,6 @@ class Solution:
             left = postorder(node.left)
             right = postorder(node.right)
             if left and right:
-                # This node is the LCA, as p and q are on each branch
-                foundLCA = True
                 return node
             elif node.val == p.val:
                 # This node is p, it could be the LCA.

@@ -2,9 +2,9 @@
 1644. Lowest Common Ancestor of a Binary Tree II
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii
 
-Given the root of a binary tree, return the lowest common ancestor (LCA) of two given nodes, p and q. If either node p or q does not exist in the tree, return null. All values of the nodes in the tree are unique.
-
-According to the definition of LCA on Wikipedia: "The lowest common ancestor of two nodes p and q in a binary tree T is the lowest node that has both p and q as descendants (where we allow a node to be a descendant of itself)". A descendant of a node x is a node y that is on the path from node x to some leaf node.
+Given the root of a binary tree, return the lowest common ancestor (LCA) of two given nodes, p and q.
+If either node p or q does not exist in the tree, return null.
+All values of the nodes in the tree are unique.
 
 Example 1:
 
@@ -25,7 +25,6 @@ Output: null
 Explanation: Node 10 does not exist in the tree, so return null.
 
 Constraints:
-
     The number of nodes in the tree is in the range [1, 104].
     -109 <= Node.val <= 109
     All Node.val are unique.
@@ -97,10 +96,11 @@ class Solution:
   
         return None
 
-'''
-Recursive method
-'''
+
 class Solution:
+    '''
+    Postorder method, same as 236. Lowest Common Ancestor of a Binary Tree
+    '''
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         # The foundLCA is not necessary, just for early return
         foundP, foundQ, foundLCA = False, False, False
@@ -114,6 +114,7 @@ class Solution:
                 return None
             if node is None:
                 return None
+
             left = postorder(node.left)
             right = postorder(node.right)
             if left and right:
