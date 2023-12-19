@@ -267,17 +267,11 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Top down Dynamic Programming (Recursive + Memorization)
 
+[10. Regular Expression Matching](https://github.com/jz33/LeetCodeSolutions/blob/master/010%20Regular%20Expression%20Matching.py)\
 [22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
+[486. Predict the Winner](https://github.com/jz33/LeetCodeSolutions/blob/master/486%20Predict%20the%20Winner.py)\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
-10. Regular Expression Matching
-44. Wildcard Matching
-87. Scramble String
-312. Burst Balloons
-375. Guess Number Higher or Lower II
-464. Can I Win
-1000. Minimum Cost to Merge Stones
-1130. Minimum Cost Tree From Leaf Values
-1335. Minimum Difficulty of a Job Schedule
+[2060. Check if an Original String Exists Given Two Encoded Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2060%20Check%20if%20an%20Original%20String%20Exists%20Given%20Two%20Encoded%20Strings.py)
 
 ### Linked List
 
