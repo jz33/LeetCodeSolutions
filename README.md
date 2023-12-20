@@ -138,20 +138,13 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 1367. Maximum Length of Semi-Decreasing Subarrays \*\* TikTok
 
 ### Heap
-
-23. Merge k Sorted Lists \*\* Facebook
-24. The Skyline Problem
-25. Kth Smallest Element in a Sorted Matrix
-26. Third Maximum Number \*\* Heapify
-27. Top K Frequent Words
-28. Minimum Cost to Hire K Workers
-29. Minimum Number of Refueling Stops
-30. K Closest Points to Origin \*\* Facebook
-31. Minimum Cost to Connect Sticks
-
-### Double Heap
-
-295. Find Median from Data Stream
+[23. Merge k Sorted Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/023%20Merge%20k%20Sorted%20Lists.py) [**Facebook**]\
+[218. The Skyline Problem](https://github.com/jz33/LeetCodeSolutions/blob/master/218%20The%20Skyline%20Problem.py)\
+[295. Find Median from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/295%20Find%20Median%20from%20Data%20Stream.py)\
+[378. Kth Smallest Element in a Sorted Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/378%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)\
+[414. Third Maximum Number](https://github.com/jz33/LeetCodeSolutions/blob/master/414%20Third%20Maximum%20Number.py)\
+[692. Top K Frequent Words](https://github.com/jz33/LeetCodeSolutions/blob/master/692%20Top%20K%20Frequent%20Words.py)\
+[973. K Closest Points to Origin](https://github.com/jz33/LeetCodeSolutions/blob/master/973%20K%20Closest%20Points%20to%20Origin.py) [**Facebook**]\
 
 ### Treemap
 
