@@ -89,7 +89,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) double stack\
 [402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) [**TikTok**]\
 [739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.ts) [**TikTok**]\
-[1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]
+[1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]\
+[2863. Maximum Length of Semi-Decreasing Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2863%20Maximum%20Length%20of%20Semi-Decreasing%20Subarrays.ts) [**TikTok**]
 
 ### Stack on Calculator
 
@@ -128,14 +129,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Hashing
 
 [49. Group Anagrams](https://github.com/jz33/LeetCodeSolutions/blob/master/049%20Group%20Anagrams.py)\
-[249. Group Shifted Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/249%20Group%20Shifted%20Strings.py) [**Facebook**]\
+[249. Group Shifted Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/249%20Group%20Shifted%20Strings.py) [**Facebook**]
 
 ### O(nlog(n))
-
-### Sort
-
-1366. Rank Teams by Votes \*\* TikTok
-1367. Maximum Length of Semi-Decreasing Subarrays \*\* TikTok
 
 ### Heap
 [23. Merge k Sorted Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/023%20Merge%20k%20Sorted%20Lists.py) [**Facebook**]\
@@ -144,7 +140,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [378. Kth Smallest Element in a Sorted Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/378%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)\
 [414. Third Maximum Number](https://github.com/jz33/LeetCodeSolutions/blob/master/414%20Third%20Maximum%20Number.py)\
 [692. Top K Frequent Words](https://github.com/jz33/LeetCodeSolutions/blob/master/692%20Top%20K%20Frequent%20Words.py)\
-[973. K Closest Points to Origin](https://github.com/jz33/LeetCodeSolutions/blob/master/973%20K%20Closest%20Points%20to%20Origin.py) [**Facebook**]\
+[973. K Closest Points to Origin](https://github.com/jz33/LeetCodeSolutions/blob/master/973%20K%20Closest%20Points%20to%20Origin.py) [**Facebook**]
 
 ### Treemap
 
@@ -157,38 +153,29 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Divide and Conquer
 
-4 Median of Two Sorted Arrays **Facebook**
-215 Kth Largest Element in an Array **Facebook**
-
-### Mergesort
-
-315. Count of Smaller Numbers After Self \*\*\*
-316. Count of Range Sum
-317. Reverse Pairs
+[4. Median of Two Sorted Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/0004%20Median%20of%20Two%20Sorted%20Arrays.py) [**Facebook**]\
+[215. Kth Largest Element in an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/215%20Kth%20Largest%20Element%20in%20an%20Array.py) [**Facebook**]\
+[315. Count of Smaller Numbers After Self](https://github.com/jz33/LeetCodeSolutions/blob/master/315%20Count%20of%20Smaller%20Numbers%20After%20Self.py)\
+[493. Reverse Pairs](https://github.com/jz33/LeetCodeSolutions/blob/master/493%20Reverse%20Pairs.py)
 
 ### Trie
 
 208. Implement Trie
-209. Add and Search Word - Data structure design
-210. Word Search II
-211. Design In-Memory File System \*\* TikTok
-212. Design Search Autocomplete System
-213. Stream of Characters
+211. Add and Search Word - Data structure design
+212. Word Search II
+588. Design In-Memory File System ** TikTok
+642. Design Search Autocomplete System 
+1032. Stream of Characters
 
 ### O(n^2) or O(n^3)
 
 ### Matrix, 2-D
 
 48. Rotate Image
-49. Spiral Matrix
-50. Sparse Matrix Multiplication
-51. Toeplitz Matrix
-52. Rotating the Box \*\* TikTok
-
-### Matrix, 3-D
-
-363. Max Sum of Rectangle No Larger Than K
-364. Number of Submatrices That Sum to Target \*\*\*
+54. Spiral Matrix
+311. Sparse Matrix Multiplication
+766. Toeplitz Matrix
+1861. Rotating the Box ** TikTok
 
 ### Bucket Sort
 
