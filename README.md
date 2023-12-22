@@ -202,16 +202,16 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Dynamic Programming
 
-### Constant State Dynamic Programming
-53. Maximum Subarray
-91. Decode Ways
+### Constant State 1-D Dynamic Programming
+[53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
+[91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
 152. Maximum Product Subarray
 198. House Robber
 213. House Robber II
 1186. Maximum Subarray Sum with One Deletion ** Facebook
 2597. The Number of Beautiful Subsets ** Facebook
 
-### 1-D Cache 1-D Dynamic Programming
+### 1-D State 1-D Dynamic Programming
 42. Trapping Rain Water ** Facebook
 123. Best Time to Buy and Sell Stock III
 799. Champagne Tower ** TikTok
@@ -358,6 +358,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 737. Sentence Similarity II
 803. Bricks Falling When Hit
 839. Similar String Groups
+[924. Minimize Malware Spread](https://github.com/jz33/LeetCodeSolutions/blob/master/924%20Minimize%20Malware%20Spread.py) [**TikTok**]\
 947. Most Stones Removed with Same Row or Column
 959. Regions Cut By Slashes
 1135. Connecting Cities With Minimum Cost
