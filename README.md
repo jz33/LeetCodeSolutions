@@ -111,17 +111,17 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 1-D Iteration or Greedy
 
+[5. Longest Palindromic Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/005%20Longest%20Palindromic%20Substring.py)\
 [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
 [57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
 [229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
 [240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
-[253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py)[**Facebook**]\
+[253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py) [**Facebook**]\
 [384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
 [408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
 [418. Sentence Screen Fitting](https://github.com/jz33/LeetCodeSolutions/blob/master/418%20Sentence%20Screen%20Fitting.py) [**TikTok**]\
 [435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
 [605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
-[621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) [**TikTok**]\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
 [2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
 
@@ -130,9 +130,16 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [49. Group Anagrams](https://github.com/jz33/LeetCodeSolutions/blob/master/049%20Group%20Anagrams.py)\
 [249. Group Shifted Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/249%20Group%20Shifted%20Strings.py) [**Facebook**]
 
+### Bucket Sort
+
+[358. Rearrange String k Distance Apart](https://github.com/jz33/LeetCodeSolutions/blob/master/358%20Rearrange%20String%20k%20Distance%20Apart.py)\
+[621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) [**TikTok**]\
+[767. Reorganize String](https://github.com/jz33/LeetCodeSolutions/blob/master/767%20Reorganize%20String.py)
+
 ### O(nlog(n))
 
 ### Heap
+
 [23. Merge k Sorted Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/023%20Merge%20k%20Sorted%20Lists.py) [**Facebook**]\
 [218. The Skyline Problem](https://github.com/jz33/LeetCodeSolutions/blob/master/218%20The%20Skyline%20Problem.py)\
 [295. Find Median from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/295%20Find%20Median%20from%20Data%20Stream.py)\
@@ -141,14 +148,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [692. Top K Frequent Words](https://github.com/jz33/LeetCodeSolutions/blob/master/692%20Top%20K%20Frequent%20Words.py)\
 [973. K Closest Points to Origin](https://github.com/jz33/LeetCodeSolutions/blob/master/973%20K%20Closest%20Points%20to%20Origin.py) [**Facebook**]
 
-### Treemap
+### Sorted Map
 
-480. Sliding Window Median \*\* Python SortedDict
-481. Range Module \*\* Java TreeMap
+[480. Sliding Window Median](https://github.com/jz33/LeetCodeSolutions/blob/master/480%20Sliding%20Window%20Median.py)\
 [716. Max Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/716%20Max%20Stack.py) [**TikTok**]\
-483. My Calendar I
-484. Exam Room \*\* Python SortedList
-485. Amount of New Area Painted Each Day ** TikTok ** Python SortedDict
+[729. My Calendar I](https://leetcode.com/problems/my-calendar-i/)\
+[2158. Amount of New Area Painted Each Day](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2158%20Amount%20of%20New%20Area%20Painted%20Each%20Day.py) [**TikTok**]
 
 ### Divide and Conquer
 
@@ -159,43 +164,26 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Trie
 
-208. Implement Trie
-211. Add and Search Word - Data structure design
-212. Word Search II
-588. Design In-Memory File System ** TikTok
-642. Design Search Autocomplete System 
-1032. Stream of Characters
+[208. Implement Trie](<https://github.com/jz33/LeetCodeSolutions/blob/master/208%20Implement%20Trie%20(Prefix%20Tree).py>)\
+[588. Design In-Memory File System](https://github.com/jz33/LeetCodeSolutions/blob/master/588%20Design%20In-Memory%20File%20System.py) [**TikTok**]\
+[642. Design Search Autocomplete System](https://github.com/jz33/LeetCodeSolutions/blob/master/642%20Design%20Search%20Autocomplete%20System.py)\
+[676. Implement Magic Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/676%20Implement%20Magic%20Dictionary.py)
 
-### O(n^2) or O(n^3)
+### O(n^2)
 
-### Matrix, 2-D
+### 2-D Matrix Iterations
 
-48. Rotate Image
-54. Spiral Matrix
-311. Sparse Matrix Multiplication
-766. Toeplitz Matrix
-1861. Rotating the Box ** TikTok
-
-### Bucket Sort
-
-358. Rearrange String k Distance Apart
-359. Split Array into Consecutive Subsequences
-360. Reorganize String
-361. Hand of Straights
-362. Divide Array in Sets of K Consecutive Numbers
-363. Longest Happy String
-
-### Palindromes
-
-5 Longest Palindromic Substring
-647 Palindromic Substrings
+[48. Rotate Image](https://github.com/jz33/LeetCodeSolutions/blob/master/048%20Rotate%20Image.py)\
+[54. Spiral Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/054%20Spiral%20Matrix.py)\
+[498. Diagonal Traverse](https://github.com/jz33/LeetCodeSolutions/blob/master/498%20Diagonal%20Traverse.py) [**Facebook**]\
+[766. Toeplitz Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/766%20Toeplitz%20Matrix.py) [**Facebook**]\
+[1861.Rotating the Box](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1861%20Rotating%20the%20Box.ts) [**TikTok**]
 
 ### Permutations
 
 46. Permutations
 47. Permutations II
 77. Combinations
-679. 24 Game
 996. Number of Squareful Arrays ** Facebook
 1573. Number of Ways to Split a String ** TikTok
 
@@ -207,7 +195,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
 [152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\
 [198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
-[1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)\
+[1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)
 
 ### 1-D State 1-D Dynamic Programming
 42. Trapping Rain Water ** Facebook
@@ -379,7 +367,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 492. Path With Maximum Minimum Value
      Google Onsite 03 Minimum Modification on Matrix Route
 
-# BFS
+### BFS
 
 126. Word Ladder
 126. Word Ladder II
@@ -390,7 +378,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 886. Possible Bipartition.ts ** TikTok
 1345. Jump Game IV ** TikTok
 
-# DFS or Backtracking
+### DFS or Backtracking
 
 133. Clone Graph
 [332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py)\
@@ -398,7 +386,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 802. Find Eventual Safe States
 1059. All Paths from Source Lead to Destination
 
-# Special Graph Algorithms
+### Special Graph Algorithms
 
 834. Sum of Distances in Tree # Tree DP ** TikTok
 1168. Optimize Water Distribution in a Village # Kruskal
@@ -406,6 +394,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
 
 ### Math, Numbers, Binary or Geometry
+
 [8. String to Integer (atoi)](https://github.com/jz33/LeetCodeSolutions/blob/master/008%20String%20to%20Integer%20(atoi).java)\
 [12. Integer to Roman](https://github.com/jz33/LeetCodeSolutions/blob/master/012%20Integer%20to%20Roman.py)\
 [13. Roman to Integer](https://github.com/jz33/LeetCodeSolutions/blob/master/013%20Roman%20To%20Integer.py)\
