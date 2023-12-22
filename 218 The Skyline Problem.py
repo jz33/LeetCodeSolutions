@@ -1,189 +1,90 @@
-class MinHeap:
-    '''
-    A simple fixed-sized minimun binary heap implemented on array
-    '''
-    def __init__(self, capacity: int, comp: "less than comparator" = None):
-        self.arr = [None] * capacity
-        self.comp = comp
-        self.count = 0
+'''
+218. The Skyline Problem
+https://leetcode.com/problems/the-skyline-problem/
 
-    def push(self, v):
-        if self.count == len(self.arr):
-            raise IndexError('')
+A city's skyline is the outer contour of the silhouette formed by all the buildings
+in that city when viewed from a distance.
+Given the locations and heights of all the buildings,
+return the skyline formed by these buildings collectively.
 
-        # Append to tail first
-        self.arr[self.count] = v
+The geometric information of each building is given in the array buildings where
+buildings[i] = [lefti, righti, heighti]:
 
-        # Then lift up
-        self.lift(self.count)
+    lefti is the x coordinate of the left edge of the ith building.
+    righti is the x coordinate of the right edge of the ith building.
+    heighti is the height of the ith building.
 
-        self.count += 1
+You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
 
-    def pop(self):
-        if self.count < 1:
-            raise IndexError('')
+The skyline should be represented as a list of "key points" sorted by
+their x-coordinate in the form [[x1,y1],[x2,y2],...].
+Each key point is the left endpoint of some horizontal segment in the skyline except
+the last point in the list, which always has a y-coordinate 0 and is used to mark
+the skyline's termination where the rightmost building ends.
+Any ground between the leftmost and rightmost buildings should be part of the skyline's contour.
 
-        self.count -= 1 
-        ret = self.arr[0]
+Note: There must be no consecutive horizontal lines of equal height in the output skyline.
+For instance, [...,[2 3],[4 5],[7 5],[11 5],[12 7],...] is not acceptable;
+the three lines of height 5 should be merged into one in the final output as such:
+[...,[2 3],[4 5],[12 7],...]
 
-        # Move last element to top
-        self.arr[0] = self.arr[self.count]
-        self.arr[self.count] = None
+Example 1:
 
-        # Then sink it     
-        self.sink(0)
+Input: buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
+Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
+Explanation:
+Figure A shows the buildings of the input.
+Figure B shows the skyline formed by those buildings.
+The red points in figure B represent the key points in the output list.
 
-        return ret
+Example 2:
 
-    def pushpop(self,v):
-        if self.count < 1:
-            raise IndexError('')
+Input: buildings = [[0,2,3],[2,5,3]]
+Output: [[0,3],[5,0]]
 
-        top = self.arr[0]
-        self.arr[0] = v
-        self.sink(0)
-        return top
-
-    def top(self):
-        if self.count < 1:
-            raise IndexError('')
-
-        return self.arr[0]
-
-    def empty(self) -> bool:
-        return self.count == 0
-
-    def lift(self, i):
-        '''
-        Lift up value at i
-        '''
-        arr = self.arr
-
-        while True:
-            p = self.getParent(i)
-            if p != i and self.lessThan(arr[i], arr[p]):
-                arr[p],arr[i] = arr[i],arr[p]
-                i = p
-            else:
-                break
-
-    def sink(self, i):
-        '''
-        Push down value at i
-        '''
-        arr = self.arr
-        count = self.count
-
-        while True:
-            '''
-            Find if any children element is smaller than p
-            '''
-            smallest = i
-
-            lt = self.getLeft(i)
-            if lt < count and self.lessThan(arr[lt], arr[smallest]): 
-                smallest = lt
-
-            rt = self.getRight(i)
-            if rt < count and self.lessThan(arr[rt], arr[smallest]):
-                smallest = rt
-
-            if smallest == i:
-                break
-
-            arr[i],arr[smallest] = arr[smallest],arr[i]
-            i = smallest
-
-    # Comparision helper
-    def lessThan(self, a, b) -> bool:
-        if self.comp:
-            return self.comp(a, b)
-        else:
-            return a < b
-
-    # Index helpers
-    def getLeft(self, i):
-        '''
-        Get left child index of i
-        '''
-        return (i << 1) + 1
-
-    def getRight(self, i):
-        '''
-        Get right child index of i
-        '''
-        return (i + 1) << 1
-
-    def getParent(self, i):
-        '''
-        Get parent index of i
-        If i is root or less then 0, return i
-        '''
-        return ((i - 1) >> 1) if i > 0 else i
-
-# Not used
-def heapify(arr) -> MinHeap:
-    '''
-    Transform list x into a heap, in-place, in linear time.
-    '''
-    n = len(arr)
-    h = MinHeap(n)
-
-    for i in range((n >> 1) - 1, -1, -1):
-        sink(arr, i, n);
-
-    h.arr = arr
-    h.count = n
-
-    return h
-
-class BuildingWrapper:
-    '''
-    A wrapped-up class for heap usage
-    '''
-    def __init__(self, right, height):
-        self.right = right
-        self.height = height
-
-    def __lt__(self, that) -> bool:
-        # Revesed comparison, as Max Heap is needed
-        return self.height > that.height
+Constraints:
+    1 <= buildings.length <= 104
+    0 <= lefti < righti <= 231 - 1
+    1 <= heighti <= 231 - 1
+    buildings is sorted by lefti in non-decreasing order.
+'''
+from heapq import heappush, heappop
 
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
-        '''
-        buidings: [[left, right, height]]
-        '''
         size = len(buildings)      
-        heap = MinHeap(size) # BuildingWrapper
-        skyline = [] 
+        heap = [] # [(-height, x-axis index)], a max heap for height
+        skyline = [] # [[x-axis index, height]]
 
-        i = 0      
-        while i < size or not heap.empty():
-            nextIndex = 0
-            
-            # 1. Need to push
-            if heap.empty() or i < size and buildings[i][0] <= heap.top().right:
-                nextIndex = buildings[i][0]
+        bi = 0 # iterator on buildings
+        while bi < size or heap:
+            x = 0 # The x-axis index for skyline
+
+            # If this building is overlapped to previous building:
+            if not heap or bi < size and buildings[bi][0] <= heap[0][1]:
+                x = buildings[bi][0]
 
                 # Push in all buildings with same left bound
-                while i < size and buildings[i][0] == nextIndex:
-                    heap.push(BuildingWrapper(buildings[i][1], buildings[i][2]))
-                    i += 1
+                while bi < size and buildings[bi][0] == x:
+                    # Push the height and right bound
+                    heappush(heap, (-buildings[bi][2], buildings[bi][1]))
+                    bi += 1
         
-            # 2. Or need to pop
+            # Else, not overlapped
             else:
-                nextIndex = heap.top().right
-                # Pop all elements with right bound smaller or equal to "right"
-                # Because they are no longer needed
-                while not heap.empty() and heap.top().right <= nextIndex:
-                    heap.pop()
+                x = heap[0][1]
 
-            height = 0 if heap.empty() else heap.top().height
+                # Pop all elements with right bound smaller or equal to x
+                # because they are no longer needed
+                while heap and heap[0][1] <= x:
+                    heappop(heap)
+
+            # The height of the skyline is the maximum height in the heap
+            height = 0 if not heap else -heap[0][0]
 
             # Do not add duplicate height
             if len(skyline) == 0 or height != skyline[-1][1]:
-                skyline.append([nextIndex, height])
+                skyline.append([x, height])
 
         return skyline
 
