@@ -54,7 +54,7 @@ class Solution:
         if len(src) == 1:
             return 1
         
-        # Use only 3 slots array, because we only care about i, i-1, i-2
+        # Use only 3 slots array, because we only care about d, d-1, d-2
         dp = [1, 0, 1]
         d = 0 # iterator for dp state
         for i in range(1, len(src)):

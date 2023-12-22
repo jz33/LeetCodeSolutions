@@ -205,9 +205,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Constant State 1-D Dynamic Programming
 [53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
 [91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
-152. Maximum Product Subarray
-198. House Robber
-213. House Robber II
+[152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\
+[198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
 1186. Maximum Subarray Sum with One Deletion ** Facebook
 2597. The Number of Beautiful Subsets ** Facebook
 
