@@ -113,7 +113,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
 [57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
-[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
 [229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
 [240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
 [253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py)[**Facebook**]\
@@ -205,10 +204,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Constant State 1-D Dynamic Programming
 [53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
 [91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
+[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
 [152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\
 [198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
-1186. Maximum Subarray Sum with One Deletion ** Facebook
-2597. The Number of Beautiful Subsets ** Facebook
+[1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)\
 
 ### 1-D State 1-D Dynamic Programming
 42. Trapping Rain Water ** Facebook

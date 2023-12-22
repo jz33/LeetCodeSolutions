@@ -25,6 +25,7 @@ Constraints:
     1 <= prices.length <= 105
     0 <= prices[i] <= 104
 */
+// This is a DP like approach
 function maxProfit(prices: number[]): number {    let profit = 0;
     let lowestPrice = prices[0];
     for (let i = 1; i < prices.length; i++) {
@@ -36,6 +37,7 @@ function maxProfit(prices: number[]): number {    let profit = 0;
     return profit;
 }
 
+// This is a greedy approach
 function maxProfit(prices: number[]): number {
     let profit = 0;
     let lowestPrice = prices[0];

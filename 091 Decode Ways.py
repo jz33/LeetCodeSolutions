@@ -56,21 +56,20 @@ class Solution:
         
         # Use only 3 slots array, because we only care about d, d-1, d-2
         dp = [1, 0, 1]
-        d = 0 # iterator for dp state
         for i in range(1, len(src)):
-            d = (d + 1) % 3 
+            di = i % 3 # writer on dp
             first2 = int(src[i-1:i+1])
             
             if src[i] == '0':
                 if src[i-1] == '0' or first2 > 26:
                     return 0
                 else:
-                    dp[d] = dp[d-2]             
+                    dp[di] = dp[di-2]             
             else:
                 if src[i-1] == '0' or first2 > 26:
-                    dp[d] = dp[d-1]
+                    dp[di] = dp[di-1]
                 else:
-                    dp[d] = dp[d-1] + dp[d-2]
+                    dp[di] = dp[di-1] + dp[di-2]
         
-        return dp[d]     
+        return dp[(len(src)-1) % 3]     
 

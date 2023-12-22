@@ -39,6 +39,8 @@ class Solution:
         dp = [nums[0], max(nums[0], nums[1]), None]
         for i in range(2, len(nums)):
             di = i % 3
+
+            # Maximum money on house di is either rob di + di-2 or only rob di-1
             dp[di] = max(dp[di-1], dp[di-2] + nums[i])
             
         return dp[(len(nums) - 1) % 3]
