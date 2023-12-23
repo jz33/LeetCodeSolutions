@@ -307,7 +307,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [339. Nested List Weight Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/339%20Nested%20List%20Weight%20Sum.ts) [**Facebook**]\
 [987. Vertical Order Traversal of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/987%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree.py) [**Facebook**]
 
-### Divide and Conquer on Tree
+### Tree constructions
 
 [105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.py)\
 [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/106%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.py)\
@@ -407,5 +407,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [231. Power of Two](https://github.com/jz33/LeetCodeSolutions/blob/master/231%20Power%20of%20Two.js)\
 [268. Missing Number](https://github.com/jz33/LeetCodeSolutions/blob/master/268%20Missing%20Number.js)\
 [273. Integer to English Words](https://github.com/jz33/LeetCodeSolutions/blob/master/273%20Integer%20to%20English%20Word.py)\
+[296. Best Meeting Point](https://github.com/jz33/LeetCodeSolutions/blob/master/296%20Best%20Meeting%20Point.py) [**Facebook**]\
 [633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)
 

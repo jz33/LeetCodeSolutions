@@ -2,25 +2,32 @@
 296. Best Meeting Point
 https://leetcode.com/problems/best-meeting-point/
 
-A group of two or more people wants to meet and minimize the total travel distance.
-You are given a 2D grid of values 0 or 1, where each 1 marks the home of someone in the group.
+Given an m x n binary grid grid where each 1 marks the home of one friend,
+return the minimal total travel distance.
+
+The total travel distance is the sum of the distances between the houses of the friends and the meeting point.
+
 The distance is calculated using Manhattan Distance, where distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.
 
-Example:
+Example 1:
 
-Input: 
+Input: grid = [[1,0,0,0,1],[0,0,0,0,0],[0,0,1,0,0]]
+Output: 6
+Explanation: Given three friends living at (0,0), (0,4), and (2,2).
+The point (0,2) is an ideal meeting point, as the total travel distance of 2 + 2 + 2 = 6 is minimal.
+So return 6.
 
-1 - 0 - 0 - 0 - 1
-|   |   |   |   |
-0 - 0 - 0 - 0 - 0
-|   |   |   |   |
-0 - 0 - 1 - 0 - 0
+Example 2:
 
-Output: 6 
+Input: grid = [[1,1]]
+Output: 1
 
-Explanation: Given three people living at (0,0), (0,4), and (2,2):
-             The point (0,2) is an ideal meeting point, as the total travel distance 
-             of 2+2+2=6 is minimal. So return 6.
+Constraints:
+    m == grid.length
+    n == grid[i].length
+    1 <= m, n <= 200
+    grid[i][j] is either 0 or 1.
+    There will be at least two friends in the grid.
 '''
 class Solution:
     def minTotalDistance(self, grid: List[List[int]]) -> int:
@@ -37,11 +44,11 @@ class Solution:
                 
         # 2. Get middle row index
         # Notice people coordinates are already sorted by row
-        mr = people[len(people) // 2][0]
+        midRowIndex = people[len(people) // 2][0]
         
-        # 3. Get middle colunm index
+        # 3. Get middle column index
         people.sort(key = lambda x : x[1])
-        mc = people[len(people) // 2][1]
+        midColIndex = people[len(people) // 2][1]
         
         # 4. Sum
-        return sum(abs(i-mr) + abs(j-mc) for i,j in people)
+        return sum(abs(i-midRowIndex) + abs(j-midColIndex) for i,j in people)
