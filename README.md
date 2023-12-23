@@ -192,14 +192,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Constant State 1-D Dynamic Programming
 [53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
 [91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
-[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
 [152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\
 [198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
 [1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)
 
 ### 1-D State 1-D Dynamic Programming
-42. Trapping Rain Water ** Facebook
-123. Best Time to Buy and Sell Stock III
+[42. Trapping Rain Water ** Facebook](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py)\
 799. Champagne Tower ** TikTok
 1031. Maximum Sum of Two Non-Overlapping Subarrays
 1182. Shortest Distance to Target Color
@@ -220,7 +218,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
 [39. Combination Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/039%20Combination%20Sum.py) [**Facebook**]\
+[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
+[188. Best Time to Buy and Sell Stock IV](https://github.com/jz33/LeetCodeSolutions/blob/master/188%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py)\
 [518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
+
 64. Minimum Path Sum
 90. Subsets II
 72. Edit Distance
@@ -301,7 +302,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [103. Binary Tree Zigzag Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/103%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.py)\
 [199. Binary Tree Right Side View](https://github.com/jz33/LeetCodeSolutions/blob/master/199%20Binary%20Tree%20Right%20Side%20View.ts) [**Facebook**]\
 [226. Invert Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/226%20Invert%20Binary%20Tree.py)\
-[297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)\
+[297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) [**Facebook**]\
 [314. Binary Tree Vertical Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/314%20Binary%20Tree%20Vertical%20Order%20Traversal.py) [**Facebook**]\
 [339. Nested List Weight Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/339%20Nested%20List%20Weight%20Sum.ts) [**Facebook**]\
 [987. Vertical Order Traversal of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/987%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree.py) [**Facebook**]
