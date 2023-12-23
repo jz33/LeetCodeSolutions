@@ -1,5 +1,5 @@
 '''
-Serialize and Deserialize Binary Tree
+297.Serialize and Deserialize Binary Tree
 https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 
 Serialization is the process of converting a data structure or object into a sequence of bits so that
@@ -23,7 +23,8 @@ You may serialize the following tree:
 
 as "[1,2,3,null,null,4,5]"
 Clarification: The above format is the same as how LeetCode serializes a binary tree.
-You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+You do not necessarily need to follow this format,
+so please be creative and come up with different approaches yourself.
 
 Note: Do not use class member/global/static variables to store states.
 Your serialize and deserialize algorithms should be stateless.
@@ -43,10 +44,10 @@ class Codec:
         queue = [root]
         qi = 0
         while qi < len(queue):
-            n = queue[qi]
+            node = queue[qi]
             qi += 1
-            if n is not None:
-                queue += [n.left, n.right]
+            if node:
+                queue += [node.left, node.right]
                 
         output = ','.join(str(n.val) if n is not None else 'N' for n in queue)
         return output
@@ -61,18 +62,18 @@ class Codec:
         queue = [root]
         qi = 0
         while si < len(src):
-            n = queue[qi]
+            node = queue[qi]
             qi += 1
-            v = src[si]
+            value = src[si]
             si += 1
-            if v != 'N':
-                c = TreeNode(v)
-                queue.append(c)
-                n.left = c
-            v = src[si]
+            if value != 'N':
+                child = TreeNode(value)
+                queue.append(child)
+                node.left = child
+            value = src[si]
             si += 1
-            if v != 'N':
-                c = TreeNode(v)
-                queue.append(c)
-                n.right = c
+            if value != 'N':
+                child = TreeNode(value)
+                queue.append(child)
+                node.right = child
         return root
