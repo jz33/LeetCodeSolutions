@@ -2,47 +2,38 @@
 40. Word Break II
 https://leetcode.com/problems/word-break-ii/
 
-Given a non-empty string s and a dictionary wordDict containing a list of non-empty words,
+Given a string s and a dictionary of strings wordDict,
 add spaces in s to construct a sentence where each word is a valid dictionary word.
-Return all such possible sentences.
+Return all such possible sentences in any order.
 
-Note:
-
-The same word in the dictionary may be reused multiple times in the segmentation.
-You may assume the dictionary does not contain duplicate words.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
 
 Example 1:
 
-Input:
-s = "catsanddog"
-wordDict = ["cat", "cats", "and", "sand", "dog"]
-Output:
-[
-  "cats and dog",
-  "cat sand dog"
-]
+Input: s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"]
+Output: ["cats and dog","cat sand dog"]
 
 Example 2:
 
-Input:
-s = "pineapplepenapple"
-wordDict = ["apple", "pen", "applepen", "pine", "pineapple"]
-Output:
-[
-  "pine apple pen apple",
-  "pineapple pen apple",
-  "pine applepen apple"
-]
+Input: s = "pineapplepenapple", wordDict = ["apple","pen","applepen","pine","pineapple"]
+Output: ["pine apple pen apple","pineapple pen apple","pine applepen apple"]
 Explanation: Note that you are allowed to reuse a dictionary word.
 
 Example 3:
 
-Input:
-s = "catsandog"
-wordDict = ["cats", "dog", "sand", "and", "cat"]
-Output:
-[]
+Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+Output: []
+
+Constraints:
+    1 <= s.length <= 20
+    1 <= wordDict.length <= 1000
+    1 <= wordDict[i].length <= 10
+    s and wordDict[i] consist of only lowercase English letters.
+    All the strings of wordDict are unique.
+    Input is generated in a way that the length of the answer doesn't exceed 105.
 '''
+from typing import List
+
 class Solution:
     '''
     DFS will scope down the problem very quickly
@@ -72,33 +63,40 @@ class Solution:
         
         return dfs(0)        
 
+
+'''
+Based on the simplest approach of 139. Word Break
+'''
+class DpEntry:
+    def __init__(self, end, paths=[[]]):
+        self.end = end # the prefix ends in s[:end]
+        self.paths = paths
+
 class Solution:
-    '''
-    This solutin will result "Time Limit Exceeded" for case:
-    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
-    Because the solution built-up is exponential
-    '''
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        if not wordDict:
+        book = set(wordDict)
+        longestWordLength = len(max(wordDict, key = len))
+        dp = [DpEntry(0)]
+        
+        for i in range(1, len(s)+1):
+            newPaths = []
+            for entry in reversed(dp):
+                suffixSize = i - entry.end
+                # Early break based on longest word
+                if suffixSize > longestWordLength:
+                    break
+                suffix = s[entry.end : i]
+                if suffix in book:
+                    newPaths += [path + [suffix] for path in entry.paths]
+            if newPaths:
+                dp.append(DpEntry(i, newPaths))
+        
+        if dp[-1].end == len(s):
+            return [' '.join(path) for path in dp[-1].paths]
+        else:
             return []
         
-        size = len(s)
-        maxSize = len(max(wordDict, key = len)) # max size of the word in dict
-        book = dict(zip(wordDict, range(len(wordDict)))) # {word : index}
-
-        # dp[i] contains all possible paths for s[:i]
-        dp = [[] for _ in range(size+1)]
-        dp[0].append([])
-        
-        for i in range(1, size+1):
-            # Build dp[i] based on dp[j] + s[j:i]
-            # Of course len(s[j:i]) <= maxSize
-            for j in range(i-1,max((i-maxSize), 0) - 1,-1):
-                if len(dp[j]) > 0:
-                    suffix = s[j:i]
-                    index = book.get(suffix)
-                    if index is not None:
-                        dp[i] += [path + [index] for path in dp[j]]
-
-        return [' '.join(wordDict[i] for i in path) for path in dp[-1]]
+sol = Solution()
+s = 'catsanddog'
+wordDict = ["cat","cats","and","sand","dog"]
+print(sol.wordBreak(s, wordDict))

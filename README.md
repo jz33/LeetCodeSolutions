@@ -202,7 +202,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [139. Word Break](https://github.com/jz33/LeetCodeSolutions/blob/master/139%20Word%20Break.py) [**Facebook, TikTok**]\
 [140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
-188. Best Time to Buy and Sell Stock IV 226. Perfect Squares == 322. Coin Change 377. Combination Sum IV
+226. Perfect Squares == 322. Coin Change 377. Combination Sum IV
 [799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]\
 1048. Longest String Chain 1155. Number of Dice Rolls With Target Sum
 
