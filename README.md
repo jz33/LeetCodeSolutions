@@ -54,7 +54,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [128. Longest Consecutive Sequence](https://github.com/jz33/LeetCodeSolutions/blob/master/128%20Longest%20Consecutive%20Sequence.py)\
 [217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
 [219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
-[380 Insert Delete GetRandom O(1)](https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py) [**Facebook, TikTok**]\
+[380. Insert Delete GetRandom O(1)](<https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py>) [**Facebook, TikTok**]\
 [398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
 [763. Partition Labels](https://github.com/jz33/LeetCodeSolutions/blob/master/763%20Partition%20Labels.py)\
 [791. Custom Sort String](https://github.com/jz33/LeetCodeSolutions/blob/master/791%20Custom%20Sort%20String.py)[**Facebook**]\
@@ -183,36 +183,28 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 46. Permutations
 47. Permutations II
-77. Combinations
-996. Number of Squareful Arrays ** Facebook
-1573. Number of Ways to Split a String ** TikTok
+48. Combinations
+49. Number of Squareful Arrays \*\* Facebook
+50. Number of Ways to Split a String \*\* TikTok
 
 ### Dynamic Programming
 
-### Constant State 1-D Dynamic Programming
+### 1-D Dynamic Programming
+
+[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
 [91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
 [152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\
 [198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
 [1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)
 
-### 1-D Cache 1-D Dynamic Programming
-[42. Trapping Rain Water ** Facebook](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py)\
-1031. Maximum Sum of Two Non-Overlapping Subarrays
-1182. Shortest Distance to Target Color
-1218. Longest Arithmetic Subsequence of Given Difference
-2552. Count Increasing Quadruplets ** TikTok
-
 ### 1-D Cache 2-D Dynamic Programming
 
 [139. Word Break](https://github.com/jz33/LeetCodeSolutions/blob/master/139%20Word%20Break.py) [**Facebook, TikTok**]\
 [140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
-188. Best Time to Buy and Sell Stock IV
-226. Perfect Squares == 322. Coin Change
-377. Combination Sum IV
+188. Best Time to Buy and Sell Stock IV 226. Perfect Squares == 322. Coin Change 377. Combination Sum IV
 [799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]\
-1048. Longest String Chain
-1155. Number of Dice Rolls With Target Sum 
+1048. Longest String Chain 1155. Number of Dice Rolls With Target Sum
 
 ### 2-D Dynamic Programming
 
@@ -223,14 +215,14 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
 
 64. Minimum Path Sum
-90. Subsets II
-72. Edit Distance
-174. Dungeon Game
-221. Maximal Square == 1277. Count Square Submatrices with All Ones
-403. Frog Jump
-516. Longest Palindromic Subsequence
-718. Maximum Length of Repeated Subarray
-1143. Longest Common Subsequence
+65. Subsets II
+66. Edit Distance
+67. Dungeon Game
+68. Maximal Square == 1277. Count Square Submatrices with All Ones
+69. Frog Jump
+70. Longest Palindromic Subsequence
+71. Maximum Length of Repeated Subarray
+72. Longest Common Subsequence
 
 ### Top down Dynamic Programming (Recursive + Memorization)
 
@@ -243,6 +235,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Linked List
 
 ### Single Linked List
+
 [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) [**Facebook**]\
 [138. Copy List with Random Pointer](https://github.com/jz33/LeetCodeSolutions/blob/master/138%20Copy%20List%20with%20Random%20Pointer.java) [**Facebook**]\
 [141. Linked List Cycle](https://github.com/jz33/LeetCodeSolutions/blob/master/141%20Linked%20List%20Cycle.java)\
@@ -259,6 +252,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Tree
 
 ### Preorder Traversal
+
 [100. Same Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/100%20Same%20Tree.py)\
 [101. Symmetric Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/101%20Symmetric%20Tree.py)\
 [112. Path Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/112%20Path%20Sum.py)\
@@ -320,14 +314,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**]\
 [317. Shortest Distance from All Buildings](https://github.com/jz33/LeetCodeSolutions/blob/master/317%20Shorted%20Distance%20from%20All%20Buildings.py) [**Facebook**]\
 [827. Making A Large Island](https://github.com/jz33/LeetCodeSolutions/blob/master/827%20Making%20A%20Large%20Island.py) [**Facebook**]\
-201. Walls and Gates
-202. Longest Increasing Path in a Matrix ** Facebook ** TikTok
-203. Flood Fill
-204. Snakes and Ladders
-205. Rotting Oranges
-206. Shortest Path in Binary Matrix \*\* Facebook
-207. As Far from Land as Possible
-209. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
+201. Walls and Gates 202. Longest Increasing Path in a Matrix ** Facebook ** TikTok 203. Flood Fill 204. Snakes and Ladders 205. Rotting Oranges 206. Shortest Path in Binary Matrix \*\* Facebook 207. As Far from Land as Possible 209. Shortest Path in a Grid with Obstacles Elimination \*\* TikTok
 
 ### DFS or Backtracking on Matrix
 
@@ -335,21 +322,21 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) [**Facebook**]\
 [489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py)\
 [694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.ts)
-     
+
 ### Union Find
 
 305. Number of Islands II
-[399. Evaluate Division](https://github.com/jz33/LeetCodeSolutions/blob/master/399%20Evaluate%20Division.py) [**TikTok**]\
-547. Friend Circles
-721. Accounts Merge
-737. Sentence Similarity II
-803. Bricks Falling When Hit
-839. Similar String Groups
-[924. Minimize Malware Spread](https://github.com/jz33/LeetCodeSolutions/blob/master/924%20Minimize%20Malware%20Spread.py) [**TikTok**]\
-947. Most Stones Removed with Same Row or Column
-959. Regions Cut By Slashes
-1135. Connecting Cities With Minimum Cost
-[2421. Number of Good Paths]() [**TikTok**]
+     [399. Evaluate Division](https://github.com/jz33/LeetCodeSolutions/blob/master/399%20Evaluate%20Division.py) [**TikTok**]\
+306. Friend Circles
+307. Accounts Merge
+308. Sentence Similarity II
+309. Bricks Falling When Hit
+310. Similar String Groups
+     [924. Minimize Malware Spread](https://github.com/jz33/LeetCodeSolutions/blob/master/924%20Minimize%20Malware%20Spread.py) [**TikTok**]\
+311. Most Stones Removed with Same Row or Column
+312. Regions Cut By Slashes
+313. Connecting Cities With Minimum Cost
+     [2421. Number of Good Paths]() [**TikTok**]
 
 ### Topological Sort O(E + V)
 
@@ -372,36 +359,36 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### BFS
 
 126. Word Ladder
-126. Word Ladder II
-301. Remove Invalid Parentheses ** Facebook
-433. Minimum Genetic Mutation
-785. Is Graph Bipartite
-815. Bus Routes ** TikTok
-886. Possible Bipartition.ts ** TikTok
-1345. Jump Game IV ** TikTok
+127. Word Ladder II
+128. Remove Invalid Parentheses \*\* Facebook
+129. Minimum Genetic Mutation
+130. Is Graph Bipartite
+131. Bus Routes \*\* TikTok
+132. Possible Bipartition.ts \*\* TikTok
+133. Jump Game IV \*\* TikTok
 
 ### DFS or Backtracking
 
 133. Clone Graph
-[332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py)\
-741. Cherry Pickup
-802. Find Eventual Safe States
-1059. All Paths from Source Lead to Destination
+     [332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py)\
+134. Cherry Pickup
+135. Find Eventual Safe States
+136. All Paths from Source Lead to Destination
 
 ### Special Graph Algorithms
 
-834. Sum of Distances in Tree # Tree DP ** TikTok
-1168. Optimize Water Distribution in a Village # Kruskal
-1192. Critical Connections in a Network # Tarjan
-1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
+834. Sum of Distances in Tree # Tree DP \*\* TikTok
+835. Optimize Water Distribution in a Village # Kruskal
+836. Critical Connections in a Network # Tarjan
+837. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
 
 ### Math, Numbers, Binary or Geometry
 
-[8. String to Integer (atoi)](https://github.com/jz33/LeetCodeSolutions/blob/master/008%20String%20to%20Integer%20(atoi).java)\
+[8. String to Integer (atoi)](<https://github.com/jz33/LeetCodeSolutions/blob/master/008%20String%20to%20Integer%20(atoi).java>)\
 [12. Integer to Roman](https://github.com/jz33/LeetCodeSolutions/blob/master/012%20Integer%20to%20Roman.py)\
 [13. Roman to Integer](https://github.com/jz33/LeetCodeSolutions/blob/master/013%20Roman%20To%20Integer.py)\
 [31. Next Permutation](https://github.com/jz33/LeetCodeSolutions/blob/master/031%20Next%20Permutation.py) [**Facebook**]\
-[50. Pow(x, n)](https://github.com/jz33/LeetCodeSolutions/blob/master/050%20Pow(x%2C%20n).py) [**Facebook**]\
+[50. Pow(x, n)](<https://github.com/jz33/LeetCodeSolutions/blob/master/050%20Pow(x%2C%20n).py>) [**Facebook**]\
 [65. Valid Number](https://github.com/jz33/LeetCodeSolutions/blob/master/065%20Valid%20Number.py) [**Facebook**]\
 [78. Subsets](https://github.com/jz33/LeetCodeSolutions/blob/master/078%20Subsets.ts) [**Facebook**]\
 [150. Rectangle Area](https://github.com/jz33/LeetCodeSolutions/blob/master/223%20Rectangel%20Area.py)\
@@ -410,4 +397,3 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [273. Integer to English Words](https://github.com/jz33/LeetCodeSolutions/blob/master/273%20Integer%20to%20English%20Word.py)\
 [296. Best Meeting Point](https://github.com/jz33/LeetCodeSolutions/blob/master/296%20Best%20Meeting%20Point.py) [**Facebook**]\
 [633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)
-
