@@ -84,9 +84,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Monotonic Stack
 
+[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.ts) [**Facebook**]\
 [84. Largest Rectangle in Histogram](https://github.com/jz33/LeetCodeSolutions/blob/master/084%20Largest%20Rectangle%20in%20Histogram.py) [**Facebook**]\
-[155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) double stack\
+[155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) (double stack)\
 [402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) [**TikTok**]\
 [739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.ts) [**TikTok**]\
 [1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]\
@@ -191,7 +192,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 1-D Dynamic Programming
 
-[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
 [91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
 [152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\

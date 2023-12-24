@@ -1,4 +1,4 @@
-'''
+/*
 71. Simplify Path
 https://leetcode.com/problems/simplify-path/
 
@@ -34,11 +34,10 @@ Output: "/home/foo"
 Explanation: In the canonical path, multiple consecutive slashes are replaced by a single one.
 
 Constraints:
-
     1 <= path.length <= 3000
     path consists of English letters, digits, period '.', slash '/' or '_'.
     path is a valid absolute Unix path.
-'''
+*/
 function simplifyPath(path: string): string {
     // Stack holds the top-down directory names
     const stack: string[] = [];
