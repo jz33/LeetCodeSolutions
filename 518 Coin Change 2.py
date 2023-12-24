@@ -2,13 +2,19 @@
 518. Coin Change 2
 https://leetcode.com/problems/coin-change-2/
 
-You are given coins of different denominations and a total amount of money.
-Write a function to compute the number of combinations that make up that amount.
-You may assume that you have infinite number of each kind of coin.
+You are given an integer array coins representing coins of different denominations and
+an integer amount representing a total amount of money.
+
+Return the number of combinations that make up that amount.
+If that amount of money cannot be made up by any combination of the coins, return 0.
+
+You may assume that you have an infinite number of each kind of coin.
+
+The answer is guaranteed to fit into a signed 32-bit integer.
 
 Example 1:
 
-Input: amount = 5, coins = [1, 2, 5]
+Input: amount = 5, coins = [1,2,5]
 Output: 4
 Explanation: there are four ways to make up the amount:
 5=5
@@ -24,30 +30,21 @@ Explanation: the amount of 3 cannot be made up just with coins of 2.
 
 Example 3:
 
-Input: amount = 10, coins = [10] 
+Input: amount = 10, coins = [10]
 Output: 1
 
-This question can be asked in different way:
-https://leetcode.com/discuss/interview-question/414064/Google-or-Count-Integer-Partitions
-
-Given a positive integer n, find out how many ways of writing n as a sum of positive integers.
-Two sums that differ only in the order of their summands are considered the same partition.
-
-Example:
-
-Input: 5
-Output: 6
-Explanation:
-1. 1 + 1 + 1 + 1 + 1
-2. 1 + 1 + 1 + 2
-3. 1 + 1 + 3
-4. 1 + 4
-5. 1 + 2 + 2
-6. 2 + 3
+Constraints:
+    1 <= coins.length <= 300
+    1 <= coins[i] <= 5000
+    All the values of coins are unique.
+    0 <= amount <= 5000
 """
 class Solution:
+    '''
+    39. Combination Sum, 518. Coin Change 2
+    are using similar approach
+    '''
     def change(self, amount: int, coins: List[int]) -> int:
-        # Same as 039 Combination Sum
         dp = [1] + [0] * amount
         for c in coins:
             for i in range(c, amount + 1):

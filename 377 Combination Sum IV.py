@@ -1,15 +1,17 @@
 '''
-Combination Sum IV
+377. Combination Sum IV
 https://leetcode.com/problems/combination-sum-iv/
 
-Given an integer array with all positive numbers and no duplicates,
-find the number of possible combinations that add up to a positive integer target.
+Given an array of distinct integers nums and a target integer target,
+return the number of possible combinations that add up to target.
 
-Example:
+The test cases are generated so that the answer can fit in a 32-bit integer.
 
-nums = [1, 2, 3]
-target = 4
+Example 1:
 
+Input: nums = [1,2,3], target = 4
+Output: 7
+Explanation:
 The possible combination ways are:
 (1, 1, 1, 1)
 (1, 1, 2)
@@ -21,17 +23,30 @@ The possible combination ways are:
 
 Note that different sequences are counted as different combinations.
 
-Therefore the output is 7.
+Example 2:
+
+Input: nums = [9], target = 3
+Output: 0
+
+Constraints:
+    1 <= nums.length <= 200
+    1 <= nums[i] <= 1000
+    All the elements of nums are unique.
+    1 <= target <= 1000
+
+Follow up: What if negative numbers are allowed in the given array?
+How does it change the problem? What limitation we need to add to the question to allow negative numbers?
 '''
-def combinationSum4(candidates: List[int], target: int) -> int:
-    buf = [0] * (target+1) # buf[t] means how many combinations when target equals t
-    buf[0] = 1
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        # buf[i] means how many combinations whose sum is i
+        dp = [1] + [0] * target
 
-    # Loop range, then loop candidates
-    # If loop candidates first, it becomes Combindation Sum I
-    for t in range(target+1):
-        for c in candidates:
-            if t - c >= 0:
-                buf[t] += buf[t-c]
+        # Loop range, then loop nums
+        # If loop nums first, it becomes 39. Combination Sum
+        for t in range(target + 1):
+            for c in nums:
+                if t - c >= 0:
+                    dp[t] += dp[t-c]
 
-    return buf[target]
+        return dp[target]

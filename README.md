@@ -190,29 +190,33 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Dynamic Programming
 
-### 1-D Dynamic Programming
+### Constant States Dynamic Programming
 
 [53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
 [91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
+[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
 [152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\
 [198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
 [1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)
 
-### 1-D Cache 2-D Dynamic Programming
+### 1-D Cache Incremental Dynamic Programming
 
+[39. Combination Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/039%20Combination%20Sum.py) [**Facebook**]\
 [139. Word Break](https://github.com/jz33/LeetCodeSolutions/blob/master/139%20Word%20Break.py) [**Facebook, TikTok**]\
 [140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
-226. Perfect Squares == 322. Coin Change 377. Combination Sum IV
-[799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]\
-1048. Longest String Chain 1155. Number of Dice Rolls With Target Sum
+[322. Coin Change](https://github.com/jz33/LeetCodeSolutions/blob/master/322%20Coin%20Change.py)\
+[377. Combination Sum IV](https://github.com/jz33/LeetCodeSolutions/blob/master/377%20Combination%20Sum%20IV.py)\
+[518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
 
-### 2-D Dynamic Programming
+### 1-D Cache Replacement Dynamic Programming
 
 [17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
-[39. Combination Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/039%20Combination%20Sum.py) [**Facebook**]\
-[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
+[90. Subsets II](https://github.com/jz33/LeetCodeSolutions/blob/master/090%20Subsets%20II.py)\
+[799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]\
+
+### 2-D Cache Dynamic Programming
+
 [188. Best Time to Buy and Sell Stock IV](https://github.com/jz33/LeetCodeSolutions/blob/master/188%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py)\
-[518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
 
 64. Minimum Path Sum
 65. Subsets II
