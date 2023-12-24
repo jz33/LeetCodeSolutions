@@ -196,9 +196,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
 [1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)
 
-### 1-D State 1-D Dynamic Programming
+### 1-D Cache 1-D Dynamic Programming
 [42. Trapping Rain Water ** Facebook](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py)\
-799. Champagne Tower ** TikTok
 1031. Maximum Sum of Two Non-Overlapping Subarrays
 1182. Shortest Distance to Target Color
 1218. Longest Arithmetic Subsequence of Given Difference
@@ -206,11 +205,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 1-D Cache 2-D Dynamic Programming
 
-97. Interleaving String
-139. Word Break ** Facebook ** TikTok
+[139. Word Break](https://github.com/jz33/LeetCodeSolutions/blob/master/139%20Word%20Break.py) [**Facebook, TikTok**]\
+[140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
 188. Best Time to Buy and Sell Stock IV
 226. Perfect Squares == 322. Coin Change
 377. Combination Sum IV
+[799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]\
 1048. Longest String Chain
 1155. Number of Dice Rolls With Target Sum 
 
@@ -349,6 +349,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 947. Most Stones Removed with Same Row or Column
 959. Regions Cut By Slashes
 1135. Connecting Cities With Minimum Cost
+[2421. Number of Good Paths]() [**TikTok**]
 
 ### Topological Sort O(E + V)
 
