@@ -206,27 +206,22 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
 [322. Coin Change](https://github.com/jz33/LeetCodeSolutions/blob/master/322%20Coin%20Change.py)\
 [377. Combination Sum IV](https://github.com/jz33/LeetCodeSolutions/blob/master/377%20Combination%20Sum%20IV.py)\
-[518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
+[403. Frog Jump](https://github.com/jz33/LeetCodeSolutions/blob/master/403%20Frog%20Jump.py)\
+[518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)
 
 ### 1-D Cache Replacement Dynamic Programming
 
 [17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
 [90. Subsets II](https://github.com/jz33/LeetCodeSolutions/blob/master/090%20Subsets%20II.py)\
-[799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]\
+[799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]
 
 ### 2-D Cache Dynamic Programming
 
+[72.Edit Distance](https://github.com/jz33/LeetCodeSolutions/blob/master/072%20Edit%20Distance.py)\
 [188. Best Time to Buy and Sell Stock IV](https://github.com/jz33/LeetCodeSolutions/blob/master/188%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py)\
-
-64. Minimum Path Sum
-65. Subsets II
-66. Edit Distance
-67. Dungeon Game
-68. Maximal Square == 1277. Count Square Submatrices with All Ones
-69. Frog Jump
-70. Longest Palindromic Subsequence
-71. Maximum Length of Repeated Subarray
-72. Longest Common Subsequence
+[221. Maximal Square](https://github.com/jz33/LeetCodeSolutions/blob/master/221%20Maximal%20Square.py)\
+[516. Longest Palindromic Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/516%20Longest%20Palindromic%20Subsequence.py)\
+[1143. Longest Common Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1143%20Longest%20Common%20Subsequence.py)
 
 ### Top down Dynamic Programming (Recursive + Memorization)
 
