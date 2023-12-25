@@ -2,13 +2,12 @@
 1209. Remove All Adjacent Duplicates in String II
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
 
-Given a string s, a k duplicate removal consists of choosing k adjacent and equal letters from s and
-removing them causing the left and the right side of the deleted substring to concatenate together.
+You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and
+equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
 
 We repeatedly make k duplicate removals on s until we no longer can.
 
 Return the final string after all such duplicate removals have been made.
-
 It is guaranteed that the answer is unique.
 
 Example 1:
@@ -30,6 +29,11 @@ Example 3:
 
 Input: s = "pbbcggttciiippooaais", k = 2
 Output: "ps"
+
+Constraints:
+    1 <= s.length <= 105
+    2 <= k <= 104
+    s only contains lowercase English letters.
 '''
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
@@ -43,5 +47,4 @@ class Solution:
                     stack[-1] = (e, ctr)
             else:
                 stack.append((e, 1))
-        
         return ''.join(''.join([e] * c) for e, c in stack)        

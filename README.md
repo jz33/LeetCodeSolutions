@@ -107,6 +107,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [636. Exclusive Time of Functions](https://github.com/jz33/LeetCodeSolutions/blob/master/636%20Exclusive%20Time%20of%20Functions.ts) [**Facebook**]\
 [856. Score of Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/856%20Score%20of%20Parentheses.py) [**TikTok**]\
 [921. Minimum Add to Make Parentheses Valid](https://github.com/jz33/LeetCodeSolutions/blob/master/921%20Minimum%20Add%20to%20Make%20Parentheses%20Valid.go) [**Facebook**]\
+[1047. Remove All Adjacent Duplicates In String](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1047%20Remove%20All%20Adjacent%20Duplicates%20In%20String.py) [**Facebook**]\
+[1209. Remove All Adjacent Duplicates in String II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1209%20Remove%20All%20Adjacent%20Duplicates%20in%20String%20II.py) [**Facebook**]\
 [1249. Minimum Remove to Make Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1249%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses.py) [**Facebook**]\
 [1541. Minimum Insertions to Balance a Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1541%20Minimum%20Insertions%20to%20Balance%20a%20Parentheses%20String.ts)
 
