@@ -28,17 +28,17 @@ class Solution:
         arr = nums
         while arr:
             pivot = random.choice(arr)
-            smallers = [x for x in arr if x < pivot]
-            middles = [x for x in arr if x == pivot] # Or just count the middle
-            largers = [x for x in arr if x > pivot]
+            smalls = [x for x in arr if x < pivot]
+            middles = sum(1 for x in arr if x == pivot)
+            larges = [x for x in arr if x > pivot]
 
-            if rank <= len(largers):
+            if rank <= len(larges):
                 # On the right larger array
-                arr = largers
-            elif rank > len(largers) + len(middles):
+                arr = larges
+            elif rank > len(larges) + middles:
                 # On the left smaller array
-                arr = smallers
-                rank = rank - len(largers) - len(middles)
+                arr = smalls
+                rank = rank - len(larges) - middles
             else:
                 # In one of the middle section. They are all same, so just return the pivot
                 return pivot
