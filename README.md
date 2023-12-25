@@ -62,6 +62,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Prefix Sum or Prefix Max
 
+[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [303. Range Sum Query - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/303%20Range%20Sum%20Query%20-%20Immutable.js)\
 [304. Range Sum Query 2D - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/304%20Range%20Sum%20Query%202D%20-%20Immutable.py) [**Facebook**]\
 [325. Maximum Size Subarray Sum Equals k](https://github.com/jz33/LeetCodeSolutions/blob/master/325%20Maximum%20Size%20Subarray%20Sum%20Equals%20k.py)\
@@ -84,7 +85,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Monotonic Stack
 
-[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.ts) [**Facebook**]\
 [84. Largest Rectangle in Histogram](https://github.com/jz33/LeetCodeSolutions/blob/master/084%20Largest%20Rectangle%20in%20Histogram.py) [**Facebook**]\
 [155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) (double stack)\
