@@ -1,5 +1,6 @@
 '''
 489. Robot Room Cleaner
+https://leetcode.com/problems/robot-room-cleaner/
 
 Given a robot cleaner in a room modeled as a grid.
 
@@ -85,18 +86,11 @@ from typing import Tuple
 
 class Solution:
     def cleanRoom(self, robot):
-        """
-        :type robot: Robot
-        :rtype: None
-        """
         UP = 0
         RIGHT = 1
         DOWN = 2
         LEFT = 3    
-        
-        def getNextDirection(direction: int):
-            return (direction + 1) % 4
-        
+
         def getNextPosition(direction: int, position: Tuple[int, int]):
             if direction == UP:
                 return (position[0]-1, position[1])
@@ -107,25 +101,25 @@ class Solution:
             if direction == LEFT:
                 return (position[0], position[1]-1)           
         
-        def goBackRobot():
+        def goBack():
             robot.turnRight()
             robot.turnRight()
             robot.move()
             robot.turnRight()
             robot.turnRight()
                          
-        visited = set() # visited positions
-        def backTrack(pos, dic):
-            visited.add(pos)
+        visited = set()
+        def backTrack(position: Tuple[int, int], direction: int):
+            visited.add(position)
             robot.clean()
             
             for _ in range(4):
-                nextPos = getNextPosition(dic, pos)
-                if nextPos not in visited and robot.move():
-                    backTrack(nextPos, dic)
-                    goBackRobot() # backtrack
+                nextPosition = getNextPosition(direction, position)
+                if nextPosition not in visited and robot.move():
+                    backTrack(nextPosition, direction)
+                    goBack() # backtrack
                 
                 robot.turnRight()
-                dic = getNextDirection(dic)
+                direction = (direction + 1) % 4
                 
         backTrack((0,0), UP)
