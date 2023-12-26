@@ -322,6 +322,11 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1091. Shortest Path in Binary Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1091%20Shortest%20Path%20in%20Binary%20Matrix.py) [**Facebook**]\
 [1293. Shortest Path in a Grid with Obstacles Elimination](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1293%20Shortest%20Path%20in%20a%20Grid%20with%20Obstacles%20Elimination.py) [**TikTok**]
 
+### BFS with Dijkstra E \* log(V)
+
+[490. The Maze](https://github.com/jz33/LeetCodeSolutions/blob/master/490%20The%20Maze.py)\
+[787. Cheapest Flights Within K Stops](https://github.com/jz33/LeetCodeSolutions/blob/master/787%20Cheapest%20Flights%20Within%20K%20Stops.py)
+
 ### DFS or Backtracking on Matrix
 
 [51. N-Queens](https://github.com/jz33/LeetCodeSolutions/blob/master/051%20N-Queens.py)\
@@ -339,21 +344,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Topological Sort O(E + V)
 
-210. Course Schedule II \*\* TikTok
-211. Alien Dictionary \*\* Facebook
-212. Parallel Courses
-213. Sort Items by Groups Respecting Dependencies
-214. Validate Binary Tree Nodes
-215. Course Schedule IV
-216. Find All Possible Recipes from Given Supplies \*\* TikTok
-
-### Dijkstra E \* log(V)
-
-490. The Maze
-491. Cheapest Flights Within K Stops
-     1066 Campus Bikes II # Mocked
-492. Path With Maximum Minimum Value
-     Google Onsite 03 Minimum Modification on Matrix Route
+[210. Course Schedule II](https://github.com/jz33/LeetCodeSolutions/blob/master/210%20Course%20Schedule%20II.py) [**TikTok**]\
+[269. Alien Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/269%20Alien%20Dictionary.py) [**Facebook**]\
+[2115. Find All Possible Recipes from Given Supplies](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2115%20Find%20All%20Possible%20Recipes%20from%20Given%20Supplies.ts) [**TikTok**]
 
 ### BFS
 
