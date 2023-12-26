@@ -333,14 +333,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [305. Number of Islands II](https://github.com/jz33/LeetCodeSolutions/blob/master/305%20Number%20of%20Islands%20II.py)\
 [547. Number of Provinces](https://github.com/jz33/LeetCodeSolutions/blob/master/547%20Number%20of%20Provinces.py)\
 [721. Accounts Merge](https://github.com/jz33/LeetCodeSolutions/blob/master/721%20Accounts%20Merge.py) [**Facebook**]\
-308. Sentence Similarity II
-309. Bricks Falling When Hit
-310. Similar String Groups
-     [924. Minimize Malware Spread](https://github.com/jz33/LeetCodeSolutions/blob/master/924%20Minimize%20Malware%20Spread.py) [**TikTok**]\
-311. Most Stones Removed with Same Row or Column
-312. Regions Cut By Slashes
-313. Connecting Cities With Minimum Cost
-[2421. Number of Good Paths]() [**TikTok**]
+[924. Minimize Malware Spread](https://github.com/jz33/LeetCodeSolutions/blob/master/924%20Minimize%20Malware%20Spread.py) [**TikTok**]\
+[2421. Number of Good Paths](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2421%20Number%20of%20Good%20Paths.py) [**TikTok**]
 
 ### Topological Sort O(E + V)
 
