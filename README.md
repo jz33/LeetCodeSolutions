@@ -340,7 +340,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 311. Most Stones Removed with Same Row or Column
 312. Regions Cut By Slashes
 313. Connecting Cities With Minimum Cost
-     [2421. Number of Good Paths]() [**TikTok**]
+[2421. Number of Good Paths]() [**TikTok**]
 
 ### Topological Sort O(E + V)
 
