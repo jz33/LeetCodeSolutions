@@ -17,7 +17,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [658. Find K Closest Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/658%20Find%20K%20Closest%20Elements.py) [**Facebook**]\
 [1060. Missing Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1060%20Missing%20Element%20in%20Sorted%20Array.ts) [**Facebook**]\
 [1095. Find in Mountain Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1095%20Find%20in%20Mountain%20Array.py)\
-[2055. Plates Between Candles]() [**Amazon**]\
+[2055. Plates Between Candles](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2055%20Plates%20Between%20Candles.py) [**Amazon**]\
 [2089. Find Target Indices After Sorting Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2089%20Find%20Target%20Indices%20After%20Sorting%20Array.ts) [**TikTok**]
 
 ### Binary Guess
