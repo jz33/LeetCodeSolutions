@@ -35,13 +35,13 @@ class UnionFind:
     def __init__(self, count: int):
         self.tree = list(range(count))
 
-    def find(self, node):
+    def find(self, node: int) -> int:
         tree = self.tree
         if tree[node] != node:
             tree[node] = self.find(tree[node])
         return tree[node]
     
-    def union(self, a, b):
+    def union(self, a: int, b: int):
         ra = self.find(a)
         rb = self.find(b)
         if ra != rb:

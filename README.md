@@ -330,10 +330,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Union Find
 
-305. Number of Islands II
-     [399. Evaluate Division](https://github.com/jz33/LeetCodeSolutions/blob/master/399%20Evaluate%20Division.py) [**TikTok**]\
-306. Friend Circles
-307. Accounts Merge
+[305. Number of Islands II](https://github.com/jz33/LeetCodeSolutions/blob/master/305%20Number%20of%20Islands%20II.py)\
+[547. Number of Provinces](https://github.com/jz33/LeetCodeSolutions/blob/master/547%20Number%20of%20Provinces.py)\
+[721. Accounts Merge](https://github.com/jz33/LeetCodeSolutions/blob/master/721%20Accounts%20Merge.py) [**Facebook**]\
 308. Sentence Similarity II
 309. Bricks Falling When Hit
 310. Similar String Groups
