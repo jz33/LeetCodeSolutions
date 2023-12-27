@@ -1,5 +1,5 @@
 '''
-126 Word Ladder
+126. Word Ladder
 https://leetcode.com/problems/word-ladder/
 
 Given two words (beginWord and endWord), and a dictionary's word list,

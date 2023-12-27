@@ -323,6 +323,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1091. Shortest Path in Binary Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1091%20Shortest%20Path%20in%20Binary%20Matrix.py) [**Facebook**]\
 [1293. Shortest Path in a Grid with Obstacles Elimination](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1293%20Shortest%20Path%20in%20a%20Grid%20with%20Obstacles%20Elimination.py) [**TikTok**]
 
+### BFS on Graph
+
+[126. Word Ladder]() [**TikTok**]\
+[301. Remove Invalid Parentheses]() [**Facebook**]\
+[785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py)\
+[815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py) [**TikTok**]\
+[132. Possible Bipartition.ts](https://github.com/jz33/LeetCodeSolutions/blob/master/886%20Possible%20Bipartition.ts) [**TikTok**]\
+[1345. Jump Game IV]() [**TikTok**]
+
 ### BFS with Dijkstra E \* log(V)
 
 [490. The Maze](https://github.com/jz33/LeetCodeSolutions/blob/master/490%20The%20Maze.py)\
@@ -348,17 +357,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [210. Course Schedule II](https://github.com/jz33/LeetCodeSolutions/blob/master/210%20Course%20Schedule%20II.py) [**TikTok**]\
 [269. Alien Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/269%20Alien%20Dictionary.py) [**Facebook**]\
 [2115. Find All Possible Recipes from Given Supplies](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2115%20Find%20All%20Possible%20Recipes%20from%20Given%20Supplies.ts) [**TikTok**]
-
-### BFS
-
-126. Word Ladder
-127. Word Ladder II
-128. Remove Invalid Parentheses \*\* Facebook
-129. Minimum Genetic Mutation
-130. Is Graph Bipartite
-131. Bus Routes \*\* TikTok
-132. Possible Bipartition.ts \*\* TikTok
-133. Jump Game IV \*\* TikTok
 
 ### DFS or Backtracking
 
