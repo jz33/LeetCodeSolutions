@@ -63,10 +63,10 @@ class RandomizedSet:
         """
         index = self.valueToIndex.get(val, None)
         if index is not None:
-            # Remove from amp
+            # Remove from map
             del self.valueToIndex[val]
             
-            # Swap last value to pos
+            # Swap last value to index
             if index != len(self.values) - 1:               
                 lastVal = self.values[-1]
                 self.values[index] = lastVal
@@ -74,7 +74,7 @@ class RandomizedSet:
                 # Update map for last value
                 self.valueToIndex[lastVal] = index
             
-            # pop val from arr
+            # pop val from array
             self.values.pop()
             return True
         else:
