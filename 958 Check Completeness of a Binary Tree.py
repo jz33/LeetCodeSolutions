@@ -1,6 +1,6 @@
 '''
 958. Check Completeness of a Binary Tree
-https://leetcode.com/problems/check-completeness-of-a-binary-tree/submissions/
+https://leetcode.com/problems/check-completeness-of-a-binary-tree
 
 Given the root of a binary tree, determine if it is a complete binary tree.
 
