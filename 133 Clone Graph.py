@@ -2,56 +2,80 @@
 133. Clone Graph
 https://leetcode.com/problems/clone-graph/
 
-Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph.
-Each node in the graph contains a val (int) and a list (List[Node]) of its neighbors.
- 
-Example:
+Given a reference of a node in a connected undirected graph.
 
-Input:
-{"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":[{"$ref":"2"},
-{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],"val":2},
-{"$ref":"4"}],"val":1}
+Return a deep copy (clone) of the graph.
 
-Explanation:
-Node 1's value is 1, and it has two neighbors: Node 2 and 4.
-Node 2's value is 2, and it has two neighbors: Node 1 and 3.
-Node 3's value is 3, and it has two neighbors: Node 2 and 4.
-Node 4's value is 4, and it has two neighbors: Node 1 and 3.
- 
-Note:
-The number of nodes will be between 1 and 100.
-The undirected graph is a simple graph, which means no repeated edges and no self-loops in the graph.
-Since the graph is undirected, if node p has node q as neighbor, then node q must have node p as neighbor too.
+Each node in the graph contains a value (int) and a list (List[Node]) of its neighbors.
+
+class Node {
+    public int val;
+    public List<Node> neighbors;
+}
+
+Test case format:
+
+For simplicity, each node's value is the same as the node's index (1-indexed).
+For example, the first node with val == 1, the second node with val == 2, and so on.
+The graph is represented in the test case using an adjacency list.
+
+An adjacency list is a collection of unordered lists used to represent a finite graph.
+Each list describes the set of neighbors of a node in the graph.
+
+The given node will always be the first node with val = 1.
 You must return the copy of the given node as a reference to the cloned graph.
+
+Example 1:
+
+Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
+Output: [[2,4],[1,3],[2,4],[1,3]]
+Explanation: There are 4 nodes in the graph.
+1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
+2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
+3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
+4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
+
+Example 2:
+
+Input: adjList = [[]]
+Output: [[]]
+Explanation: Note that the input contains one empty list.
+The graph consists of only one node with val = 1 and it does not have any neighbors.
+
+Example 3:
+
+Input: adjList = []
+Output: []
+Explanation: This an empty graph, it does not have any nodes.
+
+Constraints:
+    The number of nodes in the graph is in the range [0, 100].
+    1 <= Node.val <= 100
+    Node.val is unique for each node.
+    There are no repeated edges and no self-loops in the graph.
+    The Graph is connected and all nodes can be visited starting from the given node.
 '''
 """
 # Definition for a Node.
 class Node:
-    def __init__(self, val = 0, neighbors = []):
+    def __init__(self, val = 0, neighbors = None):
         self.val = val
-        self.neighbors = neighbors
+        self.neighbors = neighbors if neighbors is not None else []
 """
-class Solution:
-    def dfs(self, node: 'Node') -> 'Node':
-        '''
-        @return: copied node
-        '''
-        if not node:
-            return None
-        
-        computed = self.computed
-        if node not in computed:
-            newNode = Node(node.val, None)
-            computed[node] = newNode # mark as visited
-            
-            newNeighbors = []
-            for neighbor in node.neighbors:
-                newNeighbors.append(self.dfs(neighbor))
 
-            newNode.neighbors = newNeighbors
-            
-        return computed[node]
-     
-    def cloneGraph(self, node: 'Node') -> 'Node':
-        self.computed = {} 
-        return self.dfs(node)
+from typing import Optional
+class Solution:
+    def cloneGraph(self, root: Optional['Node']) -> Optional['Node']:
+        visited = {} # {old node : new node}
+
+        def dfs(oldNode: 'Node') -> 'Node':
+            if oldNode not in visited:
+                newNode = Node(oldNode.val)
+                visited[oldNode] = newNode
+                newNode.neighbors = [dfs(child) for child in oldNode.neighbors]
+            return visited[oldNode]
+        
+        if not root:
+            return None
+        return dfs(root)
+        

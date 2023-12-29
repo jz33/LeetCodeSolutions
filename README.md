@@ -344,6 +344,14 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py) [**Facebook**]\
 [694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.ts)
 
+### DFS or Backtracking on Graph
+
+[133. Clone Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/133%20Clone%20Graph.py) [**Facebook**]\
+[332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**]\
+134. Cherry Pickup
+135. Find Eventual Safe States
+136. All Paths from Source Lead to Destination
+
 ### Union Find
 
 [305. Number of Islands II](https://github.com/jz33/LeetCodeSolutions/blob/master/305%20Number%20of%20Islands%20II.py)\
@@ -358,13 +366,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [269. Alien Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/269%20Alien%20Dictionary.py) [**Facebook**]\
 [2115. Find All Possible Recipes from Given Supplies](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2115%20Find%20All%20Possible%20Recipes%20from%20Given%20Supplies.ts) [**TikTok**]
 
-### DFS or Backtracking
-
-133. Clone Graph
-     [332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py)\
-134. Cherry Pickup
-135. Find Eventual Safe States
-136. All Paths from Source Lead to Destination
 
 ### Special Graph Algorithms
 
