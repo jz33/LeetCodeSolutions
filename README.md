@@ -347,10 +347,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### DFS or Backtracking on Graph
 
 [133. Clone Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/133%20Clone%20Graph.py) [**Facebook**]\
-[332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**]\
-134. Cherry Pickup
-135. Find Eventual Safe States
-136. All Paths from Source Lead to Destination
+[802. Find Eventual Safe States](https://github.com/jz33/LeetCodeSolutions/blob/master/802%20Find%20Eventual%20Safe%20States.py)\
+[1059. All Paths from Source Lead to Destination](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1059%20All%20Paths%20from%20Source%20Lead%20to%20Destination.py)
 
 ### Union Find
 
@@ -366,13 +364,13 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [269. Alien Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/269%20Alien%20Dictionary.py) [**Facebook**]\
 [2115. Find All Possible Recipes from Given Supplies](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2115%20Find%20All%20Possible%20Recipes%20from%20Given%20Supplies.ts) [**TikTok**]
 
-
 ### Special Graph Algorithms
 
-834. Sum of Distances in Tree # Tree DP \*\* TikTok
-835. Optimize Water Distribution in a Village # Kruskal
-836. Critical Connections in a Network # Tarjan
-837. Find the City With the Smallest Number of Neighbors at a Threshold Distance # Floyd-Warshall
+[332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**] # Eulerian path\
+[834. Sum of Distances in Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/834%20Sum%20of%20Distances%20in%20Tree.ts) # Tree DP\
+[1168. Optimize Water Distribution in a Village](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1168%20Optimize%20Water%20Distribution%20in%20a%20Village.py) # Union Find + Kruskal\
+[1192. Critical Connections in a Network](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1192%20Critical%20Connections%20in%20a%20Network.py) # Tarjan\
+[1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1334%20Find%20the%20City%20With%20the%20Smallest%20Number%20of%20Neighbors%20at%20a%20Threshold%20Distance.py) # Floyd-Warshall
 
 ### Math, Numbers, Binary or Geometry
 
