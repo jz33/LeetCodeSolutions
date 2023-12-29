@@ -330,7 +330,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py)\
 [815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py) [**TikTok**]\
 [132. Possible Bipartition.ts](https://github.com/jz33/LeetCodeSolutions/blob/master/886%20Possible%20Bipartition.ts) [**TikTok**]\
-[1345. Jump Game IV]() [**TikTok**]
+[1345. Jump Game IV](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1345%20Jump%20Game%20IV.py) [**TikTok**]
 
 ### BFS with Dijkstra E \* log(V)
 
