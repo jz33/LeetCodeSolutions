@@ -325,7 +325,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### BFS on Graph
 
-[126. Word Ladder]() [**TikTok**]\
+[126. Word Ladder](https://github.com/jz33/LeetCodeSolutions/blob/master/126%20Word%20Ladder.py) [**TikTok**]\
 [301. Remove Invalid Parentheses]() [**Facebook**]\
 [785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py)\
 [815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py) [**TikTok**]\
