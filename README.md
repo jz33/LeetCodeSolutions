@@ -93,7 +93,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) [**TikTok**]\
 [739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.ts) [**TikTok**]\
 [1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]\
-[2863. Maximum Length of Semi-Decreasing Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2863%20Maximum%20Length%20of%20Semi-Decreasing%20Subarrays.ts) [**TikTok**]
+[2863. Maximum Length of Semi-Decreasing Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2863%20Maximum%20Length%20of%20Semi-Decreasing%20Subarrays.py) [**TikTok**]
 
 ### Stack on Calculator
 
