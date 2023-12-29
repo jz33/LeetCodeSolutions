@@ -25,7 +25,7 @@ Your algorithm should run in O(n) time and uses constant extra space.
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
         for i in range(len(nums)):
-            # Swap a postive into its right place, for example, 3 should be put into index 2
+            # Swap a positive into its right place, for example, 3 should be put into index 2
             # Do this in while loop, because nums[nums[i]-1] might need to be swapped too.
             # This runs in O(n) as each number is swapped at most once
             while nums[i] > 0 and nums[i] <= len(nums) and nums[nums[i]-1] != nums[i]:
