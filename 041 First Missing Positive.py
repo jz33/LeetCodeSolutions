@@ -2,25 +2,31 @@
 41. First Missing Positive
 https://leetcode.com/problems/first-missing-positive/
 
-Given an unsorted integer array, find the smallest missing positive integer.
+Given an unsorted integer array nums, return the smallest missing positive integer.
+
+You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.
 
 Example 1:
 
-Input: [1,2,0]
+Input: nums = [1,2,0]
 Output: 3
-	
+Explanation: The numbers in the range [1,2] are all in the array.
+
 Example 2:
 
-Input: [3,4,-1,1]
+Input: nums = [3,4,-1,1]
 Output: 2
-	
+Explanation: 1 is in the array but 2 is missing.
+
 Example 3:
 
-Input: [7,8,9,11,12]
+Input: nums = [7,8,9,11,12]
 Output: 1
-Note:
+Explanation: The smallest positive integer 1 is missing.
 
-Your algorithm should run in O(n) time and uses constant extra space.
+Constraints:
+    1 <= nums.length <= 105
+    -231 <= nums[i] <= 231 - 1
 '''
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
@@ -33,7 +39,7 @@ class Solution:
             
         # Check from beginning
         for i in range(len(nums)):
-            if nums[i] != i+1:
-                return i+1
-        
-        return len(nums) + 1
+            if nums[i] != i + 1:
+                return i + 1
+        else:
+            return len(nums) + 1

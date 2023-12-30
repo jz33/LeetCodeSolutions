@@ -117,6 +117,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### 1-D Iteration or Greedy
 
 [5. Longest Palindromic Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/005%20Longest%20Palindromic%20Substring.py)\
+[41. First Missing Positive](https://github.com/jz33/LeetCodeSolutions/blob/master/041%20First%20Missing%20Positive.py)\
 [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
 [57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
 [229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
