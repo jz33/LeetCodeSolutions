@@ -2,68 +2,64 @@
 332. Reconstruct Itinerary
 https://leetcode.com/problems/reconstruct-itinerary/
 
-Given a list of airline tickets represented by pairs of departure and arrival airports [from, to],
-reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK.
-Thus, the itinerary must begin with JFK.
+You are given a list of airline tickets where tickets[i] = [fromi, toi] represent
+the departure and the arrival airports of one flight.
+Reconstruct the itinerary in order and return it.
 
-Note:
-
+All of the tickets belong to a man who departs from "JFK", thus,
+the itinerary must begin with "JFK".
 If there are multiple valid itineraries,
 you should return the itinerary that has the smallest lexical order when read as a single string.
+
 For example, the itinerary ["JFK", "LGA"] has a smaller lexical order than ["JFK", "LGB"].
 
-All airports are represented by three capital letters (IATA code).
-You may assume all tickets form at least one valid itinerary.
+You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.
 
 Example 1:
 
-Input: [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
-Output: ["JFK", "MUC", "LHR", "SFO", "SJC"]
+Input: tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
+Output: ["JFK","MUC","LHR","SFO","SJC"]
 
 Example 2:
 
-Input: [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+Input: tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
 Output: ["JFK","ATL","JFK","SFO","ATL","SFO"]
-Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"].
-             But it is larger in lexical order.
+Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"] but it is larger in lexical order.
+
+Constraints:
+    1 <= tickets.length <= 300
+    tickets[i].length == 2
+    fromi.length == 3
+    toi.length == 3
+    fromi and toi consist of uppercase English letters.
+    fromi != toi
 '''
-from collections import defaultdict
+from typing import List
 
 class Solution:
-    def dfs(self, itinerary):
-        '''
-        Do dfs/back tracking, reture True if all route is iterated
-        '''
-        if len(itinerary) == self.total:
-            return True
-        
-        f = itinerary[-1]
-        for t in self.graph[f]:
-            if t[1] == False:
-                itinerary.append(t[0])
-                t[1] = True
-                
-                if self.dfs(itinerary):
-                    return True
-                
-                # Back track, reset
-                itinerary.pop()
-                t[1] = False
-    
-        return False
-
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        # Build graph, sort togo by lexical order
-        graph = defaultdict(list) # {from : [[togo, whether this edge is visited]]}
-        for f, t in tickets:
-            graph[f].append([t, False])
+        # Build the source : [targets] graph, which targets reversely sorted,
+        # as the last target wants to pop first
+        graph = {} # { src : [targets]}
+        for src, tag in sorted(tickets)[::-1]:
+            graph[src] = graph.get(src, []) + [tag]
         
-        for f in graph.keys():
-            graph[f].sort(key = lambda x : x[0])
-            
-        self.total = len(tickets) + 1
-        self.graph = graph
-        
-        itinerary = ['JFK']
-        self.dfs(itinerary)
-        return itinerary
+        itinerary = []
+
+        def dfs(airport):
+            '''
+            The idea of finding Euler path is dfs until stuck,
+            put the stuck point as the last node in the path.
+            '''
+            while graph.get(airport, []):
+                # Remove visited edge
+                dfs(graph[airport].pop())
+            itinerary.append(airport)
+
+        dfs('JFK')
+        return itinerary[::-1]
+
+
+sol = Solution()
+tickets = [["JFK","KUL"],["JFK","NRT"],["NRT","JFK"]]
+print(sol.findItinerary(tickets))

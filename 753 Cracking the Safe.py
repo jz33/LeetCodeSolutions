@@ -39,7 +39,7 @@ class Solution:
         '''
         Think about a graph, there are k ^ (n-1) nodes, each node
         has k different edges, so there are totally k ^ n edges.
-        To find a path covering all the edges without visting an edge twice,
+        To find a path covering all the edges without visiting an edge twice,
         this is to find an Euler path.
         To further define the graph, if a Node is string s,
         then its edges are s + i for i in range(k), and its neighbor
@@ -65,7 +65,7 @@ class Solution:
         '''
         So adding the startNode, this is the full path if looking from back. 
         For example, if k = 2, n = 2, the result is 01100.
-        This means the Eular path is from startNode 0, first to 
+        This means the Euler path is from startNode 0, first to 
         0 node via 00 edge, then go to 1 node via 01, then go to
         1 node via 11, then go to 0 node via 10
         '''
