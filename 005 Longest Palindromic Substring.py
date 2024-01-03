@@ -27,7 +27,7 @@ def getMaxPalindromicRange(word: str, left: int, right: int):
     while left > -1 and right < len(word) and word[left] == word[right]:
         left -= 1
         right += 1
-    # Be careful about the return, as left and Right are already invalid
+    # Return the valid range, as left and right are invalid
     return left + 1, right - 1
 
 class Solution:
@@ -39,6 +39,7 @@ class Solution:
                 maxLeft = left
                 maxRight = right
             left, right = getMaxPalindromicRange(word, i, i + 1)
+            #or left, right = getMaxPalindromicRange(word, i, i - 1)
             if right - left > maxRight - maxLeft:
                 maxLeft = left
                 maxRight = right
