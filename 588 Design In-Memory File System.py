@@ -40,8 +40,6 @@ Constraints:
     1 <= content.length <= 50
     At most 300 calls will be made to ls, mkdir, addContentToFile, and readContentFromFile.
 '''
-from typing import Union
-
 class Node:
     '''
     Trie node
@@ -54,48 +52,48 @@ class FileSystem:
     def __init__(self):
         self.root = Node()
 
-    def getNode(self, path: str) -> Union[Node, None]:
+    def __getNode(self, path: str):
         node = self.root
         # Notice split can result '' strings
-        subs = [s for s in path.split('/') if len(s) > 0]
-        for sub in subs:
-            node = node.children.get(sub)
+        subpaths = [subpath for subpath in path.split('/') if len(subpath) > 0]
+        for subpath in subpaths:
+            node = node.children.get(subpath)
             if not node:
                 return None
         return node
     
-    def getOrCreateNode(self, path: str) -> Node:
+    def __getOrCreateNode(self, path: str) -> Node:
         node = self.root
         # Notice split can result '' strings
-        subs = [s for s in path.split('/') if len(s) > 0]
-        for sub in subs:
-            if sub not in node.children:
-                node.children[sub] = Node()
-            node = node.children[sub]
+        subpaths = [subpath for subpath in path.split('/') if len(subpath) > 0]
+        for subpath in subpaths:
+            if subpath not in node.children:
+                node.children[subpath] = Node()
+            node = node.children[subpath]
         return node
         
     def ls(self, path: str) -> List[str]:
-        node = self.getNode(path)
+        node = self.__getNode(path)
         if not node:
             return []
         elif node.content:
             i = path.rfind('/')
-            return [path[i+1:]] # [filename]
+            return [path[i+1:]] # return single file
         else:
             return sorted(node.children.keys())
 
     def mkdir(self, path: str) -> None:
-        self.getOrCreateNode(path)
+        self.__getOrCreateNode(path)
 
     def addContentToFile(self, path: str, content: str) -> None:
-        fileNode = self.getOrCreateNode(path)
+        fileNode = self.__getOrCreateNode(path)
         if fileNode.content:
             fileNode.content += content # append to existing file
         else:
             fileNode.content = content
             
     def readContentFromFile(self, path: str) -> str:
-        fileNode = self.getNode(path)
+        fileNode = self.__getNode(path)
         if fileNode and fileNode.content:
             return fileNode.content
         else:
