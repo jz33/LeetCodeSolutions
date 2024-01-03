@@ -31,6 +31,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Two Pointers Both Sides
 
 [1. Two Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/0001%20Two%20Sum.py)\
+[5. Longest Palindromic Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/005%20Longest%20Palindromic%20Substring.py)\
 [15. 3Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/015%203Sum.ts) [**Facebook**]\
 [125. Valid Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/125%20Valid%20Palindrome.py) [**Facebook**]\
 [167. Two Sum II - Input array is sorted](https://github.com/jz33/LeetCodeSolutions/blob/master/167%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.ts)\
@@ -116,7 +117,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 1-D Iteration or Greedy
 
-[5. Longest Palindromic Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/005%20Longest%20Palindromic%20Substring.py)\
 [41. First Missing Positive](https://github.com/jz33/LeetCodeSolutions/blob/master/041%20First%20Missing%20Positive.py)\
 [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
 [57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
