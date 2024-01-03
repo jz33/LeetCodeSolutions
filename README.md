@@ -217,7 +217,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### 1-D Cache Replacement Dynamic Programming
 
 [17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
+[40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py) [**TikTok**]\
 [90. Subsets II](https://github.com/jz33/LeetCodeSolutions/blob/master/090%20Subsets%20II.py)\
+[494. Target Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/494%20Target%20Sum.py) [**Facebook**]\
 [799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]
 
 ### 2-D Cache Dynamic Programming
