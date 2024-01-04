@@ -38,12 +38,9 @@ class Solution:
                 return 
             if node.val >= low and node.val <= high:
                 total += node.val
-            if node.val <= low:
-                preorder(node.right)
-            elif node.val >= high:
+            if node.val > low:
                 preorder(node.left)
-            else:
-                preorder(node.left)
+            if node.val < high:
                 preorder(node.right)
 
         preorder(root)
