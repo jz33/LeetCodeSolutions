@@ -4,12 +4,15 @@ https://leetcode.com/problems/stickers-to-spell-word/
 
 We are given n different types of stickers. Each sticker has a lowercase English word on it.
 
-You would like to spell out the given string target by cutting individual letters from your collection of stickers and rearranging them. 
+You would like to spell out the given string target by cutting individual letters from
+your collection of stickers and rearranging them. 
 You can use each sticker more than once if you want, and you have infinite quantities of each sticker.
 
-Return the minimum number of stickers that you need to spell out target. If the task is impossible, return -1.
+Return the minimum number of stickers that you need to spell out target.
+If the task is impossible, return -1.
 
-Note: In all test cases, all words were chosen randomly from the 1000 most common US English words, and target was chosen as a concatenation of two random words.
+Note: In all test cases, all words were chosen randomly from the 1000 most common US English words,
+and target was chosen as a concatenation of two random words.
 
 Example 1:
 
@@ -28,13 +31,11 @@ Explanation:
 We cannot form the target "basicbasic" from cutting letters from the given stickers.
 
 Constraints:
-
     n == stickers.length
     1 <= n <= 50
     1 <= stickers[i].length <= 10
     1 <= target.length <= 15
     stickers[i] and target consist of lowercase English letters.
-
 '''
 from functools import cache
 from typing import List, Tuple
@@ -80,7 +81,7 @@ class Solution:
             sticker = stickerHistograms[si]
 
             # If there aren't no single match of target and sticker,
-            # can only skip this sticker but only use s1
+            # can only skip this sticker and use skipResult
             for i in range(26):
                 if sticker[i] and targetState[i]:
                     break
@@ -90,6 +91,7 @@ class Solution:
             # If using this sticker, try use this single sticker as much as possible
             nextState = tuple(max(0, t - sticker[i]) for i, t in enumerate(targetState))
             useResult = 1 + dfs(si, nextState)
+            
             return min(skipResult, useResult)
 
         ans = dfs(0, targetHistogram)
