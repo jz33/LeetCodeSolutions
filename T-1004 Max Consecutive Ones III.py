@@ -2,38 +2,48 @@
 1004. Max Consecutive Ones III
 https://leetcode.com/problems/max-consecutive-ones-iii/
 
-Given an array A of 0s and 1s, we may change up to K values from 0 to 1.
-Return the length of the longest (contiguous) subarray that contains only 1s. 
+Given a binary array nums and an integer k,
+return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
 
 Example 1:
 
-Input: A = [1,1,1,0,0,0,1,1,1,1,0], K = 2
+Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
 Output: 6
-Explanation: 
-[1,1,1,0,0,1,1,1,1,1,1]
-Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
+Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 
 Example 2:
 
-Input: A = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], K = 3
+Input: nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3
 Output: 10
-Explanation: 
-[0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
-Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
+Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
+Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+
+Constraints:
+    1 <= nums.length <= 105
+    nums[i] is either 0 or 1.
+    0 <= k <= nums.length
 '''
 class Solution:
-    def longestOnes(self, A: List[int], K: int) -> int:
+    '''
+    The question is equivalent to ask: what's the longest substring
+    with at most k zeros ?
+    '''
+    def longestOnes(self, nums: List[int], k: int) -> int:
         maxLength = 0
-        zeros = 0
-        left = 0
-        for i, e in enumerate(A):
-            if e == 0:
-                zeros += 1
-                while zeros > K:
-                    if A[left] == 0:
-                        zeros -= 1
+        zeroCount = 0
+        left = 0 # left index of the sliding window
+        for i, n in enumerate(nums):
+            if n == 0:
+                zeroCount += 1
+                while zeroCount > k:
+                    # If more than k zeros in the window,
+                    # shrink from left
+                    if nums[left] == 0:
+                        zeroCount -= 1
                     left += 1
-    
             maxLength = max(maxLength, i - left + 1)
-        
-        return max(maxLength, len(A) - left)
+
+        # Calculate last window size as i is out of bound
+        maxLength = max(maxLength, len(nums) - left)
+        return maxLength

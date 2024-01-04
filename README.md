@@ -85,6 +85,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [395. Longest Substring with At Least K Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/395%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.py) [**TikTok**]\
 [713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
 [992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
+[1004. Max Consecutive Ones III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1004%20Max%20Consecutive%20Ones%20III.py) [**Facebook**]\
 [1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.ts) [**Facebook**]
 
 ### Monotonic Stack
