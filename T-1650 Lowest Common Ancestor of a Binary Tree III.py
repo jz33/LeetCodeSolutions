@@ -1,4 +1,4 @@
-/*
+'''
 1650. Lowest Common Ancestor of a Binary Tree III
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/description/
 
@@ -40,43 +40,24 @@ Constraints:
     All Node.val are unique.
     p != q
     p and q exist in the tree.
-*/
-/**
- * Definition for a binary tree node.
- * class Node {
- *     val: number
- *     left: Node | null
- *     right: Node | null
- *     parent: Node | null
- *     constructor(val?: number, left?: Node | null, right?: Node | null, parent?: Node | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *         this.parent = (parent===undefined ? null : parent)
- *     }
- * }
- */
+'''
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+        self.parent = None
+"""
 
-function lowestCommonAncestor(p: Node | null, q: Node | null): Node | null {
-  // For a node p, its LCA to any other node can only be p or one of p's parents
-
-  // Build p & p's parents' set
-  const parents = new Set();
-  let curr: Node | null = p;
-  while (curr) {
-    parents.add(curr.val);
-    curr = curr.parent;
-  }
-
-  // Iterate from q until root to find LCA
-  curr = q;
-  while (curr) {
-    if (parents.has(curr.val)) {
-      return curr;
-    }
-    curr = curr.parent;
-  }
-  return null;
-
-  // An alterative way without buffer is like in 160. Intersection of Two Linked Lists
-}
+class Solution:
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+        a = p
+        b = q
+        # The a and b will meet on LCA after a switched to q. 
+        # Draw a picture to easily understand why
+        while a != b:
+            a = a.parent if a.parent else q
+            b = b.parent if b.parent else p
+        return a
