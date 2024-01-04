@@ -28,7 +28,7 @@ Constraints:
 '''
 def getHash(word: str) -> str:
     '''
-    Get the hash value by shitfing until first letter is 'a'
+    Get the hash value by shifting until first letter is 'a'
     '''
     diff = ord(word[0]) - ord('a')
 
