@@ -43,12 +43,12 @@ class Solution:
             leftSum = postorder(node.left)
             rightSum = postorder(node.right)
 
-            # The maximum sum is one of 4 possibilities:
-            # 1. Value of current node
+            # The maximum sum is one of the 4:
+            # 1. Current node value 
             # 2. Current node value + left branch sum
             # 3. Current node value + right branch sum
             # 4. Current node value + left branch sum + right branch sum
-            # (The maximum of top 3 is the return value (called singleChoice)
+            # The maximum of top 3 is the return value
             
             singleChoice = max(node.val, node.val + leftSum, node.val + rightSum)
             maxSum = max(maxSum, singleChoice, node.val + leftSum + rightSum)
