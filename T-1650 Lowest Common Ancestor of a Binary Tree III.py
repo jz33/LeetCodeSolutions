@@ -52,10 +52,13 @@ class Node:
 """
 
 class Solution:
+    '''
+    Same idea as 160. Intersection of Two Linked Lists
+    '''
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
         a = p
         b = q
-        # The a and b will meet on LCA after a switched to q. 
+        # The a and b will meet on LCA after just one switch to q. 
         # Draw a picture to easily understand why
         while a != b:
             a = a.parent if a.parent else q
