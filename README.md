@@ -239,13 +239,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
 [2060. Check if an Original String Exists Given Two Encoded Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2060%20Check%20if%20an%20Original%20String%20Exists%20Given%20Two%20Encoded%20Strings.py)
 
-### Linked List
-
 ### Single Linked List
 
 [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) [**Facebook**]\
 [138. Copy List with Random Pointer](https://github.com/jz33/LeetCodeSolutions/blob/master/138%20Copy%20List%20with%20Random%20Pointer.java) [**Facebook**]\
 [141. Linked List Cycle](https://github.com/jz33/LeetCodeSolutions/blob/master/141%20Linked%20List%20Cycle.java)\
+[160. Intersection of Two Linked Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/160%20Intersection%20of%20Two%20Linked%20Lists.py)\
 [206. Reverse Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/206%20Reverse%20Linked%20List.java)\
 [234. Palindrome Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/234%20Palindrome%20Linked%20List.ts) [**Facebook**]\
 [708. Insert into a Sorted Circular Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/708%20Insert%20into%20a%20Sorted%20Circular%20Linked%20List.py) [**Facebook**]
