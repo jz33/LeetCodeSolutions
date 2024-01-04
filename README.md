@@ -35,7 +35,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [15. 3Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/015%203Sum.ts) [**Facebook**]\
 [125. Valid Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/125%20Valid%20Palindrome.py) [**Facebook**]\
 [167. Two Sum II - Input array is sorted](https://github.com/jz33/LeetCodeSolutions/blob/master/167%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.ts)\
-[680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.ts) [**Facebook**]\
+[680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.py) [**Facebook**]\
 [2422. Merge Operations to Turn Array Into a Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2422%20Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome.ts) [**TikTok**]
 
 ### Two Pointers Merge
