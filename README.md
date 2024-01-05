@@ -187,14 +187,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [766. Toeplitz Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/766%20Toeplitz%20Matrix.py) [**Facebook**]\
 [1861.Rotating the Box](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1861%20Rotating%20the%20Box.ts) [**TikTok**]
 
-### Permutations
-
-46. Permutations
-47. Permutations II
-48. Combinations
-49. Number of Squareful Arrays \*\* Facebook
-50. Number of Ways to Split a String \*\* TikTok
-
 ### Dynamic Programming
 
 ### Constant States Dynamic Programming
@@ -237,8 +229,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [10. Regular Expression Matching](https://github.com/jz33/LeetCodeSolutions/blob/master/010%20Regular%20Expression%20Matching.py)\
 [22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
+[46. Permutations](https://github.com/jz33/LeetCodeSolutions/blob/master/046%20Permutations.py)\
+[47. Permutations II](https://github.com/jz33/LeetCodeSolutions/blob/master/047%20Permutations%20II.py) [**TikTok**]\
+[77. Combinations](https://github.com/jz33/LeetCodeSolutions/blob/master/077%20Combinations.py)\
 [486. Predict the Winner](https://github.com/jz33/LeetCodeSolutions/blob/master/486%20Predict%20the%20Winner.py)\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
+[996. Number of Squareful Arrays]()\
 [2060. Check if an Original String Exists Given Two Encoded Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2060%20Check%20if%20an%20Original%20String%20Exists%20Given%20Two%20Encoded%20Strings.py)
 
 ### Single Linked List
@@ -265,6 +261,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [101. Symmetric Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/101%20Symmetric%20Tree.py)\
 [112. Path Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/112%20Path%20Sum.py)\
 [113. Path Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/113%20Path%20Sum%20II.py)\
+[129 Sum Root to Leaf Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/129%20Sum%20Root%20to%20Leaf%20Numbers.py) [**Facebook**]\
 [144. Binary Tree Preorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/144%20Binary%20Tree%20Preorder%20Traversal.ts)\
 [341. Flatten Nested List Iterator](https://github.com/jz33/LeetCodeSolutions/blob/master/341%20Flatten%20Nested%20List%20Iterator.py)\
 [437. Path Sum III](https://github.com/jz33/LeetCodeSolutions/blob/master/437%20Path%20Sum%20III.py)\
@@ -390,4 +387,5 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [268. Missing Number](https://github.com/jz33/LeetCodeSolutions/blob/master/268%20Missing%20Number.js)\
 [273. Integer to English Words](https://github.com/jz33/LeetCodeSolutions/blob/master/273%20Integer%20to%20English%20Word.py)\
 [296. Best Meeting Point](https://github.com/jz33/LeetCodeSolutions/blob/master/296%20Best%20Meeting%20Point.py) [**Facebook**]\
-[633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)
+[633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)\
+[1573. Number of Ways to Split a String](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1573%20Number%20of%20Ways%20to%20Split%20a%20String.py) [**TikTok**]

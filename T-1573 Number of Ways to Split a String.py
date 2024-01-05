@@ -34,23 +34,24 @@ Explanation: There are three ways to split s in 3 parts.
 "00|0|0"
 
 Constraints:
-
-3 <= s.length <= 105
-s[i] is either '0' or '1'.
-
+    3 <= s.length <= 105
+    s[i] is either '0' or '1'.
 '''
 class Solution:
     def numWays(self, s: str) -> int:
         n = len(s)
         # Record appearance of '1's
-        oneIndexes = list(filter(lambda i : s[i] == '1', range(n)))
+        oneIndexes = [i for i in range(len(s)) if s[i] == '1']
+
         if len(oneIndexes) == 0:
             # Cut s in 2 places from n - 1 selections, this is combination C(2/(n-1))
             return (n-1) * (n - 2) // 2 % (10**9+7)
+
         if len(oneIndexes) % 3 != 0:
             return 0
-        # The result is the product of '0' slots bewtween 1st substring to 2nd substring
-        # to the '0' slots bewtween 2nd substirng to 3rd substring
+        
+        # The result is the product of '0' slots between 1st substring to 2nd substring
+        # to the '0' slots between 2nd substring to 3rd substring
         div = len(oneIndexes) // 3
         return (oneIndexes[div] - oneIndexes[div-1]) * (oneIndexes[div*2] - oneIndexes[div*2-1]) % (10**9+7)
 
