@@ -149,8 +149,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Heap
 
 [23. Merge k Sorted Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/023%20Merge%20k%20Sorted%20Lists.py) [**Facebook**]\
+[215. Kth Largest Element in an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/215%20Kth%20Largest%20Element%20in%20an%20Array.py) [**Facebook**]\
 [218. The Skyline Problem](https://github.com/jz33/LeetCodeSolutions/blob/master/218%20The%20Skyline%20Problem.py)\
 [295. Find Median from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/295%20Find%20Median%20from%20Data%20Stream.py)\
+[347. Top K Frequent Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/347%20Top%20K%20Frequent%20Elements.py) [**Facebook**]\
 [378. Kth Smallest Element in a Sorted Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/378%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)\
 [414. Third Maximum Number](https://github.com/jz33/LeetCodeSolutions/blob/master/414%20Third%20Maximum%20Number.py)\
 [692. Top K Frequent Words](https://github.com/jz33/LeetCodeSolutions/blob/master/692%20Top%20K%20Frequent%20Words.py)\
@@ -168,6 +170,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [4. Median of Two Sorted Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/0004%20Median%20of%20Two%20Sorted%20Arrays.py) [**Facebook**]\
 [215. Kth Largest Element in an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/215%20Kth%20Largest%20Element%20in%20an%20Array.py) [**Facebook**]\
 [315. Count of Smaller Numbers After Self](https://github.com/jz33/LeetCodeSolutions/blob/master/315%20Count%20of%20Smaller%20Numbers%20After%20Self.py)\
+[347. Top K Frequent Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/347%20Top%20K%20Frequent%20Elements.py) [**Facebook**]\
 [493. Reverse Pairs](https://github.com/jz33/LeetCodeSolutions/blob/master/493%20Reverse%20Pairs.py)
 
 ### Trie

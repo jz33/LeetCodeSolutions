@@ -2,7 +2,9 @@
 347. Top K Frequent Elements
 https://leetcode.com/problems/top-k-frequent-elements/
 
-Given a non-empty array of integers, return the k most frequent elements.
+Given an integer array nums and an integer k,
+return the k most frequent elements.
+You may return the answer in any order.
 
 Example 1:
 
@@ -14,64 +16,76 @@ Example 2:
 Input: nums = [1], k = 1
 Output: [1]
 
-Note:
+Constraints:
+    1 <= nums.length <= 105
+    -104 <= nums[i] <= 104
+    k is in the range [1, the number of unique elements in the array].
+    It is guaranteed that the answer is unique.
 
-You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
-Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
-It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
-You can return the answer in any order.
+Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 '''
+import random
+from typing import List
+from collections import Counter
 
-### 1. A strict O(n) method without sort
-class Solution:
+class Solution1:
+    '''
+    Use sort O(nlogk)
+    The return is sorted
+    '''
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # 1. Build histogram and find maximun frequency
-        histogram = {}
-        maxFreq = 0
-        for n in nums:
-            freq = histogram.get(n,0) + 1
-            maxFreq = max(maxFreq,freq)
-            histogram[n] = freq
-        
-        # 2. Build reversed histogram
-        revHisto = {}
-        for key, val in histogram.items():
-            revHisto[val] = revHisto.get(val,[]) + [key]
-        
-        # 3. Count from maximun frequency
-        res = []
-        while len(res) < k:
-            res.extend(revHisto.get(maxFreq,[]))
-            maxFreq -= 1
-        return res[:k]
-
-
-### 2. An O(nlog(n)) method with sort
-class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # 1. Build histogram
-        histogram = collections.Counter(nums)
-
-        # 2. Sort
+        histogram = Counter(nums)
         ls = sorted(histogram.items(), key = lambda x : -x[1])
-        
-        # 3. Slice
         return [p[0] for p in ls[:k]]
     
-    
-### 3. Use Heap
 from heapq import heappush, heappop
-class Solution:
+class Solution2:
+    '''
+    Use heap, O(nlogk)
+    Should be fastest in reality, as heap is shallow
+    '''
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        counter = collections.Counter(nums)
+        histogram = Counter(nums)
 
         heap = [] # min heap
-        for key, ctr in counter.items():
-            heappush(heap, (ctr, key))
+        for key, count in histogram.items():
+            heappush(heap, (count, key))
             if len(heap) > k:
                 heappop(heap)
         
-        res = []
-        while heap:
-            res.append(heappop(heap)[1])
-        return res[::-1]
+        # Just return the heap as order is not required
+        return [pair[1] for pair in heap]
+
+class Solution3:
+    '''
+    Use quick select, O(n)
+    Works as the return order is not required
+    '''
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        histogram = Counter(nums)
+        rank = k
+        items = list(histogram.items()) # [(key, count)]
+        result = []
+        while items:
+            pivot = random.choice(items)
+            smalls = [pair for pair in items if pair[1] < pivot[1]]
+            middles = [pair for pair in items if pair[1] == pivot[1]]
+            larges = [pair for pair in items if pair[1] > pivot[1]]
+
+            if rank <= len(larges):
+                # On the right larger array
+                items = larges
+            elif rank > len(larges) + len(middles):
+                # On the left smaller array
+                items = smalls
+                rank = rank - len(larges) - len(middles)
+                result += middles + larges
+            else:
+                # In one of the middle section. Done
+                result += larges + middles[:rank - len(larges)]
+                break
+            
+        return [item[0] for item in result]
+    
+sol = Solution3()
+print(sol.topKFrequent([1,1,1,2,2,3,3,4], 4))

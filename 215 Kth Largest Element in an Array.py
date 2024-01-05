@@ -23,6 +23,9 @@ Constraints:
     -104 <= nums[i] <= 104
 '''
 class Solution:
+    '''
+    O(n) with quick select
+    '''
     def findKthLargest(self, nums: List[int], k: int) -> int:
         rank = k
         arr = nums
@@ -43,3 +46,16 @@ class Solution:
                 # In one of the middle section. They are all same, so just return the pivot
                 return pivot
         return -1
+
+from heapq import heappush, heappop
+class Solution:
+    '''
+    Use heap, O(nlogk)
+    '''
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heap = [] # min heap
+        for n in nums:
+            heappush(heap, n)
+            if len(heap) > k:
+                heappop(heap)
+        return heap[0]
