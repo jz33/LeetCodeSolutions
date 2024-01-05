@@ -33,13 +33,15 @@ Constraints:
     target is an integer from nums.
     At most 104 calls will be made to pick.
 '''
+import random
+
 class Solution:
     def __init__(self, nums: List[int]):
-        valueToindexes = {} # {value, [indexes]}
+        valueToIndexes = {} # {value, [indexes]}
         for i, v in enumerate(nums):
-            valueToindexes[v] = valueToindexes.get(v, []) + [i]
-        self.valueToindexes = valueToindexes
+            valueToIndexes[v] = valueToIndexes.get(v, []) + [i]
+        self.valueToIndexes = valueToIndexes
 
     def pick(self, target: int) -> int:
-        return random.choice(self.valueToindexes[target])
+        return random.choice(self.valueToIndexes[target])
         
