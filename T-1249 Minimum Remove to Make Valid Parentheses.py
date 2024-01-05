@@ -58,4 +58,35 @@ class Solution:
             splittedStr[b] = ''
         return ''.join(splittedStr)
 
+class Solution2:
+    '''
+    Double pass without using stack
+    '''
+    def minRemoveToMakeValid(self, src: str) -> str:
+        charList = list(src)
+
+        # Remove redundant )
+        leftCount = 0
+        for i in range(len(charList)):
+            if charList[i] == '(':
+                leftCount += 1
+            elif charList[i] == ')':
+                if leftCount == 0:
+                    charList[i] = ''
+                else:
+                    leftCount -= 1
+        
+        # Remove redundant (
+        rightCount = 0
+        for i in range(len(charList)-1, -1, -1):
+            if charList[i] == ')':
+                rightCount += 1
+            elif charList[i] == '(':
+                if rightCount == 0:
+                    charList[i] = ''
+                else:
+                    rightCount -= 1
+
+        return ''.join(charList)
+
 
