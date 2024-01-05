@@ -19,10 +19,8 @@ Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
 Constraints:
-
     1 <= nums.length <= 8
     -10 <= nums[i] <= 10
-    
 '''
 class Solution:
     '''
@@ -36,16 +34,19 @@ class Solution:
                 perms.append(arr)
             else:
                 for i in range(start, size):
+                    # This is the added line comparing to 46. Permutations 
                     if i != start and arr[i] == arr[start]:
                         continue
                     arr[i], arr[start] = arr[start], arr[i]
-                    # deepcopy the array
                     topDown(arr[:], start + 1)
                     
         topDown(sorted(nums), 0)
         return perms
 
-class Solution:
+class Solution2:
+    '''
+    Iterative
+    '''
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         # This idea is to incrementally build the permuations by each element:
         # insert e onto all positions of previous permutation

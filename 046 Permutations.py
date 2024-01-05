@@ -44,12 +44,12 @@ class Solution:
 
 class Solution:
     '''
-    Iterative
+    Iterative.
     '''
     def permute(self, nums: List[int]) -> List[List[int]]:
-        # The idea is to incrementally build the permuations by each element:
+        # The idea is to incrementally build the permutations by each element:
         # insert e onto all positions of previous permutation
-        perms = [[]]      
+        perms = [[]]   
         for e in nums:
             nextPerms = []
             for row in perms:
