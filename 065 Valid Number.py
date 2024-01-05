@@ -2,32 +2,49 @@
 65. Valid Number
 https://leetcode.com/problems/valid-number
 
-Validate if a given string can be interpreted as a decimal number.
+A valid number can be split up into these components (in order):
 
-Some examples:
-"0" => true
-" 0.1 " => true
-"abc" => false
-"1 a" => false
-"2e10" => true
-" -90e3   " => true
-" 1e" => false
-"e3" => false
-" 6e-1" => true
-" 99e2.5 " => false
-"53.5e93" => true
-" --6 " => false
-"-+3" => false
-"95a54e53" => false
+    A decimal number or an integer.
+    (Optional) An 'e' or 'E', followed by an integer.
 
-Note: It is intended for the problem statement to be ambiguous.
-You should gather all requirements up front before implementing one.
-However, here is a list of characters that can be in a valid decimal number:
+A decimal number can be split up into these components (in order):
 
-Numbers 0-9
-Exponent - "e"
-Positive/negative sign - "+"/"-"
-Decimal point - "."
+    (Optional) A sign character (either '+' or '-').
+    One of the following formats:
+        One or more digits, followed by a dot '.'.
+        One or more digits, followed by a dot '.', followed by one or more digits.
+        A dot '.', followed by one or more digits.
+
+An integer can be split up into these components (in order):
+
+    (Optional) A sign character (either '+' or '-').
+    One or more digits.
+
+For example, all the following are valid numbers: 
+["2", "0089", "-0.1", "+3.14", "4.", "-.9", "2e10", "-90E3", "3e+7", "+6e-1", "53.5e93", "-123.456e789"],
+while the following are not valid numbers:
+["abc", "1a", "1e", "e3", "99e2.5", "--6", "-+3", "95a54e53"].
+
+Given a string s, return true if s is a valid number.
+
+Example 1:
+
+Input: s = "0"
+Output: true
+
+Example 2:
+
+Input: s = "e"
+Output: false
+
+Example 3:
+
+Input: s = "."
+Output: false
+
+Constraints:
+    1 <= s.length <= 20
+    s consists of only English letters (both uppercase and lowercase), digits (0-9), plus '+', minus '-', or dot '.'.
 '''
 '''
 DFA:
@@ -48,32 +65,54 @@ State # can only stay or increase
    
 Final state should be in 3, 4, 7
 '''
+# State names
+Initial = 0
+Sign = 1
+Dot = 2
+Int = 3
+Decimal = 4
+Exp= 5
+ExpSign = 6
+ExpInt = 7
+
 class Solution:
     def isNumber(self, s: str) -> bool:
-        state = 0;
-        s = s.strip() # strip spaces
+        s = s.strip()
+        state = Initial
         for c in s:
-            if c == '+' or c == '-':
-                if state == 0: state = 1
-                elif state == 5: state = 6
-                else: return False
+            if c in ['+', '-']:
+                if state == Initial:
+                    state = Sign
+                elif state == Exp:
+                    state = ExpSign
+                else:
+                    return False
                 
             elif c == '.':
-                if state == 0 or state == 1: state = 2
-                elif state == 3: state = 4
-                else: return False
+                if state in [Initial, Sign]:
+                    state = Dot
+                elif state == Int:
+                    state = Decimal
+                else:
+                    return False
                 
-            elif c == 'e':
-                if state == 3 or state == 4: state = 5
-                else: return False
+            elif c in ['e', 'E']:
+                if state in [Int, Decimal]:
+                    state = Exp
+                else:
+                    return False
                 
-            elif ord('0') <= ord(c) <= ord('9'):
-                if state == 0 or state == 1 or state == 3: state = 3
-                elif state == 2 or state == 4: state = 4
-                elif state == 5 or state == 6 or state == 7: state = 7
-                else: return False
+            elif c.isdigit():
+                if state in [Initial, Sign, Int]:
+                    state = Int
+                elif state in [Dot, Decimal]:
+                    state = Decimal
+                elif state in [Exp, ExpSign, ExpInt]:
+                    state = ExpInt
+                else:
+                    return False
                 
             else:
                 return False
     
-        return (state == 3 or state == 4 or state == 7)
+        return state in [Int, Decimal, ExpInt]
