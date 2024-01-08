@@ -86,7 +86,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
 [992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
 [1004. Max Consecutive Ones III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1004%20Max%20Consecutive%20Ones%20III.py) [**Facebook**]\
-[1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.ts) [**Facebook**]
+[1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.ts) [**Facebook**]\
+[2461. Maximum Sum of Distinct Subarrays With Length K]()
 
 ### Monotonic Stack
 
@@ -358,7 +359,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Union Find
 
 [305. Number of Islands II](https://github.com/jz33/LeetCodeSolutions/blob/master/305%20Number%20of%20Islands%20II.py)\
-[323. Number of Connected Components in an Undirected Graph]() [**Facebook**]\
+[323. Number of Connected Components in an Undirected Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/323%20Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.py) [**Facebook**]\
 [547. Number of Provinces](https://github.com/jz33/LeetCodeSolutions/blob/master/547%20Number%20of%20Provinces.py)\
 [684. Redundant Connection](https://github.com/jz33/LeetCodeSolutions/blob/master/684%20Redundant%20Connection.py) [**TikTok**]\
 [721. Accounts Merge](https://github.com/jz33/LeetCodeSolutions/blob/master/721%20Accounts%20Merge.py) [**Facebook**]\
