@@ -32,6 +32,9 @@ Constraints:
     At most 104 calls will be made to next.
 '''
 class MovingAverage:
+    '''
+    Use deque
+    '''
     def __init__(self, size: int):
         self.size = size
         self.queue = collections.deque()
@@ -44,3 +47,26 @@ class MovingAverage:
             poped = self.queue.popleft()
             self.total -= poped
         return self.total / len(self.queue)
+
+class MovingAverage:
+    '''
+    Without deque
+    '''
+    def __init__(self, windowSize: int):
+        self.windowSize = windowSize
+        self.queue = []
+        self.total = 0
+        self.popIndex = 0 # where should start pop if queue is full
+
+    def next(self, val: int) -> float:
+        self.total += val
+        if len(self.queue) < self.windowSize:
+            self.queue.append(val)
+        else:
+            # pop
+            self.total -= self.queue[self.popIndex]
+            self.queue[self.popIndex] = val
+            self.popIndex = (self.popIndex + 1) % self.windowSize
+        return self.total / len(self.queue)
+
+        
