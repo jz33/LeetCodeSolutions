@@ -28,50 +28,47 @@ edges[i][0] != edges[i][1]
 0 <= edges[i][j] <= edges.length
 The given edges form an undirected tree.
 '''
-
-from collections import defaultdict
-
 class Solution:
-    def postorder(self, node: int, parent: int) -> int:
-        '''
-        @return: max node count from node to 1 of its child branch.
-        '''
-        singlePaths = [] # maximum path count of children
-        for togo in self.graph[node]:
-            if togo != parent:
-                singlePaths.append(self.postorder(togo, node))
-        
-        if not singlePaths:
-            return 1
-        if len(singlePaths) == 1:
-            r = 1 + singlePaths[0]
-            self.maxNodeCount = max(self.maxNodeCount, r)
-            return r
-        
-        # Pick 2 top paths
-        singlePaths.sort()
-        top1, top2 = singlePaths[-1], singlePaths[-2]
-        
-        # Path of top1 -> node -> top2
-        doublePath = top1 + top2 + 1
-        self.maxNodeCount = max(self.maxNodeCount, doublePath)
-        return top1 + 1
-        
     def treeDiameter(self, edges: List[List[int]]) -> int:
-        '''
-        Similar to 124. Binary Tree Maximum Path Sum
-        '''
         if not edges:
             return 0
         
-        graph = defaultdict(list)
+        graph = {} # { node : [nodes]}
         for f, t in edges:
-            graph[f].append(t)
-            graph[t].append(f)
+            graph[f] = graph.get(f, []) + [t]
+            graph[t] = graph.get(t, []) + [f]
+
+        maxNodeCount = 1
+
+        def postorder(node: int, parent: int) -> int:
+            '''
+            @return: max node count from node to 1 of its child branch.
+            Similar to 124. Binary Tree Maximum Path Sum
+            '''
+            nonlocal maxNodeCount
+            singlePaths = [] # maximum path count of children
+            for togo in graph[node]:
+                if togo != parent:
+                    singlePaths.append(postorder(togo, node))
+            
+            if not singlePaths:
+                return 1
+            
+            if len(singlePaths) == 1:
+                nodeCount = 1 + singlePaths[0]
+                maxNodeCount = max(maxNodeCount, nodeCount)
+                return nodeCount
+            
+            # Pick 2 top paths
+            singlePaths.sort()
+            top1, top2 = singlePaths[-1], singlePaths[-2]
+            
+            # Path of top1 -> node -> top2
+            doublePath = top1 + top2 + 1
+            maxNodeCount = max(maxNodeCount, doublePath)
+            return top1 + 1
         
-        self.graph = graph
-        self.maxNodeCount = 1
         start = edges[0][0]
-        self.postorder(start, start)
+        postorder(start, start)
         
-        return self.maxNodeCount - 1
+        return maxNodeCount - 1
