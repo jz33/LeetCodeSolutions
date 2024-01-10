@@ -189,6 +189,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [54. Spiral Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/054%20Spiral%20Matrix.py)\
 [498. Diagonal Traverse](https://github.com/jz33/LeetCodeSolutions/blob/master/498%20Diagonal%20Traverse.py) [**Facebook**]\
 [766. Toeplitz Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/766%20Toeplitz%20Matrix.py) [**Facebook**]\
+[1424. Diagonal Traverse II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1424%20Diagonal%20Traverse%20II.py) [**Facebook**]\
 [1861.Rotating the Box](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1861%20Rotating%20the%20Box.ts) [**TikTok**]
 
 ### Dynamic Programming
