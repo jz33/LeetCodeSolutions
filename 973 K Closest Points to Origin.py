@@ -200,8 +200,6 @@ class Solution:
             heappush(heap, (-d, p))
             if len(heap) > K:
                 heappop(heap)
-                
-        res = []
-        while heap:
-            res.append(heappop(heap)[1])
-        return res
+        
+        # No order required for return
+        return [point for _, point in heap]
