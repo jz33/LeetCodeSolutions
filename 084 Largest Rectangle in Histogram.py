@@ -1,5 +1,5 @@
 '''
-84 Largest Rectangle in Histogram
+84. Largest Rectangle in Histogram
 https://leetcode.com/problems/largest-rectangle-in-histogram/
 
 Given an array of integers heights representing the histogram's bar height
@@ -30,7 +30,7 @@ class Solution:
         def compute(i, h):
             nonlocal stack, maxArea
             # Compute previous rectangle size if height decreased on i,
-            # as i cannot build a rectange with previous indexes
+            # as i cannot build a rectangle with previous indexes
             while stack and h < heights[stack[-1]]:
                 last = stack.pop()
                 recHeight = heights[last]

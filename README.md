@@ -239,7 +239,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [77. Combinations](https://github.com/jz33/LeetCodeSolutions/blob/master/077%20Combinations.py)\
 [486. Predict the Winner](https://github.com/jz33/LeetCodeSolutions/blob/master/486%20Predict%20the%20Winner.py)\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
-[996. Number of Squareful Arrays]()\
+[996. Number of Squareful Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/996%20Number%20of%20Squareful%20Arrays.ts)\
 [2060. Check if an Original String Exists Given Two Encoded Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2060%20Check%20if%20an%20Original%20String%20Exists%20Given%20Two%20Encoded%20Strings.py)
 
 ### Single Linked List
