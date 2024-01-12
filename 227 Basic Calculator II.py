@@ -36,7 +36,7 @@ Constraints:
 class Solution:
     '''
     This calculator needs to consider +, -, *, /, but not parentheses
-    Can re-use 772. Basic Calculator III, but using stack is inefficient, should do in O(1)
+    Can re-use 772. Basic Calculator III, but using stack is inefficient, should do extra memory in O(1)
     '''
     def calculate(self, s: str) -> int:
         result = 0

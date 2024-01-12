@@ -101,7 +101,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Calculator
 
-[224. Basic Calculator](https://github.com/jz33/LeetCodeSolutions/blob/master/224%20Basic%20Calculator.ts)\
+[224. Basic Calculator](https://github.com/jz33/LeetCodeSolutions/blob/master/224%20Basic%20Calculator.ts) [**Facebook**]\
 [227. Basic Calculator II](https://github.com/jz33/LeetCodeSolutions/blob/master/227%20Basic%20Calculator%20II.py) [**Facebook**]\
 [772. Basic Calculator III](https://github.com/jz33/LeetCodeSolutions/blob/master/772%20Basic%20Calculator%20III.py) [**TikTok**]\
 [394. Decode String](https://github.com/jz33/LeetCodeSolutions/blob/master/394%20Decode%20String.py) [**TikTok**]

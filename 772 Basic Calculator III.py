@@ -76,7 +76,7 @@ class Solution:
 
                 # Get sum of the numbers inside parentheses,
                 # compute with the operator in front of '('
-                number = 0;
+                number = 0
                 while isinstance(stack[-1], int):
                     number += stack.pop()
                 operator = stack.pop()
