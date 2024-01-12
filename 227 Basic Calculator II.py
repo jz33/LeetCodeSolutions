@@ -1,59 +1,91 @@
 '''
 227. Basic Calculator
 https://leetcode.com/problems/basic-calculator-ii/
-'''
-'''
-Same solution for
-224. Basic Calculator
-227. Basic Calculator II
-772. Basic Calculator III
+
+Given a string s which represents an expression, evaluate this expression and return its value. 
+
+The integer division should truncate toward zero.
+
+You may assume that the given expression is always valid.
+All intermediate results will be in the range of [-231, 231 - 1].
+
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions,such as eval().
+
+Example 1:
+
+Input: s = "3+2*2"
+Output: 7
+
+Example 2:
+
+Input: s = " 3/2 "
+Output: 1
+
+Example 3:
+
+Input: s = " 3+5 / 2 "
+Output: 5
+
+Constraints:
+    1 <= s.length <= 3 * 105
+    s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+    s represents a valid expression.
+    All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+    The answer is guaranteed to fit in a 32-bit integer.
 '''
 class Solution:
-    def compute(self, op: str, num: int, stack: List[int]):
-        if op == '+':
-            stack.append(num)
-        elif op == '-':
-            stack.append(-num)
-        elif op == '*':
-            stack.append(stack.pop() * num)
-        elif op == '/':
-            # Notice how Python3 doing integer division on negative input
-            last = stack.pop()
-            if last // num < 0 and last % num != 0:
-                stack.append(last // num + 1)
-            else:
-                stack.append(last // num)
-                
-    def collapse(self, stack: List[int]):
-        # Collapse on stack to compute the result inside bracket pair.
-        # No need to check if stack is null because
-        # there must be a string operator in front.
-        num = 0
-        while isinstance(stack[-1], int):
-            num += stack.pop()
-        op = stack.pop()
-        self.compute(op, num, stack)
-              
+    '''
+    This calculator needs to consider +, -, *, /, but not parentheses
+    Can re-use 772. Basic Calculator III, but using stack is efficient, should do in O(1)
+    '''
     def calculate(self, s: str) -> int:
+        result = 0
+        # When encounters a delimiter ('+', '-', '*', '/' or EOF), currNum is the number before the delimiter,
+        # op is the operator before currNum, prevNum is the number before operator
+        # For example: 1 - 2 * 3, if reaches '*', prevNum = 1, currNum = 2, op = '-'
         op = '+'
-        num = 0
-        stack = []
+        prevNum = 0
+        currNum = 0
+
+        def compute():
+            nonlocal result, op, prevNum, currNum
+            if op == '+':
+                # This cannot be prevNum = prevNum + currNum, as next operator could be *, /
+                result += prevNum
+                prevNum = currNum
+            elif op == '-':
+                result += prevNum
+                prevNum = -currNum
+            elif op == '*':
+                prevNum = prevNum * currNum
+            elif op == '/':
+                if prevNum // currNum < 0 and prevNum % currNum != 0:
+                    prevNum = prevNum // currNum + 1
+                else:
+                    prevNum = prevNum // currNum
+
         for c in s:
             if c.isdecimal():
-                num = num * 10 + int(c)              
+                currNum = currNum * 10 + int(c)   
+
             elif c in ['+', '-', '*', '/']:
-                self.compute(op, num, stack)
+                # compute when at delimiter or at the end of line
+                compute()
                 op = c
-                num = 0
-            elif c == '(':
-                stack.append(op)
-                op = '+'
-                num = 0
-            elif c == ')':
-                self.compute(op, num, stack)
-                self.collapse(stack)
-                # No need to reset operator, let next char determine
-                num = 0
-        
-        self.compute(op, num, stack)
-        return sum(stack)
+                currNum = 0
+                
+        compute()
+        return result + prevNum
+
+sol = Solution()
+formula = [
+    '1-3',
+    '2*3',
+    '7*2',
+    '1+1+1',
+    '7/2',
+    '4-3-2-100',
+    '2+3*10'
+]
+for f in formula:
+    print('{0} equals {1}'.format(f, sol.calculate(f)))
