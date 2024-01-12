@@ -2,61 +2,53 @@
 968. Binary Tree Cameras
 https://leetcode.com/problems/binary-tree-cameras/
 
-Given a binary tree, we install cameras on the nodes of the tree. 
+You are given the root of a binary tree. We install cameras on the tree nodes where each camera at
+a node can monitor its parent, itself, and its immediate children.
 
-Each camera at a node can monitor its parent, itself, and its immediate children.
-
-Calculate the minimum number of cameras needed to monitor all nodes of the tree.
+Return the minimum number of cameras needed to monitor all nodes of the tree.
 
 Example 1:
 
-Input: [0,0,null,0,0]
+Input: root = [0,0,null,0,0]
 Output: 1
 Explanation: One camera is enough to monitor all nodes if placed as shown.
 
 Example 2:
 
-Input: [0,0,null,0,null,0,null,null,0]
+Input: root = [0,0,null,0,null,0,null,null,0]
 Output: 2
-Explanation: At least two cameras are needed to monitor all nodes of the tree.
-The above image shows one of the valid configurations of camera placement.
-'''
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+Explanation: At least two cameras are needed to monitor all nodes of the tree. The above image shows one of the valid configurations of camera placement.
 
-from enum import Enum
-class State(Enum):
-    HasCamera = 1
-    NoCameraMonitored = 2
-    NoCameraNotMonitored = 3
+Constraints:
+    The number of nodes in the tree is in the range [1, 1000].
+    Node.val == 0
+'''
+HasCamera = 1 # the node has camera
+NoCameraMonitored = 2 # the node has no camera, but monitored by other nodes
+NoCameraNotMonitored = 3 # the node has no camera, and not monitored by other nodes
 
 class Solution:
-    def postorder(self, node: TreeNode) -> State:
-        if not node:
-            return State.NoCameraMonitored
+    def minCameraCover(self, root: Optional[TreeNode]) -> int:
+        cameraNeeded = 0
         
-        leftState = self.postorder(node.left)
-        rightState = self.postorder(node.right)
-        
-        # This has to be first condition, because any of the children who is no camera and
-        # not monitored, this node has to install a camera
-        if leftState == State.NoCameraNotMonitored or rightState == State.NoCameraNotMonitored:
-            self.cameraCount += 1
-            return State.HasCamera
+        def postorder(node: Optional[TreeNode]) -> int:
+            nonlocal cameraNeeded
 
-        elif leftState == State.HasCamera or rightState == State.HasCamera:
-            return State.NoCameraMonitored
-        
-        else: # leftState == State.NoCameraMonitored and rightState == State.NoCameraMonitored:
-            return State.NoCameraNotMonitored
-        
-    def minCameraCover(self, root: TreeNode) -> int:
-        self.cameraCount = 0
-        state = self.postorder(root)
-        if state == State.NoCameraNotMonitored:
-            self.cameraCount += 1
-        return self.cameraCount
+            if not node:
+                return NoCameraMonitored
+            
+            leftState = postorder(node.left)
+            rightState = postorder(node.right)
+
+            if leftState == NoCameraNotMonitored or rightState == NoCameraNotMonitored:
+                cameraNeeded += 1
+                return HasCamera
+            if leftState == HasCamera or rightState == HasCamera:
+                return NoCameraMonitored
+            else: # leftState == NoCameraMonitored and rightState == NoCameraMonitored
+                return NoCameraNotMonitored
+            
+        state = postorder(root)
+        if state == NoCameraNotMonitored:
+            cameraNeeded += 1
+        return cameraNeeded
