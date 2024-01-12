@@ -99,7 +99,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]\
 [2863. Maximum Length of Semi-Decreasing Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2863%20Maximum%20Length%20of%20Semi-Decreasing%20Subarrays.py) [**TikTok**]
 
-### Calculators
+### Calculator
 
 [224. Basic Calculator](https://github.com/jz33/LeetCodeSolutions/blob/master/224%20Basic%20Calculator.ts)\
 [227. Basic Calculator II](https://github.com/jz33/LeetCodeSolutions/blob/master/227%20Basic%20Calculator%20II.py) [**Facebook**]\
@@ -327,7 +327,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [286. Walls and Gates](https://github.com/jz33/LeetCodeSolutions/blob/master/286%20Walls%20and%20Gates.py)\
 [317. Shortest Distance from All Buildings](https://github.com/jz33/LeetCodeSolutions/blob/master/317%20Shorted%20Distance%20from%20All%20Buildings.py) [**Facebook**]\
 [329. Longest Increasing Path in a Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/329%20Longest%20Increasing%20Path%20in%20a%20Matrix.py) [**Facebook**]\
-[688. Knight Probability in Chessboard]()\
+[688. Knight Probability in Chessboard](https://github.com/jz33/LeetCodeSolutions/blob/master/688%20Knight%20Probability%20in%20Chessboard.py)\
 [827. Making A Large Island](https://github.com/jz33/LeetCodeSolutions/blob/master/827%20Making%20A%20Large%20Island.py) [**Facebook**]\
 [994. Rotting Oranges](https://github.com/jz33/LeetCodeSolutions/blob/master/994%20Rotting%20Oranges.py) [**TikTok**]\
 [1091. Shortest Path in Binary Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1091%20Shortest%20Path%20in%20Binary%20Matrix.py) [**Facebook**]\
