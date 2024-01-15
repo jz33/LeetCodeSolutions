@@ -2,9 +2,11 @@
 339. Nested List Weight Sum
 https://leetcode.com/problems/nested-list-weight-sum/
 
-You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists.
+You are given a nested list of integers nestedList.
+Each element is either an integer or a list whose elements may also be integers or other lists.
 
-The depth of an integer is the number of lists that it is inside of. For example, the nested list [1,[2,2],[[3],2],1] has each integer's value set to its depth.
+The depth of an integer is the number of lists that it is inside of.
+For example, the nested list [1,[2,2],[[3],2],1] has each integer's value set to its depth.
 
 Return the sum of each integer in nestedList multiplied by its depth.
 
@@ -73,32 +75,11 @@ Constraints:
 #        :rtype List[NestedInteger]
 #        """
 
-# """
-# This is the interface that allows for creating nested lists.
-# You should not implement it, or speculate about its implementation
-# """
-#class NestedInteger:
-#    def __init__(self, value=None):
-#        """
-#        If value is not specified, initializes an empty list.
-#        Otherwise initializes a single integer equal to value.
-#        """
-#
-#    def getInteger(self):
-#        """
-#        @return the single integer that this NestedInteger holds, if it holds a single integer
-#        Return None if this NestedInteger holds a nested list
-#        :rtype int
-#        """
-#
-#    def getList(self):
-#        """
-#        @return the nested list that this NestedInteger holds, if it holds a nested list
-#        Return None if this NestedInteger holds a single integer
-#        :rtype List[NestedInteger]
-#        """
 
 class Solution:
+    '''
+    Level Order Traversal
+    '''
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
         result = 0
         depth = 1
@@ -106,11 +87,30 @@ class Solution:
         while row:
             newRow = []
             for node in row:
-                integer = node.getInteger()
-                if integer is not None:
-                    result += integer * depth
+                value = node.getInteger()
+                if value is not None:
+                    result += value * depth
                 else:
                     newRow += node.getList()
             row = newRow
             depth += 1
+        return result
+    
+class Solution2:
+    '''
+    Preorder Traversal
+    '''
+    def depthSum(self, nestedList: List[NestedInteger]) -> int:
+        result = 0
+
+        def preorder(children: List[NestedInteger], depth: int):
+            nonlocal result
+            for node in children:
+                value = node.getInteger()
+                if value is not None:
+                    result += value * depth
+                else:
+                    preorder(node.getList(), depth + 1)
+
+        preorder(nestedList, 1)
         return result
