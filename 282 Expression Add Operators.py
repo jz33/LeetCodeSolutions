@@ -33,6 +33,7 @@ Constraints:
 '''
 class Solution:
     '''
+    Complexity: O (3 ^ N)
     '''
     def addOperators(self, num: str, target: int) -> List[str]:
         pool = []
