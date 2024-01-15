@@ -237,6 +237,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [46. Permutations](https://github.com/jz33/LeetCodeSolutions/blob/master/046%20Permutations.py)\
 [47. Permutations II](https://github.com/jz33/LeetCodeSolutions/blob/master/047%20Permutations%20II.py) [**TikTok**]\
 [77. Combinations](https://github.com/jz33/LeetCodeSolutions/blob/master/077%20Combinations.py)\
+[282. Expression Add Operators](https://github.com/jz33/LeetCodeSolutions/blob/master/282%20Expression%20Add%20Operators.py) [**Facebook**]\
 [486. Predict the Winner](https://github.com/jz33/LeetCodeSolutions/blob/master/486%20Predict%20the%20Winner.py)\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
 [996. Number of Squareful Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/996%20Number%20of%20Squareful%20Arrays.py)\
@@ -269,6 +270,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [129 Sum Root to Leaf Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/129%20Sum%20Root%20to%20Leaf%20Numbers.py) [**Facebook**]\
 [144. Binary Tree Preorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/144%20Binary%20Tree%20Preorder%20Traversal.ts)\
 [341. Flatten Nested List Iterator](https://github.com/jz33/LeetCodeSolutions/blob/master/341%20Flatten%20Nested%20List%20Iterator.py)\
+[428. Serialize and Deserialize N-ary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/428%20Serialize%20and%20Deserialize%20N-ary%20Tree.py) [**Facebook**]\
 [437. Path Sum III](https://github.com/jz33/LeetCodeSolutions/blob/master/437%20Path%20Sum%20III.py)\
 [545. Boundary of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/545%20Boundary%20of%20Binary%20Tree.py) \
 [938. Range Sum of BST](https://github.com/jz33/LeetCodeSolutions/blob/master/938%20Range%20Sum%20of%20BST.py) [**Facebook**]\
