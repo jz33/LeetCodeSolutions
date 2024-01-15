@@ -32,42 +32,51 @@ Constraints:
 
 Follow up: Could you use search pruning to make your solution faster with a larger board
 '''
+from collections import Counter
 class Solution:
-    def backtrack(self, visited, wi, node) -> bool:
-        if wi == len(self.word):
-            return True
-        
-        rowCount = len(self.board)
-        colCount = len(self.board[0])
-        
-        i,j = node
-        for x, y in (i,j+1), (i+1,j), (i,j-1),(i-1,j):
-            if 0 <= x < rowCount and 0 <= y < colCount and (x,y) not in visited and self.board[x][y] == self.word[wi]:
-                visited.add((x,y))
-                if self.backtrack(visited, wi+1, (x,y)):
-                    return True
-                visited.remove((x,y))
-        return False
-                        
+    '''
+    This is NOT a BFS problem, because there cannot be a global "visited" cache.
+    Think example:
+    [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
+    "ABCESEEEFS"
+    '''                   
     def exist(self, board: List[List[str]], word: str) -> bool:
-        if not word:
-            return True
-        
-        if not board or not board[0] or len(word) > len(board) * len(board[0]):
+        # Search prune to remove ridiculous cases
+        rowCount = len(board)
+        colCount = len(board[0])
+        if len(word) > rowCount * colCount:
             return False
         
-        # This is NOT a BFS problem, because there cannot be a global "visited" cache.
-        # Think example:
-        # [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
-        # "ABCESEEEFS"
-        
-        self.board = board
-        self.word = word
-        
-        for i in range(len(board)):
-            for j in range(len(board[0])):
+        counterBoard = Counter()
+        for i in range(rowCount):
+            for j in range(colCount):
+                counterBoard[board[i][j]] += 1
+        for value, count in Counter(word).items():
+            if counterBoard.get(value, 0) < count:
+                return False
+            
+        # DFS
+        visited = set()
+
+        def backtrack(wi: int, i: int, j: int) -> bool:
+            nonlocal visited
+            if wi == len(word):
+                return True
+            
+            for x, y in (i,j+1), (i+1,j), (i,j-1),(i-1,j):
+                if 0 <= x < rowCount and 0 <= y < colCount and (x,y) not in visited and board[x][y] == word[wi]:
+                    visited.add((x,y))
+                    if backtrack(wi+1, x, y):
+                        return True
+                    visited.remove((x,y))
+
+            return False
+
+        for i in range(rowCount):
+            for j in range(colCount):
                 if board[i][j] == word[0]:
                     visited = {(i,j)}
-                    if self.backtrack(visited, 1, (i,j)):
+                    if backtrack(1, i, j):
                         return True
+    
         return False
