@@ -121,10 +121,10 @@ class Codec2:
                 # Other case like "},", num should be None, should skip ',' 
                 if num is not None:
                     node = Node(num)
-                    num = 0
+                    num = None
                     stack[-1].children.append(node)
             elif c == '{':
-                node = Node(num)
+                node = Node(num) # num cannot be None
                 num = None
                 if not stack:
                     root = node
@@ -147,6 +147,7 @@ class Codec2:
             # single number
             return Node(num)
 
+        # The root has children or data is empty
         return root
 
         
