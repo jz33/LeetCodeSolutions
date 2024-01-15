@@ -112,34 +112,38 @@ class Codec2:
         1{3{5,6},2,4}
         1{2,3{6,7{11{14}}},4{8{12}},5{9{13},10}}
         '''
-        if not data:
-            return None
-        
-        num = 0
+        num = None # Not 0; None means no num there
         root = None
         stack = [] # [nodes]
         for c in data:
             if c == ',':
-                node = Node(num)
-                num = 0
-                stack[-1].children.append(node)
+                # Only create node if there is a num, like "5,";
+                # Other case like "},", num should be None, should skip ',' 
+                if num is not None:
+                    node = Node(num)
+                    num = 0
+                    stack[-1].children.append(node)
             elif c == '{':
                 node = Node(num)
-                num = 0
-                if stack:
-                    stack[-1].children.append(node)
-                else:
+                num = None
+                if not stack:
                     root = node
+                else:
+                    # Link to parent
+                    stack[-1].children.append(node)
                 stack.append(node)
             elif c == '}':
-                node = Node(num)
-                num = 0
-                stack[-1].children.append(node)
+                # Only create node if there is a num, like "5}",
+                # Other case like "}}", should not create Node but only pop
+                if num is not None:
+                    node = Node(num)
+                    num = None
+                    stack[-1].children.append(node)
                 stack.pop()
             else: # c.isdigit():
-                num = num * 10 + int(c)
+                num = int(c) if num is None else num * 10 + int(c)
 
-        if not root:
+        if not root and num is not None:
             # single number
             return Node(num)
 
