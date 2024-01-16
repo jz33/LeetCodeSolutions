@@ -11,6 +11,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [33. Search in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/033%20Search%20in%20Rotated%20Sorted%20Array.java) [**Facebook**]\
 [34. Find First and Last Position of Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/034%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.py) [**Facebook**]\
 [35. Search Insert Position](https://github.com/jz33/LeetCodeSolutions/blob/master/035%20Search%20Insert%20Position.py)\
+[153. Find Minimum in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/153%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.py)\
 [162. Find Peak Element](https://github.com/jz33/LeetCodeSolutions/blob/master/162%20Find%20Peak%20Element.py) [**Facebook**]\
 [163. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
 [528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
