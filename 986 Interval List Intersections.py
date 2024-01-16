@@ -66,7 +66,7 @@ https://www.1point3acres.com/bbs/thread-1038850-1-1.html
 def merge(firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
     i1 = 0
     i2 = 0
-    int1 = None
+    int1 = None # Notice i1 or i2 are not necessarily in the list, they can be unioned interval too
     int2 = None
     result = [] # [[start , end]]
     while i1 < len(firstList) and i2 < len(secondList):
@@ -97,6 +97,7 @@ def merge(firstList: List[List[int]], secondList: List[List[int]]) -> List[List[
                 int2 = None
                 i2 += 1
 
+    # Merge the remaining unioned interval
     if int1:
         result.append(int1)
         i1 += 1
@@ -104,6 +105,7 @@ def merge(firstList: List[List[int]], secondList: List[List[int]]) -> List[List[
         result.append(int2)
         i2 += 1
 
+    # Merge any remaining intervals
     while i1 < len(firstList):
         result.append(firstList[i1])
         i1 += 1
