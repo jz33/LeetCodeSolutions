@@ -1,4 +1,4 @@
-/*
+'''
 2365. Task Scheduler II
 https://leetcode.com/problems/task-scheduler-ii/
 
@@ -50,20 +50,17 @@ Constraints:
     1 <= tasks.length <= 105
     1 <= tasks[i] <= 109
     1 <= space <= tasks.length
-*/
-function taskSchedulerII(tasks: number[], space: number): number {
-    let days = 0;
-    const taskCompletions = new Map<number, number>(); // {task id : last completed date}
-    for (const taskId of tasks) {
-        const lastCompletedDate = taskCompletions.get(taskId);
-        if (lastCompletedDate !== undefined) {
-            const daysGap = days - lastCompletedDate - 1;
-            const idleDaysNeeded = Math.max(space - daysGap, 0);
-            days += idleDaysNeeded;
-        }
-        taskCompletions.set(taskId, days);
-        days++;
-    }
-    return days;
-}
-
+'''
+class Solution:
+    def taskSchedulerII(self, tasks: List[int], space: int) -> int:
+        day = 0 # id of day
+        taskToDays = {} # { task id : last completed day id}
+        for taskId in tasks:
+            lastCompetedDay = taskToDays.get(taskId)
+            if lastCompetedDay is not None:
+                gap = day - lastCompetedDay - 1
+                day += max(space - gap, 0)
+            taskToDays[taskId] = day
+            day += 1
+        return day
+            
