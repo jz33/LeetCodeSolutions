@@ -45,7 +45,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [56. Merge Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/056%20Merge%20Intervals.py) [**Facebook**]\
 [88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.ts) [**Facebook**]\
 [415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
-[986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.ts) [**Facebook**, union not intersection]\
+[986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.py) [**Facebook**, union not intersection]\
 [1229. Meeting Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1229%20Meeting%20Scheduler.py)\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
 [1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
