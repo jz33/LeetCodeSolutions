@@ -2,19 +2,19 @@
 1166. Design File System
 https://leetcode.com/problems/design-file-system/
 
-You are asked to design a file system which provides two functions:
+You are asked to design a file system that allows you to create new paths and
+associate them with different values.
 
-createPath(path, value): Creates a new path and associates a value to it if possible and returns True.
-Returns False if the path already exists or its parent path doesn't exist.
+The format of a path is one or more concatenated strings of the form: /
+followed by one or more lowercase English letters.
+For example, "/leetcode" and "/leetcode/problems" are valid paths while an empty string "" and "/" are not.
 
-get(path): Returns the value associated with a path or returns -1 if the path doesn't exist.
+Implement the FileSystem class:
 
-The format of a path is one or more concatenated strings of the form: / followed by one or more lowercase English letters.
-For example, /leetcode and /leetcode/problems are valid paths while an empty string and / are not.
+bool createPath(string path, int value) Creates a new path and associates a value to it if possible and
+returns true. Returns false if the path already exists or its parent path doesn't exist.
 
-Implement the two functions.
-
-Please refer to the examples for clarifications.
+int get(string path) Returns the value associated with path or returns -1 if the path doesn't exist.
 
 Example 1:
 
@@ -44,49 +44,55 @@ fileSystem.createPath("/leet/code", 2); // return true
 fileSystem.get("/leet/code"); // return 2
 fileSystem.createPath("/c/d", 1); // return false because the parent path "/c" doesn't exist.
 fileSystem.get("/c"); // return -1 because this path doesn't exist.
+
+Constraints:
+    2 <= path.length <= 100
+    1 <= value <= 109
+    Each path is valid and consists of lowercase English letters and '/'.
+    At most 104 calls in total will be made to createPath and get.
 '''
-class Node:
+class TreeNode:
     def __init__(self, value):
         self.value = value
-        self.children = {} # route : Node
+        self.children = {} # { path or file name : TreeNode }
     
 class FileSystem:
     def __init__(self):
-        self.root = Node(None)
+        self.root = TreeNode(None)
 
     def createPath(self, path: str, value: int) -> bool:        
         # Be careful! Python string split contains empty strings!
         paths = path.split('/')
         
-        n = self.root
-        for i, s in enumerate(paths):
-            if not s:
+        node = self.root
+        for i, name in enumerate(paths):
+            if not name:
                 continue
-            if s in n.children:
+            if name in node.children:
                 if i == len(paths) - 1:
-                    # path already existed
+                    # file already existed
                     return False
                 else:
-                    n = n.children[s]
+                    node = node.children[name]
             else:
                 if i == len(paths) - 1:
-                    n.children[s] = Node(value)
+                    node.children[name] = TreeNode(value)
                 else:
                     # parent path does not exist
                     return False
         return True
             
     def get(self, path: str) -> int:
-        n = self.root
+        node = self.root
         paths = path.split('/')
-        for i, s in enumerate(paths):
-            if not s:
+        for name in paths:
+            if not name:
                 continue
                 
-            if s in n.children:
-                n = n.children[s]
+            if name in node.children:
+                node = node.children[name]
             else:
                 # path does not exist
                 return -1
             
-        return n.value
+        return node.value
