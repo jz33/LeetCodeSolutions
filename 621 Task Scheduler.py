@@ -43,25 +43,32 @@ Constraints:
     tasks[i] is upper-case English letter.
     The integer n is in the range [0, 100].
 '''
+from collections import Counter
+
 class Solution:
-    def leastInterval(self, tasks: List[str], idleNeeded: int) -> int:
-        # Build histogram {taskId : count}
-        ctr = collections.Counter(tasks)
+    def leastInterval(self, tasks: List[str], minGap: int) -> int:
+        counter = Counter(tasks)
         
-        # Separate the top tasks, each top task in one bucket.
-        # Then to separate the top task, each bucket should have
-        # idleNeeded empty slots.
-        # Then fill the empty slots with other tasks.
-        topTaskId, topTaskCount = ctr.most_common(1)[0]
-        emptySlots = (topTaskCount - 1) * idleNeeded
-        emptySlotsFilled = 0
-        for taskId, count in ctr.items():
-            if taskId != topTaskId:
-                # Non-top task's count <= topTaskCout
-                emptySlotsFilled += min(count, topTaskCount - 1)
-                if emptySlotsFilled >= emptySlots:
-                    break
-        
-        # If all empty slots are filled, no need for idle cycles
-        # Otherwise, need idel cycles for the empty slots.
-        return len(tasks) + max(0, emptySlots - emptySlotsFilled)
+        # Get the most frequent task's count and how many such task is
+        topTaskFrequency = 0
+        topTaskRepeat = 0
+        for frequency in counter.values():
+            if frequency > topTaskFrequency:
+                topTaskFrequency = frequency
+                topTaskRepeat = 1
+            elif frequency == topTaskFrequency:
+                topTaskRepeat += 1
+
+        # Assume 'A' is the top task, we want separate A as much as possible, like:
+        # A .. A ... A 
+        # Now figure out the how many gap needed:
+        gapCount = topTaskFrequency - 1
+        # If topTaskRepeat = 1, then minGap is the required gap width.
+        # If more than 1 top tasks, the gap width can be smaller, like:
+        # A B ... A B ... A B
+        gapWidth = minGap - (topTaskRepeat - 1)
+        # The slots needs to fill between top tasks
+        slots = gapCount * gapWidth
+        # Use other task to fill the slots
+        idlesNeeded = max(0, slots - (len(tasks) - topTaskFrequency * topTaskRepeat))
+        return len(tasks) + idlesNeeded
