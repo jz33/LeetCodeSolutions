@@ -73,8 +73,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [325. Maximum Size Subarray Sum Equals k](https://github.com/jz33/LeetCodeSolutions/blob/master/325%20Maximum%20Size%20Subarray%20Sum%20Equals%20k.py)\
 [523. Continuous Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/523%20Continous%20Subarray%20Sum.py) [**Facebook**]\
 [528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
-[560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]\
-[670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.ts) [**Facebook**]
+[560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]
 
 ### Sliding Window
 
@@ -132,6 +131,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [418. Sentence Screen Fitting](https://github.com/jz33/LeetCodeSolutions/blob/master/418%20Sentence%20Screen%20Fitting.py) [**TikTok**]\
 [435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
 [605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
+[670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.py) [**Facebook**]\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
 [2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
 
