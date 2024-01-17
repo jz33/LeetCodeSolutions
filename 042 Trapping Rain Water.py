@@ -23,6 +23,9 @@ Constraints:
     0 <= height[i] <= 105
 '''
 class Solution:
+    '''
+    Use Prefix Sum. This approach needs O(n) space
+    '''
     def trap(self, height: List[int]) -> int:
         '''
         The maximum water on index i is the minimum of (highest height on its left
@@ -40,3 +43,33 @@ class Solution:
         for i in range(len(height)):
             result += max(0, min(leftHighs[i], rightHighs[i]) - height[i])
         return result
+
+class Solution2:
+    '''
+    Two pointers approach, O(1) space
+    '''
+    def trap(self, heights: List[int]) -> int:
+        left = 0
+        right = len(heights) - 1
+        leftHighest, rightHighest = 0, 0
+        water = 0
+        while left < right:
+            if heights[left] < heights[right]:
+                # Index left can possibly hold water as there is a higher right
+                if heights[left] > leftHighest:
+                    # Index left cannot hold water as it does not have a higher left
+                    leftHighest = heights[left] 
+                else:
+                    # It must be leftHighest < rightHighest, as it only moves left when eights[left] < heights[right] 
+                    water += leftHighest - heights[left]
+                left += 1
+            else: # heights[left] >= heights[right]
+                if heights[right] > rightHighest:
+                    rightHighest = heights[right]
+                else:
+                    water += rightHighest - heights[right]
+                right -= 1
+
+        # Eventually, left and right will meet in leftHighest or rightHighest
+        return water
+

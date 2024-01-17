@@ -33,6 +33,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1. Two Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/0001%20Two%20Sum.py)\
 [5. Longest Palindromic Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/005%20Longest%20Palindromic%20Substring.py)\
 [15. 3Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/015%203Sum.ts) [**Facebook**]\
+[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [125. Valid Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/125%20Valid%20Palindrome.py) [**Facebook**]\
 [167. Two Sum II - Input array is sorted](https://github.com/jz33/LeetCodeSolutions/blob/master/167%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.ts)\
 [680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.py) [**Facebook**]\
@@ -66,7 +67,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Prefix Sum or Prefix Max
 
-[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [303. Range Sum Query - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/303%20Range%20Sum%20Query%20-%20Immutable.js)\
 [304. Range Sum Query 2D - Immutable](https://github.com/jz33/LeetCodeSolutions/blob/master/304%20Range%20Sum%20Query%202D%20-%20Immutable.py) [**Facebook**]\
 [325. Maximum Size Subarray Sum Equals k](https://github.com/jz33/LeetCodeSolutions/blob/master/325%20Maximum%20Size%20Subarray%20Sum%20Equals%20k.py)\
