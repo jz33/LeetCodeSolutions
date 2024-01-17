@@ -1,4 +1,4 @@
-/*
+'''
 1944. Number of Visible People in a Queue
 https://leetcode.com/problems/number-of-visible-people-in-a-queue/
 
@@ -32,28 +32,28 @@ Constraints:
     1 <= n <= 105
     1 <= heights[i] <= 105
     All the values of heights are unique.
-*/
-function canSeePersonsCount(heights: number[]): number[] {
-    // Person i can see all persons on right who is smaller than i,
-    // until reach j who is taller than i.
-    // This indicates a monotonic stack usage, where.
-    // from the top of stack, the height is increasing.
-    const stack: number[] = []; // stack of indexes
-    const result = new Array(heights.length);
-    for (let i = heights.length - 1; i > -1; i--) {
-        const h = heights[i];
-        let seen = 0;
-        // It does not matter h > or h >=, as the heights are distinct
-        while (stack.length && h >= heights[stack.at(-1)!]) {
-            stack.pop();
-            seen++;
-        }
-        if (stack.length) {
-            result[i] = seen + 1;
-        } else {
-            result[i] = seen;
-        }
-        stack.push(i);
-    }
-    return result;
-}
+'''
+class Solution:
+    '''
+    Person i can see to its right until meet person j who is taller than i,
+    this indicates a monotonic stack where the heights are increasing from top to bottom. 
+    '''
+    def canSeePersonsCount(self, heights: List[int]) -> List[int]:
+        result = [0] * len(heights)
+        stack = [] # [index of heights]
+        for i in range(len(heights)-1, -1, -1):
+            height = heights[i]
+            canSee = 0
+            while stack and height > heights[stack[-1]]:
+                # i can see any person on right that is shorter
+                canSee += 1
+                stack.pop()
+            if stack:
+                # i can see the first taller person on right, if exists
+                canSee += 1
+            stack.append(i)
+            result[i] = canSee
+        return result
+            
+
+        
