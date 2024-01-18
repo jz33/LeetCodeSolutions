@@ -1,4 +1,4 @@
-/*
+'''
 17. Letter Combinations of a Phone Number
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
@@ -24,8 +24,8 @@ Output: ["a","b","c"]
 Constraints:
     0 <= digits.length <= 4
     digits[i] is a digit in the range ['2', '9'].
-*/
-const PhoneDigitCharsMap: Record<string, string[]> = {
+'''
+PhoneDigitCharsMap = {
     '2': ['a', 'b', 'c'],
     '3': ['d', 'e', 'f'],
     '4': ['g', 'h', 'i'],
@@ -34,25 +34,17 @@ const PhoneDigitCharsMap: Record<string, string[]> = {
     '7': ['p', 'q', 'r', 's'],
     '8': ['t', 'u', 'v'],
     '9': ['w', 'x', 'y', 'z'],
-};
-
-function letterCombinations(digits: string): string[] {
-    if (!digits) {
-        return [];
-    }
-
-    // Incrementally increase pool size by appending new chars
-    let results: string[][] = [];
-    results[0] = [];
-
-    for (const digit of digits) {
-        const newResults: string[][] = [];
-        for (const row of results) {
-            for (const char of PhoneDigitCharsMap[digit]) {
-                newResults.push(row.concat(char));
-            }
-        }
-        results = newResults;
-    }
-    return results.map((row) => row.join(''));
 }
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+        results = [[]]
+        for digit in digits:
+            newResults = []
+            for row in results:
+                for char in PhoneDigitCharsMap[digit]:
+                    newResults.append(row + [char])
+            results = newResults
+        return [''.join(row) for row in results]
