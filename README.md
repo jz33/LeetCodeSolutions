@@ -72,7 +72,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [325. Maximum Size Subarray Sum Equals k](https://github.com/jz33/LeetCodeSolutions/blob/master/325%20Maximum%20Size%20Subarray%20Sum%20Equals%20k.py)\
 [523. Continuous Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/523%20Continous%20Subarray%20Sum.py) [**Facebook**]\
 [528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
-[560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]
+[560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]\
+[689. Maximum Sum of 3 Non-Overlapping Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/689%20Maximum%20Sum%20of%203%20Non-Overlapping%20Subarrays.py) [**Facebook**]
 
 ### Sliding Window
 
