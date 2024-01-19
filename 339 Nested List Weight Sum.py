@@ -74,13 +74,12 @@ Constraints:
 #        Return None if this NestedInteger holds a single integer
 #        :rtype List[NestedInteger]
 #        """
-
-
+from typing import List
 class Solution:
     '''
     Level Order Traversal
     '''
-    def depthSum(self, nestedList: List[NestedInteger]) -> int:
+    def depthSum(self, nestedList: List['NestedInteger']) -> int:
         result = 0
         depth = 1
         row = nestedList # [NestedInteger]
@@ -98,12 +97,12 @@ class Solution:
     
 class Solution2:
     '''
-    Preorder Traversal
+    Preorder Traversal, should use less space than level order traversal
     '''
-    def depthSum(self, nestedList: List[NestedInteger]) -> int:
+    def depthSum(self, nestedList: List['NestedInteger']) -> int:
         result = 0
 
-        def preorder(children: List[NestedInteger], depth: int):
+        def preorder(children: List['NestedInteger'], depth: int):
             nonlocal result
             for node in children:
                 value = node.getInteger()
@@ -114,3 +113,63 @@ class Solution2:
 
         preorder(nestedList, 1)
         return result
+
+'''
+This is real Meta interview question, it needs to design the class
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=1038689&page=1#pid19203840
+'''
+class NestedIntegerNode:
+    '''
+    The node is either a leaf node, which only holds 1 value,
+    or an inner node, which holds a list of nodes
+    '''
+    def __init__(self, value=None, children=[]):
+        '''
+        @value: use if this node is a leaf
+        @children: use if this node is an inner node
+        '''
+        self.value = value
+        self.children = children
+
+    def isLeaf(self):
+        return self.value is not None
+    
+    def getValue(self):
+        return self.value
+    
+    def getChildren(self):
+        return self.children
+    
+def dfsTraverse(root: NestedIntegerNode):
+    result = 0
+
+    def dfs(node: NestedIntegerNode, depth: int):
+        nonlocal result
+        if node.isLeaf():
+            result += node.getValue() * depth
+        else:
+            for child in node.getChildren():
+                dfs(child, depth + 1)
+        
+    dfs(root, 1)
+    return result
+
+def test_dfsTraverse():
+    '''
+    [1,[2,[3,4]]] = 1 * 2 + 2 * 3 + (3 + 4) * 4 
+        []
+      1    []
+          2   []
+             3  4
+    '''
+    root = NestedIntegerNode()
+    root.children = [NestedIntegerNode(1), NestedIntegerNode()]
+    curr = root.children[1]
+    curr.children = [NestedIntegerNode(2), NestedIntegerNode()]
+    curr = curr.children[1]
+    curr.children = [NestedIntegerNode(3), NestedIntegerNode(4)]
+
+    print(dfsTraverse(root))
+
+test_dfsTraverse()
+        

@@ -269,8 +269,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [113. Path Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/113%20Path%20Sum%20II.py)\
 [129 Sum Root to Leaf Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/129%20Sum%20Root%20to%20Leaf%20Numbers.py) [**Facebook**]\
 [144. Binary Tree Preorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/144%20Binary%20Tree%20Preorder%20Traversal.ts)\
+[339. Nested List Weight Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/339%20Nested%20List%20Weight%20Sum.py) [**Facebook**]\
 [341. Flatten Nested List Iterator](https://github.com/jz33/LeetCodeSolutions/blob/master/341%20Flatten%20Nested%20List%20Iterator.py)\
-[428. Serialize and Deserialize N-ary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/428%20Serialize%20and%20Deserialize%20N-ary%20Tree.py) [**Facebook**]\
 [437. Path Sum III](https://github.com/jz33/LeetCodeSolutions/blob/master/437%20Path%20Sum%20III.py)\
 [545. Boundary of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/545%20Boundary%20of%20Binary%20Tree.py) \
 [938. Range Sum of BST](https://github.com/jz33/LeetCodeSolutions/blob/master/938%20Range%20Sum%20of%20BST.py) [**Facebook**]\
@@ -311,15 +311,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [103. Binary Tree Zigzag Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/103%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.py)\
 [199. Binary Tree Right Side View](https://github.com/jz33/LeetCodeSolutions/blob/master/199%20Binary%20Tree%20Right%20Side%20View.ts) [**Facebook**]\
 [226. Invert Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/226%20Invert%20Binary%20Tree.py)\
-[297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) [**Facebook**]\
 [314. Binary Tree Vertical Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/314%20Binary%20Tree%20Vertical%20Order%20Traversal.py) [**Facebook**]\
-[339. Nested List Weight Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/339%20Nested%20List%20Weight%20Sum.py) [**Facebook**]\
 [987. Vertical Order Traversal of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/987%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree.py) [**Facebook**]
 
-### Tree constructions
+### Tree constructions and serializations
 
-[105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.py)\
+[105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.py) [**TikTok**]\
 [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/106%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.py)\
+[297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)\
+[428. Serialize and Deserialize N-ary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/428%20Serialize%20and%20Deserialize%20N-ary%20Tree.py)[**Facebook**]\
 [889. Construct Binary Tree from Preorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/889%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Postorder%20Traversal.py)
 
 ### Graph
