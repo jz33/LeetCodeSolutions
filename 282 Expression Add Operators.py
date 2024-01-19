@@ -34,6 +34,8 @@ Constraints:
 class Solution:
     '''
     Complexity: O (3 ^ N)
+    Real Meta interview question, only consider +, -, no *
+    https://www.1point3acres.com/bbs/thread-1039320-1-1.html
     '''
     def addOperators(self, num: str, target: int) -> List[str]:
         pool = []
