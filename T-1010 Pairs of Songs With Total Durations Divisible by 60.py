@@ -1,4 +1,4 @@
-/*
+'''
 1010. Pairs of Songs With Total Durations Divisible by 60
 https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/
 
@@ -25,16 +25,20 @@ Explanation: All three pairs have a total duration of 120, which is divisible by
 Constraints:
     1 <= time.length <= 6 * 104
     1 <= time[i] <= 500
-*/
-function numPairsDivisibleBy60(times: number[]): number {
-    // Idea is similar to 523. Continuous Subarray Sum
-    let result = 0;
-    const counter = new Map<number, number>(); // {reminder of 60 : count}
-    for (const time of times) {
-        const reminder = time % 60;
-        const needed = reminder === 0 ? 0 : 60 - reminder;
-        result += counter.get(needed) ?? 0;
-        counter.set(reminder, (counter.get(reminder) ?? 0) + 1);
-    }
-    return result;
-}
+'''
+from collections import Counter
+
+class Solution:
+    '''
+    Idea is similar to 523. Continuous Subarray Sum
+    '''
+    def numPairsDivisibleBy60(self, times: List[int]) -> int:
+        result = 0
+        counter = Counter() # {reminder of 60 : count}
+        for time in times:
+            reminder = time % 60
+            needed = 0 if reminder == 0 else 60 - reminder
+            result += counter[needed]
+            counter[reminder]+= 1
+        return result
+      
