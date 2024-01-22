@@ -57,6 +57,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
 [219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
 [380. Insert Delete GetRandom O(1)](<https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py>) [**Facebook, TikTok**]\
+[383. Ransom Note](https://github.com/jz33/LeetCodeSolutions/blob/master/383%20Ransom%20Note.py) [**Facebook**]\
 [381. Insert Delete GetRandom O(1) - Duplicates allowed](https://github.com/jz33/LeetCodeSolutions/blob/master/381%20Insert%20Delete%20GetRandom%20O(1)%20-%20Duplicates%20allowed.py) [**TikTok E-Commerce**]\
 [398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
 [763. Partition Labels](https://github.com/jz33/LeetCodeSolutions/blob/master/763%20Partition%20Labels.py)\
