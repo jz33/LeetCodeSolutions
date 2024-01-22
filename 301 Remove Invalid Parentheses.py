@@ -29,7 +29,7 @@ Constraints:
     There will be at most 20 parentheses in s.
 '''
 class Solution:
-    def minRemoveToMakeValid(self, s: str) -> str:
+    def minRemoveToMakeValid(self, s: str) -> int:
         '''
         Get the minimum remove needed to make the string valid.
         Same as 921. Minimum Add to Make Parentheses Valid
@@ -46,7 +46,7 @@ class Solution:
                     invalidLeftBrackets -= 1
         return invalidLeftBrackets + invalidRightBrackets
 
-    def trim(self, s: str) -> List[str]:
+    def trim(self, s: str) -> str:
         '''
         Trim off left and right invalid parentheses to speed up.
         '''
@@ -63,8 +63,7 @@ class Solution:
         results = []
         visited = set()
 
-        def dfs(ss: str):
-            minToRemove = self.minRemoveToMakeValid(ss)
+        def dfs(ss: str, minToRemove: int):
             if minToRemove == 0:
                 results.append(ss)
                 return
@@ -72,12 +71,16 @@ class Solution:
                 if ss[i] in ['(', ')']:
                     # Try remove charList[i] 
                     newSs = ss[:i] + ss[i+1:]
-                    if newSs not in visited and self.minRemoveToMakeValid(newSs) < minToRemove:
-                        # Go next iteration only if not yet visited and minToRemove is smaller
-                        visited.add(newSs)
-                        dfs(newSs)
+                    if newSs not in visited:
+                        newMinToRemove = self.minRemoveToMakeValid(newSs)
+                        if newMinToRemove < minToRemove:
+                            # Go next iteration only if not yet visited and minToRemove is smaller
+                            visited.add(newSs)
+                            dfs(newSs, newMinToRemove)
 
         trimmed = self.trim(s)
         visited.add(trimmed)
-        dfs(trimmed)
+
+        minToRemove = self.minRemoveToMakeValid(trimmed)
+        dfs(trimmed, minToRemove)
         return results
