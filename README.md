@@ -43,7 +43,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [2. Add Two Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/0002%20Add%20Two%20Numbers.java) [**Amazon**]\
 [56. Merge Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/056%20Merge%20Intervals.py) [**Facebook**]\
-[88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.ts) [**Facebook**]\
 [415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
 [986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.py) [**Facebook**, union not intersection]\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
@@ -150,6 +149,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Heap
 
 [23. Merge k Sorted Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/023%20Merge%20k%20Sorted%20Lists.py) [**Facebook**]\
+[88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.ts) [**Facebook**]\
 [215. Kth Largest Element in an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/215%20Kth%20Largest%20Element%20in%20an%20Array.py) [**Facebook**]\
 [218. The Skyline Problem](https://github.com/jz33/LeetCodeSolutions/blob/master/218%20The%20Skyline%20Problem.py)\
 [295. Find Median from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/295%20Find%20Median%20from%20Data%20Stream.py)\
