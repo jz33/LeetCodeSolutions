@@ -149,7 +149,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Heap
 
 [23. Merge k Sorted Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/023%20Merge%20k%20Sorted%20Lists.py) [**Facebook**]\
-[88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.ts) [**Facebook**]\
+[88. Merge Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/088%20Merge%20Sorted%20Array.py) [**Facebook**]\
 [215. Kth Largest Element in an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/215%20Kth%20Largest%20Element%20in%20an%20Array.py) [**Facebook**]\
 [218. The Skyline Problem](https://github.com/jz33/LeetCodeSolutions/blob/master/218%20The%20Skyline%20Problem.py)\
 [295. Find Median from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/295%20Find%20Median%20from%20Data%20Stream.py)\

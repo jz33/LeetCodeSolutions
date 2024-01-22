@@ -50,7 +50,11 @@ class Solution:
 from heapq import heappush, heappop
 class Solution:
     '''
-    Use heap, O(nlogk)
+    Use heap, O(nlog(k))
+    Real facebook interview question 20240122
+    Needs to ask:
+    1. If 'k' is 0 based or 1 based ;
+    2. What if k is bigger than size of nums ?
     '''
     def findKthLargest(self, nums: List[int], k: int) -> int:
         heap = [] # min heap
