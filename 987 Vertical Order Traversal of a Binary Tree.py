@@ -50,9 +50,12 @@ Constraints:
     The number of nodes in the tree is in the range [1, 1000].
     0 <= Node.val <= 1000
 '''
+import collections
+
 class Solution:
     '''
     Nearly same approach as 314. Binary Tree Vertical Order Traversal
+    Time complexity: O(w * n/w * log(n/w)) = O(n(log(n/w)))
     '''
     def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
         if not root:
