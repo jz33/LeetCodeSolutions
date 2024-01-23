@@ -218,6 +218,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### 1-D Cache Replacement Dynamic Programming
 
 [17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
+[22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py) [**TikTok**]\
 [40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py) [**TikTok**]\
 [90. Subsets II](https://github.com/jz33/LeetCodeSolutions/blob/master/090%20Subsets%20II.py)\
 [494. Target Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/494%20Target%20Sum.py) [**Facebook**]\
@@ -235,7 +236,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Top down Dynamic Programming (Recursive + Memorization)
 
 [10. Regular Expression Matching](https://github.com/jz33/LeetCodeSolutions/blob/master/010%20Regular%20Expression%20Matching.py)\
-[22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
 [46. Permutations](https://github.com/jz33/LeetCodeSolutions/blob/master/046%20Permutations.py)\
 [47. Permutations II](https://github.com/jz33/LeetCodeSolutions/blob/master/047%20Permutations%20II.py) [**TikTok**]\
 [282. Expression Add Operators](https://github.com/jz33/LeetCodeSolutions/blob/master/282%20Expression%20Add%20Operators.py) [**Facebook**]\

@@ -18,6 +18,12 @@ Constraints:
     1 <= n <= 8
 '''
 class Solution:
+    '''
+    The total number of answer is the Catalan number: (2n)! / (n+1)!n!
+    Time complexity: O(4 ^ n / sqrt(n)), 
+    Space complexity: O(n)
+    https://leetcode.com/problems/generate-parentheses/editorial/
+    '''
     def generateParenthesis(self, n: int) -> List[str]:
         pool = []
 
