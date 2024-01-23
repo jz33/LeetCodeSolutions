@@ -1,4 +1,4 @@
-''
+'''
 856. Score of Parentheses
 https://leetcode.com/problems/score-of-parentheses/
 
@@ -41,6 +41,6 @@ class Solution:
                 # If last is a (, score 1;
                 # Otherwise, there is already at least a closed pair, score double
                 score = 1 if lastScore == 0 else lastScore * 2
-                # Incremently update stack[-1] to simulate +
+                # Incrementally update stack[-1] to simulate '+'
                 scores[-1] += score
         return scores[0]
