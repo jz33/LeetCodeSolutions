@@ -15,9 +15,44 @@ Thread A will call first(), thread B will call second(), and thread C will call 
 Design a mechanism and modify the program to ensure that second() is executed after first(),
 and third() is executed after second().
 '''
-from threading import Barrier
-
+from threading import Barrier, Event
 class Foo:
+    '''
+    Method 1: use Event
+    '''
+    def __init__(self):
+        self.e12 = Event()
+        self.e23 = Event()
+
+
+    def first(self, printFirst: 'Callable[[], None]') -> None:
+        
+        # printFirst() outputs "first". Do not change or remove this line.
+        printFirst()
+
+        self.e12.set()
+
+
+    def second(self, printSecond: 'Callable[[], None]') -> None:
+        self.e12.wait()
+
+        # printSecond() outputs "second". Do not change or remove this line.
+        printSecond()
+
+        self.e23.set()
+
+
+    def third(self, printThird: 'Callable[[], None]') -> None:
+        self.e23.wait()
+        
+        # printThird() outputs "third". Do not change or remove this line.
+        printThird()
+
+class Foo2:
+    '''
+    Method 2: use barrier.
+    All parties of the barrier should call wait then the party can proceed 
+    '''
     def __init__(self):
         self.b12 = Barrier(2)
         self.b23 = Barrier(2)
