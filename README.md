@@ -243,7 +243,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [282. Expression Add Operators](https://github.com/jz33/LeetCodeSolutions/blob/master/282%20Expression%20Add%20Operators.py) [**Facebook**]\
 [301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) [**Facebook**]\
 [486. Predict the Winner](https://github.com/jz33/LeetCodeSolutions/blob/master/486%20Predict%20the%20Winner.py)\
-[691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]\
 [996. Number of Squareful Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/996%20Number%20of%20Squareful%20Arrays.py)\
 [2060. Check if an Original String Exists Given Two Encoded Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2060%20Check%20if%20an%20Original%20String%20Exists%20Given%20Two%20Encoded%20Strings.py)
 
@@ -354,18 +353,20 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [490. The Maze](https://github.com/jz33/LeetCodeSolutions/blob/master/490%20The%20Maze.py)\
 [787. Cheapest Flights Within K Stops](https://github.com/jz33/LeetCodeSolutions/blob/master/787%20Cheapest%20Flights%20Within%20K%20Stops.py)
 
-### DFS or Backtracking on Matrix
+### DFS or Backtrack on Matrix
 
 [51. N-Queens](https://github.com/jz33/LeetCodeSolutions/blob/master/051%20N-Queens.py)\
 [79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) [**Facebook**]\
-[77. Combinations](https://github.com/jz33/LeetCodeSolutions/blob/master/077%20Combinations.py)\
 [489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py) [**Facebook**]\
 [694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.ts)
 
-### DFS on Graph
+### DFS or Backtrack on Graph
 
+[77. Combinations](https://github.com/jz33/LeetCodeSolutions/blob/master/077%20Combinations.py)\
 [133. Clone Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/133%20Clone%20Graph.py) [**Facebook**]\
-[332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**] # Euler path
+[332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**] # Euler path\
+[465. Optimal Account Balancing](https://github.com/jz33/LeetCodeSolutions/blob/master/465%20Optimal%20Account%20Balancing.py) [**TikTok**]\
+[691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]
 
 ### Union Find
 
