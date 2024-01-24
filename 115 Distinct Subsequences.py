@@ -2,63 +2,50 @@
 115. Distinct Subsequences
 https://leetcode.com/problems/distinct-subsequences/
 
-Given a string S and a string T, count the number of distinct subsequences of S which equals T.
-
-A subsequence of a string is a new string which is formed from the original string by
-deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.
-(ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+Given two strings s and t, return the number of distinct subsequences of s which equals t.
+The test cases are generated so that the answer fits on a 32-bit signed integer.
 
 Example 1:
 
-Input: S = "rabbbit", T = "rabbit"
+Input: s = "rabbbit", t = "rabbit"
 Output: 3
 Explanation:
-
-As shown below, there are 3 ways you can generate "rabbit" from S.
-(The caret symbol ^ means the chosen letters)
-
+As shown below, there are 3 ways you can generate "rabbit" from s.
 rabbbit
-^^^^ ^^
 rabbbit
-^^ ^^^^
 rabbbit
-^^^ ^^^
 
 Example 2:
 
-Input: S = "babgbag", T = "bag"
+Input: s = "babgbag", t = "bag"
 Output: 5
 Explanation:
+As shown below, there are 5 ways you can generate "bag" from s.
+babgbag
+babgbag
+babgbag
+babgbag
+babgbag
 
-As shown below, there are 5 ways you can generate "bag" from S.
-(The caret symbol ^ means the chosen letters)
-
-babgbag
-^^ ^
-babgbag
-^^    ^
-babgbag
-^    ^^
-babgbag
-  ^  ^^
-babgbag
-    ^^^
+Constraints:
+    1 <= s.length, t.length <= 1000
+    s and t consist of English letters.
 '''
 class Solution:
-    def numDistinct(self, s: str, t: str) -> int:
-        # dp[i][j] is the distinct count
-        dp = [[0] * (len(t)+1) for _ in range(len(s)+1)]
+    def numDistinct(self, source: str, target: str) -> int:
+        # dp[s][t] is the distinct count of src[:s] to tag[:t]
+        dp = [[0] * (len(target)+1) for _ in range(len(source)+1)]
  
-        # If t is empty, there is always 1 distinct subsequence.
-        # This includes empty s and empty t case.
-        for i in range(len(s)+1):
-            dp[i][0] = 1
+        # If target is empty, there is always 1 distinct subsequence.
+        # This includes any source[:] and empty target case.
+        for s in range(len(source)+1):
+            dp[s][0] = 1
 
-        for i in range(len(s)):
-            for j in range(len(t)):
-                if s[i] == t[j]:
-                    dp[i+1][j+1] = dp[i][j+1] + dp[i][j]
+        for s in range(len(source)):
+            for t in range(len(target)):
+                if source[s] == target[t]:
+                    dp[s+1][t+1] = dp[s][t+1] + dp[s][t]
                 else:
-                    dp[i+1][j+1] = dp[i][j+1]
+                    dp[s+1][t+1] = dp[s][t+1]
                     
         return dp[-1][-1]
