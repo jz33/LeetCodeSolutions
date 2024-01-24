@@ -2,34 +2,35 @@
 992. Subarrays with K Different Integers
 https://leetcode.com/problems/subarrays-with-k-different-integers/
 
-Given an array A of positive integers, call a (contiguous, not necessarily distinct) subarray of A good if
-the number of different integers in that subarray is exactly K.
+Given an integer array nums and an integer k, return the number of good subarrays of nums.
 
-(For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.)
+A good array is an array where the number of different integers in that array is exactly k.
 
-Return the number of good subarrays of A.
+    For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.
+
+A subarray is a contiguous part of an array.
 
 Example 1:
 
-Input: A = [1,2,1,2,3], K = 2
+Input: nums = [1,2,1,2,3], k = 2
 Output: 7
-Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].
+Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2]
 
 Example 2:
 
-Input: A = [1,2,1,3,4], K = 3
+Input: nums = [1,2,1,3,4], k = 3
 Output: 3
 Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].
 
-Note:
-
-1 <= A.length <= 20000
-1 <= A[i] <= A.length
-1 <= K <= A.length
+Constraints:
+    1 <= nums.length <= 2 * 104
+    1 <= nums[i], k <= nums.length
 '''
+from collections import Counter
+
 class SlidingWindow:
     def __init__(self):
-        self.mapper = collections.Counter()
+        self.mapper = Counter()
         self.distinctCount = 0
 
     def add(self, e):
@@ -45,11 +46,11 @@ class SlidingWindow:
         self.mapper[e] -= 1
 
 class Solution:
-    def subarraysWithKDistinct(self, A: List[int], K: int) -> int:
+    def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
         '''
         The trick of this question is to maintain 2 sliding windows.
         1st window represents the maximum sized subarray whose distinct count is K,
-        2nd window represents the minimum sized subarray whose distince count is K.
+        2nd window represents the minimum sized subarray whose distinct count is K.
         '''
         # result
         goodCount = 0
@@ -60,20 +61,20 @@ class Solution:
         # window
         win1, win2 = SlidingWindow(), SlidingWindow()
         
-        for right, val in enumerate(A):
+        for val in nums:
             # add
             win1.add(val)
             win2.add(val)
 
             # shrink win1
-            while win1.distinctCount > K:
-                le = A[left1]
+            while win1.distinctCount > k:
+                le = nums[left1]
                 left1 += 1
                 win1.pop(le)
             
             # shrink win2
-            while win2.distinctCount >= K:
-                le = A[left2]
+            while win2.distinctCount >= k:
+                le = nums[left2]
                 left2 += 1
                 win2.pop(le)
             
