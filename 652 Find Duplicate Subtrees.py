@@ -32,23 +32,24 @@ Therefore, you need to return above trees' root in the form of a list.
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
+from collections import Counter
 class Solution:
-    def postorder(self, node: TreeNode) -> str:
-        if not node:
-            return 'N'
-        
-        serilized = str(node.val) + ',' + self.postorder(node.left) + ',' + self.postorder(node.right)
-        
-        ctr = self.visited[serilized]
-        if ctr == 1:
-            self.pool.append(node)
-        self.visited[serilized] += 1
-        
-        return serilized
-        
-    def findDuplicateSubtrees(self, root: TreeNode) -> List[TreeNode]:
-        self.pool = []
-        self.visited = collections.Counter() # {tree serilized string : count}
-        self.postorder(root)
-        return self.pool
+    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+        pool = []
+        visited = Counter() # {tree serialized string : count}
+
+        def postorder(node: TreeNode) -> str:
+            if not node:
+                return 'N'
+            
+            serialized = str(node.val) + ',' + postorder(node.left) + ',' + postorder(node.right)
+            
+            count = visited[serialized]
+            if count == 1:
+                pool.append(node)
+            visited[serialized] += 1
+            
+            return serialized       
+
+        postorder(root)
+        return pool
