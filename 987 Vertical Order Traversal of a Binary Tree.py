@@ -88,3 +88,34 @@ class Solution:
         for offset in range(minOffset, maxOffset + 1):
             result.append(book[offset])
         return result
+
+class Solution2:
+    '''
+    DFS
+    '''
+    def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+        
+        book = collections.defaultdict(list) # {offset : [(depth, val)]}
+        minOffset = 0
+        maxOffset = 0
+
+        def preorder(node: TreeNode, depth: int, offset: int):
+            nonlocal minOffset, maxOffset
+            book[offset].append((depth, node.val))
+            minOffset = min(minOffset, offset)
+            maxOffset = max(maxOffset, offset)
+            if node.left:
+                preorder(node.left, depth + 1, offset - 1)
+            if node.right:
+                preorder(node.right, depth + 1, offset + 1)
+
+        preorder(root, 0, 0)
+            
+        # User min/max offset to avoid sorting
+        result = []
+        for offset in range(minOffset, maxOffset + 1):
+            # Different to 314: sort by depths and values
+            result.append([val for _, val in sorted(book[offset])])
+        return result
