@@ -26,6 +26,10 @@ Constraints:
 '''
 class Solution:
     '''
+    Real facebook interview question: 
+    https://www.1point3acres.com/bbs/thread-1040708-1-1.html
+    
+    Similar sliding window pattern like 3. Longest Substring Without Repeating Characters
     The question is equivalent to ask: what's the longest substring
     with at most k zeros ?
     '''
@@ -33,16 +37,15 @@ class Solution:
         maxLength = 0
         zeroCount = 0
         left = 0 # left index of the sliding window
-        for i, n in enumerate(nums):
-            if n == 0:
+        for right, val in enumerate(nums):
+            if val == 0:
                 zeroCount += 1
                 while zeroCount > k:
-                    # If more than k zeros in the window,
-                    # shrink from left
+                    # If more than k zeros in the window, shrink from left
                     if nums[left] == 0:
                         zeroCount -= 1
                     left += 1
-            maxLength = max(maxLength, i - left + 1)
+            maxLength = max(maxLength, right - left + 1)
 
         # Calculate last window size as i is out of bound
         maxLength = max(maxLength, len(nums) - left)
