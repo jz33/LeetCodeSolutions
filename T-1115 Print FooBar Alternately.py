@@ -43,12 +43,11 @@ Explanation: "foobar" is being output 2 times.
 Constraints:
     1 <= n <= 1000
 '''
-from threading import Event, Barrier
+from threading import Event, Barrier, Thread
 
 class FooBar:
     '''
     Use Event.
-    Real TikTok question: https://www.1point3acres.com/bbs/thread-1039412-1-1.html
     '''
     def __init__(self, n):
         self.n = n
@@ -88,3 +87,11 @@ class FooBar2:
         for _ in range(self.n):
             self.b.wait()
             printBar()
+
+# Test
+# Real TikTok question: https://www.1point3acres.com/bbs/thread-1039412-1-1.html
+obj = FooBar(2)
+t1 = Thread(target=lambda : obj.foo(printFoo=lambda : print('foo')))
+t2 = Thread(target=lambda : obj.bar(printBar=lambda : print('bar')))
+t1.start() # Not t1.run(), which will block main thread
+t2.start()
