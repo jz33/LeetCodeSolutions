@@ -12,13 +12,15 @@ Example 1:
 
 Input: root = [1,2,3,null,4], distance = 3
 Output: 1
-Explanation: The leaf nodes of the tree are 3 and 4 and the length of the shortest path between them is 3. This is the only good pair.
+Explanation: The leaf nodes of the tree are 3 and 4 and the length of the shortest path between them is 3.
+This is the only good pair.
 
 Example 2:
 
 Input: root = [1,2,3,4,5,6,7], distance = 3
 Output: 2
-Explanation: The good pairs are [4,5] and [6,7] with shortest path = 2. The pair [4,6] is not good because the length of ther shortest path between them is 4.
+Explanation: The good pairs are [4,5] and [6,7] with shortest path = 2.
+The pair [4,6] is not good because the length of their shortest path between them is 4.
 
 Example 3:
 
@@ -60,7 +62,7 @@ class Solution:
         result = 0
         def postorder(node: TreeNode) -> List[int]:
             '''
-            @return: sorted list of all depth from node to its leaves
+            @return: sorted list of all depth from node to all its leaves
             '''
             nonlocal result
             leafDepths = []
@@ -68,7 +70,7 @@ class Solution:
                 lefts = postorder(node.left)
                 rights = postorder(node.right)
                 result += getTwoArraySumCount(lefts, rights, distance)
-                leafDepths = sorted((lefts + rights))
+                leafDepths = sorted(lefts + rights)
             elif node.left:
                 leafDepths = postorder(node.left)
             elif node.right:
