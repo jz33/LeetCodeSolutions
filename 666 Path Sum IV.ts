@@ -1,5 +1,5 @@
 /*
-666 Path Sum IV
+666. Path Sum IV
 https://leetcode.com/problems/path-sum-iv/
 
 If the depth of a tree is smaller than 5, then this tree can be represented by an array of three-digit integers. For each integer in this array:
@@ -11,8 +11,6 @@ If the depth of a tree is smaller than 5, then this tree can be represented by a
 Given an array of ascending three-digit integers nums representing a binary tree with a depth smaller than 5, return the sum of all paths from the root towards the leaves.
 
 It is guaranteed that the given array represents a valid connected binary tree.
-
- 
 
 Example 1:
 
