@@ -95,11 +95,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Monotonic Stack
 
-[71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.py) [**Facebook**]\
 [84. Largest Rectangle in Histogram](https://github.com/jz33/LeetCodeSolutions/blob/master/084%20Largest%20Rectangle%20in%20Histogram.py) [**Facebook**]\
 [155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) \
 [402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) [**TikTok**]\
-[739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.py) [**TikTok**]\
 [1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]\
 [2863. Maximum Length of Semi-Decreasing Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2863%20Maximum%20Length%20of%20Semi-Decreasing%20Subarrays.py) [**TikTok**]
 
@@ -113,7 +111,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Stack on Parentheses
 
 [20. Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/020%20Valid%20Parentheses.py)\
+[71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.py) [**Facebook**]\
 [636. Exclusive Time of Functions](https://github.com/jz33/LeetCodeSolutions/blob/master/636%20Exclusive%20Time%20of%20Functions.ts) [**Facebook**]\
+[739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.py) [**TikTok**]\
 [856. Score of Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/856%20Score%20of%20Parentheses.py) [**TikTok**]\
 [921. Minimum Add to Make Parentheses Valid](https://github.com/jz33/LeetCodeSolutions/blob/master/921%20Minimum%20Add%20to%20Make%20Parentheses%20Valid.go) [**Facebook**]\
 [1047. Remove All Adjacent Duplicates In String](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1047%20Remove%20All%20Adjacent%20Duplicates%20In%20String.py) [**Facebook**]\

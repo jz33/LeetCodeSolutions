@@ -56,7 +56,7 @@ class MinStack:
             self.mins.append(x)
 
     def pop(self) -> None:
-        r = self.data.pop();
+        r = self.data.pop()
         if self.mins and r == self.mins[-1]:
             self.mins.pop()
         return r

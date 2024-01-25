@@ -40,7 +40,7 @@ class Solution:
     '''
     def canSeePersonsCount(self, heights: List[int]) -> List[int]:
         result = [0] * len(heights)
-        stack = [] # [index of heights]
+        stack = [] # [index of heights on right]
         for i in range(len(heights)-1, -1, -1):
             height = heights[i]
             canSee = 0
