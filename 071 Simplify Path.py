@@ -1,4 +1,4 @@
-/*
+'''
 71. Simplify Path
 https://leetcode.com/problems/simplify-path/
 
@@ -37,22 +37,16 @@ Constraints:
     1 <= path.length <= 3000
     path consists of English letters, digits, period '.', slash '/' or '_'.
     path is a valid absolute Unix path.
-*/
-function simplifyPath(path: string): string {
-    // Stack holds the top-down directory names
-    const stack: string[] = [];
-    path.split('/').map((element) => {
-        if (element && element !== '.') {
-            if (element === '..') {
-                // Go upper
-                if (stack.length) {
-                    stack.pop();
-                }
-            } else {
-                // Normal directory names
-                stack.push(element);
-            }
-        }
-    });
-    return '/' + stack.join('/');
-}
+'''
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        parents = [] # top-down directory names
+        for route in path.split('/'):
+            # Ignore all empty, '.', '/'
+            if route and route != '.':
+                if route == '..':
+                    if parents:
+                        parents.pop()
+                else:
+                    parents.append(route)
+        return '/' + '/'.join(parents)
