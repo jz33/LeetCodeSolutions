@@ -65,7 +65,7 @@ Constraints:
 from typing import List
 
 class Solution:
-    def fullJustify(self, allWords: List[str], maxWidth: int) -> List[str]:
+    def fullJustify(self, allWords: List[str], lineWidth: int) -> List[str]:
         wi = 0 # iterator on all words
 
         def getWordsToPack():
@@ -74,10 +74,10 @@ class Solution:
             '''
             nonlocal wi
             words = []
-            wordsWidth = 0 # words width without spaces
+            wordsWidth = 0 # sofar words width without spaces
             while wi < len(allWords):
-                totalWidth = wordsWidth + len(words) # word width + between spaces + a trailing space
-                if totalWidth + len(allWords[wi]) > maxWidth:
+                totalWidth = wordsWidth + len(allWords[wi]) + len(words) # sofar words width + new word width + between spaces
+                if totalWidth > lineWidth:
                     break
                 words.append(allWords[wi])
                 wordsWidth += len(allWords[wi])
@@ -90,7 +90,7 @@ class Solution:
             @words: words to pack
             @wordsWith: total words width, without spaces
             '''
-            spaceCount = maxWidth - wordsWidth
+            spaceCount = lineWidth - wordsWidth
             # Case 1: only 1 word
             if len(words) == 1:
                 return words[0] + ' ' * spaceCount
@@ -102,7 +102,7 @@ class Solution:
                 spaceWidth = spaceCount // gapCount
                 return (' ' * spaceWidth).join(words)
             else:
-                # Case 3: there will be 2 kinds of spaces with 1 difference
+                # Case 3: there will be 2 kinds of spaces with 1 space difference
                 smallerGapWidth = spaceCount // gapCount
                 biggerGapWidth = smallerGapWidth + 1
                 biggerGapCount = reminder
@@ -119,7 +119,7 @@ class Solution:
             
         def packLastLine(words: List[str]) -> str:
             wordsAndSpaces = ' '.join(words)
-            return wordsAndSpaces + ' ' * (maxWidth - len(wordsAndSpaces))
+            return wordsAndSpaces + ' ' * (lineWidth - len(wordsAndSpaces))
         
         # Main
         result = []
