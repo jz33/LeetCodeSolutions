@@ -46,14 +46,14 @@ class Solution:
                 stack.append(count)
                 count = 0
             elif c == ']':
-                # Find last saved mutiplier
+                # Find last saved multiplier
                 i = -1
                 while isinstance(stack[i], str):
                     i -= 1
                 chars = ''.join(stack[i+1:])
-                mutiplier = stack[i]
+                multiplier = stack[i]
                 stack = stack[:i]
-                stack.append(chars * mutiplier)
+                stack.append(chars * multiplier)
             elif c.isdigit():
                 count = count * 10 + int(c)
             else:

@@ -105,8 +105,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [224. Basic Calculator](https://github.com/jz33/LeetCodeSolutions/blob/master/224%20Basic%20Calculator.ts) [**Facebook**]\
 [227. Basic Calculator II](https://github.com/jz33/LeetCodeSolutions/blob/master/227%20Basic%20Calculator%20II.py) [**Facebook**]\
-[772. Basic Calculator III](https://github.com/jz33/LeetCodeSolutions/blob/master/772%20Basic%20Calculator%20III.py) [**TikTok**]\
-[394. Decode String](https://github.com/jz33/LeetCodeSolutions/blob/master/394%20Decode%20String.py) [**TikTok**]
+[394. Decode String](https://github.com/jz33/LeetCodeSolutions/blob/master/394%20Decode%20String.py) [**TikTok**] \
+[772. Basic Calculator III](https://github.com/jz33/LeetCodeSolutions/blob/master/772%20Basic%20Calculator%20III.py) [**TikTok**]
 
 ### Stack on Parentheses
 
@@ -168,7 +168,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Sorted Map
 
 [480. Sliding Window Median](https://github.com/jz33/LeetCodeSolutions/blob/master/480%20Sliding%20Window%20Median.py)\
-[716. Max Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/716%20Max%20Stack.py) [**TikTok**]\
 [729. My Calendar I](https://leetcode.com/problems/my-calendar-i/)\
 [2158. Amount of New Area Painted Each Day](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2158%20Amount%20of%20New%20Area%20Painted%20Each%20Day.py) [**TikTok**]
 
