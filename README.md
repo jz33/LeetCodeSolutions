@@ -39,6 +39,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.py) [**Facebook**]\
 [2422. Merge Operations to Turn Array Into a Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2422%20Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome.ts) [**TikTok**]
 
+### Two Pointers One Side
+[475. Heaters](https://github.com/jz33/LeetCodeSolutions/blob/master/475%20Heaters.py)\
+[826. Most Profit Assigning Work](https://github.com/jz33/LeetCodeSolutions/blob/master/826%20Most%20Profit%20Assigning%20Work.py) [**DoorDash**]
+
 ### Two Pointers Merge
 
 [2. Add Two Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/0002%20Add%20Two%20Numbers.java) [**Amazon**]\

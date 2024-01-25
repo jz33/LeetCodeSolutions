@@ -33,6 +33,8 @@ Constraints:
     1 <= n, m <= 104
     1 <= difficulty[i], profit[i], worker[i] <= 105
 '''
+from typing import List
+
 class Solution:
     def maxProfitAssignment(self, difficulty: List[int], profit: List[int], worker: List[int]) -> int:
         jobs = sorted(zip(difficulty, profit)) # Sort by difficulty then profit
