@@ -2,76 +2,64 @@
 418. Sentence Screen Fitting
 https://leetcode.com/problems/sentence-screen-fitting/
 
-Given a rows x cols screen and a sentence represented by a list of non-empty words,
-find how many times the given sentence can be fitted on the screen.
+Given a rows x cols screen and a sentence represented as a list of strings,
+return the number of times the given sentence can be fitted on the screen.
 
-Note:
-
-A word cannot be split into two lines.
-The order of words in the sentence must remain unchanged.
-Two consecutive words in a line must be separated by a single space.
-Total words in the sentence won't exceed 100.
-Length of each word is greater than 0 and won't exceed 10.
-1 ≤ rows, cols ≤ 20,000.
+The order of words in the sentence must remain unchanged,
+and a word cannot be split into two lines.
+A single space must separate two consecutive words in a line.
 
 Example 1:
 
-Input:
-rows = 2, cols = 8, sentence = ["hello", "world"]
-
-Output: 
-1
-
+Input: sentence = ["hello","world"], rows = 2, cols = 8
+Output: 1
 Explanation:
 hello---
 world---
-
 The character '-' signifies an empty space on the screen.
 
 Example 2:
 
-Input:
-rows = 3, cols = 6, sentence = ["a", "bcd", "e"]
-
-Output: 
-2
-
+Input: sentence = ["a", "bcd", "e"], rows = 3, cols = 6
+Output: 2
 Explanation:
 a-bcd- 
 e-a---
 bcd-e-
-
 The character '-' signifies an empty space on the screen.
 
 Example 3:
 
-Input:
-rows = 4, cols = 5, sentence = ["I", "had", "apple", "pie"]
-
-Output: 
-1
-
+Input: sentence = ["i","had","apple","pie"], rows = 4, cols = 5
+Output: 1
 Explanation:
-I-had
+i-had
 apple
-pie-I
+pie-i
 had--
-
 The character '-' signifies an empty space on the screen.
+
+Constraints:
+    1 <= sentence.length <= 100
+    1 <= sentence[i].length <= 10
+    sentence[i] consists of lowercase English letters.
+    1 <= rows, cols <= 2 * 104
 '''
+from typing import List
+
 class Solution:
     def wordsTyping(self, sentence: List[str], rows: int, cols: int) -> int:
         combined = ' '.join(sentence) + ' '
-        fit = 0 # how many chars of combined are fit
-        size = len(combined)
+        combinedSize = len(combined)
+        fit = 0 # How many characters from combined are fit so far
         for _ in range(rows):
+            # Try fit next row
             fit += cols
-            
-            if (combined[fit % size] == ' '):
+            if (combined[fit % combinedSize] == ' '):
+                # Can fit 1 more space
                 fit += 1
             else:
-                # Overflow current row. Go back
-                while fit > 0 and combined[(fit - 1) % size] != ' ':
-                    fit -= 1
-                               
-        return fit // size
+                # Overflowed current row. Go back to find the nearest space
+                while fit > 0 and combined[(fit - 1) % combinedSize] != ' ':
+                    fit -= 1                  
+        return fit // combinedSize
