@@ -2,23 +2,41 @@
 341. Flatten Nested List Iterator
 https://leetcode.com/problems/flatten-nested-list-iterator/
 
-Given a nested list of integers, implement an iterator to flatten it.
+You are given a nested list of integers nestedList.
+Each element is either an integer or a list whose elements may also be integers or other lists.
+Implement an iterator to flatten it.
 
-Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+Implement the NestedIterator class:
+
+    NestedIterator(List<NestedInteger> nestedList) Initializes the iterator with the nested list nestedList.
+    int next() Returns the next integer in the nested list.
+    boolean hasNext() Returns true if there are still some integers in the nested list and false otherwise.
+
+Your code will be tested with the following pseudocode:
+
+initialize iterator with nestedList
+res = []
+while iterator.hasNext()
+    append iterator.next() to the end of res
+return res
+
+If res matches the expected flattened list, then your code will be judged as correct.
 
 Example 1:
 
-Input: [[1,1],2,[1,1]]
+Input: nestedList = [[1,1],2,[1,1]]
 Output: [1,1,2,1,1]
-Explanation: By calling next repeatedly until hasNext returns false, 
-             the order of elements returned by next should be: [1,1,2,1,1].
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].
 
 Example 2:
 
-Input: [1,[4,[6]]]
+Input: nestedList = [1,[4,[6]]]
 Output: [1,4,6]
-Explanation: By calling next repeatedly until hasNext returns false, 
-             the order of elements returned by next should be: [1,4,6].
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
+
+Constraints:
+    1 <= nestedList.length <= 500
+    The values of the integers in the nested list is in the range [-106, 106].
 '''
 # """
 # This is the interface that allows for creating nested lists.
@@ -44,10 +62,10 @@ Explanation: By calling next repeatedly until hasNext returns false,
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
-        self.value = None # next integer
+        self.value = None
         self.list = nestedList # a list points to list of a nestestList
-        self.pos = 0 # position in self.list
-        self.stack = [] # [(list, position)]
+        self.position = 0
+        self.stack = [] # [(list, next position)]
         
     def next(self) -> int:
         '''
@@ -56,22 +74,17 @@ class NestedIterator:
         return self.value
     
     def hasNext(self) -> bool:
-        while self.pos < len(self.list) or self.stack:
-            if self.pos < len(self.list):
-                e = self.list[self.pos]
-                if e.isInteger():
-                    self.pos = self.pos + 1
-                    self.value = e.getInteger()
+        while self.position < len(self.list) or self.stack:
+            if self.position < len(self.list):
+                node = self.list[self.position]
+                if node.isInteger():
+                    self.position = self.position + 1
+                    self.value = node.getInteger()
                     return True
                 else:
-                    self.stack.append((self.list, self.pos + 1))
-                    self.list = e.getList()
-                    self.pos = 0
+                    self.stack.append((self.list, self.position + 1))
+                    self.list = node.getList()
+                    self.position = 0
             else:
-                self.list, self.pos = self.stack.pop()
+                self.list, self.position = self.stack.pop()
         return False
-         
-
-# Your NestedIterator object will be instantiated and called as such:
-# i, v = NestedIterator(nestedList), []
-# while i.hasNext(): v.append(i.next())
