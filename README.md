@@ -13,7 +13,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [35. Search Insert Position](https://github.com/jz33/LeetCodeSolutions/blob/master/035%20Search%20Insert%20Position.py)\
 [153. Find Minimum in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/153%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.py)\
 [162. Find Peak Element](https://github.com/jz33/LeetCodeSolutions/blob/master/162%20Find%20Peak%20Element.py) [**Facebook**]\
-[163. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
+[300. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
 [658. Find K Closest Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/658%20Find%20K%20Closest%20Elements.py) [**Facebook**]\
 [1060. Missing Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1060%20Missing%20Element%20in%20Sorted%20Array.ts) [**Facebook**]\
 [1095. Find in Mountain Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1095%20Find%20in%20Mountain%20Array.py)\
@@ -60,8 +60,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
 [219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
 [380. Insert Delete GetRandom O(1)](<https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py>) [**Facebook, TikTok**]\
-[383. Ransom Note](https://github.com/jz33/LeetCodeSolutions/blob/master/383%20Ransom%20Note.py) [**Facebook**]\
 [381. Insert Delete GetRandom O(1) - Duplicates allowed](https://github.com/jz33/LeetCodeSolutions/blob/master/381%20Insert%20Delete%20GetRandom%20O(1)%20-%20Duplicates%20allowed.py) [**TikTok E-Commerce**]\
+[383. Ransom Note](https://github.com/jz33/LeetCodeSolutions/blob/master/383%20Ransom%20Note.py) [**Facebook**]\
 [398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
 [763. Partition Labels](https://github.com/jz33/LeetCodeSolutions/blob/master/763%20Partition%20Labels.py)\
 [791. Custom Sort String](https://github.com/jz33/LeetCodeSolutions/blob/master/791%20Custom%20Sort%20String.py)[**Facebook**]\
