@@ -42,13 +42,13 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Two Pointers One Side
 
+[408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
 [475. Heaters](https://github.com/jz33/LeetCodeSolutions/blob/master/475%20Heaters.py)\
 [826. Most Profit Assigning Work](https://github.com/jz33/LeetCodeSolutions/blob/master/826%20Most%20Profit%20Assigning%20Work.py) [**DoorDash**]
 
 ### Two Pointers Merge
 
 [2. Add Two Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/0002%20Add%20Two%20Numbers.java) [**Amazon**]\
-[56. Merge Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/056%20Merge%20Intervals.py) [**Facebook**]\
 [415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
 [986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.py) [**Facebook**, union not intersection]\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
@@ -123,19 +123,23 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1249. Minimum Remove to Make Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1249%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses.py) [**Facebook**]\
 [1541. Minimum Insertions to Balance a Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1541%20Minimum%20Insertions%20to%20Balance%20a%20Parentheses%20String.ts)
 
+### Intervals
+
+[56. Merge Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/056%20Merge%20Intervals.py) [**Facebook, TikTok**]\
+[57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
+[253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py) [**Facebook**]\
+[435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
+[3009. Maximum Number of Intersections on the Chart]()
+
 ### 1-D Iteration or Greedy
 
 [41. First Missing Positive](https://github.com/jz33/LeetCodeSolutions/blob/master/041%20First%20Missing%20Positive.py)\
 [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
-[57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
 [68. Text Justification](https://github.com/jz33/LeetCodeSolutions/blob/master/068%20Text%20Justification.py)\
 [229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
 [240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
-[253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py) [**Facebook**]\
 [384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
-[408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
 [418. Sentence Screen Fitting](https://github.com/jz33/LeetCodeSolutions/blob/master/418%20Sentence%20Screen%20Fitting.py) [**TikTok**]\
-[435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
 [605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
 [670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.py) [**Facebook**]\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
