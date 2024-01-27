@@ -129,7 +129,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
 [253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py) [**Facebook**]\
 [435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
-[3009. Maximum Number of Intersections on the Chart]()
+[3009. Maximum Number of Intersections on the Chart](https://github.com/jz33/LeetCodeSolutions/blob/master/T-3009%20Maximum%20Number%20of%20Intersections%20on%20the%20Chart.py)
 
 ### 1-D Iteration or Greedy
 
