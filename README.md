@@ -50,7 +50,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [2. Add Two Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/0002%20Add%20Two%20Numbers.java) [**Amazon**]\
 [415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
-[986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.py) [**Facebook**, union not intersection]\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
 [1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
 [1768. Merge Strings Alternately](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1768%20Merge%20Strings%20Alternately.ts)\
@@ -129,6 +128,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
 [253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py) [**Facebook**]\
 [435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
+[986. Interval List Intersections](https://github.com/jz33/LeetCodeSolutions/blob/master/986%20Interval%20List%20Intersections.py) [**Facebook**, union not intersection]\
 [3009. Maximum Number of Intersections on the Chart](https://github.com/jz33/LeetCodeSolutions/blob/master/T-3009%20Maximum%20Number%20of%20Intersections%20on%20the%20Chart.py)
 
 ### 1-D Iteration or Greedy
