@@ -2,54 +2,55 @@
 825. Friends Of Appropriate Ages
 https://leetcode.com/problems/friends-of-appropriate-ages/
 
-Some people will make friend requests. The list of their ages is given and ages[i] is the age of the ith person. 
+There are n persons on a social media website.
+You are given an integer array ages where ages[i] is the age of the ith person.
 
-Person A will NOT friend request person B (B != A) if any of the following conditions are true:
+A Person x will not send a friend request to a person y (x != y) if any of the following conditions is true:
 
-age[B] <= 0.5 * age[A] + 7
-age[B] > age[A]
-age[B] > 100 && age[A] < 100
-Otherwise, A will friend request B.
+    age[y] <= 0.5 * age[x] + 7
+    age[y] > age[x]
+    age[y] > 100 && age[x] < 100
 
-Note that if A requests B, B does not necessarily request A.  Also, people will not friend request themselves.
+Otherwise, x will send a friend request to y.
 
-How many total friend requests are made?
+Note that if x sends a request to y, y will not necessarily send a request to x.
+Also, a person will not send a friend request to themselves.
+
+Return the total number of friend requests made.
 
 Example 1:
 
-Input: [16,16]
+Input: ages = [16,16]
 Output: 2
 Explanation: 2 people friend request each other.
+
 Example 2:
 
-Input: [16,17,18]
+Input: ages = [16,17,18]
 Output: 2
 Explanation: Friend requests are made 17 -> 16, 18 -> 17.
+
 Example 3:
 
-Input: [20,30,100,110,120]
-Output: 
+Input: ages = [20,30,100,110,120]
+Output: 3
 Explanation: Friend requests are made 110 -> 100, 120 -> 110, 120 -> 100.
- 
-Notes:
 
-1 <= ages.length <= 20000.
-1 <= ages[i] <= 120.
-
+Constraints:
+    n == ages.length
+    1 <= n <= 2 * 104
+    1 <= ages[i] <= 120
 '''
 class Solution:
-    def canRequest(self, a, b):
-        return a >= b and b > a // 2 + 7
-    
     def numFriendRequests(self, ages: List[int]) -> int:
-        histo = collections.Counter(ages)
-        res = 0
-        for a,av in histo.items():
-            for b, bv in histo.items():
-                # Notice a == b not necessary mean a can request b !
-                if self.canRequest(a, b):
-                    if a == b:
-                        res += av * (av - 1)
+        result = 0
+        histogram = Counter(ages)
+        for x, xc in histogram.items():
+            for y, yc in histogram.items():
+                if y <= x and y > 0.5 * x + 7:
+                    if x == y:
+                        # -1 because a person cannot send request to himself
+                        result += xc * (xc - 1)
                     else:
-                        res += av * bv
-        return res
+                        result += xc * yc
+        return result
