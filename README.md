@@ -304,6 +304,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Postorder Traversal
 
 [95. Unique Binary Search Trees II](https://github.com/jz33/LeetCodeSolutions/blob/master/095%20Unique%20Binary%20Search%20Trees%20II.py)\
+[104. Maximum Depth of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/104%20Maximum%20Depth%20of%20Binary%20Tree.java)\
+[111. Minimum Depth of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/111%20Minimum%20Depth%20of%20Binary%20Tree.py)\
 [124. Binary Tree Maximum Path Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/124%20Binary%20Tree%20Maximum%20Path%20Sum.py) [**Facebook**]\
 [145. Binary Tree Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/145%20Binary%20Tree%20Postorder%20Traversal.ts)\
 [333. Largest BST Subtree](https://github.com/jz33/LeetCodeSolutions/blob/master/333%20Largest%20BST%20Subtree.ts) [**TikTok**]\
