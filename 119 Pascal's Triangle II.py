@@ -28,4 +28,12 @@ Follow up: Could you optimize your algorithm to use only O(rowIndex) extra space
 '''
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
-        
+        prevRow = [1]
+        for _ in range(rowIndex):
+            row = [None] * (len(prevRow) + 1)
+            row[0] = 1
+            row[-1] = 1
+            for i in range(1, len(row)-1):
+                row[i] = prevRow[i-1] + prevRow[i]
+            prevRow = row
+        return prevRow
