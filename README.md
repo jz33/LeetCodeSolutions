@@ -338,7 +338,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### BFS on Matrix
 
-[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**]\
+[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**, **TikTok**]\
 [286. Walls and Gates](https://github.com/jz33/LeetCodeSolutions/blob/master/286%20Walls%20and%20Gates.py)\
 [317. Shortest Distance from All Buildings](https://github.com/jz33/LeetCodeSolutions/blob/master/317%20Shortest%20Distance%20from%20All%20Buildings.py) [**Facebook**]\
 [329. Longest Increasing Path in a Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/329%20Longest%20Increasing%20Path%20in%20a%20Matrix.py) [**Facebook**]\
@@ -366,6 +366,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [51. N-Queens](https://github.com/jz33/LeetCodeSolutions/blob/master/051%20N-Queens.py)\
 [79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) [**Facebook**]\
+[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**, **TikTok**]\
 [489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py) [**Facebook**]\
 [694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.ts)
 

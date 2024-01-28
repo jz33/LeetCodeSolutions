@@ -34,7 +34,11 @@ Constraints:
     1 <= m, n <= 300
     grid[i][j] is '0' or '1'
 '''
+from typing import List
 class Solution:
+    '''
+    BFS
+    '''
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid or not grid[0]:
             return 0
@@ -57,5 +61,32 @@ class Solution:
                                     visited[x][y] = True
                                     newQueue.append((x, y))
                         queue = newQueue
+                    island += 1
+        return island
+    
+class Solution2:
+    '''
+    DFS
+    '''
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid or not grid[0]:
+            return 0
+        
+        rowCount = len(grid)
+        colCount = len(grid[0])
+        visited = [[False] * colCount for _ in range(rowCount)]
+
+        def dfs(i: int, j: int):
+            for x, y in (i,j+1),(i+1,j),(i,j-1),(i-1,j):
+                if 0 <= x < rowCount and 0 <= y < colCount and grid[x][y] == '1' and visited[x][y] is False:
+                    visited[x][y] = True
+                    dfs(x, y)
+
+        island = 0
+        for r in range(rowCount):
+            for c in range(colCount):
+                if grid[r][c] == '1' and visited[r][c] is False:
+                    visited[r][c] = True
+                    dfs(r, c)
                     island += 1
         return island

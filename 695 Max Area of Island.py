@@ -2,31 +2,39 @@
 695. Max Area of Island
 https://leetcode.com/problems/max-area-of-island/
 
-Given a non-empty 2D array grid of 0's and 1's, an island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.)
-You may assume all four edges of the grid are surrounded by water.
+You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally
+(horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
 
-Find the maximum area of an island in the given 2D array.
-(If there is no island, the maximum area is 0.)
+The area of an island is the number of cells with a value 1 in the island.
+
+Return the maximum area of an island in grid. If there is no island, return 0.
 
 Example 1:
 
-[[0,0,1,0,0,0,0,1,0,0,0,0,0],
- [0,0,0,0,0,0,0,1,1,1,0,0,0],
- [0,1,1,0,1,0,0,0,0,0,0,0,0],
- [0,1,0,0,1,1,0,0,1,0,1,0,0],
- [0,1,0,0,1,1,0,0,1,1,1,0,0],
- [0,0,0,0,0,0,0,0,0,0,1,0,0],
- [0,0,0,0,0,0,0,1,1,1,0,0,0],
- [0,0,0,0,0,0,0,1,1,0,0,0,0]]
- 
-Given the above grid, return 6. Note the answer is not 11,
-because the island must be connected 4-directionally.
+Input: grid = [
+    [0,0,1,0,0,0,0,1,0,0,0,0,0],
+    [0,0,0,0,0,0,0,1,1,1,0,0,0],
+    [0,1,1,0,1,0,0,0,0,0,0,0,0],
+    [0,1,0,0,1,1,0,0,1,0,1,0,0],
+    [0,1,0,0,1,1,0,0,1,1,1,0,0],
+    [0,0,0,0,0,0,0,0,0,0,1,0,0],
+    [0,0,0,0,0,0,0,1,1,1,0,0,0],
+    [0,0,0,0,0,0,0,1,1,0,0,0,0]
+]
+Output: 6
+Explanation: The answer is not 11, because the island must be connected 4-directionally.
 
 Example 2:
 
-[[0,0,0,0,0,0,0,0]]
-Given the above grid, return 0.
-Note: The length of each dimension in the given grid does not exceed 50.
+Input: grid = [[0,0,0,0,0,0,0,0]]
+Output: 0
+
+Constraints:
+
+    m == grid.length
+    n == grid[i].length
+    1 <= m, n <= 50
+    grid[i][j] is either 0 or 1
 '''
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
@@ -35,24 +43,20 @@ class Solution:
         
         rowCount = len(grid)
         colCount = len(grid[0])
+        visited = [[False] * colCount for _ in range(rowCount)]
         
-        def bfs(i: int, j: int) -> int:
+        def dfs(i: int, j: int) -> int:
             area = 1
-            grid[i][j] = 2 # Mark 2 as visited
-            stack = [(i,j)]
-            while stack:
-                i,j = stack.pop()
-                for x, y in (i,j+1), (i,j-1), (i+1,j),(i-1,j):
-                    if 0 <= x < rowCount and 0 <= y < colCount and grid[x][y] == 1:
-                        # Mark visited before push to avoid pushing duplicates into stack
-                        grid[x][y] = 2
-                        area += 1
-                        stack.append((x,y))
+            for x, y in (i,j+1), (i,j-1), (i+1,j),(i-1,j):
+                if 0 <= x < rowCount and 0 <= y < colCount and grid[x][y] == 1 and not visited[x][y]:
+                    visited[x][y] = True
+                    area += dfs(x, y)
             return area
 
         maxArea = 0
         for i in range(rowCount):
             for j in range(colCount):
                 if grid[i][j] == 1:
-                    maxArea = max(maxArea, bfs(i,j))
+                    visited[i][j] = True
+                    maxArea = max(maxArea, dfs(i,j))
         return maxArea
