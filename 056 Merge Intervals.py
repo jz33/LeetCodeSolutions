@@ -16,6 +16,9 @@ Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 '''
 class Solution:
+    '''
+    Real TikTok interview question: 20240125
+    '''
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         if not intervals:
             return []
