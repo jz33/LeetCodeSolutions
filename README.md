@@ -114,6 +114,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [20. Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/020%20Valid%20Parentheses.py)\
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.py) [**Facebook**]\
 [636. Exclusive Time of Functions](https://github.com/jz33/LeetCodeSolutions/blob/master/636%20Exclusive%20Time%20of%20Functions.py) [**Facebook**]\
+[735. Asteroid Collision](https://github.com/jz33/LeetCodeSolutions/blob/master/735%20Asteroid%20Collision.py)\
 [739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.py) [**TikTok**]\
 [856. Score of Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/856%20Score%20of%20Parentheses.py) [**TikTok**]\
 [921. Minimum Add to Make Parentheses Valid](https://github.com/jz33/LeetCodeSolutions/blob/master/921%20Minimum%20Add%20to%20Make%20Parentheses%20Valid.go) [**Facebook**]\
@@ -288,6 +289,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [341. Flatten Nested List Iterator](https://github.com/jz33/LeetCodeSolutions/blob/master/341%20Flatten%20Nested%20List%20Iterator.py)\
 [437. Path Sum III](https://github.com/jz33/LeetCodeSolutions/blob/master/437%20Path%20Sum%20III.py)\
 [545. Boundary of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/545%20Boundary%20of%20Binary%20Tree.py) \
+[863. All Nodes Distance K in Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/863%20All%20Nodes%20Distance%20K%20in%20Binary%20Tree.py)[**Facebook**]\
 [938. Range Sum of BST](https://github.com/jz33/LeetCodeSolutions/blob/master/938%20Range%20Sum%20of%20BST.py) [**Facebook**]\
 [958. Check Completeness of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/958%20Check%20Completeness%20of%20a%20Binary%20Tree.py) [**Facebook**]
 
@@ -355,7 +357,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### BFS on Graph
 
 [126. Word Ladder](https://github.com/jz33/LeetCodeSolutions/blob/master/126%20Word%20Ladder.py) [**TikTok**]\
-[301. Remove Invalid Parentheses]() [**Facebook**]\
 [785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py) [**TikTok**]\
 [815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py) [**TikTok**]\
 [886. Possible Bipartition](https://github.com/jz33/LeetCodeSolutions/blob/master/886%20Possible%20Bipartition.ts) [**TikTok**]\
