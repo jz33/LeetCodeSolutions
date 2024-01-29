@@ -1,4 +1,4 @@
-/*
+'''
 636. Exclusive Time of Functions
 https://leetcode.com/problems/exclusive-time-of-functions/
 
@@ -51,7 +51,6 @@ Function 0 resumes execution at the beginning of time 6 and executes for 2 units
 So function 0 spends 2 + 4 + 1 = 7 units of total time executing, and function 1 spends 1 unit of total time executing.
 
 Constraints:
-
     1 <= n <= 100
     1 <= logs.length <= 500
     0 <= function_id < n
@@ -59,34 +58,28 @@ Constraints:
     No two start events will happen at the same timestamp.
     No two end events will happen at the same timestamp.
     Each function has an "end" log for each "start" log.
-
-
-*/
-function exclusiveTime(n: number, logs: string[]): number[] {
-    const exclusiveTimes: number[] = new Array(n).fill(0);
-    const stack: { id: number, startTime: number }[] = [];
-    for (const log of logs) {
-        const info = log.split(':');
-        const id = parseInt(info[0]);
-        const action = info[1];
-        const timestamp = parseInt(info[2]);
-        if (action === 'start') {
-            // Save previous task's exclusive time
-            if (stack.length) {
-                const { id: previousId, startTime: previousStartTime } = stack[stack.length - 1];
-                exclusiveTimes[previousId] += timestamp - previousStartTime;
-            }
-            // Push in new task
-            stack.push({ id, startTime: timestamp });
-        } else if (action === 'end') {
-            // Save current task's exclusive time
-            const { startTime } = stack.pop();
-            exclusiveTimes[id] += timestamp - startTime + 1;
-            // Update previous task's starting time
-            if (stack.length) {
-                stack[stack.length - 1].startTime = timestamp + 1;
-            }
-        }
-    }
-    return exclusiveTimes;
-};
+'''
+class Solution:
+    def exclusiveTime(self, n: int, logs: List[str]) -> List[int]: 
+        exclusiveTimes = [0] * n
+        stack = [] # [[task id, start time]]
+        for log in logs:
+            info = log.split(':')
+            id = int(info[0])
+            action = info[1]
+            timestamp = int(info[2])
+            if action == 'start':
+                # Save previous task's exclusive time
+                if stack:
+                    previousId, previousStartTime = stack[-1]
+                    exclusiveTimes[previousId] += timestamp - previousStartTime
+                # Push in new task
+                stack.append([id, timestamp ])
+            elif action == 'end':
+                # Save current task's exclusive time
+                _, currentStartTime = stack.pop()
+                exclusiveTimes[id] += timestamp - currentStartTime + 1
+                # Update previous task's starting time
+                if stack:
+                    stack[-1][1] = timestamp + 1
+        return exclusiveTimes
