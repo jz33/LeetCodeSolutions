@@ -2,42 +2,58 @@
 658. Find K Closest Elements
 https://leetcode.com/problems/find-k-closest-elements/
 
-Given a sorted array, two integers k and x, find the k closest elements to x in the array.
-The result should also be sorted in ascending order. If there is a tie, the smaller elements are always preferred.
+Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array.
+The result should also be sorted in ascending order.
+
+An integer a is closer to x than an integer b if:
+
+    |a - x| < |b - x|, or
+    |a - x| == |b - x| and a < b
 
 Example 1:
-Input: [1,2,3,4,5], k=4, x=3
+
+Input: arr = [1,2,3,4,5], k = 4, x = 3
 Output: [1,2,3,4]
+
 Example 2:
-Input: [1,2,3,4,5], k=4, x=-1
+
+Input: arr = [1,2,3,4,5], k = 4, x = -1
 Output: [1,2,3,4]
+
+Constraints:
+    1 <= k <= arr.length
+    1 <= arr.length <= 104
+    arr is sorted in ascending order.
+    -104 <= arr[i], x <= 104
 '''
+def getInsertionPoint(arr: List[int], target: int):
+    left = 0
+    right = len(arr) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return left
+
 class Solution:
-    def getInsertionPoint(self, arr: List[int], target: int) -> int:
-        left = 0
-        right = len(arr) - 1
-        while left <= right:
-            mid = left + (right - left) // 2
-            if arr[mid] == target:
-                return mid
-            elif arr[mid] < target:
-                left = mid + 1
-            else:
-                right = mid - 1
-        return left
-        
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        ip = self.getInsertionPoint(arr, x)
-        if ip == len(arr):
+        # Check len(arr) < k case
+
+        insertionPoint = getInsertionPoint(arr, x)
+        if insertionPoint == len(arr):
             # out of right bound
             return arr[-k:]
-        if ip == 0:
+        if insertionPoint == 0:
             # out of left bound
             return arr[:k]
         
-        left = ip - 1
-        right = ip
-        dq = collections.deque()
+        left = insertionPoint - 1
+        right = insertionPoint
+        dq = deque()
         while left >=0 and right < len(arr) and len(dq) < k:
             le = arr[left]
             re = arr[right]
@@ -54,4 +70,5 @@ class Solution:
                 return arr[left - missedCount + 1 : left+1] + list(dq)
             else: # right < len(arr)
                 return list(dq) + arr[right : right + missedCount]
-        return list(dq)
+        else:
+            return list(dq)
