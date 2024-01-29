@@ -24,41 +24,17 @@ Constraints:
     The number of nodes in the tree is in the range [0, 100].
     -100 <= Node.val <= 100
 '''
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    '''
-    Lever Order Traversal
-    '''
-    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
-        result = []
-        
-        # Even though only the right-most node's value on each level is needed,
-        # it is necessary to save all nodes as it cannot guarantee right-most node
-        # is always from the right-most parent.
-        # This is different to 545. Boundary of Binary Tree
-        row = [root]
-        while row:
-            newRow = []
-            for i, node in enumerate(row):
-                if i == len(row) - 1:
-                    result.append(node.val)
-                if node.left:
-                    newRow.append(node.left)
-                if node.right:
-                    newRow.append(node.right)
-            row = newRow
-        return result
+from typing import Optional, List
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 class Solution:
     '''
     Preorder traversal, use less space
+    Facebook interview question: https://www.1point3acres.com/bbs/thread-1041414-1-1.html
     '''
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
