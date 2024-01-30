@@ -32,6 +32,10 @@ def getTotalNodeCount(root: Optional[TreeNode]) -> int:
     return 1 + getTotalNodeCount(root.left) + getTotalNodeCount(root.right)
 
 class Solution:
+    '''
+    Different to 110. Balanced Binary Tree,
+    as right branch cannot be higher than left branch.
+    '''
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         totalNodeCount = getTotalNodeCount(root)
 
