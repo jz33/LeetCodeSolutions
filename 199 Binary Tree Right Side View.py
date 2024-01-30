@@ -35,6 +35,7 @@ class Solution:
     '''
     Preorder traversal, use less space
     Facebook interview question: https://www.1point3acres.com/bbs/thread-1041414-1-1.html
+    My Facebook interview question 20240130
     '''
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
