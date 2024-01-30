@@ -39,7 +39,8 @@ Constraints:
 '''
 class SparseVector:
     def __init__(self, nums: List[int]):
-        self.data = list(filter(lambda pair : pair[1] != 0, enumerate(nums)))
+        # [(index, value)]
+        self.data = [(index, value) for index, value in enumerate(nums) if value != 0]
 
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, that: 'SparseVector') -> int:
