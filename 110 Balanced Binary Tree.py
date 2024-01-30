@@ -33,7 +33,9 @@ class TreeNode:
 
 class Solution:
     '''
-    Standard maximum depth approach based 104. Maximum Depth of Binary Tree
+    Standard maximum depth approach based 104. Maximum Depth of Binary Tree.
+    Different to 958. Check Completeness of a Binary Tree though,
+    as right branch can be higher than left branch.
     '''
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         isBalanced = True
