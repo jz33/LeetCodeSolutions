@@ -28,36 +28,31 @@ class Solution:
     '''
     def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
         rowCount = len(matrix)
-        if not rowCount:
-            return []
-        
         colCount = len(matrix[0])
-        if not colCount:
-            return []
-              
-        res = [None] * (rowCount * colCount)
-        x, y = 0, 0
-        for i in range(len(res)):
-            res[i] = matrix[x][y]
-            if (x + y) & 1 == 0:
+     
+        result = [None] * (rowCount * colCount)
+        r, c = 0, 0
+        for i in range(len(result)):
+            result[i] = matrix[r][c]
+            if (r + c) & 1 == 0:
                 # Go upper right
-                if y + 1 == colCount:
-                    x += 1
-                elif x == 0:
-                    y += 1
+                if c + 1 == colCount:
+                    r += 1
+                elif r == 0:
+                    c += 1
                 else:
-                    x -= 1
-                    y += 1
+                    r -= 1
+                    c += 1
             else:
                 # Go lower left
-                if x + 1 == rowCount:
-                    y += 1
-                elif y == 0:
-                    x += 1
+                if r + 1 == rowCount:
+                    c += 1
+                elif c == 0:
+                    r += 1
                 else:
-                    x += 1
-                    y -= 1
-        return res     
+                    r += 1
+                    c -= 1
+        return result     
 
 class Solution:
     def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
