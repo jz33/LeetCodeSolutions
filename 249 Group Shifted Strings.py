@@ -41,6 +41,9 @@ def getHash(word: str) -> str:
     return ''.join(map(lambda c : rotate(c), word))
 
 class Solution:
+    '''
+    Real Facebook interview question 20240130
+    '''
     def groupStrings(self, strings: List[str]) -> List[List[str]]:
         group = {} # {hash : [words]}
         for word in strings:
