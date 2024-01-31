@@ -24,7 +24,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [774. Minimize Max Distance to Gas Station](https://github.com/jz33/LeetCodeSolutions/blob/master/774%20Minimize%20Max%20Distance%20to%20Gas%20Station.py)\
 [875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py) [**Facebook, DoorDash**]\
-[1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]
+[1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]\
+[1802. Maximum Value at a Given Index in a Bounded Array]() [**TikTok**]
 
 ### O(n)
 
