@@ -10,7 +10,7 @@ that has the same degree as nums.
 
 Example 1:
 
-Input: [1, 2, 2, 3, 1]
+Input: nums = [1,2,2,3,1]
 Output: 2
 Explanation: 
 The input array has a degree of 2 because both elements 1 and 2 appear twice.
@@ -20,28 +20,33 @@ The shortest length is 2. So return 2.
 
 Example 2:
 
-Input: [1,2,2,3,1,4,2]
+Input: nums = [1,2,2,3,1,4,2]
 Output: 6
+Explanation: 
+The degree is 3 because the element 2 is repeated 3 times.
+So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.
+
+Constraints:
+    nums.length will be between 1 and 50,000.
+    nums[i] will be an integer between 0 and 49,999.
 '''
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:       
-        
-        book = {} # { n: [count, first appearance index of n]}
-        res = [0, 0] # [degree, subarray size]
-        
-        for i, n in enumerate(nums):
-            ct = 0 # count of n
-            fi = i # first appearance index of n 
-            if n in book:
-                ct, fi = book[n]
-            ct += 1
-            book[n] = [ct, fi]
+        book = {} # { value : (count of the value, first appearance index of the value)}
+        degree = 0
+        minSubarraySize = len(nums)       
+        for i, val in enumerate(nums):
+            count, first = book.get(val, (0, i))
+            count += 1
+            book[val] = (count, first)
             
-            subarraySize = i - fi + 1
-            if ct > res[0]:
-                res[0] = ct
-                res[1] = subarraySize
-            elif ct == res[0] and subarraySize < res[1]:
-                res[1] = subarraySize
+            # Check the array with val as the degree
+            # No need to find the maximum degree as the loop can find that
+            subarraySize = i - first + 1
+            if count > degree:
+                degree = count
+                minSubarraySize = subarraySize
+            elif count == degree and subarraySize < minSubarraySize:
+                minSubarraySize = subarraySize
                 
-        return res[1]
+        return minSubarraySize
