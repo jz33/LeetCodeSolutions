@@ -37,6 +37,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [125. Valid Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/125%20Valid%20Palindrome.py) [**Facebook**]\
 [167. Two Sum II - Input array is sorted](https://github.com/jz33/LeetCodeSolutions/blob/master/167%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.ts)\
+[259. 3Sum Smaller](https://github.com/jz33/LeetCodeSolutions/blob/master/259%203Sum%20Smaller.py)\
 [680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.py) [**Facebook**]\
 [1530. Number of Good Leaf Nodes Pairs](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1530%20Number%20of%20Good%20Leaf%20Nodes%20Pairs.py) [**TikTok**]\
 [2422. Merge Operations to Turn Array Into a Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2422%20Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome.ts) [**TikTok**]
