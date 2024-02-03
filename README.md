@@ -25,7 +25,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [774. Minimize Max Distance to Gas Station](https://github.com/jz33/LeetCodeSolutions/blob/master/774%20Minimize%20Max%20Distance%20to%20Gas%20Station.py)\
 [875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py) [**Facebook, DoorDash**]\
 [1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]\
-[1802. Maximum Value at a Given Index in a Bounded Array]() [**TikTok**]
+[1802. Maximum Value at a Given Index in a Bounded Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1802%20Maximum%20Value%20at%20a%20Given%20Index%20in%20a%20Bounded%20Array.py) [**TikTok**]
 
 ### O(n)
 
@@ -242,6 +242,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 2-D Cache Dynamic Programming
 
+[63. Unique Paths II](https://github.com/jz33/LeetCodeSolutions/blob/master/063%20Unique%20Path%20II.py) [**Facebook**]\
 [72.Edit Distance](https://github.com/jz33/LeetCodeSolutions/blob/master/072%20Edit%20Distance.py)\
 [115. Distinct Subsequences](https://github.com/jz33/LeetCodeSolutions/blob/master/115%20Distinct%20Subsequences.py)\
 [188. Best Time to Buy and Sell Stock IV](https://github.com/jz33/LeetCodeSolutions/blob/master/188%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py)\
