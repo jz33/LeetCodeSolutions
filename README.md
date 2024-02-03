@@ -243,11 +243,12 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### 2-D Cache Dynamic Programming
 
 [63. Unique Paths II](https://github.com/jz33/LeetCodeSolutions/blob/master/063%20Unique%20Path%20II.py) [**Facebook**]\
-[72.Edit Distance](https://github.com/jz33/LeetCodeSolutions/blob/master/072%20Edit%20Distance.py)\
+[72. Edit Distance](https://github.com/jz33/LeetCodeSolutions/blob/master/072%20Edit%20Distance.py)\
 [115. Distinct Subsequences](https://github.com/jz33/LeetCodeSolutions/blob/master/115%20Distinct%20Subsequences.py)\
 [188. Best Time to Buy and Sell Stock IV](https://github.com/jz33/LeetCodeSolutions/blob/master/188%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py)\
 [221. Maximal Square](https://github.com/jz33/LeetCodeSolutions/blob/master/221%20Maximal%20Square.py)\
 [516. Longest Palindromic Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/516%20Longest%20Palindromic%20Subsequence.py)\
+[542. 01 Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/542%2001%20Matrix.py)\
 [1143. Longest Common Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1143%20Longest%20Common%20Subsequence.py)\
 [1216. Valid Palindrome III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1216%20Valid%20Palindrome%20III.py) [**Facebook**]
 
