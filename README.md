@@ -378,7 +378,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) [**Facebook**]\
 [200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**, **TikTok**]\
 [489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py) [**Facebook**]\
-[694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.ts)
+[694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.py) [**TikTok**]
 
 ### DFS or Backtrack on Graph
 
