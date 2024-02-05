@@ -36,6 +36,33 @@ Constraints:
     word1 and word2 consist of lowercase English letters.
 '''
 class Solution:
+    '''
+    1-D space
+    '''
+    def minDistance(self, word1: str, word2: str) -> int:
+        if len(word1) > len(word2):
+            word1, word2 = word2, word1
+
+        # Initialize dp like each word1 char to empty string
+        dp = list(range(len(word1) + 1))
+
+        for i2 in range(len(word2)):
+            upperLeft = dp[0]
+            dp[0] = i2 + 1
+            for i1 in range(len(word1)):
+                upper = dp[i1+1]
+                left = dp[i1]
+                if word2[i2] == word1[i1]:
+                    dp[i1+1] = upperLeft
+                else:
+                    dp[i1+1] = min(upperLeft, upper, left) + 1
+                upperLeft = upper
+        return dp[-1]
+    
+class Solution:
+    '''
+    http://rosettacode.org/wiki/Levenshtein_distance
+    '''
     def minDistance(self, word1: str, word2: str) -> int:
         # buf[i][j] means the distance of words2[:i] to words1[:j]
         buf = [[0] * (len(word1)+1) for _ in range(len(word2)+1)]

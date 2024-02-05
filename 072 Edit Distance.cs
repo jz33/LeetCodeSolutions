@@ -1,6 +1,6 @@
 /*
 72 Edit Distance
-https://oj.leetcode.com/problems/edit-distance/
+https://leetcode.com/problems/edit-distance/
 http://rosettacode.org/wiki/Levenshtein_distance#C.2B.2B
 */
 using System.Linq;
