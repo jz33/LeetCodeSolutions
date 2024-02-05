@@ -27,6 +27,7 @@ Constraints:
     The number of nodes in the tree is in the range [0, 100].
     -100 <= Node.val <= 100
 '''
+import collections
 class Solution:
     '''
     Very similar to 987. Vertical Order Traversal of a Binary Tree
@@ -35,21 +36,20 @@ class Solution:
         if not root:
             return []
         
-        nodes = [(root, 0)] # [(node, x offset)]
+        nodes = collections.deque([(root, 0)]) # [(node, x offset)]
         book = collections.defaultdict(list) # {x offset : [values]}
         minOffset = 0
         maxOffset = 0
         while nodes:
-            newNodes = []
-            for node, offset in nodes:
+            for _ in range(len(nodes)):
+                node, offset = nodes.popleft()
                 book[offset].append(node.val)
                 minOffset = min(minOffset, offset)
                 maxOffset = max(maxOffset, offset)
                 if node.left:
-                    newNodes.append((node.left, offset - 1))
+                    nodes.append((node.left, offset - 1))
                 if node.right:
-                    newNodes.append((node.right, offset + 1))
-            nodes = newNodes
+                    nodes.append((node.right, offset + 1))
             
         # User min/max offset to avoid sorting
         result = []
