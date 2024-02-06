@@ -76,16 +76,30 @@ class Solution:
                 
         compute()
         return result + prevNum
+    
+'''
+Real Facebook Interview: only consider number and '+'
+https://www.1point3acres.com/bbs/thread-1043252-1-1.html
+'''
+class Solution2:
+    def calculate(self, s: str) -> int:
+        result = 0
+        currNum = 0
+        for c in s:
+            if c == '+':
+                result += currNum
+                currNum = 0
+            elif c.isdecimal():
+                currNum = currNum * 10 + int(c)    
+        return result + currNum
+    
 
-sol = Solution()
+sol = Solution2()
 formula = [
-    '1-3',
-    '2*3',
-    '7*2',
-    '1+1+1',
-    '7/2',
-    '4-3-2-100',
-    '2+3*10'
+    '1+3',
+    '2',
+    '7+2',
+    '1+1+1+5',
 ]
 for f in formula:
     print('{0} equals {1}'.format(f, sol.calculate(f)))
