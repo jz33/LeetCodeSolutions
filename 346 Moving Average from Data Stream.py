@@ -31,6 +31,9 @@ Constraints:
     -105 <= val <= 105
     At most 104 calls will be made to next.
 '''
+from typing import List
+import collections
+
 class MovingAverage:
     '''
     Use deque
@@ -69,4 +72,33 @@ class MovingAverage:
             self.popIndex = (self.popIndex + 1) % self.windowSize
         return self.total / len(self.queue)
 
-        
+'''
+Real facebook interview: moving average from array
+https://www.1point3acres.com/bbs/thread-1043252-1-1.html
+'''
+def movingAverage(arr: List[int], winSize: int):
+    if not winSize:
+        return []
+    
+    result = []
+    total = 0
+    for i, e in enumerate(arr):
+        # Extend
+        total += e
+        # Shrink
+        if i >= winSize:
+            total -= arr[i-winSize]
+        # Result
+        if i >= winSize - 1:
+            result.append(total / winSize)
+    return result
+
+formula = [
+    [1,2,3,4,5,6,7,8],
+]
+for f in formula:
+    print('{0} equals {1}'.format(f, movingAverage(f, 4)))
+
+
+
+ 
