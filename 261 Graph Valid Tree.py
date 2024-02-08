@@ -2,43 +2,51 @@
 261. Graph Valid Tree
 https://leetcode.com/problems/graph-valid-tree/
 
-Given n nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a pair of nodes),
-    write a function to check whether these edges make up a valid tree.
+You have a graph of n nodes labeled from 0 to n - 1.
+You are given an integer n and a list of edges where edges[i] = [ai, bi] indicates that
+there is an undirected edge between nodes ai and bi in the graph.
+
+Return true if the edges of the given graph make up a valid tree, and false otherwise.
 
 Example 1:
 
-Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
+Input: n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]
 Output: true
+
 Example 2:
 
-Input: n = 5, and edges = [[0,1], [1,2], [2,3], [1,3], [1,4]]
+Input: n = 5, edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]
 Output: false
 
-Note: you can assume that no duplicate edges will appear in edges. Since all edges are undirected,
-    [0,1] is the same as [1,0] and thus will not appear together in edges.
+Constraints:
+    1 <= n <= 2000
+    0 <= edges.length <= 5000
+    edges[i].length == 2
+    0 <= ai, bi < n
+    ai != bi
+    There are no self-loops or repeated edges.
 '''
 class UnionFind:
     def __init__(self, nodeCount: int):
-        self.nodes = list(range(nodeCount))
+        self.tree = list(range(nodeCount))
+
+    def find(self, node: int) -> int:
+        tree = self.tree
+        if tree[node] != node:
+            tree[node] = self.find(tree[node])
+        return tree[node]
     
-    def Find(self, i: int):
-        nodes = self.nodes
-        if nodes[i] != i:
-            nodes[i] = self.Find(nodes[i])
-        return nodes[i]
+    def union(self, nodeX: int, nodeY: int) -> bool:
+        rootX = self.find(nodeX)
+        rootY = self.find(nodeY)
+        if rootX != rootY:
+            self.tree[rootX] = rootY
+            return True
+        return False
+            
+    def rootCount(self) -> int:
+        return sum(self.tree[node] == node for node in range(len(self.tree)))
     
-    def Union(self, i: int, j: int) -> bool:
-        ri = self.Find(i)
-        rj = self.Find(j)
-        if ri == rj:
-            return False
-        self.nodes[ri] = rj
-        return True
-    
-    def RootCount(self):
-        nodes = self.nodes
-        return sum(nodes[i] == i for i in range(len(nodes)))
-        
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         '''
@@ -47,4 +55,4 @@ class Solution:
         2. The graph must have no redundant edge
         '''
         graph = UnionFind(n)
-        return all(graph.Union(edge[0], edge[1]) for edge in edges) and graph.RootCount() == 1
+        return all(graph.union(edge[0], edge[1]) for edge in edges) and graph.rootCount() == 1

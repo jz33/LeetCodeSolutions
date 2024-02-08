@@ -390,6 +390,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Union Find
 
+[261. Graph Valid Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/261%20Graph%20Valid%20Tree.py)\
 [305. Number of Islands II](https://github.com/jz33/LeetCodeSolutions/blob/master/305%20Number%20of%20Islands%20II.py)\
 [323. Number of Connected Components in an Undirected Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/323%20Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.py) [**Facebook**]\
 [547. Number of Provinces](https://github.com/jz33/LeetCodeSolutions/blob/master/547%20Number%20of%20Provinces.py)\
