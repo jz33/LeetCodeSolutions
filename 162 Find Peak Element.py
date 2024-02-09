@@ -30,6 +30,8 @@ Constraints:
     -231 <= nums[i] <= 231 - 1
     nums[i] != nums[i + 1] for all valid i
 '''
+from typing import List
+
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         left = 0
@@ -44,3 +46,26 @@ class Solution:
                 left = mid + 1             
         # left == right
         return left
+    
+'''
+Facebook interview: find local min
+
+第二道：要留二变体，给一个数组，只需要找到其中一个元素比它左右两边的元素小就可以，如果有多个结果只需返回其中一个。
+如果在中间找不到的话，查看第一个或者最后一个元素也可
+
+https://www.1point3acres.com/bbs/thread-1043199-1-1.html
+https://www.1point3acres.com/bbs/thread-1041991-1-1.html
+'''
+def findMinElement(nums: List[int]) -> int:
+    left = 0
+    right = len(nums) - 1
+    while left < right:
+        mid = left + (right - left) // 2
+        if nums[mid] > nums[mid+1]:
+            # Needs to go right, mid cannot be the min
+            left = mid + 1
+        else: # nums[mid] < nums[mid+1]
+            # Needs to go left, mid can be min, mid+1 cannot
+            right = mid            
+    # left == right
+    return left
