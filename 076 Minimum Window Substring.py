@@ -39,28 +39,27 @@ class SlidingWindow:
         self.patternCounter = Counter(pattern)
         self.patternSize = len(pattern)
         self.validCount = 0
-        self.counter = Counter()
+        self.charCounts = Counter()
     
     def isMatched(self) -> bool:
         return self.validCount == self.patternSize
     
     def add(self, char: str):
-        newCharCount = self.counter[char] + 1
-        self.counter[char] = newCharCount
+        newCharCount = self.charCounts[char] + 1
+        self.charCounts[char] = newCharCount
         if newCharCount <= self.patternCounter[char]:
             self.validCount += 1
     
     def remove(self, char: str):
-        newCharCount = self.counter[char] - 1
-        self.counter[char] = newCharCount
+        newCharCount = self.charCounts[char] - 1
+        self.charCounts[char] = newCharCount
         if newCharCount < self.patternCounter[char]:
             self.validCount -= 1
     
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         window = SlidingWindow(t)
-        resultStart = None
-        resultSize = len(s) + 1 # Not len(s)
+        result = ''
         left = 0
         right = 0
         while left < len(s):
@@ -69,13 +68,10 @@ class Solution:
                 window.add(s[right])
                 right += 1
             # Update result
-            if (window.isMatched()):
-                size = right - left
-                if size < resultSize:
-                    resultSize = size
-                    resultStart = left
+            if window.isMatched():
+                if result is '' or right - left < len(result):
+                    result = s[left : right]
             # Shrink
             window.remove(s[left])
             left += 1
-
-        return s[resultStart : resultStart + resultSize] if resultStart is not None else ''
+        return result
