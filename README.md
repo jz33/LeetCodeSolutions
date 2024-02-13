@@ -147,7 +147,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
 [670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.py) [**Facebook**]\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
-[2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]
+[2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]\
+[2468. Split Message Based on Limit]()
 
 ### Hashing
 
