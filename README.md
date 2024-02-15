@@ -148,7 +148,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.py) [**Facebook**]\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
 [2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]\
-[2468. Split Message Based on Limit]()
+[2468. Split Message Based on Limit](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2468%20Split%20Message%20Based%20on%20Limit.py)
 
 ### Hashing
 
@@ -317,8 +317,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [111. Minimum Depth of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/111%20Minimum%20Depth%20of%20Binary%20Tree.py)\
 [124. Binary Tree Maximum Path Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/124%20Binary%20Tree%20Maximum%20Path%20Sum.py) [**Facebook**]\
 [145. Binary Tree Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/145%20Binary%20Tree%20Postorder%20Traversal.ts)\
-[333. Largest BST Subtree](https://github.com/jz33/LeetCodeSolutions/blob/master/333%20Largest%20BST%20Subtree.ts) [**TikTok**]\
-[543. Diameter of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/543%20Diameter%20of%20Binary%20Tree.ts) [**Facebook**]\
+[543. Diameter of Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/543%20Diameter%20of%20Binary%20Tree.py) [**Facebook**]\
 [865. Smallest Subtree with all the Deepest Nodes](https://github.com/jz33/LeetCodeSolutions/blob/master/865%20Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes.ts)\
 [968. Binary Tree Cameras](https://github.com/jz33/LeetCodeSolutions/blob/master/968%20Binary%20Tree%20Cameras.py) [**Facebook**]\
 [2265. Count Nodes Equal to Average of Subtree](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2265%20Count%20Nodes%20Equal%20to%20Average%20of%20Subtree.ts)
