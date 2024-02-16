@@ -2,6 +2,8 @@
 50. Pow(x, n)
 https://leetcode.com/problems/powx-n/
 
+Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
+
 Example 1:
 
 Input: x = 2.00000, n = 10
