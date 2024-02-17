@@ -271,7 +271,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [141. Linked List Cycle](https://github.com/jz33/LeetCodeSolutions/blob/master/141%20Linked%20List%20Cycle.java)\
 [160. Intersection of Two Linked Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/160%20Intersection%20of%20Two%20Linked%20Lists.py)\
 [206. Reverse Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/206%20Reverse%20Linked%20List.java)\
-[234. Palindrome Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/234%20Palindrome%20Linked%20List.ts) [**Facebook**]\
+[234. Palindrome Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/234%20Palindrome%20Linked%20List.py) [**Facebook**]\
 [708. Insert into a Sorted Circular Linked List](https://github.com/jz33/LeetCodeSolutions/blob/master/708%20Insert%20into%20a%20Sorted%20Circular%20Linked%20List.py) [**Facebook**]
 
 ### Double Linked List
