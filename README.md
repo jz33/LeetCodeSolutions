@@ -8,7 +8,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Binary Search
 
-[33. Search in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/033%20Search%20in%20Rotated%20Sorted%20Array.java) [**Facebook**]\
+[33. Search in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/033%20Search%20in%20Rotated%20Sorted%20Array.py) [**Facebook**]\
 [34. Find First and Last Position of Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/034%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.py) [**Facebook**]\
 [35. Search Insert Position](https://github.com/jz33/LeetCodeSolutions/blob/master/035%20Search%20Insert%20Position.py)\
 [153. Find Minimum in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/153%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.py)\
@@ -143,7 +143,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
 [240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
 [384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
-[418. Sentence Screen Fitting](https://github.com/jz33/LeetCodeSolutions/blob/master/418%20Sentence%20Screen%20Fitting.py) [**TikTok**]\
 [605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
 [670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.py) [**Facebook**]\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
