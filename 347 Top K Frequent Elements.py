@@ -60,6 +60,7 @@ class Solution3:
     '''
     Use quick select, O(n)
     Works as the return order is not required
+    Similar to 215. Kth Largest Element in an Array
     '''
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         histogram = Counter(nums)
