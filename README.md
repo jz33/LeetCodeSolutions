@@ -342,6 +342,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/106%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.py)\
 [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)\
 [428. Serialize and Deserialize N-ary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/428%20Serialize%20and%20Deserialize%20N-ary%20Tree.py)[**Facebook**]\
+[536. Construct Binary Tree from String](https://github.com/jz33/LeetCodeSolutions/blob/master/536%20Construct%20Binary%20Tree%20from%20String.py)\
 [889. Construct Binary Tree from Preorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/889%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Postorder%20Traversal.py)
 
 ### Graph
