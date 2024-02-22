@@ -2,48 +2,42 @@
 49. Group Anagrams
 https://leetcode.com/problems/group-anagrams/
 
-Given an array of strings, group anagrams together.
+Given an array of strings strs, group the anagrams together.
+You can return the answer in any order.
 
-Example:
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+typically using all the original letters exactly once.
 
-Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
-Output:
-[
-  ["ate","eat","tea"],
-  ["nat","tan"],
-  ["bat"]
-]
-Note:
+Example 1:
 
-All inputs will be in lowercase.
-The order of your output does not matter
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+Example 2:
+
+Input: strs = [""]
+Output: [[""]]
+
+Example 3:
+
+Input: strs = ["a"]
+Output: [["a"]]
+
+Constraints:
+    1 <= strs.length <= 104
+    0 <= strs[i].length <= 100
+    strs[i] consists of lowercase English letters.
 '''
-PRIMES =[2, 3, 5, 7, 11 ,13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 107]
-
-class Solution:
-    '''
-    Use Prime product, can overflow
-    '''
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        book = collections.defaultdict(list) # {hash : [strings]}
-        for s in strs:
-            # Compute hash by multiply chars
-            h = 1
-            for c in s:
-                h *= PRIMES[ord(c) - ord('a')]
-            book[h].append(s)
-        return book.values()
-      
 class Solution:
     '''
     Use char histogram
     '''
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         A = ord('a')
-        res = collections.defaultdict(list) # {char histogram : [strings]}
+        result = defaultdict(list) # {char histogram : [strings]}
         for s in strs:
-            histo = [0] * 26
+            histogram = [0] * 26
             for c in s:
-                histo[ord(c) - A] += 1
-            res[tuple(histo)].append(s)
-        return res.values()
+                histogram[ord(c) - A] += 1
+            result[tuple(histogram)].append(s)
+        return result.values()

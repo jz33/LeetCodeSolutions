@@ -46,6 +46,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
 [475. Heaters](https://github.com/jz33/LeetCodeSolutions/blob/master/475%20Heaters.py)\
+[622. Design Circular Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/622%20Design%20Circular%20Queue.py)\
 [826. Most Profit Assigning Work](https://github.com/jz33/LeetCodeSolutions/blob/master/826%20Most%20Profit%20Assigning%20Work.py) [**DoorDash**]
 
 ### Two Pointers Merge
@@ -151,7 +152,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Hashing
 
-[49. Group Anagrams](https://github.com/jz33/LeetCodeSolutions/blob/master/049%20Group%20Anagrams.py)\
+[49. Group Anagrams](https://github.com/jz33/LeetCodeSolutions/blob/master/049%20Group%20Anagrams.py)[**Amazon**]\
 [249. Group Shifted Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/249%20Group%20Shifted%20Strings.py) [**Facebook**]
 
 ### Bucket Sort
