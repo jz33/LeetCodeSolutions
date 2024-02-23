@@ -1,33 +1,40 @@
 '''
 718. Maximum Length of Repeated Subarray
+https://leetcode.com/problems/maximum-length-of-repeated-subarray/
 
-Given two integer arrays A and B, return the maximum length of an subarray that appears in both arrays.
+Given two integer arrays nums1 and nums2,
+return the maximum length of a subarray that appears in both arrays.
 
 Example 1:
 
-Input:
-A: [1,2,3,2,1]
-B: [3,2,1,4,7]
+Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
 Output: 3
+Explanation: The repeated subarray with maximum length is [3,2,1].
 
-Explanation: 
-The repeated subarray with maximum length is [3, 2, 1]
+Example 2:
+
+Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+Output: 5
+Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
+
+Constraints:
+    1 <= nums1.length, nums2.length <= 1000
+    0 <= nums1[i], nums2[i] <= 100
 '''
+def longestCommonString(nums1, nums2) -> int:
+    '''
+    Classic longest common substring problem
+    '''
+    dp = [[0] * (len(nums2)+1) for _ in range(len(nums1)+1)]
+    maxLength = 0
+    for i in range(len(nums1)):
+        for j in range(len(nums2)):
+            if nums1[i] == nums2[j]:
+                dp[i+1][j+1] = dp[i][j] + 1
+                maxLength = max(maxLength, dp[i+1][j+1])
+    return maxLength
+
 class Solution:
-    # Aka, longest common substring
-    # Try compare to longest common subsequence problem
-    def findLength(self, A: List[int], B: List[int]) -> int:
-        len_A = len(A)
-        len_B = len(B)
-        
-        # buf[i][j] means the longest commong subarray of A[:i] and B[:i]
-        buf = [[0] * (len_B+1) for _ in range(len_A+1)]
-        
-        maxLength = 0
-        for i in range(1, len_A+1):
-            for j in range(1, len_B+1):
-                if A[i-1] == B[j-1]:
-                    buf[i][j] = buf[i-1][j-1] + 1
-                    maxLength = max(maxLength, buf[i][j])
-                    
-        return maxLength
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        return longestCommonString(nums1, nums2)
+
