@@ -84,3 +84,9 @@ class Solution:
     def pickIndex(self) -> int:
         target = randint(1, self.prefixSums[-1])
         return getInsertionPoint(self.prefixSums, target)
+
+'''
+Facebook interview:
+randomly pick city based on its population
+https://www.1point3acres.com/bbs/thread-1046445-1-1.html
+'''
