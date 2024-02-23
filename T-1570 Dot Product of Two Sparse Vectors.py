@@ -9,7 +9,8 @@ Implement class SparseVector:
     SparseVector(nums) Initializes the object with the vector nums
     dotProduct(vec) Compute the dot product between the instance of SparseVector and vec
 
-A sparse vector is a vector that has mostly zero values, you should store the sparse vector efficiently and compute the dot product between two SparseVector.
+A sparse vector is a vector that has mostly zero values,
+you should store the sparse vector efficiently and compute the dot product between two SparseVector.
 
 Follow up: What if only one of the vectors is sparse?
 
@@ -59,3 +60,12 @@ class SparseVector:
             else:
                 ti += 1
         return result
+    
+'''
+Facebook interview:
+coding2：变体 义务欺凌， 不要被原题给干扰，因为大哥要求是input直接给两个，每个都特别大，more than a million elements,
+然后问怎么生成结果，我一开始跑偏了就是按照原题走的，后来大哥很友善的给我提醒
+我七拐八拐的走到了可以chunk processing，但不是大哥想要的，‍‍‌‌‍‌‌‍‍‌‌‌‍‍‌‍‍他最终想要的是双指针，iterate
+遇到两个都数字在计算。最后是写出来了但是完全没有底了，估计是挂或者weak hire
+https://www.1point3acres.com/bbs/thread-1046761-1-1.html
+'''
