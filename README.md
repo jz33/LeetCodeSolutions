@@ -266,7 +266,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Single Linked List
 
-[19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) [**Facebook**]\
+[19. Remove Nth Node From End of List](https://github.com/jz33/LeetCodeSolutions/blob/master/019%20Remove%20Nth%20Node%20From%20End%20of%20List.py) [**Facebook**]\
 [138. Copy List with Random Pointer](https://github.com/jz33/LeetCodeSolutions/blob/master/138%20Copy%20List%20with%20Random%20Pointer.java) [**Facebook**]\
 [141. Linked List Cycle](https://github.com/jz33/LeetCodeSolutions/blob/master/141%20Linked%20List%20Cycle.java)\
 [160. Intersection of Two Linked Lists](https://github.com/jz33/LeetCodeSolutions/blob/master/160%20Intersection%20of%20Two%20Linked%20Lists.py)\
