@@ -26,7 +26,7 @@ A is a mountain, as defined above.
 class Solution:
     def peakIndexInMountainArray(self, A: List[int]) -> int:
         '''
-        Same question to Find Peak Element
+        Same question to 162. Find Peak Element
         '''
         left = 0
         right = len(A) - 1
