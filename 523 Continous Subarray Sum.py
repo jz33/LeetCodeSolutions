@@ -40,13 +40,13 @@ Constraints:
 '''
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-        prefixSums = {0 : -1} # {prefix sum : end index}
-        ps = 0 # current prefix sum
+        records = {0 : -1} # { prefix sum : first appeared index }
+        prefixSum = 0
         for i, e in enumerate(nums):
-            ps =  (ps + e) % k # k > 0
-            end = prefixSums.get(ps)
-            if end is None:
-                prefixSums[ps] = i
-            elif i - end > 1: # The subarray has length at least 2
+            prefixSum =  (prefixSum + e) % k # k > 0
+            first = records.get(prefixSum)
+            if first is None:
+                records[prefixSum] = i
+            elif i - first > 1: # The subarray has length at least 2
                 return True
         return False
