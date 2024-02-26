@@ -160,7 +160,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [358. Rearrange String k Distance Apart](https://github.com/jz33/LeetCodeSolutions/blob/master/358%20Rearrange%20String%20k%20Distance%20Apart.py)\
 [621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) [**TikTok**]\
-[767. Reorganize String](https://github.com/jz33/LeetCodeSolutions/blob/master/767%20Reorganize%20String.py)
+[767. Reorganize String](https://github.com/jz33/LeetCodeSolutions/blob/master/767%20Reorganize%20String.py) [**Amazon**]
 
 ### O(nlog(n))
 

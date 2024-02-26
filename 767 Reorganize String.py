@@ -22,21 +22,23 @@ Constraints:
     s consists of lowercase English letters.
 '''
 class Solution:
-    def reorganizeString(self, S: str) -> str:
-        '''
-        Same idea to 621. Task Scheduler
-        '''
+    '''
+    Real Amazon interview question 20240226
+    Same idea to 621. Task Scheduler
+    '''
+    def reorganizeString(self, src: str) -> str:
         # 1. Get the most common char
-        ctr = collections.Counter(S)      
+        ctr = Counter(src)      
         topChar, topCharCount = ctr.most_common(1)[0]
         
         # We separate top chars, set each top task with 1 empty slot to each other.
         # If rest of chars cannot fill the slots, not possible
-        if len(S) - topCharCount < topCharCount - 1:
+        if len(src) - topCharCount < topCharCount - 1:
             return ''
         
         # 2. Build buckets of chars, first char of each bucket is the top char.
-        # Fill other chars to buckets
+        # Fill the buckets vertically (bucket to bucket)
+        # It is not possible to preserve the src order, as there can be neighboured dups.
         buckets = [[topChar] for _ in range(topCharCount)]
         bi = 0
         for char, count in ctr.items():
