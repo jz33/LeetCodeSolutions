@@ -34,7 +34,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [1. Two Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/0001%20Two%20Sum.py)\
 [5. Longest Palindromic Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/005%20Longest%20Palindromic%20Substring.py)\
 [11. Container With Most Water](https://github.com/jz33/LeetCodeSolutions/blob/master/011%20Container%20With%20Most%20Water.py)\
-[15. 3Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/015%203Sum.ts) [**Facebook**]\
+[15. 3Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/015%203Sum.py) [**Facebook**]\
 [42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
 [125. Valid Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/125%20Valid%20Palindrome.py) [**Facebook**]\
 [167. Two Sum II - Input array is sorted](https://github.com/jz33/LeetCodeSolutions/blob/master/167%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.ts)\
