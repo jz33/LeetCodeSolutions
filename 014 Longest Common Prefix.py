@@ -25,13 +25,11 @@ class Solution:
     
         common = strs[0]
         commonLength = len(common)
-
         for word in strs[1:]:
-            i = 0;
+            i = 0
             while i < min(commonLength, len(word)):
-                if (common[i] != word[i]):
-                    break;
+                if common[i] != word[i]:
+                    break
                 i += 1
-            commonLength = min(commonLength, i);
-          
-        return common[:commonLength];
+            commonLength = min(commonLength, i)
+        return common[:commonLength]
