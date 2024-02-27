@@ -1,4 +1,4 @@
-/*
+'''
 1498. Number of Subsequences That Satisfy the Given Sum Condition
 https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/
 
@@ -41,42 +41,28 @@ Explanation: All non-empty subset satisfy the condition (2^7 - 1) = 127
  
 
 Constraints:
-
 1 <= nums.length <= 10^5
 1 <= nums[i] <= 10^6
 1 <= target <= 10^6
-*/
-/**
- * The result is the same when array is sorted
- * @param nums 
- * @param target 
- */
-function numSubseq(nums: number[], target: number): number {
-    let res: number = 0
-    const mod = 10 ** 9 + 7
+'''
+class Solution:
+    def numSubseq(self, nums: List[int], target: int) -> int:
+        result = 0
+        mod = 10 ** 9 + 7
+        nums.sort()
 
-    nums.sort(function (a: number, b: number): number {
-        return a - b
-    })
-
-    // The pow of 2 needs to be pre-computed because it can be too big
-    const pows: number[] = []
-    pows[0] = 1
-    for (let i = 1; i < nums.length; ++i) {
-        pows[i] = pows[i - 1] * 2 % mod;
-    }
-
-    let left = 0
-    let right = nums.length - 1
-    while (left <= right) {
-        if (nums[left] + nums[right] <= target) {
-            // For an array of length n, its subsequence count is 2 ^ n
-            res = (res + pows[right - left]) % mod
-            left++
-        }
-        else {
-            right--
-        }
-    }
-    return res
-}
+        # The pow of 2 needs to be pre-computed because it can be too big
+        pows = [1]
+        for i in range(1, len(nums)):
+            pows.append(pows[i-1] * 2 % mod)
+            
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            if nums[left] + nums[right] <= target:
+                # For an array of length n, its subsequence count is 2 ^ n
+                result = (result + pows[right - left]) % mod
+                left += 1
+            else:
+                right -= 1
+        return result
