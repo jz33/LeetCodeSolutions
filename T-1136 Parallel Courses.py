@@ -2,59 +2,57 @@
 1136. Parallel Courses
 https://leetcode.com/problems/parallel-courses/
 
-There are N courses, labelled from 1 to N.
+You are given an integer n, which indicates that there are n courses labeled from 1 to n.
+You are also given an array relations where relations[i] = [prevCoursei, nextCoursei],
+representing a prerequisite relationship between course prevCoursei and course nextCoursei:
+course prevCoursei has to be taken before course nextCoursei.
 
-We are given relations[i] = [X, Y], representing a prerequisite relationship between course X and course Y:
-course X has to be studied before course Y.
+In one semester, you can take any number of courses as long as you have taken all the prerequisites
+in the previous semester for the courses you are taking.
 
-In one semester you can study any number of courses as long as you have studied all the prerequisites
-for the course you are studying.
-
-Return the minimum number of semesters needed to study all courses.
-If there is no way to study all the courses, return -1.
+Return the minimum number of semesters needed to take all courses.
+If there is no way to take all the courses, return -1.
 
 Example 1:
 
-Input: N = 3, relations = [[1,3],[2,3]]
+Input: n = 3, relations = [[1,3],[2,3]]
 Output: 2
-Explanation: 
-In the first semester, courses 1 and 2 are studied. In the second semester, course 3 is studied.
+Explanation: The figure above represents the given graph.
+In the first semester, you can take courses 1 and 2.
+In the second semester, you can take course 3.
 
 Example 2:
 
-Input: N = 3, relations = [[1,2],[2,3],[3,1]]
+Input: n = 3, relations = [[1,2],[2,3],[3,1]]
 Output: -1
-Explanation: 
-No course can be studied because they depend on each other.
+Explanation: No course can be studied because they are prerequisites of each other.
 
-Note:
-
-1 <= N <= 5000
-1 <= relations.length <= 5000
-relations[i][0] != relations[i][1]
-There are no repeated relations in the input.
+Constraints:
+    1 <= n <= 5000
+    1 <= relations.length <= 5000
+    relations[i].length == 2
+    1 <= prevCoursei, nextCoursei <= n
+    prevCoursei != nextCoursei
+    All the pairs [prevCoursei, nextCoursei] are unique.
 '''
 class Solution:
-    def minimumSemesters(self, N: int, relations: List[List[int]]) -> int:
-        graph = collections.defaultdict(list)
-        ranks = [0] * (N+1) # in-degress
-        ranks[0] = -1 # ranks[0] not used
-        for f,t in relations:
-            graph[f].append(t)
-            ranks[t] += 1
+    def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
+        graph = defaultdict(list)
+        indegrees = [0] * n
+        for fromNode, toNode in relations:
+            graph[fromNode-1].append(toNode-1)
+            indegrees[toNode-1] += 1
             
-        queue = collections.deque([i for i in range(1, N+1) if ranks[i] == 0])
-        total = 0
-        level = 0
+        queue = deque([i for i in range(n) if indegrees[i] == 0])
+        totalCourseTaken = 0
+        semesters = 0
         while queue:
-            total += len(queue)
-            level += 1
-            
+            totalCourseTaken += len(queue)
+            semesters += 1
             for _ in range(len(queue)):
                 node = queue.popleft()
-                for togo in graph[node]:
-                    ranks[togo] -= 1
-                    if ranks[togo] == 0:
-                        queue.append(togo)
-            
-        return level if total == N else -1
+                for toNode in graph[node]:
+                    indegrees[toNode] -= 1
+                    if indegrees[toNode] == 0:
+                        queue.append(toNode)
+        return semesters if totalCourseTaken == n else -1
