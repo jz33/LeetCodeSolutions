@@ -42,7 +42,7 @@ class Solution:
         # buf[i] means how many combinations whose sum is i
         dp = [1] + [0] * target
 
-        # Loop range, then loop nums
+        # Loop range, then loop nums, because num can be re-used
         # If loop nums first, it becomes 39. Combination Sum
         for t in range(target + 1):
             for c in nums:
