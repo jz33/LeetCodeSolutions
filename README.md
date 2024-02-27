@@ -225,6 +225,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### 1-D Cache Incremental Dynamic Programming
 
 [39. Combination Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/039%20Combination%20Sum.py) [**Facebook**]\
+[40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py) [**Facebook**]\
 [139. Word Break](https://github.com/jz33/LeetCodeSolutions/blob/master/139%20Word%20Break.py) [**Facebook, TikTok**]\
 [140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
 [322. Coin Change](https://github.com/jz33/LeetCodeSolutions/blob/master/322%20Coin%20Change.py)\

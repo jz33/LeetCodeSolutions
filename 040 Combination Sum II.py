@@ -2,7 +2,8 @@
 40. Combination Sum II
 https://leetcode.com/problems/combination-sum-ii/
 
-Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+Given a collection of candidate numbers (candidates) and a target number (target),
+find all unique combinations in candidates where the candidate numbers sums to target.
 
 Each number in candidates may only be used once in the combination.
 
@@ -29,7 +30,51 @@ A solution set is:
   [5]
 ]
 '''
-from collections import Counter
+class Solution:
+    '''
+    Similar idea to 90. Subsets II to avoid dups
+    '''
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        counter = Counter(candidates) # {value : count}
+        pool = []
+        dp = [([], 0)] # [(combination, sum)]
+        for value, count in counter.items():
+            newDp = []
+            for times in range(count + 1):
+                # For each value, add [0,...,count] values
+                for comb, total in dp:
+                    newTotal = total + value * times
+                    if newTotal == target:
+                        # No need to append further values
+                        pool.append(comb + [value] * times)
+                    elif newTotal < target:
+                        # Only keep looking if less than target
+                        newDp.append((comb + [value] * times, newTotal))
+            dp = newDp
+        return pool
+    
+'''
+Facebook interview questions: if exists a subsequence sum that equals target
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=1048003&page=1#pid19323052
+'''
+def subsequenceSum(nums: List[int], target: int) -> bool:
+    if sum(nums) < target:
+        # Assume all nums are positive, this is a quick check
+        return False
+    
+    dp = {0} # {sums so far}
+    for n in nums:
+        # Add n to all v in dp
+        newDp = set()
+        for v in dp:
+            total = v + n
+            if total == target:
+                return True
+            elif total < target:
+                newDp.add(total)
+        # Expand dp, including all v (without n) and all v + n
+        dp |= newDp
+    return False
 
 class Solution:
         def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:   
@@ -85,23 +130,4 @@ class Solution:
             return buf[target]
           
           
-class Solution:
-    '''
-    An easier version, like Subsets II
-    '''
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        counter = collections.Counter(candidates)
-        pool = []
-        dp = [([], 0)] # [(combination, sum)]
-        for key, count in counter.items():
-            newDp = []
-            for times in range(count+1):
-                newComb = [key] * times
-                newTotal = key * times
-                for comb, total in dp:
-                    if newTotal + total == target:
-                        pool.append(comb + newComb)
-                    elif newTotal + total < target:
-                        newDp.append((comb + newComb, newTotal + total))
-            dp = newDp
-        return pool
+
