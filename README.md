@@ -142,6 +142,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [41. First Missing Positive](https://github.com/jz33/LeetCodeSolutions/blob/master/041%20First%20Missing%20Positive.py) [**Facebook**]\
 [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/) \
 [68. Text Justification](https://github.com/jz33/LeetCodeSolutions/blob/master/068%20Text%20Justification.py)\
+[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
 [229. Majority Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/229%20Majority%20Element%20II.py)\
 [240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
 [384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
@@ -217,7 +218,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [53. Maximum Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/053%20Maximum%20Subarray.ts)\
 [91. Decode Ways](https://github.com/jz33/LeetCodeSolutions/blob/master/091%20Decode%20Ways.py)\
-[121. Best Time to Buy and Sell Stock](https://github.com/jz33/LeetCodeSolutions/blob/master/121%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.ts)\
 [152. Maximum Product Subarray](https://github.com/jz33/LeetCodeSolutions/blob/master/152%20Maximum%20Product%20Subarray.ts)\
 [198. House Robber](https://github.com/jz33/LeetCodeSolutions/blob/master/198%20House%20Robber.py)\
 [1186. Maximum Subarray Sum with One Deletion](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1186%20Maximum%20Subarray%20Sum%20with%20One%20Deletion.ts)
