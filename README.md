@@ -22,6 +22,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Binary Guess
 
+[378. Kth Smallest Element in a Sorted Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/378%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py) [**Facebook**]\
 [774. Minimize Max Distance to Gas Station](https://github.com/jz33/LeetCodeSolutions/blob/master/774%20Minimize%20Max%20Distance%20to%20Gas%20Station.py)\
 [875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py) [**Facebook, DoorDash**]\
 [1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]\
@@ -173,7 +174,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [218. The Skyline Problem](https://github.com/jz33/LeetCodeSolutions/blob/master/218%20The%20Skyline%20Problem.py)\
 [295. Find Median from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/295%20Find%20Median%20from%20Data%20Stream.py)\
 [347. Top K Frequent Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/347%20Top%20K%20Frequent%20Elements.py) [**Facebook**]\
-[378. Kth Smallest Element in a Sorted Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/378%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)\
 [414. Third Maximum Number](https://github.com/jz33/LeetCodeSolutions/blob/master/414%20Third%20Maximum%20Number.py)\
 [692. Top K Frequent Words](https://github.com/jz33/LeetCodeSolutions/blob/master/692%20Top%20K%20Frequent%20Words.py)\
 [973. K Closest Points to Origin](https://github.com/jz33/LeetCodeSolutions/blob/master/973%20K%20Closest%20Points%20to%20Origin.py) [**Facebook**]
