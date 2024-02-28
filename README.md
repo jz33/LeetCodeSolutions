@@ -373,7 +373,9 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### BFS with Dijkstra E \* log(V)
 
 [490. The Maze](https://github.com/jz33/LeetCodeSolutions/blob/master/490%20The%20Maze.py)\
-[787. Cheapest Flights Within K Stops](https://github.com/jz33/LeetCodeSolutions/blob/master/787%20Cheapest%20Flights%20Within%20K%20Stops.py) [**TikTok**]
+[778. Swim in Rising Water](https://github.com/jz33/LeetCodeSolutions/blob/master/778%20Swim%20in%20Rising%20Water.py)\
+[787. Cheapest Flights Within K Stops](https://github.com/jz33/LeetCodeSolutions/blob/master/787%20Cheapest%20Flights%20Within%20K%20Stops.py) [**TikTok**]\
+[1631. Path With Minimum Effort](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1631%20Path%20With%20Minimum%20Effort.py)
 
 ### DFS or Backtrack on Matrix
 
