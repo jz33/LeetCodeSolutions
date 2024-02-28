@@ -45,3 +45,16 @@ class Solution:
                     smallestDist = dist
                     result = i
         return result
+    
+'''
+DoorDash interview:
+
+题目就是给两个城市的list，一个是所有城市c[c1,c2,c3,c4]，x[4,7,9], y[1,2,3]
+一个是需要query求距离的城市q[c3,c4]，求q里面每个城市到x或者y坐标重合（指 x相等或者y相等）的城市到最短距离
+
+解法就是用map记录 {x1 : [c1, c2, c3]}  c1,c2,c3都有相同x1，sorted by y value in the list,
+在query 一个城市q(qx, qy)‍‍‌‌‍‌‌‍‍‌‌‌‍‍‌‍‍的时候，求qx在map对应的list里面离qy最近的距离，用二分法求
+
+面试的时候想到了二分法，但是面试官说时间来不及就不用写二分法，直接遍历map找就行，然后就挂了。。。
+https://www.1point3acres.com/bbs/thread-1045459-1-1.html
+'''

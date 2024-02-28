@@ -406,6 +406,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [210. Course Schedule II](https://github.com/jz33/LeetCodeSolutions/blob/master/210%20Course%20Schedule%20II.py) [**TikTok**]\
 [269. Alien Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/269%20Alien%20Dictionary.py) [**Facebook**]\
+[2050. Parallel Courses III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2050%20Parallel%20Courses%20III.py) [**TikTok**]\
 [2115. Find All Possible Recipes from Given Supplies](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2115%20Find%20All%20Possible%20Recipes%20from%20Given%20Supplies.ts) [**TikTok**]
 
 ### Special Graph Algorithms
