@@ -30,17 +30,13 @@ Constraints:
 class Solution:
     def myPow(self, x: float, n: int) -> float:
         result = 1
-        base = x
-        exp = n
-        if exp < 0:
-            exp = -exp
-            base = 1 / base
-
+        base = x if n >=0 else 1 / base
+        exp = n if n >= 0 else -n
         # Use binary to achieve constant time
         while exp > 0:
             if exp & 1:
                 result *= base
-            # The exp shifts right equals base double
+            # The exp shifts right equals square of base
             exp >>= 1
             base *= base
         return result
