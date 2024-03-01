@@ -31,6 +31,10 @@ Constraints:
     0 <= matrix[i][j] <= 231 - 1
 '''
 class Solution:
+    '''
+    Time Complexity: each vertex and edges are visited exactly once,
+    then O(V+E) = O(m*n)
+    '''
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         rowCount = len(matrix)
         colCount = len(matrix[0])
@@ -39,17 +43,16 @@ class Solution:
         seen = [[1] * colCount for _ in range(rowCount)]
         
         def bfs(start):
-            stack = [start]
+            queue = deque([start])
             size = 2
-            while stack:
-                newStack = []
-                for i, j in stack:
+            while queue:
+                for _ in range(len(queue)):
+                    i, j = queue.popleft()
                     for x, y in (i, j+1), (i, j-1), (i+1, j), (i-1, j):
                         if 0 <= x < rowCount and 0 <= y < colCount and matrix[x][y] > matrix[i][j] and size > seen[x][y]:
                             seen[x][y] = size
-                            newStack.append((x, y))
+                            queue.append((x, y))
                 size += 1
-                stack = newStack
             
         for i in range(rowCount):
             for j in range(colCount):
