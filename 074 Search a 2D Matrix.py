@@ -1,5 +1,5 @@
 '''
-74 Search a 2D Matrix
+74. Search a 2D Matrix
 https://leetcode.com/problems/search-a-2d-matrix/
 
 You are given an m x n integer matrix matrix with the following two properties:
@@ -29,22 +29,26 @@ Constraints:
 '''
 class Solution:
     '''
-    Same method to 240. Search a 2D Matrix II
+    Different 240. Search a 2D Matrix II because 
+    The first integer of each row is greater than the last integer of the previous row.
+    If expand the matrix to an array, it is sorted.
+    Binary search: O(log(m*n))
+    Can still use 240 method, but will be slower
     '''
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         rowCount = len(matrix)
         colCount = len(matrix[0])
-        
-        # Start from top right
-        r, c = 0, colCount - 1
-        while r < rowCount and c > -1:
-            val = matrix[r][c]
-            if val == target:
+        left = 0
+        right = rowCount * colCount - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            midRow = mid // colCount
+            midCol = mid % colCount
+            midVal = matrix[midRow][midCol]
+            if midVal == target:
                 return True
-            
-            if val < target:
-                r += 1
+            elif midVal < target:
+                left = mid + 1
             else:
-                c -= 1
-        
+                right = mid - 1
         return False
