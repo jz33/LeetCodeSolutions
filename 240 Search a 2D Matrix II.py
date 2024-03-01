@@ -28,7 +28,8 @@ Constraints:
 '''
 class Solution:
     '''
-    Same method to 74. Search a 2D Matrix
+    Time Complexity O(max(m,n).
+    Different to 74. Search a 2D Matrix
     '''
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         rowCount = len(matrix)
