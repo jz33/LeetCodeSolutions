@@ -11,7 +11,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [33. Search in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/033%20Search%20in%20Rotated%20Sorted%20Array.py) [**Facebook**]\
 [34. Find First and Last Position of Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/034%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.py) [**Facebook**]\
 [35. Search Insert Position](https://github.com/jz33/LeetCodeSolutions/blob/master/035%20Search%20Insert%20Position.py)\
-[74. Search a 2D Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/074%20Search%20a%202D%20Matrix.py)\
 [153. Find Minimum in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/153%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.py)\
 [162. Find Peak Element](https://github.com/jz33/LeetCodeSolutions/blob/master/162%20Find%20Peak%20Element.py) [**Facebook**]\
 [300. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
@@ -21,9 +20,14 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [2055. Plates Between Candles](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2055%20Plates%20Between%20Candles.py) [**Amazon**]\
 [2089. Find Target Indices After Sorting Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2089%20Find%20Target%20Indices%20After%20Sorting%20Array.ts) [**TikTok**]
 
+### Binary Search on Matrix
+
+[74. Search a 2D Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/074%20Search%20a%202D%20Matrix.py)\
+[378. Kth Smallest Element in a Sorted Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/378%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py) [**Facebook**]\
+[1901. Find a Peak Element II](https://github.com/jz33/LeetCodeSolutions/blob/master/1901%20Find%20Peak%20Element%20II.py) [**Facebook**]
+
 ### Binary Guess
 
-[378. Kth Smallest Element in a Sorted Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/378%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py) [**Facebook**]\
 [774. Minimize Max Distance to Gas Station](https://github.com/jz33/LeetCodeSolutions/blob/master/774%20Minimize%20Max%20Distance%20to%20Gas%20Station.py)\
 [875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py) [**Facebook, DoorDash**]\
 [1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]\
