@@ -37,25 +37,21 @@ Constraints:
 '''
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        if not grid or not grid[0] or grid[0][0] != 0 or grid[-1][-1] != 0:
+        if grid[0][0] == 1:
             return -1
-        
-        width = len(grid)
-        seen = [[False] * width for _ in range(width)]
-        seen[0][0] = True
-        
-        points = [(0,0)]
-        steps = 0
+
+        size = len(grid)
+        points = deque([(0,0)])
+        grid[0][0] = 1 # Use input grid as visited buffer
+        steps = 1
         while points:
-            newPoints = []
-            for x, y in points:
-                if x == width - 1 and y == width - 1:
-                    return steps + 1 
-                for d0, d1 in [(1,1),(0,1),(1,0),(1,-1),(0,-1),(-1,1),(-1,0),(-1,-1)]:
-                    i, j = x + d0, y + d1
-                    if 0 <= i < width and 0 <= j < width and grid[i][j] == 0 and not seen[i][j]:
-                        seen[i][j] = True
-                        newPoints.append((i,j))
+            for _ in range(len(points)):
+                x, y = points.popleft()
+                if x == size - 1 and y == size - 1:
+                    return steps 
+                for i, j in (x+1,y),(x+1,y-1),(x,y-1),(x-1,y-1),(x-1,y),(x-1,y+1),(x,y+1),(x+1,y+1):
+                    if 0 <= i < size and 0 <= j < size and grid[i][j] == 0:
+                        grid[i][j] = 1
+                        points.append((i,j))
             steps += 1
-            points = newPoints
         return -1
