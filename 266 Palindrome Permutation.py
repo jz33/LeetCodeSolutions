@@ -2,29 +2,40 @@
 266. Palindrome Permutation
 https://leetcode.com/problems/palindrome-permutation/
 
-Given a string, determine if a permutation of the string could form a palindrome.
+Given a string s, return true if a permutation of the string could form a
+palindrome and false otherwise.
 
 Example 1:
 
-Input: "code"
+Input: s = "code"
 Output: false
 
 Example 2:
 
-Input: "aab"
+Input: s = "aab"
 Output: true
 
 Example 3:
 
-Input: "carerac"
+Input: s = "carerac"
 Output: true
+
+Constraints:
+    1 <= s.length <= 5000
+    s consists of only lowercase English letters.
 '''
+def geHistogram(src: str) -> List[int]:
+    histogram = [0] * 26
+    for c in src:
+        histogram[ord(c) - ord('a')] += 1
+    return histogram
+
 class Solution:
     def canPermutePalindrome(self, s: str) -> bool:
-        histo = collections.Counter(s)
+        histogram = geHistogram(s)
         oddy = 0
-        for ctr in histo.values():
-            if ctr % 2 == 1:
+        for count in histogram:
+            if count & 1 == 1:
                 oddy += 1
             if oddy > 1:
                 return False
