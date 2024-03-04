@@ -50,3 +50,37 @@ class Solution:
                 else:
                     parents.append(route)
         return '/' + '/'.join(parents)
+    
+'''
+Facebook interview question:
+linux cd command
+https://www.1point3acres.com/bbs/thread-1049252-1-1.html
+https://leetcode.com/discuss/interview-question/553454/facebook-phone-change-working-directory
+'''
+def getRoutes(path: str):
+    return list(route for route in path.split('/') if route and route != '.')
+
+def cdCommand(currentPath: str, changePath: str) -> str:
+    routes = getRoutes(changePath)
+    if changePath[0] == '/':
+        # On linux, if the route starts from '/', it means goes from root
+        return '/' + '/'.join(routes)
+
+    stack = getRoutes(currentPath)
+    for change in routes:
+        if change == '..':
+            if stack:
+                stack.pop()
+        else:
+            stack.append(change)
+    
+    return '/' + '/'.join(stack)
+
+tests = [
+    ['/', '/facebook'],
+    ['facebook/chain', '../abc/def'],
+    ['facebook/instagram', '../../..//..'],
+    ['facebook/instagram', '/whatsapp'],
+]
+for test in tests:
+    print(cdCommand(test[0], test[1]))
