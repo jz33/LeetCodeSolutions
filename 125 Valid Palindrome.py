@@ -47,3 +47,9 @@ class Solution:
                 i += 1
                 j -= 1
         return True
+
+'''
+Facebook interview:
+Valid Palindrome (单词有空格符号)
+https://www.1point3acres.com/bbs/thread-1049252-1-1.html
+'''
