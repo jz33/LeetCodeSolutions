@@ -43,21 +43,19 @@ class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         graph = [[] for _ in range(numCourses)]
         indegrees = [0] * numCourses
-        for togoCourse, fromCourse in prerequisites:
-            graph[fromCourse].append(togoCourse)
-            indegrees[togoCourse] += 1
+        for toNode, fromNode in prerequisites:
+            graph[fromNode].append(toNode)
+            indegrees[toNode] += 1
 
-        starts = list(filter(lambda node : indegrees[node] == 0, range(numCourses)))
-
+        queue = deque(node for node in range(numCourses) if indegrees[node] == 0)
         path = []
-        while starts:
-            newStarts = []
-            for node in starts:
-                path.append(node)
-                for child in graph[node]:
-                    indegrees[child] -= 1
-                    if indegrees[child] == 0:
-                        newStarts.append(child)
-            starts = newStarts
-    
+        while queue:
+            node = queue.popleft()
+            path.append(node)
+            for child in graph[node]:
+                indegrees[child] -= 1
+                if indegrees[child] == 0:
+                    queue.append(child)
+
         return path if len(path) == numCourses else []
+
