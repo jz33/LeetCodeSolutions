@@ -34,7 +34,6 @@ Constraints:
     1 <= m, n <= 300
     grid[i][j] is '0' or '1'
 '''
-from typing import List
 class Solution:
     '''
     BFS
@@ -51,16 +50,14 @@ class Solution:
         for r in range(rowCount):
             for c in range(colCount):
                 if grid[r][c] == '1' and visited[r][c] is False:
-                    queue = [(r, c)]
+                    queue = deque([(r, c)])
                     visited[r][c] = True
                     while queue:
-                        newQueue = []
-                        for i, j in queue:
-                            for x, y in (i,j+1),(i+1,j),(i,j-1),(i-1,j):
-                                if 0 <= x < rowCount and 0 <= y < colCount and grid[x][y] == '1' and visited[x][y] is False:
-                                    visited[x][y] = True
-                                    newQueue.append((x, y))
-                        queue = newQueue
+                        i,j = queue.popleft()
+                        for x, y in (i,j+1),(i+1,j),(i,j-1),(i-1,j):
+                            if 0 <= x < rowCount and 0 <= y < colCount and grid[x][y] == '1' and visited[x][y] is False:
+                                visited[x][y] = True
+                                queue.append((x, y))
                     island += 1
         return island
     
