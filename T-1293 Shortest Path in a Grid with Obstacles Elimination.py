@@ -36,30 +36,26 @@ class Solution:
         rowCount = len(grid)
         colCount = len(grid[0])
         
-        layer = [(0, 0, k)] # [(x, y, available elimination count)]
+        queue = deque([(0, 0, k)]) # [(x, y, available elimination count)]
         visited = {(0, 0, k)}
         steps = 0
-        while layer:
-            newLayer = []
-            for x, y, r in layer:
+        while queue:
+            for _ in range(len(queue)):
+                x, y, r = queue.popleft()
                 if x == rowCount - 1 and y == colCount - 1:
                     return steps
                 
                 for i, j in (x, y+1), (x, y-1), (x+1, y), (x-1, y):
                     if 0 <= i < rowCount and 0 <= j < colCount:
                         if grid[i][j] == 0:
-                            node = (i, j, r)
-                            if node not in visited:
-                                visited.add(node)
-                                newLayer.append(node)
-                                
+                            newNode = (i, j, r)
+                            if newNode not in visited:
+                                visited.add(newNode)
+                                queue.append(newNode)
                         elif r > 0:
-                            node = (i, j, r-1)
-                            if node not in visited:
-                                visited.add(node)
-                                newLayer.append(node)
-                                
-            layer = newLayer
+                            newNode = (i, j, r-1)
+                            if newNode not in visited:
+                                visited.add(newNode)
+                                queue.append(newNode)             
             steps += 1
-            
         return -1
