@@ -27,19 +27,6 @@ Constraints:
     1 <= temperatures.length <= 105
     30 <= temperatures[i] <= 100
 '''
-from typing import List
-
-class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        result = [0] * len(temperatures)
-        stack = [] # indexes of previous temperatures
-        for ti, temp in enumerate(temperatures):
-            while stack and temp > temperatures[stack[-1]]:
-                lastTempIndex = stack.pop()
-                result[lastTempIndex] = ti - lastTempIndex
-            stack.append(ti)
-        return result
-
 class Solution2:
     '''
     O(N) without stack

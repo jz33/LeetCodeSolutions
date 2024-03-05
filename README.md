@@ -126,7 +126,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.py) [**Facebook**]\
 [636. Exclusive Time of Functions](https://github.com/jz33/LeetCodeSolutions/blob/master/636%20Exclusive%20Time%20of%20Functions.py) [**Facebook**]\
 [735. Asteroid Collision](https://github.com/jz33/LeetCodeSolutions/blob/master/735%20Asteroid%20Collision.py)\
-[739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.py) [**TikTok**]\
 [856. Score of Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/856%20Score%20of%20Parentheses.py) [**TikTok**]\
 [921. Minimum Add to Make Parentheses Valid](https://github.com/jz33/LeetCodeSolutions/blob/master/921%20Minimum%20Add%20to%20Make%20Parentheses%20Valid.go) [**Facebook**]\
 [1047. Remove All Adjacent Duplicates In String](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1047%20Remove%20All%20Adjacent%20Duplicates%20In%20String.py) [**Facebook**]\
@@ -153,8 +152,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
 [605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
 [670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.py) [**Facebook**]\
+[739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.py) [**TikTok**]\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
-[2217. Find Palindrome With Fixed Length](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2217%20Find%20Palindrome%20With%20Fixed%20Length.ts)[**TikTok**]\
 [2468. Split Message Based on Limit](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2468%20Split%20Message%20Based%20on%20Limit.py)
 
 ### Hashing
