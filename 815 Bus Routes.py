@@ -46,11 +46,11 @@ class Solution:
         
         visitedStops = { source }
         visitedBuses = set()
-        stops = [source]
+        stops = deque([source])
         busCount = 0
         while stops:
-            newStops = []
-            for stop in stops:
+            for _ in range(len(stops)):
+                stop = stops.popleft()
                 if stop == target:
                     return busCount
                 
@@ -60,9 +60,8 @@ class Solution:
                         for stop in routes[busId]:
                             if stop not in visitedStops:
                                 visitedStops.add(stop)
-                                newStops.append(stop)
+                                stops.append(stop)
                             
-            stops = newStops
             busCount += 1
     
         return -1
