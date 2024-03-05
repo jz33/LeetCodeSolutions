@@ -50,9 +50,6 @@ class Solution:
     Real Tiktok interview question 20240304
     '''
     def restoreIpAddresses(self, s: str) -> List[str]:
-        if len(input) < 4 or len(input) > 12:
-            return []
-
         @cache
         def topDown(source: str, remainSectionCount: int) -> List[str]:
             '''
