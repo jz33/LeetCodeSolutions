@@ -264,6 +264,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [10. Regular Expression Matching](https://github.com/jz33/LeetCodeSolutions/blob/master/010%20Regular%20Expression%20Matching.py)\
 [46. Permutations](https://github.com/jz33/LeetCodeSolutions/blob/master/046%20Permutations.py)\
 [47. Permutations II](https://github.com/jz33/LeetCodeSolutions/blob/master/047%20Permutations%20II.py) [**TikTok**]\
+[93. Restore IP Addresses](https://github.com/jz33/LeetCodeSolutions/blob/master/093%20Restore%20IP%20Address.py)\
 [282. Expression Add Operators](https://github.com/jz33/LeetCodeSolutions/blob/master/282%20Expression%20Add%20Operators.py) [**Facebook**]\
 [301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) [**Facebook**]\
 [486. Predict the Winner](https://github.com/jz33/LeetCodeSolutions/blob/master/486%20Predict%20the%20Winner.py)\

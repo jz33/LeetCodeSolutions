@@ -1,4 +1,4 @@
-/*
+'''
 207. Course Schedule
 https://leetcode.com/problems/course-schedule/
 
@@ -31,33 +31,24 @@ Constraints:
     prerequisites[i].length == 2
     0 <= ai, bi < numCourses
     All the pairs prerequisites[i] are unique.
-*/
-function canFinish(numCourses: number, prerequisites: number[][]): boolean {
-    const graph: number[][] = new Array(numCourses); // [from course : [togo courses]]
-    for (let i = 0; i < numCourses; i++) {
-        graph[i] = [];
-    }
-    const indegrees = new Array(numCourses).fill(0);
-    for (const [togoCourse, fromCourse] of prerequisites) {
-        graph[fromCourse].push(togoCourse);
-        indegrees[togoCourse]++;
-    }
+'''
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = defaultdict(list) # [from course : [togo courses]]
+        inDegrees = [0] * numCourses
+        for toNode, fromNode in prerequisites:
+            graph[fromNode].append(toNode);
+            inDegrees[toNode] += 1
 
-    // Topological sort
-    let courses = Array.from(new Array(numCourses).keys()).filter(node => indegrees[node] === 0);
-    let coursesTaken = 0;
-    while (courses.length) {
-        const newCourses: number[] = [];
-        for (const node of courses) {
-            coursesTaken++;
-            for (const togo of graph[node]) {
-                indegrees[togo]--;
-                if (indegrees[togo] === 0) {
-                    newCourses.push(togo);
-                }
-            }
-        }
-        courses = newCourses;
-    }
-    return coursesTaken === numCourses;
-};
+        courses = deque([node for node in range(numCourses) if inDegrees[node] == 0])
+        coursesTaken = 0
+        
+        while courses:
+            node = courses.popleft()
+            coursesTaken += 1
+            for toNode in graph[node]:
+                inDegrees[toNode] -= 1
+                if inDegrees[toNode] == 0 :
+                    courses.append(toNode)
+
+        return coursesTaken == numCourses
