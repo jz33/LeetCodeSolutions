@@ -341,6 +341,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [102. Binary Tree Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/102%20Binary%20Tree%20Level%20Order%20Traversal.java)\
 [103. Binary Tree Zigzag Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/103%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.py)\
 [226. Invert Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/226%20Invert%20Binary%20Tree.py)\
+[310. Minimum Height Trees](https://github.com/jz33/LeetCodeSolutions/blob/master/310%20Minimum%20Height%20Trees.py) [**Facebook**]\
 [314. Binary Tree Vertical Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/314%20Binary%20Tree%20Vertical%20Order%20Traversal.py) [**Facebook**]\
 [987. Vertical Order Traversal of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/987%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree.py) [**Facebook**]
 
