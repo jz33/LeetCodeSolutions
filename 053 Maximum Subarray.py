@@ -1,4 +1,4 @@
-/*
+'''
 53. Maximum Subarray
 https://leetcode.com/problems/maximum-subarray/
 
@@ -25,14 +25,16 @@ Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 Constraints:
     1 <= nums.length <= 105
     -104 <= nums[i] <= 104
-*/
-function maxSubArray(nums: number[]): number {
-    let result = nums[0];
-    let total = nums[0];
-    for (let i = 1; i < nums.length; i++) {
-        total = Math.max(total + nums[i], nums[i]);
-        result = Math.max(result, total);
-    }
-    return result;
-}
+'''
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        result = nums[0]
+        total = nums[0]
+        for i in range(1, len(nums)):
+            # Select previous elements + current element (total + nums[i]),
+            # Or only select current element (nums[i])
+            total = max(total + nums[i], nums[i])
+            result = max(result, total)
+        return result
+
 
