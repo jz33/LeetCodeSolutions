@@ -41,7 +41,8 @@ class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
         '''
         The idea is to remove leaves layer by layer until
-        there are no more inner nodes
+        there are no more inner nodes.
+        This is essentially topological sort
         '''
         graph = defaultdict(list)
         for x, y in edges:

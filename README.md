@@ -341,7 +341,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [102. Binary Tree Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/102%20Binary%20Tree%20Level%20Order%20Traversal.java)\
 [103. Binary Tree Zigzag Level Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/103%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.py)\
 [226. Invert Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/226%20Invert%20Binary%20Tree.py)\
-[310. Minimum Height Trees](https://github.com/jz33/LeetCodeSolutions/blob/master/310%20Minimum%20Height%20Trees.py) [**Facebook**]\
 [314. Binary Tree Vertical Order Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/314%20Binary%20Tree%20Vertical%20Order%20Traversal.py) [**Facebook**]\
 [987. Vertical Order Traversal of a Binary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/987%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree.py) [**Facebook**]
 
@@ -407,15 +406,13 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [547. Number of Provinces](https://github.com/jz33/LeetCodeSolutions/blob/master/547%20Number%20of%20Provinces.py)\
 [684. Redundant Connection](https://github.com/jz33/LeetCodeSolutions/blob/master/684%20Redundant%20Connection.py) [**TikTok**]\
 [721. Accounts Merge](https://github.com/jz33/LeetCodeSolutions/blob/master/721%20Accounts%20Merge.py) [**Facebook**]\
-[924. Minimize Malware Spread](https://github.com/jz33/LeetCodeSolutions/blob/master/924%20Minimize%20Malware%20Spread.py) [**TikTok**]\
-[2421. Number of Good Paths](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2421%20Number%20of%20Good%20Paths.py) [**TikTok**]
 
 ### Topological Sort O(E + V)
 
 [210. Course Schedule II](https://github.com/jz33/LeetCodeSolutions/blob/master/210%20Course%20Schedule%20II.py) [**TikTok**]\
 [269. Alien Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/269%20Alien%20Dictionary.py) [**Facebook**]\
+[310. Minimum Height Trees](https://github.com/jz33/LeetCodeSolutions/blob/master/310%20Minimum%20Height%20Trees.py) [**Facebook**]\
 [2050. Parallel Courses III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2050%20Parallel%20Courses%20III.py) [**TikTok**]\
-[2115. Find All Possible Recipes from Given Supplies](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2115%20Find%20All%20Possible%20Recipes%20from%20Given%20Supplies.ts) [**TikTok**]
 
 ### Special Graph Algorithms
 
@@ -439,5 +436,4 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [268. Missing Number](https://github.com/jz33/LeetCodeSolutions/blob/master/268%20Missing%20Number.js)\
 [273. Integer to English Words](https://github.com/jz33/LeetCodeSolutions/blob/master/273%20Integer%20to%20English%20Word.py)\
 [296. Best Meeting Point](https://github.com/jz33/LeetCodeSolutions/blob/master/296%20Best%20Meeting%20Point.py) [**Facebook**]\
-[633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)\
-[1573. Number of Ways to Split a String](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1573%20Number%20of%20Ways%20to%20Split%20a%20String.py) [**TikTok**]
+[633. Sum of Square Numbers](https://github.com/jz33/LeetCodeSolutions/blob/master/633%20Sum%20of%20Square%20Numbers.py)
