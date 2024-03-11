@@ -98,12 +98,10 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
 [239. Sliding Window Maximum](https://github.com/jz33/LeetCodeSolutions/blob/master/239%20Sliding%20Window%20Maximum.py) [**Facebook**]\
 [346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
-[395. Longest Substring with At Least K Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/395%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.py) [**TikTok**]\
 [713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
-[992. Subarrays with K Different Integers](https://github.com/jz33/LeetCodeSolutions/blob/master/992%20Subarrays%20with%20K%20Different%20Integers.py) [**TikTok**]\
 [1004. Max Consecutive Ones III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1004%20Max%20Consecutive%20Ones%20III.py) [**Facebook**]\
 [1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.py) [**Facebook**]\
-[2461. Maximum Sum of Distinct Subarrays With Length K](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2461%20Maximum%20Sum%20of%20Distinct%20Subarrays%20With%20Length%20K.py)
+[2461. Maximum Sum of Distinct Subarrays With Length K](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2461%20Maximum%20Sum%20of%20Distinct%20Subarrays%20With%20Length%20K.py) [**Facebook**]
 
 ### Monotonic Stack
 

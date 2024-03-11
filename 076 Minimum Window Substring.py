@@ -33,7 +33,6 @@ Constraints:
     1 <= m, n <= 105
     s and t consist of uppercase and lowercase English letters.
 '''
-from collections import Counter
 class SlidingWindow:
     def __init__(self, pattern: str):
         self.patternCounter = Counter(pattern)
@@ -61,17 +60,15 @@ class Solution:
         window = SlidingWindow(t)
         result = ''
         left = 0
-        right = 0
-        while left < len(s):
+        for right, val in enumerate(s):
             # Extend
-            while right < len(s) and not window.isMatched():
-                window.add(s[right])
-                right += 1
-            # Update result
-            if window.isMatched():
-                if result is '' or right - left < len(result):
-                    result = s[left : right]
-            # Shrink
-            window.remove(s[left])
-            left += 1
+            window.add(val)
+
+            while window.isMatched():
+                # Result
+                if result == '' or right - left + 1 < len(result):
+                    result = s[left : right + 1]
+                # Shrink
+                window.remove(s[left])
+                left += 1
         return result
