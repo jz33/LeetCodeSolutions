@@ -20,21 +20,22 @@ Input: [5,4,3,2,1]
 Output: false
 '''
 class Solution:
+    '''
+    A special case for 300. Longest Increasing Subsequence
+    '''
     def increasingTriplet(self, nums: List[int]) -> bool:
-        '''
-        A special case for 300. Longest Increasing Subsequence
-        '''
         if len(nums) < 3:
             return False
-        
+
         first = nums[0]
-        second = float('inf')
+        second = None
         for i in range(1, len(nums)):
-            e = nums[i]
-            if e <= first: # not <
-                first = e
-            elif e <= second:
-                second = e
-            else:
+            val = nums[i]
+            if val <= first:
+                first = val
+            elif second is None or val <= second:
+                second = val
+            else: # val > second
                 return True
         return False
+
