@@ -11,48 +11,70 @@ string encode(vector<string> strs) {
   // ... your code
   return encoded_string;
 }
+
 Machine 2 (receiver) has the function:
+
 vector<string> decode(string s) {
   //... your code
   return strs;
 }
+
 So Machine 1 does:
 
 string encoded_string = encode(strs);
+
 and Machine 2 does:
 
 vector<string> strs2 = decode(encoded_string);
+
 strs2 in Machine 2 should be the same as strs in Machine 1.
 
 Implement the encode and decode methods.
 
-Note:
+You are not allowed to solve the problem using any serialize methods (such as eval).
 
-The string may contain any possible characters out of 256 valid ascii characters.
-Your algorithm should be generalized enough to work on any possible characters.
-Do not use class member/global/static variables to store states. Your encode and decode algorithms should be stateless.
-Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.
+Example 1:
+
+Input: dummy_input = ["Hello","World"]
+Output: ["Hello","World"]
+Explanation:
+Machine 1:
+Codec encoder = new Codec();
+String msg = encoder.encode(strs);
+Machine 1 ---msg---> Machine 2
+
+Machine 2:
+Codec decoder = new Codec();
+String[] strs = decoder.decode(msg);
+
+Example 2:
+
+Input: dummy_input = [""]
+Output: [""]
+
+Constraints:
+    1 <= strs.length <= 200
+    0 <= strs[i].length <= 200
+    strs[i] contains any possible characters out of 256 valid ASCII characters.
+
+Follow up: Could you write a generalized algorithm to work on any possible set of characters?
 '''
 class Codec:
-    def encode(self, strs: [str]) -> str:
+    def encode(self, strs: List[str]) -> str:
         """Encodes a list of strings to a single string.
         """
-        buf = []
-        for s in strs:
-            buf.append(str(len(s)) + '*' + s)
-        return ''.join(buf)
+        return ''.join(str(len(s)) + '*' + s for s in strs)
         
-
-    def decode(self, s: str) -> [str]:
+    def decode(self, s: str) -> List[str]:
         """Decodes a single string to a list of strings.
         """
-        i = 0
-        buf = []
+        i = 0 # iterator on s
+        result = []
         while i < len(s):
-            pos = s.index('*',i)
+            # Find next '*'
+            pos = s.index('*', i)
             length = int(s[i : pos])
-            left = pos + 1
-            right = left + length
-            buf.append(s[left : right])
-            i = right
-        return buf
+            left = pos + 1 # inclusive
+            i = left + length # exclusive
+            result.append(s[left : i])
+        return result
