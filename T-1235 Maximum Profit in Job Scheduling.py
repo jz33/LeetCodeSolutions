@@ -33,7 +33,7 @@ Constraints:
     1 <= startTime.length == endTime.length == profit.length <= 5 * 104
     1 <= startTime[i] < endTime[i] <= 109
     1 <= profit[i] <= 104
-'''·
+'''
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
         # Sort by end time

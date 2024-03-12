@@ -231,7 +231,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
 [322. Coin Change](https://github.com/jz33/LeetCodeSolutions/blob/master/322%20Coin%20Change.py)\
 [377. Combination Sum IV](https://github.com/jz33/LeetCodeSolutions/blob/master/377%20Combination%20Sum%20IV.py)\
-[403. Frog Jump](https://github.com/jz33/LeetCodeSolutions/blob/master/403%20Frog%20Jump.py) [**TikTok**]\
 [518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
 [1235. Maximum Profit in Job Scheduling](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1235%20Maximum%20Profit%20in%20Job%20Scheduling.py) [**DoorDash**]
 
@@ -241,8 +240,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py) [**TikTok**]\
 [40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py) [**TikTok**]\
 [90. Subsets II](https://github.com/jz33/LeetCodeSolutions/blob/master/090%20Subsets%20II.py)\
-[494. Target Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/494%20Target%20Sum.py) [**Facebook**]\
-[799. Champagne Tower](https://github.com/jz33/LeetCodeSolutions/blob/master/799%20Champagne%20Tower.ts) [**TikTok**]
+[494. Target Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/494%20Target%20Sum.py) [**Facebook**]
 
 ### 2-D Cache Dynamic Programming
 
