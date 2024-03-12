@@ -34,6 +34,8 @@ Constraints:
     points[i].length == 2
     1 <= x, y, ai, bi <= 104
 '''
+from typing import List, Tuple, Optional
+from collections import defaultdict
 class Solution:
     def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
         smallestDist = float('inf')
@@ -47,14 +49,81 @@ class Solution:
         return result
     
 '''
-DoorDash interview:
+Real DoorDash interview:
+https://leetcode.com/discuss/interview-question/1379696/DoorDASH-Onsite
 
-题目就是给两个城市的list，一个是所有城市c[c1,c2,c3,c4]，x[4,7,9], y[1,2,3]
-一个是需要query求距离的城市q[c3,c4]，求q里面每个城市到x或者y坐标重合（指 x相等或者y相等）的城市到最短距离
+A number of cities are arranged on a graph that has been divided up like an ordinary Cartesian plane.
+Each city is located at an integral (x, y) coordinate intersection.
+City names and locations are given in the form of three arrays: c, x, and y,
+which are aligned by the index to provide the city name (c[i]),
+and its coordinates, (x[i], y[i]).
 
-解法就是用map记录 {x1 : [c1, c2, c3]}  c1,c2,c3都有相同x1，sorted by y value in the list,
-在query 一个城市q(qx, qy)‍‍‌‌‍‌‌‍‍‌‌‌‍‍‌‍‍的时候，求qx在map对应的list里面离qy最近的距离，用二分法求
-
-面试的时候想到了二分法，但是面试官说时间来不及就不用写二分法，直接遍历map找就行，然后就挂了。。。
-https://www.1point3acres.com/bbs/thread-1045459-1-1.html
+Determine the name of the nearest city that shares either an x or a y coordinate with the queried city.
+If no other cities share an x or y coordinate, return 'NONE'.
+If two cities have the same distance to the queried city, q[i],
+consider the one with an alphabetically shorter name (i.e. 'ab' < 'aba' < 'abb') as the closest choice.
+The distance is the Manhattan distance, the absolute difference in x plus the absolute difference in y.
 '''
+def nearestCities(cities: List[str], xValues: List[int], yValues: List[int], queries: List[str]) -> List[str]:
+    citySize = len(cities)
+    cityToLocation = {} # {city name : (x, y)}
+    xToCity = defaultdict(list) # {x value : [(y value, city name)]}
+    yToCity = defaultdict(list) # {y value : [(x value, city name)]}
+    for i in range(citySize):
+        c = cities[i]
+        x = xValues[i]
+        y = yValues[i]
+        cityToLocation[c] = (x, y)
+        xToCity[x].append((y,c))
+        yToCity[y].append((x,c))
+
+    # Sort cities in each x, y
+    for x, cs in xToCity.items():
+        xToCity[x] = sorted(cs)
+    for y, cs in yToCity.items():
+        yToCity[y] = sorted(cs)
+
+    # Answer query
+    result = [None] * len(queries)
+    for ri, city in enumerate(queries):
+        location = cityToLocation.get(city)
+        if location is not None:
+            x, y = location
+            xCity = cityFind(xToCity[x], y)
+            yCity = cityFind(yToCity[y], x)
+            result[ri] = cityCompare(xCity, yCity)
+    return result
+
+def cityFind(cities: List[Tuple[int, str]], target: int) -> Optional[str]:
+    # Binary search to find target value in cities array
+    left = 0
+    right = len(cities) - 1
+    mid = left
+    while left <= right:
+        mid = left + (right - left) // 2
+        midVal, _ = cities[mid]
+        if midVal == target:
+            break
+        if midVal < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    # Now cities[mid] is the target, then find its left or right
+    cityLeft = cities[mid-1][1] if mid - 1 >= 0 else None
+    cityRight = cities[mid+1][1] if mid + 1 < len(cities) else None
+    return cityCompare(cityLeft, cityRight)
+
+def cityCompare(cityLeft: Optional[str], cityRight: Optional[str]) -> Optional[str]:
+    if not cityLeft and not cityRight:
+        return None
+    if not cityLeft:
+        return cityRight
+    if not cityRight:
+        return cityLeft
+    return cityLeft if cityLeft < cityRight else cityRight
+
+cities = ['Bellevue', 'London', 'Miami', 'Paris', 'Seattle']
+xValues = [5, 6, 7, 5, 10]
+yValues = [12, 9, 8, 7, 12]
+queries = ['Bellevue', 'Seattle']
+print(nearestCities(cities, xValues, yValues, queries))
