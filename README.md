@@ -121,6 +121,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Stack on Parentheses
 
 [20. Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/020%20Valid%20Parentheses.py)\
+[32. Longest Valid Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/032%20Longest%20Valid%20Parentheses.py)\
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.py) [**Facebook**]\
 [636. Exclusive Time of Functions](https://github.com/jz33/LeetCodeSolutions/blob/master/636%20Exclusive%20Time%20of%20Functions.py) [**Facebook**]\
 [735. Asteroid Collision](https://github.com/jz33/LeetCodeSolutions/blob/master/735%20Asteroid%20Collision.py)\
