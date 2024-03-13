@@ -64,9 +64,9 @@ class DoubleLinkedList:
 
     def append(self, node: Node):
         node.prev = self.tail.prev
-        self.tail.prev.next = node
+        node.prev.next = node
         node.next = self.tail
-        self.tail.prev = node
+        node.next.prev = node
 
     def remove(self, node: Node):
         node.prev.next = node.next
@@ -77,11 +77,11 @@ class DoubleLinkedList:
 class LRUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.keyToNode = {} # { key : Node }
+        self.keyToNodes = {} # { key : Node }
         self.dll = DoubleLinkedList()
 
     def get(self, key: int) -> int:
-        node = self.keyToNode.get(key)        
+        node = self.keyToNodes.get(key)        
         if not node:
             return -1
         self.dll.remove(node)
@@ -89,7 +89,7 @@ class LRUCache:
         return node.val
 
     def put(self, key: int, value: int) -> None:
-        node = self.keyToNode.get(key)
+        node = self.keyToNodes.get(key)
         if node:
              # update
             node.val = value
@@ -98,9 +98,9 @@ class LRUCache:
         else:
             # add
             node = Node(key, value) 
-            if len(self.keyToNode) == self.capacity:
+            if len(self.keyToNodes) == self.capacity:
                 leastUsed = self.dll.head.next
                 self.dll.remove(leastUsed)
-                del self.keyToNode[leastUsed.key]
-            self.keyToNode[key] = node
+                del self.keyToNodes[leastUsed.key]
+            self.keyToNodes[key] = node
             self.dll.append(node)
