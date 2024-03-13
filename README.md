@@ -125,7 +125,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [71. Simplify Path](https://github.com/jz33/LeetCodeSolutions/blob/master/071%20Simplify%20Path.py) [**Facebook**]\
 [636. Exclusive Time of Functions](https://github.com/jz33/LeetCodeSolutions/blob/master/636%20Exclusive%20Time%20of%20Functions.py) [**Facebook**]\
 [735. Asteroid Collision](https://github.com/jz33/LeetCodeSolutions/blob/master/735%20Asteroid%20Collision.py)\
-[856. Score of Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/856%20Score%20of%20Parentheses.py) [**TikTok**]\
 [921. Minimum Add to Make Parentheses Valid](https://github.com/jz33/LeetCodeSolutions/blob/master/921%20Minimum%20Add%20to%20Make%20Parentheses%20Valid.go) [**Facebook**]\
 [1047. Remove All Adjacent Duplicates In String](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1047%20Remove%20All%20Adjacent%20Duplicates%20In%20String.py) [**Facebook**]\
 [1209. Remove All Adjacent Duplicates in String II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1209%20Remove%20All%20Adjacent%20Duplicates%20in%20String%20II.py) [**Facebook**]\
@@ -176,8 +175,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [218. The Skyline Problem](https://github.com/jz33/LeetCodeSolutions/blob/master/218%20The%20Skyline%20Problem.py)\
 [295. Find Median from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/295%20Find%20Median%20from%20Data%20Stream.py)\
 [347. Top K Frequent Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/347%20Top%20K%20Frequent%20Elements.py) [**Facebook**]\
-[414. Third Maximum Number](https://github.com/jz33/LeetCodeSolutions/blob/master/414%20Third%20Maximum%20Number.py)\
-[692. Top K Frequent Words](https://github.com/jz33/LeetCodeSolutions/blob/master/692%20Top%20K%20Frequent%20Words.py)\
 [973. K Closest Points to Origin](https://github.com/jz33/LeetCodeSolutions/blob/master/973%20K%20Closest%20Points%20to%20Origin.py) [**Facebook**]
 
 ### Sorted Map
