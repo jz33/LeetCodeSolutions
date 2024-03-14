@@ -188,6 +188,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 2-D Matrix Iterations
 
+[36. Valid Sudoku](https://github.com/jz33/LeetCodeSolutions/blob/master/036%20Valid%20Sudoku.py)\
 [48. Rotate Image](https://github.com/jz33/LeetCodeSolutions/blob/master/048%20Rotate%20Image.py)\
 [73. Set Matrix Zeroes](https://github.com/jz33/LeetCodeSolutions/blob/master/073%20Set%20Matrix%20Zeroes.py)\
 [54. Spiral Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/054%20Spiral%20Matrix.py)\
