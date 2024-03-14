@@ -94,7 +94,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [84. Largest Rectangle in Histogram](https://github.com/jz33/LeetCodeSolutions/blob/master/084%20Largest%20Rectangle%20in%20Histogram.py) [**Facebook**]\
 [155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) \
 [402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) \
-[1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) 
+[1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**Facebook**]
 
 ### Calculator
 
@@ -172,7 +172,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [4. Median of Two Sorted Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/0004%20Median%20of%20Two%20Sorted%20Arrays.py) [**Facebook**]\
 [215. Kth Largest Element in an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/215%20Kth%20Largest%20Element%20in%20an%20Array.py) [**Facebook**]\
 [315. Count of Smaller Numbers After Self](https://github.com/jz33/LeetCodeSolutions/blob/master/315%20Count%20of%20Smaller%20Numbers%20After%20Self.py)\
-[347. Top K Frequent Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/347%20Top%20K%20Frequent%20Elements.py) [**Facebook**]\
 [493. Reverse Pairs](https://github.com/jz33/LeetCodeSolutions/blob/master/493%20Reverse%20Pairs.py)
 
 ### Trie
@@ -195,7 +194,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [498. Diagonal Traverse](https://github.com/jz33/LeetCodeSolutions/blob/master/498%20Diagonal%20Traverse.py) [**Facebook**]\
 [766. Toeplitz Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/766%20Toeplitz%20Matrix.py) [**Facebook**]\
 [1424. Diagonal Traverse II](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1424%20Diagonal%20Traverse%20II.py) [**Facebook**]
-
 
 ### Dynamic Programming
 
@@ -220,7 +218,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### 1-D Cache Replacement Dynamic Programming
 
-[17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
 [22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
 [40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py)\
 [90. Subsets II](https://github.com/jz33/LeetCodeSolutions/blob/master/090%20Subsets%20II.py)\
@@ -347,6 +344,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### BFS on Graph
 
+[17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
 [126. Word Ladder](https://github.com/jz33/LeetCodeSolutions/blob/master/126%20Word%20Ladder.py)\
 [785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py)\
 [815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py)\
