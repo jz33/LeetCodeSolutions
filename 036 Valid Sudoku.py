@@ -69,8 +69,7 @@ class Solution:
         for r in range(9):
             mask = DEFAULT_MASK
             for c in range(9):
-                char = board[r][c]
-                isValid, mask = isCharValid(char, mask)
+                isValid, mask = isCharValid(board[r][c], mask)
                 if not isValid:
                     return False
     
@@ -78,8 +77,7 @@ class Solution:
         for c in range(9):
             mask = DEFAULT_MASK
             for r in range(9):
-                char = board[r][c]
-                isValid, mask = isCharValid(char, mask)
+                isValid, mask = isCharValid(board[r][c], mask)
                 if not isValid:
                     return False
 
@@ -89,8 +87,7 @@ class Solution:
                 mask = DEFAULT_MASK
                 for r in range(i*3, i*3+3):
                     for c in range(j*3,j*3+3):
-                        char = board[r][c]
-                        isValid, mask = isCharValid(char, mask)
+                        isValid, mask = isCharValid(board[r][c], mask)
                         if not isValid:
                             return False
 

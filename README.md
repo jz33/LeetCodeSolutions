@@ -13,7 +13,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [35. Search Insert Position](https://github.com/jz33/LeetCodeSolutions/blob/master/035%20Search%20Insert%20Position.py)\
 [153. Find Minimum in Rotated Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/153%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.py)\
 [162. Find Peak Element](https://github.com/jz33/LeetCodeSolutions/blob/master/162%20Find%20Peak%20Element.py) [**Facebook**]\
-[300. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
+[300. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) \
 [658. Find K Closest Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/658%20Find%20K%20Closest%20Elements.py) [**Facebook**]\
 [1060. Missing Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1060%20Missing%20Element%20in%20Sorted%20Array.py) [**Facebook**]\
 
@@ -93,16 +93,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [84. Largest Rectangle in Histogram](https://github.com/jz33/LeetCodeSolutions/blob/master/084%20Largest%20Rectangle%20in%20Histogram.py) [**Facebook**]\
 [155. Min Stack](https://github.com/jz33/LeetCodeSolutions/blob/master/155%20Min%20Stack.py) \
-[402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) [**TikTok**]\
-[1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) [**TikTok**]\
-[2863. Maximum Length of Semi-Decreasing Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2863%20Maximum%20Length%20of%20Semi-Decreasing%20Subarrays.py) [**TikTok**]
+[402. Remove K Digits](https://github.com/jz33/LeetCodeSolutions/blob/master/402%20Remove%20K%20Digits.py) \
+[1944. Number of Visible People in a Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1944%20Number%20of%20Visible%20People%20in%20a%20Queue.ts) 
 
 ### Calculator
 
 [224. Basic Calculator](https://github.com/jz33/LeetCodeSolutions/blob/master/224%20Basic%20Calculator.ts) [**Facebook**]\
 [227. Basic Calculator II](https://github.com/jz33/LeetCodeSolutions/blob/master/227%20Basic%20Calculator%20II.py) [**Facebook**]\
-[394. Decode String](https://github.com/jz33/LeetCodeSolutions/blob/master/394%20Decode%20String.py) [**TikTok**] \
-[772. Basic Calculator III](https://github.com/jz33/LeetCodeSolutions/blob/master/772%20Basic%20Calculator%20III.py) [**TikTok**]
+[394. Decode String](https://github.com/jz33/LeetCodeSolutions/blob/master/394%20Decode%20String.py) \
+[772. Basic Calculator III](https://github.com/jz33/LeetCodeSolutions/blob/master/772%20Basic%20Calculator%20III.py)
 
 ### Stack on Parentheses
 
@@ -119,7 +118,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Intervals
 
-[56. Merge Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/056%20Merge%20Intervals.py) [**Facebook, TikTok**]\
+[56. Merge Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/056%20Merge%20Intervals.py) \
 [57. Insert Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/057%20Insert%20Intervals.py)\
 [253. Meeting Rooms II](https://github.com/jz33/LeetCodeSolutions/blob/master/253%20Meeting%20Rooms%20II.py) [**Facebook**]\
 [435. Non-overlapping Intervals](https://github.com/jz33/LeetCodeSolutions/blob/master/435%20Non-overlapping%20Intervals.py)\
@@ -136,7 +135,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [384. Shuffle an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/384%20Shuffle%20an%20Array.py)\
 [605. Can Place Flowers](https://github.com/jz33/LeetCodeSolutions/blob/master/605%20Can%20Place%20Flowers.ts) [**Facebook**]\
 [670. Maximum Swap](https://github.com/jz33/LeetCodeSolutions/blob/master/670%20Maximum%20Swap.py) [**Facebook**]\
-[739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.py) [**TikTok**]\
+[739. Daily Temperatures](https://github.com/jz33/LeetCodeSolutions/blob/master/739%20Daily%20Temperatures.py)\
 [1762. Buildings With an Ocean View](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1762%20Buildings%20With%20an%20Ocean%20View.py) [**Facebook**]\
 [2468. Split Message Based on Limit](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2468%20Split%20Message%20Based%20on%20Limit.py)
 
@@ -148,7 +147,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Bucket Sort
 
 [358. Rearrange String k Distance Apart](https://github.com/jz33/LeetCodeSolutions/blob/master/358%20Rearrange%20String%20k%20Distance%20Apart.py)\
-[621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) [**TikTok**]\
+[621. Task Scheduler](https://github.com/jz33/LeetCodeSolutions/blob/master/621%20Task%20Scheduler.py) \
 [767. Reorganize String](https://github.com/jz33/LeetCodeSolutions/blob/master/767%20Reorganize%20String.py) [**Amazon**]
 
 ### O(nlog(n))
@@ -166,8 +165,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Sorted Map
 
 [480. Sliding Window Median](https://github.com/jz33/LeetCodeSolutions/blob/master/480%20Sliding%20Window%20Median.py)\
-[729. My Calendar I](https://leetcode.com/problems/my-calendar-i/)\
-[2158. Amount of New Area Painted Each Day](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2158%20Amount%20of%20New%20Area%20Painted%20Each%20Day.py) [**TikTok**]
+[729. My Calendar I](https://leetcode.com/problems/my-calendar-i/)
 
 ### Divide and Conquer
 
@@ -180,7 +178,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Trie
 
 [208. Implement Trie](<https://github.com/jz33/LeetCodeSolutions/blob/master/208%20Implement%20Trie%20(Prefix%20Tree).py>)\
-[588. Design In-Memory File System](https://github.com/jz33/LeetCodeSolutions/blob/master/588%20Design%20In-Memory%20File%20System.py) [**TikTok**]\
+[588. Design In-Memory File System](https://github.com/jz33/LeetCodeSolutions/blob/master/588%20Design%20In-Memory%20File%20System.py)\
 [642. Design Search Autocomplete System](https://github.com/jz33/LeetCodeSolutions/blob/master/642%20Design%20Search%20Autocomplete%20System.py)\
 [676. Implement Magic Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/676%20Implement%20Magic%20Dictionary.py)
 
@@ -213,7 +211,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [39. Combination Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/039%20Combination%20Sum.py) [**Facebook**]\
 [40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py) [**Facebook**]\
-[139. Word Break](https://github.com/jz33/LeetCodeSolutions/blob/master/139%20Word%20Break.py) [**Facebook, TikTok**]\
+[139. Word Break](https://github.com/jz33/LeetCodeSolutions/blob/master/139%20Word%20Break.py) [**Facebook**]\
 [140. Word Break II](https://github.com/jz33/LeetCodeSolutions/blob/master/140%20Word%20Break%20II.py) [**Facebook**]\
 [322. Coin Change](https://github.com/jz33/LeetCodeSolutions/blob/master/322%20Coin%20Change.py)\
 [377. Combination Sum IV](https://github.com/jz33/LeetCodeSolutions/blob/master/377%20Combination%20Sum%20IV.py)\
@@ -223,8 +221,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### 1-D Cache Replacement Dynamic Programming
 
 [17. Letter Combinations of a Phone Number](https://github.com/jz33/LeetCodeSolutions/blob/master/017%20Letter%20Combinations%20of%20a%20Phone%20Number.ts) [**Facebook**]\
-[22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py) [**TikTok**]\
-[40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py) [**TikTok**]\
+[22. Generate Parentheses](https://github.com/jz33/LeetCodeSolutions/blob/master/022%20Generate%20Parentheses.py)\
+[40. Combination Sum II](https://github.com/jz33/LeetCodeSolutions/blob/master/040%20Combination%20Sum%20II.py)\
 [90. Subsets II](https://github.com/jz33/LeetCodeSolutions/blob/master/090%20Subsets%20II.py)\
 [494. Target Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/494%20Target%20Sum.py) [**Facebook**]
 
@@ -232,7 +230,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 [63. Unique Paths II](https://github.com/jz33/LeetCodeSolutions/blob/master/063%20Unique%20Path%20II.py) [**Facebook**]\
 [64. Minimum Path Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/064%20Minimum%20Path%20Sum.py) [**Facebook**]\
-[72. Edit Distance](https://github.com/jz33/LeetCodeSolutions/blob/master/072%20Edit%20Distance.py) [**TikTok**]\
+[72. Edit Distance](https://github.com/jz33/LeetCodeSolutions/blob/master/072%20Edit%20Distance.py)\
 [115. Distinct Subsequences](https://github.com/jz33/LeetCodeSolutions/blob/master/115%20Distinct%20Subsequences.py)\
 [188. Best Time to Buy and Sell Stock IV](https://github.com/jz33/LeetCodeSolutions/blob/master/188%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py)\
 [221. Maximal Square](https://github.com/jz33/LeetCodeSolutions/blob/master/221%20Maximal%20Square.py)\
@@ -244,8 +242,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Top down Dynamic Programming (Recursive + Memorization)
 
 [10. Regular Expression Matching](https://github.com/jz33/LeetCodeSolutions/blob/master/010%20Regular%20Expression%20Matching.py)\
-[46. Permutations](https://github.com/jz33/LeetCodeSolutions/blob/master/046%20Permutations.py)\
-[47. Permutations II](https://github.com/jz33/LeetCodeSolutions/blob/master/047%20Permutations%20II.py) [**TikTok**]\
+[47. Permutations II](https://github.com/jz33/LeetCodeSolutions/blob/master/047%20Permutations%20II.py) \
 [93. Restore IP Addresses](https://github.com/jz33/LeetCodeSolutions/blob/master/093%20Restore%20IP%20Address.py)\
 [282. Expression Add Operators](https://github.com/jz33/LeetCodeSolutions/blob/master/282%20Expression%20Add%20Operators.py) [**Facebook**]\
 [301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) [**Facebook**]\
@@ -265,7 +262,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Double Linked List
 
-[146. LRU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/146%20LRU%20Cache.py) [**Facebook, TikTok**] dll + hashmap \
+[146. LRU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/146%20LRU%20Cache.py) dll + hashmap \
 [432. All O`one Data Structure](https://github.com/jz33/LeetCodeSolutions/blob/master/432%20All%20O%60one%20Data%20Structure.py) dll + hashmap \
 [460. LFU Cache](https://github.com/jz33/LeetCodeSolutions/blob/master/460%20LFU%20Cache.py) dll matrix + hashmap
 
@@ -329,7 +326,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Tree constructions and serializations
 
-[105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.py) [**TikTok**]\
+[105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.py) \
 [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/jz33/LeetCodeSolutions/blob/master/106%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.py)\
 [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)\
 [428. Serialize and Deserialize N-ary Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/428%20Serialize%20and%20Deserialize%20N-ary%20Tree.py)[**Facebook**]\
@@ -346,53 +343,51 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [329. Longest Increasing Path in a Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/329%20Longest%20Increasing%20Path%20in%20a%20Matrix.py) [**Facebook**]\
 [827. Making A Large Island](https://github.com/jz33/LeetCodeSolutions/blob/master/827%20Making%20A%20Large%20Island.py) [**Facebook**]\
 [1091. Shortest Path in Binary Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1091%20Shortest%20Path%20in%20Binary%20Matrix.py) [**Facebook**]\
-[1293. Shortest Path in a Grid with Obstacles Elimination](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1293%20Shortest%20Path%20in%20a%20Grid%20with%20Obstacles%20Elimination.py) [**TikTok**]
+[1293. Shortest Path in a Grid with Obstacles Elimination](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1293%20Shortest%20Path%20in%20a%20Grid%20with%20Obstacles%20Elimination.py)
 
 ### BFS on Graph
 
-[126. Word Ladder](https://github.com/jz33/LeetCodeSolutions/blob/master/126%20Word%20Ladder.py) [**TikTok**]\
-[785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py) [**TikTok**]\
-[815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py) [**TikTok**]\
-[886. Possible Bipartition](https://github.com/jz33/LeetCodeSolutions/blob/master/886%20Possible%20Bipartition.ts) [**TikTok**]
+[126. Word Ladder](https://github.com/jz33/LeetCodeSolutions/blob/master/126%20Word%20Ladder.py)\
+[785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py)\
+[815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py)\
 
 ### BFS with Dijkstra E \* log(V)
 
 [490. The Maze](https://github.com/jz33/LeetCodeSolutions/blob/master/490%20The%20Maze.py)\
 [778. Swim in Rising Water](https://github.com/jz33/LeetCodeSolutions/blob/master/778%20Swim%20in%20Rising%20Water.py)\
-[787. Cheapest Flights Within K Stops](https://github.com/jz33/LeetCodeSolutions/blob/master/787%20Cheapest%20Flights%20Within%20K%20Stops.py) [**TikTok**]\
+[787. Cheapest Flights Within K Stops](https://github.com/jz33/LeetCodeSolutions/blob/master/787%20Cheapest%20Flights%20Within%20K%20Stops.py) \
 [1631. Path With Minimum Effort](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1631%20Path%20With%20Minimum%20Effort.py)
 
 ### DFS or Backtrack on Matrix
 
 [51. N-Queens](https://github.com/jz33/LeetCodeSolutions/blob/master/051%20N-Queens.py)\
 [79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) [**Facebook**]\
-[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**, **TikTok**]\
+[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) \
 [489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py) [**Facebook**]\
-[694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.py) [**TikTok**]
+[694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.py)
 
 ### DFS or Backtrack on Graph
 
 [77. Combinations](https://github.com/jz33/LeetCodeSolutions/blob/master/077%20Combinations.py)\
 [133. Clone Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/133%20Clone%20Graph.py) [**Facebook**]\
 [332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**] # Euler path\
-[465. Optimal Account Balancing](https://github.com/jz33/LeetCodeSolutions/blob/master/465%20Optimal%20Account%20Balancing.py) [**TikTok**]\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]
 
 ### Union Find
 
 [261. Graph Valid Tree](https://github.com/jz33/LeetCodeSolutions/blob/master/261%20Graph%20Valid%20Tree.py)\
 [305. Number of Islands II](https://github.com/jz33/LeetCodeSolutions/blob/master/305%20Number%20of%20Islands%20II.py)\
-[323. Number of Connected Components in an Undirected Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/323%20Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.py) [**Facebook**]\
+[323. Number of Connected Components in an Undirected Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/323%20Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.py) \
 [547. Number of Provinces](https://github.com/jz33/LeetCodeSolutions/blob/master/547%20Number%20of%20Provinces.py)\
-[684. Redundant Connection](https://github.com/jz33/LeetCodeSolutions/blob/master/684%20Redundant%20Connection.py) [**TikTok**]\
+[684. Redundant Connection](https://github.com/jz33/LeetCodeSolutions/blob/master/684%20Redundant%20Connection.py) \
 [721. Accounts Merge](https://github.com/jz33/LeetCodeSolutions/blob/master/721%20Accounts%20Merge.py) [**Facebook**]\
 
 ### Topological Sort O(E + V)
 
-[210. Course Schedule II](https://github.com/jz33/LeetCodeSolutions/blob/master/210%20Course%20Schedule%20II.py) [**TikTok**]\
+[210. Course Schedule II](https://github.com/jz33/LeetCodeSolutions/blob/master/210%20Course%20Schedule%20II.py) \
 [269. Alien Dictionary](https://github.com/jz33/LeetCodeSolutions/blob/master/269%20Alien%20Dictionary.py) [**Facebook**]\
 [310. Minimum Height Trees](https://github.com/jz33/LeetCodeSolutions/blob/master/310%20Minimum%20Height%20Trees.py) [**Facebook**]\
-[2050. Parallel Courses III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2050%20Parallel%20Courses%20III.py) [**TikTok**]\
+[2050. Parallel Courses III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2050%20Parallel%20Courses%20III.py) 
 
 ### Special Graph Algorithms
 
