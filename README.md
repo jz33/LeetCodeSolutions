@@ -16,9 +16,6 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [300. Longest Increasing Subsequence](https://github.com/jz33/LeetCodeSolutions/blob/master/300%20Longest%20Increasing%20Subsequence.py) [**TikTok**]\
 [658. Find K Closest Elements](https://github.com/jz33/LeetCodeSolutions/blob/master/658%20Find%20K%20Closest%20Elements.py) [**Facebook**]\
 [1060. Missing Element in Sorted Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1060%20Missing%20Element%20in%20Sorted%20Array.py) [**Facebook**]\
-[1095. Find in Mountain Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1095%20Find%20in%20Mountain%20Array.py)\
-[2055. Plates Between Candles](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2055%20Plates%20Between%20Candles.py) [**Amazon**]\
-[2089. Find Target Indices After Sorting Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2089%20Find%20Target%20Indices%20After%20Sorting%20Array.ts) [**TikTok**]
 
 ### Binary Search on Matrix
 
@@ -28,10 +25,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Binary Guess
 
-[774. Minimize Max Distance to Gas Station](https://github.com/jz33/LeetCodeSolutions/blob/master/774%20Minimize%20Max%20Distance%20to%20Gas%20Station.py)\
 [875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py) [**Facebook, DoorDash**]\
 [1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]\
-[1802. Maximum Value at a Given Index in a Bounded Array](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1802%20Maximum%20Value%20at%20a%20Given%20Index%20in%20a%20Bounded%20Array.py) [**TikTok**]
 
 ### O(n)
 
@@ -41,18 +36,15 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [5. Longest Palindromic Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/005%20Longest%20Palindromic%20Substring.py)\
 [11. Container With Most Water](https://github.com/jz33/LeetCodeSolutions/blob/master/011%20Container%20With%20Most%20Water.py)\
 [15. 3Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/015%203Sum.py) [**Facebook**]\
-[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py) [**Facebook**]\
+[42. Trapping Rain Water](https://github.com/jz33/LeetCodeSolutions/blob/master/042%20Trapping%20Rain%20Water.py)\
 [125. Valid Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/125%20Valid%20Palindrome.py) [**Facebook**]\
 [167. Two Sum II - Input array is sorted](https://github.com/jz33/LeetCodeSolutions/blob/master/167%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.ts)\
 [259. 3Sum Smaller](https://github.com/jz33/LeetCodeSolutions/blob/master/259%203Sum%20Smaller.py)\
-[680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.py) [**Facebook**]\
-[1530. Number of Good Leaf Nodes Pairs](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1530%20Number%20of%20Good%20Leaf%20Nodes%20Pairs.py) [**TikTok**]\
-[2422. Merge Operations to Turn Array Into a Palindrome](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2422%20Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome.ts) [**TikTok**]
+[680. Valid Palindrome II](https://github.com/jz33/LeetCodeSolutions/blob/master/680%20Valid%20Palindrome%20II.py) [**Facebook**]
 
 ### Two Pointers One Side
 
 [408. Valid Word Abbreviation](https://github.com/jz33/LeetCodeSolutions/blob/master/408%20Valid%20Word%20Abbreviation.py) [**Facebook**]\
-[475. Heaters](https://github.com/jz33/LeetCodeSolutions/blob/master/475%20Heaters.py)\
 [622. Design Circular Queue](https://github.com/jz33/LeetCodeSolutions/blob/master/622%20Design%20Circular%20Queue.py)\
 [826. Most Profit Assigning Work](https://github.com/jz33/LeetCodeSolutions/blob/master/826%20Most%20Profit%20Assigning%20Work.py) [**DoorDash**]
 
@@ -62,19 +54,14 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [415 Add Strings](https://github.com/jz33/LeetCodeSolutions/blob/master/415%20Add%20Strings.py) [**Facebook**]\
 [1570. Dot Product of Two Sparse Vectors](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1570%20Dot%20Product%20of%20Two%20Sparse%20Vectors.ts) [**Facebook**]\
 [1662. Check If Two String Arrays are Equivalent](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1662%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent.ts)\
-[1768. Merge Strings Alternately](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1768%20Merge%20Strings%20Alternately.ts)\
 [1868. Product of Two Run-Length Encoded Arrays](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1868%20Product%20of%20Two%20Run-Length%20Encoded%20Arrays.py) [**Facebook**]
 
 ### Hashmap
 
 [128. Longest Consecutive Sequence](https://github.com/jz33/LeetCodeSolutions/blob/master/128%20Longest%20Consecutive%20Sequence.py)\
-[217. Contains Duplicate](https://github.com/jz33/LeetCodeSolutions/blob/master/217%20Contains%20Duplicate.py) [**Facebook**]\
-[219. Contains Duplicate II](https://github.com/jz33/LeetCodeSolutions/blob/master/219%20Contains%20Duplicate%20II.py) [**Facebook**]\
-[380. Insert Delete GetRandom O(1)](<https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py>) [**Facebook, TikTok**]\
-[381. Insert Delete GetRandom O(1) - Duplicates allowed](https://github.com/jz33/LeetCodeSolutions/blob/master/381%20Insert%20Delete%20GetRandom%20O(1)%20-%20Duplicates%20allowed.py) [**TikTok E-Commerce**]\
+[380. Insert Delete GetRandom O(1)](<https://github.com/jz33/LeetCodeSolutions/blob/master/380%20Insert%20Delete%20GetRandom%20O(1).py>) [**Facebook****]\
 [383. Ransom Note](https://github.com/jz33/LeetCodeSolutions/blob/master/383%20Ransom%20Note.py) [**Facebook**]\
 [398. Random Pick Index](https://github.com/jz33/LeetCodeSolutions/blob/master/398%20Random%20Pick%20Index.py) [**Facebook**]\
-[697. Degree of an Array](https://github.com/jz33/LeetCodeSolutions/blob/master/697%20Degree%20of%20an%20Array.py) [**TikTok**]\
 [763. Partition Labels](https://github.com/jz33/LeetCodeSolutions/blob/master/763%20Partition%20Labels.py)\
 [791. Custom Sort String](https://github.com/jz33/LeetCodeSolutions/blob/master/791%20Custom%20Sort%20String.py)[**Facebook**]\
 [1657. Determine if Two Strings Are Close](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1657%20Determine%20if%20Two%20Strings%20Are%20Close.py)\
@@ -88,12 +75,11 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [523. Continuous Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/523%20Continous%20Subarray%20Sum.py) [**Facebook**]\
 [528. Random Pick with Weight](https://github.com/jz33/LeetCodeSolutions/blob/master/528%20Random%20Pick%20with%20Weight.py) [**Facebook**]\
 [560. Subarray Sum Equals K](https://github.com/jz33/LeetCodeSolutions/blob/master/560%20Subarray%20Sum%20Equals%20K.py) [**Facebook**]\
-[689. Maximum Sum of 3 Non-Overlapping Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/689%20Maximum%20Sum%20of%203%20Non-Overlapping%20Subarrays.py) [**Facebook**]\
-[1010. Pairs of Songs With Total Durations Divisible by 60](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1010%20Pairs%20of%20Songs%20With%20Total%20Durations%20Divisible%20by%2060.py)[**TikTok**]
+[689. Maximum Sum of 3 Non-Overlapping Subarrays](https://github.com/jz33/LeetCodeSolutions/blob/master/689%20Maximum%20Sum%20of%203%20Non-Overlapping%20Subarrays.py) [**Facebook**]
 
 ### Sliding Window
 
-[3. Longest Substring Without Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/0003%20Longest%20Substring%20Without%20Repeating%20Characters.py) [**Amazon, TikTok**]\
+[3. Longest Substring Without Repeating Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/0003%20Longest%20Substring%20Without%20Repeating%20Characters.py)\
 [76. Minimum Window Substring](https://github.com/jz33/LeetCodeSolutions/blob/master/076%20Minimum%20Window%20Substring.py) [**Facebook**]\
 [209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
 [239. Sliding Window Maximum](https://github.com/jz33/LeetCodeSolutions/blob/master/239%20Sliding%20Window%20Maximum.py) [**Facebook**]\
