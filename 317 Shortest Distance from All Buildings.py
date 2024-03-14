@@ -62,30 +62,26 @@ class Solution:
                 elif grid[i][j] == 0:
                     lands[i,j] = []
 
-        if not lands or not buildings:
-            return -1
-
         # Apply BFS from each building, compute distances on each land
         for bi, building in enumerate(buildings):  
             dist = 1
-            row = [building]
+            row = deque([building])
             while row:
-                newRow = []
-                for x, y in row:
+                for _ in range(len(row)):
+                    x, y = row.popleft()
                     for i, j in (x+1,y), (x,y+1), (x-1,y), (x,y-1):
-                        # Only if lands[i, j == bi means in this BFS, this land has not yet been reached
                         if 0 <= i < rowCount and 0 <= j < colCount and grid[i][j] == 0 and len(lands[i,j]) == bi:
                             lands[i,j].append(dist)
-                            newRow.append((i, j))
-
-                row = newRow
+                            row.append((i, j))
                 dist += 1
             
         # Get minimum distance
-        minDist = float('inf')
+        minDist = -1
         for distances in lands.values():
             # Make sure this land is reached by all buildings
             if len(distances) == len(buildings):
-                minDist = min(minDist, sum(distances))
-                
-        return minDist if minDist != float('inf') else -1
+                if minDist == -1:
+                    minDist = sum(distances)
+                else:
+                    minDist = min(minDist, sum(distances))
+        return minDist

@@ -352,13 +352,11 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### BFS on Matrix
 
-[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**, **TikTok**]\
+[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**]\
 [286. Walls and Gates](https://github.com/jz33/LeetCodeSolutions/blob/master/286%20Walls%20and%20Gates.py)\
 [317. Shortest Distance from All Buildings](https://github.com/jz33/LeetCodeSolutions/blob/master/317%20Shortest%20Distance%20from%20All%20Buildings.py) [**Facebook**]\
 [329. Longest Increasing Path in a Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/329%20Longest%20Increasing%20Path%20in%20a%20Matrix.py) [**Facebook**]\
-[688. Knight Probability in Chessboard](https://github.com/jz33/LeetCodeSolutions/blob/master/688%20Knight%20Probability%20in%20Chessboard.py)\
 [827. Making A Large Island](https://github.com/jz33/LeetCodeSolutions/blob/master/827%20Making%20A%20Large%20Island.py) [**Facebook**]\
-[994. Rotting Oranges](https://github.com/jz33/LeetCodeSolutions/blob/master/994%20Rotting%20Oranges.py) [**TikTok**]\
 [1091. Shortest Path in Binary Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1091%20Shortest%20Path%20in%20Binary%20Matrix.py) [**Facebook**]\
 [1293. Shortest Path in a Grid with Obstacles Elimination](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1293%20Shortest%20Path%20in%20a%20Grid%20with%20Obstacles%20Elimination.py) [**TikTok**]
 
