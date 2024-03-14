@@ -36,81 +36,20 @@ Constraints:
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
-class Solution:
-    def isChildExisting(self, root: 'TreeNode' or None, child: 'TreeNode'):
-        if not root:
-            return False;
-        curr = root
-        stack = []
-        while curr or stack:
-            if curr is not None:
-                if curr.val == child.val:
-                    return True
-                stack.append(curr)
-                curr = curr.left
-            else:
-                curr = stack.pop().right
-        return False
-    
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode' or None:
-        # Find the 1st node. The Find 2nd node from the 1st node or 1st node's parent nodes.
-        # The LCA is either 1st node or one of 1st node's parents.
-        
-        firstNode = None
-        secondNode = None
-
-        # Preorder traversal to find 1st node
-        curr = root
-        stack = []
-        while curr or stack:
-            if curr is not None:
-                if curr.val == p.val:
-                    firstNode = p
-                    secondNode = q
-                    break
-                elif curr.val == q.val:
-                    firstNode = q
-                    secondNode = p
-                    break
-                stack.append(curr)
-                curr = curr.left
-            else:
-                curr = stack.pop().right
-
-        # Not even found 1st node, no LCA
-        if firstNode is None:
-            return None
-
-        # The 1st node can be the LCA if 2nd node is found in its children
-        if self.isChildExisting(firstNode, secondNode):
-            return firstNode
-
-        # The LCA can be a parent of 1st node
-        while stack:
-            lca = stack.pop()
-            # Only need to check the node's right branch,
-            # as itself and its left branch is already traversed
-            if self.isChildExisting(lca.right, secondNode):
-                return lca
-  
-        return None
-
-
 class Solution:
     '''
-    Postorder method, same as 236. Lowest Common Ancestor of a Binary Tree
+    The p, q may not exist in tree. So this is different to
+    236. Lowest Common Ancestor of a Binary Tree
     '''
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        # The foundLCA is not necessary, just for early return
-        foundP, foundQ, foundLCA = False, False, False
+        foundP, foundQ = False, False
 
         def postorder(node: Union['TreeNode', None]) -> Union['TreeNode', None]:
             '''
             @return: p or q or lca, or None if no p or q not found under this tree
             '''
-            nonlocal foundP, foundQ, foundLCA
-            if foundLCA:
+            nonlocal foundP, foundQ
+            if foundP and foundQ:
                 return None
             if node is None:
                 return None
@@ -119,18 +58,13 @@ class Solution:
             right = postorder(node.right)
             if left and right:
                 # This node is the LCA, as p and q are on each branch
-                foundLCA = True
                 return node
             elif node.val == p.val:
                 # This node is p, it could be the LCA.
-                if foundQ:
-                    foundLCA = True
                 foundP = True
                 return node
             elif node.val == q.val:
                 # This node is q, it could be the LCA.
-                if foundP:
-                    foundLCA = True
                 foundQ = True
                 return node
             elif left:
@@ -146,4 +80,4 @@ class Solution:
         lca = postorder(root)
         # Even if lca is not None, it is possible only one of p or q exists,
         # therefore must make sure both p and q are found
-        return lca if foundLCA else None
+        return lca if foundP and foundQ else None
