@@ -38,25 +38,23 @@ class Solution:
         rowCount = len(grid)
         colCount = len(grid[0])
 
-        islands = {} # {island index : total area}
+        islands = {} # {island index : area}
         for i in range(rowCount):
             for j in range(colCount):
                 if grid[i][j] == 1:
-                    # Mark grid to the island's index and count area.
+                    # BFS to mark grid to the island's index and count area.
                     # As the grid has 0 or 1, the island start should start from 2
                     area = 1
                     islandIndex = len(islands.keys()) + 2
                     grid[i][j] = islandIndex
-                    row = [(i,j)]
+                    row = deque([(i,j)])
                     while row:
-                        newRow = []
-                        for x, y in row:
-                            for a,b in (x,y+1), (x,y-1), (x+1,y), (x-1,y):
-                                if 0 <= a < rowCount and 0 <= b < colCount and grid[a][b] == 1:
-                                    grid[a][b] = islandIndex
-                                    area += 1
-                                    newRow.append((a,b))
-                        row = newRow
+                        x,y = row.popleft()
+                        for a,b in (x,y+1), (x,y-1), (x+1,y), (x-1,y):
+                            if 0 <= a < rowCount and 0 <= b < colCount and grid[a][b] == 1:
+                                grid[a][b] = islandIndex
+                                area += 1
+                                row.append((a,b))
                     islands[islandIndex] = area
 
         maxArea = max(islands.values()) if islands else 0
