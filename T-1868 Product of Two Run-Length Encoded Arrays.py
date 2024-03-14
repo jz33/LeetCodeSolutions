@@ -47,9 +47,7 @@ Constraints:
     The full arrays that encoded1 and encoded2 represent are the same length.
 '''
 class Solution:
-    def findRLEArray(
-        self, encoded1: List[List[int]], encoded2: List[List[int]]
-    ) -> List[List[int]]:
+    def findRLEArray(self, encoded1: List[List[int]], encoded2: List[List[int]]) -> List[List[int]]:
         # The product of 2 encoded arrays, it is encoded too
         prods = []
 

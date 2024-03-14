@@ -41,15 +41,14 @@ class Solution:
         minOffset = 0
         maxOffset = 0
         while nodes:
-            for _ in range(len(nodes)):
-                node, offset = nodes.popleft()
-                book[offset].append(node.val)
-                minOffset = min(minOffset, offset)
-                maxOffset = max(maxOffset, offset)
-                if node.left:
-                    nodes.append((node.left, offset - 1))
-                if node.right:
-                    nodes.append((node.right, offset + 1))
+            node, offset = nodes.popleft()
+            book[offset].append(node.val)
+            minOffset = min(minOffset, offset)
+            maxOffset = max(maxOffset, offset)
+            if node.left:
+                nodes.append((node.left, offset - 1))
+            if node.right:
+                nodes.append((node.right, offset + 1))
             
         # User min/max offset to avoid sorting
         result = []

@@ -55,3 +55,8 @@ class Solution:
                         points.append((i,j))
             steps += 1
         return -1
+
+'''
+Real Facebook Interview, return path not steps
+https://www.1point3acres.com/bbs/thread-1051960-1-1.html
+'''
