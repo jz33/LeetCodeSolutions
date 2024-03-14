@@ -72,3 +72,15 @@ class Solution:
                 return list(dq) + arr[right : right + missedCount]
         else:
             return list(dq)
+        
+class Solution:
+    '''
+    Simple heap method
+    '''
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        heap = [] # [(-dist, val)]
+        for val in arr:
+            heappush(heap, (-abs(val-x), -val))
+            if len(heap) > k:
+                heappop(heap)
+        return sorted(-v for _,v in heap)
