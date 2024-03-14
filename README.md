@@ -189,6 +189,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### 2-D Matrix Iterations
 
 [48. Rotate Image](https://github.com/jz33/LeetCodeSolutions/blob/master/048%20Rotate%20Image.py)\
+[73. Set Matrix Zeroes](https://github.com/jz33/LeetCodeSolutions/blob/master/073%20Set%20Matrix%20Zeroes.py)\
 [54. Spiral Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/054%20Spiral%20Matrix.py)\
 [240. Search a 2D Matrix II](https://github.com/jz33/LeetCodeSolutions/blob/master/240%20Search%20a%202D%20Matrix%20II.py)\
 [463. Island Perimeter](https://github.com/jz33/LeetCodeSolutions/blob/master/463%20Island%20Perimeter.py)\
@@ -351,8 +352,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [126. Word Ladder](https://github.com/jz33/LeetCodeSolutions/blob/master/126%20Word%20Ladder.py) [**TikTok**]\
 [785. Is Graph Bipartite](https://github.com/jz33/LeetCodeSolutions/blob/master/785%20Is%20Graph%20Bipartite%3F.py) [**TikTok**]\
 [815. Bus Routes](https://github.com/jz33/LeetCodeSolutions/blob/master/815%20Bus%20Routes.py) [**TikTok**]\
-[886. Possible Bipartition](https://github.com/jz33/LeetCodeSolutions/blob/master/886%20Possible%20Bipartition.ts) [**TikTok**]\
-[1345. Jump Game IV](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1345%20Jump%20Game%20IV.py) [**TikTok**]
+[886. Possible Bipartition](https://github.com/jz33/LeetCodeSolutions/blob/master/886%20Possible%20Bipartition.ts) [**TikTok**]
 
 ### BFS with Dijkstra E \* log(V)
 
