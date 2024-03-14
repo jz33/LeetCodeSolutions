@@ -25,7 +25,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### Binary Guess
 
-[875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py) [**Facebook, DoorDash**]\
+[875. Koko Eating Bananas](https://github.com/jz33/LeetCodeSolutions/blob/master/875%20Koko%20Eating%20Bananas.py) \
 [1011. Capacity To Ship Packages Within D Days](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1011%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days.py) [**Facebook**]\
 
 ### O(n)
@@ -84,7 +84,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [209. Minimum Size Subarray Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/209%20Minimum%20Size%20Subarray%20Sum.py)\
 [239. Sliding Window Maximum](https://github.com/jz33/LeetCodeSolutions/blob/master/239%20Sliding%20Window%20Maximum.py) [**Facebook**]\
 [346. Moving Average from Data Stream](https://github.com/jz33/LeetCodeSolutions/blob/master/346%20Moving%20Average%20from%20Data%20Stream.py) [**Facebook**]\
-[713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.ts) [**Facebook**]\
+[713. Subarray Product Less Than K](https://github.com/jz33/LeetCodeSolutions/blob/master/713%20Subarray%20Product%20Less%20Than%20K.py) \
 [1004. Max Consecutive Ones III](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1004%20Max%20Consecutive%20Ones%20III.py) [**Facebook**]\
 [1358. Number of Substrings Containing All Three Characters](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1358%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters.py) [**Facebook**]\
 [2461. Maximum Sum of Distinct Subarrays With Length K](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2461%20Maximum%20Sum%20of%20Distinct%20Subarrays%20With%20Length%20K.py) [**Facebook**]
@@ -337,7 +337,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 
 ### BFS on Matrix
 
-[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) [**Facebook**]\
+[200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py)\
 [286. Walls and Gates](https://github.com/jz33/LeetCodeSolutions/blob/master/286%20Walls%20and%20Gates.py)\
 [317. Shortest Distance from All Buildings](https://github.com/jz33/LeetCodeSolutions/blob/master/317%20Shortest%20Distance%20from%20All%20Buildings.py) [**Facebook**]\
 [329. Longest Increasing Path in a Matrix](https://github.com/jz33/LeetCodeSolutions/blob/master/329%20Longest%20Increasing%20Path%20in%20a%20Matrix.py) [**Facebook**]\
@@ -361,7 +361,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### DFS or Backtrack on Matrix
 
 [51. N-Queens](https://github.com/jz33/LeetCodeSolutions/blob/master/051%20N-Queens.py)\
-[79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) [**Facebook**]\
+[79. Word Search](https://github.com/jz33/LeetCodeSolutions/blob/master/079%20Word%20Search.py) \
 [200. Number of Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/200%20Number%20of%20Islands.py) \
 [489. Robot Room Cleaner](https://github.com/jz33/LeetCodeSolutions/blob/master/489%20Robot%20Room%20Cleaner.py) [**Facebook**]\
 [694. Number of Distinct Islands](https://github.com/jz33/LeetCodeSolutions/blob/master/694%20Number%20of%20Distinct%20Islands.py)
@@ -369,7 +369,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### DFS or Backtrack on Graph
 
 [77. Combinations](https://github.com/jz33/LeetCodeSolutions/blob/master/077%20Combinations.py)\
-[133. Clone Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/133%20Clone%20Graph.py) [**Facebook**]\
+[133. Clone Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/133%20Clone%20Graph.py) \
 [332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**] # Euler path\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]
 
