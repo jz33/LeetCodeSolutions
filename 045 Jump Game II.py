@@ -2,43 +2,45 @@
 45. Jump Game II
 https://leetcode.com/problems/jump-game-ii/
 
-Given an array of non-negative integers, you are initially positioned at the first index of the array.
+You are given a 0-indexed array of integers nums of length n.
+You are initially positioned at nums[0].
 
-Each element in the array represents your maximum jump length at that position.
+Each element nums[i] represents the maximum length of a forward jump from index i.
+In other words, if you are at nums[i], you can jump to any nums[i + j] where:
 
-Your goal is to reach the last index in the minimum number of jumps.
+    0 <= j <= nums[i] and
+    i + j < n
 
-Example:
+Return the minimum number of jumps to reach nums[n - 1].
+The test cases are generated such that you can reach nums[n - 1].
 
-Input: [2,3,1,1,4]
+Example 1:
+
+Input: nums = [2,3,1,1,4]
+Output: 2
+Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+Example 2:
+
+Input: nums = [2,3,0,1,4]
 Output: 2
 
-Explanation: The minimum number of jumps to reach the last index is 2.
-    Jump 1 step from index 0 to 1, then 3 steps to the last index.
+Constraints:
+    1 <= nums.length <= 104
+    0 <= nums[i] <= 1000
+    It's guaranteed that you can reach nums[n - 1]
 '''
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        if len(nums) < 2:
-            return 0
-        
-        jump = 0 # current position ready to jump
-        steps = 1
-        while nums[jump] != 0: # if cannot jump anywhere, bail
-          
-            # Get right bound of this jump
-            right = jump + nums[jump]
-            if right >= len(nums) - 1:
-                return steps
-            
-            # Determine where to jump next
-            # Be greedy, choose next position who has max jump for next round
-            maxJump = 0
-            for i in range(jump + 1, right + 1):
-                nexJump = i + nums[i]
-                if nexJump >= maxJump: # >= is better than >
-                    maxJump = nexJump
-                    jump = i
-            
-            steps += 1
-
-        return -1
+        jumps = 0
+        farthest = 0 # farthest position can reach
+        curr = 0 # current position
+        for i, n in enumerate(nums):
+            if curr >= len(nums) - 1:
+                break
+            farthest = max(farthest, i + n)
+            if i == curr:
+                # jump to farthest
+                curr = farthest
+                jumps += 1
+        return jumps
