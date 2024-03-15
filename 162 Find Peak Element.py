@@ -57,6 +57,11 @@ https://www.1point3acres.com/bbs/thread-1043199-1-1.html
 https://www.1point3acres.com/bbs/thread-1041991-1-1.html
 '''
 def findMinElement(nums: List[int]) -> int:
+    if not nums:
+        return None
+    if len(nums) < 2:
+        return nums[0]
+    
     left = 0
     right = len(nums) - 1
     while left < right:
