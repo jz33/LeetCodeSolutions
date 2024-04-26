@@ -166,7 +166,8 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 ### Sorted Map
 
 [480. Sliding Window Median](https://github.com/jz33/LeetCodeSolutions/blob/master/480%20Sliding%20Window%20Median.py)\
-[729. My Calendar I](https://leetcode.com/problems/my-calendar-i/)
+[729. My Calendar I](https://github.com/jz33/LeetCodeSolutions/blob/master/729%20My%20Calendar%20I.py)\
+[2034. Stock Price Fluctuation](https://github.com/jz33/LeetCodeSolutions/blob/master/T-2034%20Stock%20Price%20Fluctuation.py)
 
 ### Divide and Conquer
 
@@ -216,6 +217,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [322. Coin Change](https://github.com/jz33/LeetCodeSolutions/blob/master/322%20Coin%20Change.py)\
 [377. Combination Sum IV](https://github.com/jz33/LeetCodeSolutions/blob/master/377%20Combination%20Sum%20IV.py)\
 [518. Coin Change 2](https://github.com/jz33/LeetCodeSolutions/blob/master/518%20Coin%20Change%202.py)\
+[1043. Partition Array for Maximum Sum](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1043%20Partition%20Array%20for%20Maximum%20Sum.py)\
 [1235. Maximum Profit in Job Scheduling](https://github.com/jz33/LeetCodeSolutions/blob/master/T-1235%20Maximum%20Profit%20in%20Job%20Scheduling.py) [**DoorDash**]
 
 ### 1-D Cache Replacement Dynamic Programming
