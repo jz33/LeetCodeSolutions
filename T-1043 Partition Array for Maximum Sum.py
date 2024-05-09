@@ -34,12 +34,10 @@ class Solution:
     T(i) = max(arr[i] + T[i-1], max(arr[i], arr[i-1]) * 2 + T[i-2], max(arr[i], arr[i-1], arr[i-2]) * 3 + T[i-3], ...))
     '''
     def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
-        dp = [0] * (len(arr)+1) # dp[i] is the maximum result ending in arr[:i]
+        dp = [0] * (len(arr)+1) # dp[i] is the maximun result ending in arr[:i]
         for i in range(len(arr)):
             maxVal = 0
-            candidates = []
             for j in range(min(k, i+1)):
                 maxVal = max(maxVal, arr[i-j])
-                candidates.append(maxVal * (j+1) + dp[i-j])
-            dp[i+1] = max(candidates)
+                dp[i+1] = max(dp[i+1], maxVal * (j+1) + dp[i-j])
         return dp[-1]
