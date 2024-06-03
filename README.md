@@ -374,6 +374,7 @@ Solution for LeetCode questions written mostly in Python3, also in C, C++, Java,
 [133. Clone Graph](https://github.com/jz33/LeetCodeSolutions/blob/master/133%20Clone%20Graph.py) \
 [332. Reconstruct Itinerary](https://github.com/jz33/LeetCodeSolutions/blob/master/332%20Reconstruct%20Itinerary.py) [**Facebook**] # Euler path\
 [691. Stickers to Spell Word](https://github.com/jz33/LeetCodeSolutions/blob/master/691%20Stickers%20to%20Spell%20Word.py) [**Facebook**]
+[2097. Valid Arrangement of Pairs]() # Euler path
 
 ### Union Find
 
